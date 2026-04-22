@@ -37,8 +37,8 @@ const objectives = [
   },
   {
     icon: HandHeart,
-    title: 'Financial Assistance',
-    description: 'Provide financial assistance to Veda Gurukulas — for infrastructure, teaching materials, student nutrition, and teacher welfare.',
+    title: 'Gurukula Welfare',
+    description: 'Assist Gurukulas in the fulfilment of their essential needs — infrastructure, teaching materials, student nutrition, and teacher welfare.',
   },
   {
     icon: Award,
