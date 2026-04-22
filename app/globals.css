@@ -1,0 +1,95 @@
+/**
+ * Sri Shivasankalpa Trust — Global Styles
+ *
+ * Design tokens for the trust's visual language:
+ *   - Ivory manuscript background
+ *   - Charcoal text for readability
+ *   - Deep indigo as primary accent (parampara, depth)
+ *   - Kumkuma red as secondary accent (sacred, warm)
+ *   - Temple gold for rare highlights (auspicious, restrained)
+ *
+ * Tailwind CSS v4 theme configuration via @theme directives.
+ */
+
+@import "tailwindcss";
+
+/* ── Color & font tokens registered as Tailwind utilities ── */
+
+@theme {
+  --color-ivory-50: #FDFBF5;
+  --color-ivory-100: #FBF8F0;
+  --color-ivory: #F7F1E3;
+  --color-ivory-300: #EDE5D0;
+  --color-ivory-400: #E0D5B8;
+
+  --color-charcoal-100: #E0E0E0;
+  --color-charcoal-200: #9E9E9E;
+  --color-charcoal-300: #616161;
+  --color-charcoal: #2A2A2A;
+  --color-charcoal-500: #1C1C1C;
+
+  --color-indigo-50: #EEEDF5;
+  --color-indigo-100: #D4D2E8;
+  --color-indigo-200: #9994BF;
+  --color-indigo-300: #5D5799;
+  --color-indigo: #2E2A5D;
+  --color-indigo-500: #201D42;
+
+  --color-kumkuma-50: #F9ECEC;
+  --color-kumkuma-100: #EDCFCF;
+  --color-kumkuma-200: #D48080;
+  --color-kumkuma: #A63232;
+  --color-kumkuma-500: #8B2828;
+
+  --color-gold-50: #FBF5E6;
+  --color-gold-100: #F3E4BC;
+  --color-gold: #B8860B;
+  --color-gold-400: #946B09;
+}
+
+@theme inline {
+  --font-serif: var(--font-eb-garamond), "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+  --font-devanagari: var(--font-noto-serif-devanagari), "Noto Serif Devanagari", serif;
+}
+
+/* ── Base styles ── */
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background-color: var(--color-indigo-200);
+  color: var(--color-ivory-50);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-indigo);
+  outline-offset: 2px;
+}
+
+/* Shloka text styling — used with font-devanagari utility */
+.shloka-devanagari {
+  font-family: var(--font-devanagari);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+.shloka-iast {
+  font-family: var(--font-serif);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Reduced motion: disable all animations and transitions */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
