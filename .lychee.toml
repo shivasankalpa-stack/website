@@ -1,0 +1,13 @@
+exclude = [
+  # Production domain — not live until DNS is configured post-review
+  "srishivasankalpa\\.org",
+  "shivasankalpa\\.org",
+  # Dev / local
+  "localhost",
+  "127\\.0\\.0\\.1",
+]
+
+exclude_mail = true
+accept = [200, 204, 301, 302, 403, 429]
+timeout = 15
+max_retries = 2

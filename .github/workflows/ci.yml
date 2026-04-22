@@ -11,11 +11,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
+  build:
     name: Lint · Typecheck · Build
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
     steps:
       - uses: actions/checkout@v4
 
@@ -35,3 +34,16 @@ jobs:
 
       - name: Build
         run: npm run build
+
+  links:
+    name: Link check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --verbose --no-progress "**/*.tsx" "**/*.ts" "**/*.md"
+          fail: true
