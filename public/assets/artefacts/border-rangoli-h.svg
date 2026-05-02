@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="36" viewBox="0 0 48 36">
+  <!--
+    Kolam / Rangoli HORIZONTAL border tile — TOP and BOTTOM edges.
+    Referenced from globals.css (.manuscript-outer::before / ::after).
+    
+    TILE SIZE: 48 × 36 px — repeats horizontally via background-repeat: repeat-x.
+    COLOUR:    Temple gold #B8860B at varying opacities.
+    
+    Same motif as border-rangoli.svg (vertical), rotated 90° so the woven
+    chain flows left-to-right instead of top-to-bottom.
+    
+    ANATOMY (from outside → centre):
+      1. Outer frame lines   (y=1.5 and y=34.5) — solid gold, 0.5 opacity
+      2. Inner frame lines   (y=4.5 and y=31.5) — faint, 0.18 opacity
+      3. Connecting arcs      — small curves linking the frame to the chain
+      4. Primary woven chain  — two S-curves weaving horizontally
+      5. Teardrop petals      — at the peaks of each curve
+      6. Secondary inner loops — smaller eye-shaped loops
+      7. Pulli (dots)         — at every crossing, peak, petal tip, and frame junction
+    
+    TO EDIT: modify the paths below, ensuring the tile's left edge (x=0) connects
+    seamlessly to the right edge (x=48) of the previous repeat.
+    TO CHANGE COLOUR: find-replace #B8860B.
+    TO CHANGE HEIGHT: update viewBox height, CSS height, and background-size.
+  -->
+  <defs>
+    <g id="ph">
+      <circle r="2.2" fill="#B8860B" opacity="0.45" stroke="none"/>
+    </g>
+    <g id="ph-sm">
+      <circle r="1.4" fill="#B8860B" opacity="0.35" stroke="none"/>
+    </g>
+  </defs>
+
+  <g stroke="#B8860B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Outer frame line -->
+    <line x1="0" y1="1.5" x2="48" y2="1.5" stroke-width="0.8" opacity="0.5"/>
+    <line x1="0" y1="34.5" x2="48" y2="34.5" stroke-width="0.8" opacity="0.5"/>
+
+    <!-- Inner frame line -->
+    <line x1="0" y1="4.5" x2="48" y2="4.5" stroke-width="0.5" opacity="0.18"/>
+    <line x1="0" y1="31.5" x2="48" y2="31.5" stroke-width="0.5" opacity="0.18"/>
+
+    <!-- === Primary woven chain (horizontal) === -->
+    <path d="M0 18 C5 8, 11 6, 16 9 C21 12, 22 18, 24 18
+             C26 18, 27 12, 32 9 C37 6, 43 8, 48 18"
+          stroke-width="1.1" opacity="0.55"/>
+    <path d="M0 18 C5 28, 11 30, 16 27 C21 24, 22 18, 24 18
+             C26 18, 27 24, 32 27 C37 30, 43 28, 48 18"
+          stroke-width="1.1" opacity="0.55"/>
+
+    <!-- === Teardrop petals at peaks === -->
+    <path d="M14 9 C12 6, 9 5, 7 8 C9 11, 12 11, 14 9 Z"
+          fill="#B8860B" fill-opacity="0.12" stroke-width="0.7" opacity="0.4"/>
+    <path d="M14 27 C12 30, 9 31, 7 28 C9 25, 12 25, 14 27 Z"
+          fill="#B8860B" fill-opacity="0.12" stroke-width="0.7" opacity="0.4"/>
+    <path d="M34 9 C36 6, 39 5, 41 8 C39 11, 36 11, 34 9 Z"
+          fill="#B8860B" fill-opacity="0.12" stroke-width="0.7" opacity="0.4"/>
+    <path d="M34 27 C36 30, 39 31, 41 28 C39 25, 36 25, 34 27 Z"
+          fill="#B8860B" fill-opacity="0.12" stroke-width="0.7" opacity="0.4"/>
+
+    <!-- === Secondary inner loops === -->
+    <path d="M10 18 C12 14, 16 14, 18 18 C16 22, 12 22, 10 18"
+          stroke-width="0.6" opacity="0.3"/>
+    <path d="M30 18 C32 14, 36 14, 38 18 C36 22, 32 22, 30 18"
+          stroke-width="0.6" opacity="0.3"/>
+
+    <!-- === Connecting arcs between frame and chain === -->
+    <path d="M12 5 Q10 10, 14 12" stroke-width="0.5" opacity="0.2"/>
+    <path d="M36 5 Q38 10, 34 12" stroke-width="0.5" opacity="0.2"/>
+    <path d="M12 31 Q10 26, 14 24" stroke-width="0.5" opacity="0.2"/>
+    <path d="M36 31 Q38 26, 34 24" stroke-width="0.5" opacity="0.2"/>
+  </g>
+
+  <!-- === Pulli (dots) === -->
+  <use href="#ph" x="0"  y="18"/>
+  <use href="#ph" x="24" y="18"/>
+  <use href="#ph" x="48" y="18"/>
+  <use href="#ph-sm" x="10" y="8"/>
+  <use href="#ph-sm" x="10" y="28"/>
+  <use href="#ph-sm" x="38" y="8"/>
+  <use href="#ph-sm" x="38" y="28"/>
+  <use href="#ph-sm" x="10" y="18"/>
+  <use href="#ph-sm" x="14" y="18"/>
+  <use href="#ph-sm" x="30" y="18"/>
+  <use href="#ph-sm" x="38" y="18"/>
+  <use href="#ph-sm" x="7"  y="7"/>
+  <use href="#ph-sm" x="7"  y="29"/>
+  <use href="#ph-sm" x="41" y="7"/>
+  <use href="#ph-sm" x="41" y="29"/>
+  <use href="#ph-sm" x="0"  y="5"/>
+  <use href="#ph-sm" x="0"  y="31"/>
+  <use href="#ph-sm" x="24" y="5"/>
+  <use href="#ph-sm" x="24" y="31"/>
+  <use href="#ph-sm" x="48" y="5"/>
+  <use href="#ph-sm" x="48" y="31"/>
+</svg>

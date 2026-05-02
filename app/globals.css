@@ -84,6 +84,141 @@ body {
   line-height: 1.6;
 }
 
+/* ══════════════════════════════════════════════════════════════════════
+   Desktop Manuscript Frame — "Portrait" kolam border
+   ══════════════════════════════════════════════════════════════════════
+   
+   On wide screens (≥ 1024px / lg breakpoint) the content area is
+   presented as a manuscript page:
+   
+     ┌──────── horizontal kolam (border-rangoli-h.svg) ────────┐
+     │  ┌─ vertical kolam ─┐         ┌─ vertical kolam ─┐     │
+     │  │  (border-rangoli  │         │  (border-rangoli  │     │
+     │  │   .svg, repeats   │ CONTENT │   .svg, repeats   │     │
+     │  │   vertically)     │  AREA   │   vertically)     │     │
+     │  └──────────────────┘         └──────────────────┘     │
+     └──────── horizontal kolam (border-rangoli-h.svg) ────────┘
+   
+   ARCHITECTURE:
+   
+   Two nested elements in layout.tsx share the work:
+   
+     <div class="manuscript-outer">     ← top/bottom borders (::before / ::after)
+       <main class="manuscript-frame">  ← left/right borders (::before / ::after)
+   
+   This gives us four pseudo-elements — one per side — since a single
+   element only provides two (::before + ::after).
+   
+   The body background shifts from ivory → ivory-300 on desktop so the
+   lighter ivory content area stands out as a distinct reading surface.
+   
+   SVG TILES:
+     • border-rangoli.svg   — 36 × 48 px, repeats vertically   (left/right)
+     • border-rangoli-h.svg — 48 × 36 px, repeats horizontally (top/bottom)
+   Both use the same kolam motif: woven S-curve chain, teardrop petals,
+   pulli dots, and double frame lines — all in temple gold (#B8860B).
+   
+   CUSTOMISATION:
+     • To change border width:  adjust `width` / `height` and SVG viewBox
+     • To change pattern:       edit the SVG files in public/assets/artefacts/
+     • To change colour:        find-replace #B8860B in both SVGs
+     • To change opacity:       tweak individual element opacities in the SVGs
+     • To disable on a page:    override with `overflow: visible` or `z-index`
+     • Mobile/tablet:           none of this applies (all rules inside lg media query)
+   ══════════════════════════════════════════════════════════════════════ */
+
+@media (min-width: 1024px) {
+
+  /* Body background shifts to a warmer shade so the content "page" pops */
+  body {
+    background-color: var(--color-ivory-300);
+  }
+
+  /*
+   * .manuscript-outer — the outermost wrapper (a <div> around <main>).
+   * Provides the TOP and BOTTOM horizontal kolam borders via its
+   * ::before and ::after pseudo-elements.
+   * overflow:hidden clips any content that would bleed past the frame.
+   */
+  .manuscript-outer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .manuscript-outer::before,
+  .manuscript-outer::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 36px;                       /* matches SVG tile height */
+    background-image: url('/assets/artefacts/border-rangoli-h.svg');
+    background-repeat: repeat-x;
+    background-size: 48px 36px;          /* matches SVG tile dimensions */
+    pointer-events: none;                /* don't block clicks on content */
+    z-index: 20;                         /* render above hero images (z-10) */
+  }
+
+  .manuscript-outer::before { top: 0; }     /* top horizontal border */
+  .manuscript-outer::after  { bottom: 0; }  /* bottom horizontal border */
+
+  /*
+   * .manuscript-frame — the <main> element inside .manuscript-outer.
+   * Provides the LEFT and RIGHT vertical kolam borders via its
+   * ::before and ::after pseudo-elements.
+   */
+  .manuscript-frame {
+    position: relative;
+  }
+
+  .manuscript-frame::before,
+  .manuscript-frame::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 36px;                         /* matches SVG tile width */
+    background-image: url('/assets/artefacts/border-rangoli.svg');
+    background-repeat: repeat-y;
+    background-size: 36px 48px;          /* matches SVG tile dimensions */
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  .manuscript-frame::before { left: 0; }    /* left vertical border */
+  .manuscript-frame::after  { right: 0; }   /* right vertical border */
+}
+
+/* ── Mobile menu rangoli frame ──
+   Uses CSS multiple backgrounds to paint all four kolam borders on a
+   single element — same SVG tiles as the desktop manuscript frame.
+   No pseudo-elements needed since the nav covers the full viewport.
+   Order: top, bottom, left, right (painted back-to-front).             */
+
+.mobile-menu-frame {
+  background-color: var(--color-ivory-50);
+  background-image:
+    url('/assets/artefacts/border-rangoli-h.svg'),
+    url('/assets/artefacts/border-rangoli-h.svg'),
+    url('/assets/artefacts/border-rangoli.svg'),
+    url('/assets/artefacts/border-rangoli.svg');
+  background-position:
+    top left,
+    bottom left,
+    top left,
+    top right;
+  background-repeat:
+    repeat-x,
+    repeat-x,
+    repeat-y,
+    repeat-y;
+  background-size:
+    48px 36px,
+    48px 36px,
+    36px 48px,
+    36px 48px;
+}
+
 /* Reduced motion: disable all animations and transitions */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="48" viewBox="0 0 36 48">
+  <!--
+    Kolam / Rangoli VERTICAL border tile — LEFT and RIGHT edges.
+    Referenced from globals.css (.manuscript-frame::before / ::after).
+    
+    TILE SIZE: 36 × 48 px — repeats vertically via background-repeat: repeat-y.
+    COLOUR:    Temple gold #B8860B at varying opacities.
+    
+    ANATOMY (from outside → centre):
+      1. Outer frame lines   (x=1.5 and x=34.5) — solid gold, 0.5 opacity
+      2. Inner frame lines   (x=4.5 and x=31.5) — faint, 0.18 opacity
+      3. Connecting arcs      — small curves linking the frame to the chain
+      4. Primary woven chain  — two S-curves (A & B) weaving over/under each other
+      5. Teardrop petals      — at the peaks of each curve, filled at 0.12 opacity
+      6. Secondary inner loops — smaller eye-shaped loops at the centre of each half
+      7. Pulli (dots)         — at every crossing, peak, petal tip, and frame junction
+    
+    TO EDIT: modify the paths below, ensuring the tile's top edge (y=0) connects
+    seamlessly to the bottom edge (y=48) of the previous repeat.
+    TO CHANGE COLOUR: find-replace #B8860B.
+    TO CHANGE WIDTH: update viewBox width, CSS width, and background-size.
+  -->
+  <defs>
+    <g id="pulli">
+      <circle r="2.2" fill="#B8860B" opacity="0.45" stroke="none"/>
+    </g>
+    <g id="pulli-sm">
+      <circle r="1.4" fill="#B8860B" opacity="0.35" stroke="none"/>
+    </g>
+  </defs>
+
+  <g stroke="#B8860B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Outer frame line -->
+    <line x1="1.5" y1="0" x2="1.5" y2="48" stroke-width="0.8" opacity="0.5"/>
+    <line x1="34.5" y1="0" x2="34.5" y2="48" stroke-width="0.8" opacity="0.5"/>
+
+    <!-- Inner frame line -->
+    <line x1="4.5" y1="0" x2="4.5" y2="48" stroke-width="0.5" opacity="0.18"/>
+    <line x1="31.5" y1="0" x2="31.5" y2="48" stroke-width="0.5" opacity="0.18"/>
+
+    <!-- === Primary woven chain === -->
+    <!-- Curve A: sweeps right then left -->
+    <path d="M18 0 C28 5, 30 11, 27 16 C24 21, 18 22, 18 24
+             C18 26, 12 27, 9 32 C6 37, 8 43, 18 48"
+          stroke-width="1.1" opacity="0.55"/>
+    <!-- Curve B: sweeps left then right (weaves with A) -->
+    <path d="M18 0 C8 5, 6 11, 9 16 C12 21, 18 22, 18 24
+             C18 26, 24 27, 27 32 C30 37, 28 43, 18 48"
+          stroke-width="1.1" opacity="0.55"/>
+
+    <!-- === Teardrop petals at peaks === -->
+    <!-- Right petal (top half) -->
+    <path d="M27 14 C30 12, 31 9, 28 7 C25 9, 25 12, 27 14 Z"
+          fill="#B8860B" fill-opacity="0.12" stroke-width="0.7" opacity="0.4"/>
+    <!-- Left petal (top half) -->
+    <path d="M9 14 C6 12, 5 9, 8 7 C11 9, 11 12, 9 14 Z"
+          fill="#B8860B" fill-opacity="0.12" stroke-width="0.7" opacity="0.4"/>
+    <!-- Left petal (bottom half) -->
+    <path d="M9 34 C6 36, 5 39, 8 41 C11 39, 11 36, 9 34 Z"
+          fill="#B8860B" fill-opacity="0.12" stroke-width="0.7" opacity="0.4"/>
+    <!-- Right petal (bottom half) -->
+    <path d="M27 34 C30 36, 31 39, 28 41 C25 39, 25 36, 27 34 Z"
+          fill="#B8860B" fill-opacity="0.12" stroke-width="0.7" opacity="0.4"/>
+
+    <!-- === Secondary inner loops === -->
+    <path d="M18 10 C22 12, 22 16, 18 18 C14 16, 14 12, 18 10"
+          stroke-width="0.6" opacity="0.3"/>
+    <path d="M18 30 C22 32, 22 36, 18 38 C14 36, 14 32, 18 30"
+          stroke-width="0.6" opacity="0.3"/>
+
+    <!-- === Connecting arcs between frame and chain === -->
+    <path d="M5 12 Q10 10, 12 14" stroke-width="0.5" opacity="0.2"/>
+    <path d="M5 36 Q10 38, 12 34" stroke-width="0.5" opacity="0.2"/>
+    <path d="M31 12 Q26 10, 24 14" stroke-width="0.5" opacity="0.2"/>
+    <path d="M31 36 Q26 38, 24 34" stroke-width="0.5" opacity="0.2"/>
+  </g>
+
+  <!-- === Pulli (dots) — the kolam signature === -->
+  <!-- Main crossing dots -->
+  <use href="#pulli" x="18" y="0"/>
+  <use href="#pulli" x="18" y="24"/>
+  <use href="#pulli" x="18" y="48"/>
+  <!-- Peak dots -->
+  <use href="#pulli-sm" x="28" y="10"/>
+  <use href="#pulli-sm" x="8"  y="10"/>
+  <use href="#pulli-sm" x="28" y="38"/>
+  <use href="#pulli-sm" x="8"  y="38"/>
+  <!-- Inner loop dots -->
+  <use href="#pulli-sm" x="18" y="10"/>
+  <use href="#pulli-sm" x="18" y="14"/>
+  <use href="#pulli-sm" x="18" y="30"/>
+  <use href="#pulli-sm" x="18" y="38"/>
+  <!-- Petal tip dots -->
+  <use href="#pulli-sm" x="29" y="7"/>
+  <use href="#pulli-sm" x="7"  y="7"/>
+  <use href="#pulli-sm" x="29" y="41"/>
+  <use href="#pulli-sm" x="7"  y="41"/>
+  <!-- Frame junction dots -->
+  <use href="#pulli-sm" x="5"  y="0"/>
+  <use href="#pulli-sm" x="31" y="0"/>
+  <use href="#pulli-sm" x="5"  y="24"/>
+  <use href="#pulli-sm" x="31" y="24"/>
+  <use href="#pulli-sm" x="5"  y="48"/>
+  <use href="#pulli-sm" x="31" y="48"/>
+</svg>

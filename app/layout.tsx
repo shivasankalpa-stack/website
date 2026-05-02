@@ -16,6 +16,7 @@ import './globals.css';
 import { Ticker } from '@/components/layout/Ticker';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { ScrollToTop } from '@/components/layout/ScrollToTop';
 
 const ebGaramond = EB_Garamond({
   variable: '--font-eb-garamond',
@@ -81,8 +82,19 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-ivory text-charcoal font-sans antialiased">
         <Ticker />
         <Header />
-        <main className="flex-1">{children}</main>
+        {/*
+          Manuscript frame (desktop only, see globals.css for full docs).
+          Two nested elements give us four pseudo-elements for four borders:
+            manuscript-outer  → ::before = top border, ::after = bottom border
+            manuscript-frame  → ::before = left border, ::after = right border
+          On mobile/tablet the Tailwind lg: prefixes are inactive, so these
+          divs are transparent pass-throughs with no visual effect.
+        */}
+        <div className="flex-1 lg:mx-auto lg:w-full lg:max-w-7xl lg:bg-ivory lg:shadow-sm manuscript-outer">
+          <main className="manuscript-frame">{children}</main>
+        </div>
         <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );
