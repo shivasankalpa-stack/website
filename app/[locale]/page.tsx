@@ -207,7 +207,7 @@ export default async function HomePage({ params }: Props) {
                     <h3 className="font-serif text-lg font-semibold text-indigo">{gk.name}</h3>
                     <div className="flex items-center gap-1.5 text-sm text-charcoal-200">
                       <MapPin size={14} />
-                      {tGk(`${SLUG_TO_KEY[gk.slug]}_location` as any) || gk.location}
+                      {tGk(`${SLUG_TO_KEY[gk.slug]}_location` as Parameters<typeof tGk>[0]) || gk.location}
                     </div>
                     <p className="text-sm text-charcoal-300">
                       {t('acharyaLabel')} {gk.acharya}
