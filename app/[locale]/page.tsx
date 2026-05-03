@@ -165,7 +165,7 @@ export default async function HomePage({ params }: Props) {
             <p>{t('whyGurukulasPara2')}</p>
             <p>
               {t('whyGurukulasPara3', {
-                lokaKalyana: locale === 'en' ? 'loka kalyāṇa' : 'ಲೋಕ ಕಲ್ಯಾಣ',
+                lokaKalyana: locale === 'en' ? 'loka kalyāṇa' : 'ಲೋಕಕಲ್ಯಾಣ',
               })}
             </p>
           </div>
