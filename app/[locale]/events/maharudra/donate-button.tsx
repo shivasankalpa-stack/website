@@ -6,25 +6,27 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/Button';
 import { Modal } from '@/components/ui/Modal';
 import { DonationDetails } from '@/components/blocks/DonationDetails';
 
 export function MaharudraDonateButton() {
+  const t = useTranslations('maharudra');
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <Button variant="primary" size="lg" onClick={() => setOpen(true)}>
-        Donate for Maharudra Seva
+        {t('donateButton')}
       </Button>
 
       <Modal
         isOpen={open}
         onClose={() => setOpen(false)}
-        title="Donate — Maharudra Purascharana Seva"
+        title={t('donateModalTitle')}
       >
-        <DonationDetails purposeLabel="Maharudra Seva" />
+        <DonationDetails purposeLabel={t('donatePurposeLabel')} />
       </Modal>
     </>
   );

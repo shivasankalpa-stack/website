@@ -7,6 +7,13 @@
 import { Tabs } from '@/components/ui/Tabs';
 
 interface GurukulaTabsProps {
+  labels: {
+    overview: string;
+    adhyapakas: string;
+    vidyarthis: string;
+    events: string;
+    contact: string;
+  };
   overview: React.ReactNode;
   adhyapakas: React.ReactNode;
   vidyarthis: React.ReactNode;
@@ -15,6 +22,7 @@ interface GurukulaTabsProps {
 }
 
 export function GurukulaTabs({
+  labels,
   overview,
   adhyapakas,
   vidyarthis,
@@ -24,11 +32,11 @@ export function GurukulaTabs({
   return (
     <Tabs
       tabs={[
-        { id: 'overview', label: 'Overview', content: overview },
-        { id: 'adhyapakas', label: 'Adhyāpakas', content: adhyapakas },
-        { id: 'vidyarthis', label: 'Vidyārthīs', content: vidyarthis },
-        { id: 'events', label: 'Events', content: events },
-        { id: 'contact', label: 'Contact', content: contact },
+        { id: 'overview', label: labels.overview, content: overview },
+        { id: 'adhyapakas', label: labels.adhyapakas, content: adhyapakas },
+        { id: 'vidyarthis', label: labels.vidyarthis, content: vidyarthis },
+        { id: 'events', label: labels.events, content: events },
+        { id: 'contact', label: labels.contact, content: contact },
       ]}
       defaultTab="overview"
     />

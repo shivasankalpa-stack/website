@@ -11,6 +11,7 @@
 
 import { useState } from 'react';
 import { GraduationCap, Heart, Calendar } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Modal } from '@/components/ui/Modal';
@@ -20,42 +21,41 @@ import { DonationDetails } from '@/components/blocks/DonationDetails';
 const purposes = [
   {
     id: 'gurukula-abhivruddhi',
-    title: 'Gurukula Abhivruddhi',
+    titleKey: 'purpose0Title' as const,
+    descKey: 'purpose0Desc' as const,
     titleSanskrit: 'गुरुकुल अभिवृद्धि',
-    description:
-      'Direct support to Vedic Gurukulas — infrastructure, teaching materials, student nutrition, and welfare of Adhyāpakas.',
     Icon: GraduationCap,
   },
   {
     id: 'go-samrakshanam',
-    title: 'Go-Samrakshanam',
+    titleKey: 'purpose1Title' as const,
+    descKey: 'purpose1Desc' as const,
     titleSanskrit: 'गोसंरक्षणम्',
-    description:
-      'Supporting Gośālās and the sacred cause of cow protection, shelter, and sustenance.',
     Icon: Heart,
   },
   {
     id: 'event-seva',
-    title: 'Event Seva',
+    titleKey: 'purpose2Title' as const,
+    descKey: 'purpose2Desc' as const,
     titleSanskrit: 'कार्यक्रम सेवा',
-    description:
-      'Funding sacred events such as the Maharudra Purascharana, community gatherings, and awareness programmes for universal welfare.',
     Icon: Calendar,
   },
 ];
 
 export function DonationSection() {
+  const t = useTranslations('donation');
   const [modalPurpose, setModalPurpose] = useState<string | null>(null);
 
   const activePurpose = purposes.find((p) => p.id === modalPurpose);
+  const activeTitle = activePurpose ? t(activePurpose.titleKey) : undefined;
 
   return (
     <section className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-4 md:px-6 space-y-10">
         <SectionHeading
-          title="Support the Cause"
+          title={t('sectionTitle')}
           devanagari="दानम्"
-          subtitle="Your contribution sustains Vedic education, protects sacred traditions, and uplifts communities."
+          subtitle={t('sectionSubtitle')}
           centered
         />
 
@@ -68,7 +68,7 @@ export function DonationSection() {
                 </div>
                 <div>
                   <h3 className="font-serif text-lg font-semibold text-indigo">
-                    {purpose.title}
+                    {t(purpose.titleKey)}
                   </h3>
                   <p className="shloka-devanagari text-xs text-indigo-300">
                     {purpose.titleSanskrit}
@@ -76,7 +76,7 @@ export function DonationSection() {
                 </div>
               </div>
               <p className="text-sm text-charcoal-300 leading-relaxed flex-1">
-                {purpose.description}
+                {t(purpose.descKey)}
               </p>
               <Button
                 variant="secondary"
@@ -84,20 +84,18 @@ export function DonationSection() {
                 className="mt-4 w-full"
                 onClick={() => setModalPurpose(purpose.id)}
               >
-                Contribute
+                {t('contribute')}
               </Button>
             </Card>
           ))}
         </div>
 
-        {/* Donation modal */}
         <Modal
           isOpen={!!modalPurpose}
           onClose={() => setModalPurpose(null)}
-          title={activePurpose ? `Donate — ${activePurpose.title}` : 'Donate'}
+          title={activeTitle ? `${t('donatePrefix')}${activeTitle}` : t('donateDefault')}
         >
-          {/* TODO: Replace with actual trust account details once available */}
-          <DonationDetails purposeLabel={activePurpose?.title} />
+          <DonationDetails purposeLabel={activeTitle} />
         </Modal>
       </div>
     </section>

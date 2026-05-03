@@ -3,7 +3,7 @@
  */
 
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { ArrowRight, Calendar } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';

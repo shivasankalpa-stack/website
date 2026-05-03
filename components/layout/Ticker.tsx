@@ -10,7 +10,8 @@
 
 import { useSyncExternalStore } from 'react';
 import { X } from 'lucide-react';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 const STORAGE_KEY = 'ticker-dismissed';
 
@@ -21,7 +22,9 @@ function emitChange() {
 
 function subscribe(callback: () => void) {
   listeners.add(callback);
-  return () => { listeners.delete(callback); };
+  return () => {
+    listeners.delete(callback);
+  };
 }
 
 function getSnapshot() {
@@ -33,6 +36,7 @@ function getServerSnapshot() {
 }
 
 export function Ticker() {
+  const t = useTranslations('ticker');
   const dismissed = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   function handleDismiss() {
@@ -46,31 +50,30 @@ export function Ticker() {
     <div
       className="relative z-50 flex items-center justify-center gap-2 bg-indigo px-4 py-2 text-sm text-ivory-100 md:py-2.5"
       role="status"
-      aria-label="Announcement"
+      aria-label={t('announcement')}
     >
-      {/* Kumkuma dot */}
       <span
         className="inline-block h-1.5 w-1.5 rounded-full bg-kumkuma shrink-0"
         aria-hidden="true"
       />
 
       <p className="text-center">
-        <span className="font-medium">Maharudra Purascharana</span>
+        <span className="font-medium">{t('eventName')}</span>
         <span className="mx-1.5 text-ivory-100/50">·</span>
-        <span>May 15–17, 2026</span>
+        <span>{t('eventDate')}</span>
         <span className="mx-1.5 text-ivory-100/50">·</span>
         <Link
           href="/events/maharudra"
           className="underline underline-offset-2 decoration-gold/60 hover:decoration-gold transition-colors"
         >
-          Learn more →
+          {t('learnMore')}
         </Link>
       </p>
 
       <button
         onClick={handleDismiss}
         className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-ivory-100/70 hover:text-ivory-50 hover:bg-indigo-500 transition-colors"
-        aria-label="Dismiss announcement"
+        aria-label={t('dismiss')}
       >
         <X size={16} />
       </button>

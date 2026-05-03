@@ -4,25 +4,36 @@
  */
 
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { MapPin, Users } from 'lucide-react';
+import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
 import { PlaceholderImage } from '@/components/ui/PlaceholderImage';
 import { getGurukulas } from '@/lib/data-access';
 
-export const metadata: Metadata = {
-  title: 'Vedic Gurukulas',
-  description:
-    'Vedic Gurukulas supported by Sri Shivasankalpa Trust — Shruti Parampara, Gowtama Veda Pathashala, Sacchidananda Advaitashrama.',
+type Props = {
+  params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: 'metadata' });
+  return {
+    title: t('gurukulasTitle'),
+    description: t('gurukulasDescription'),
+  };
+}
 
 function hasRealImage(path: string): boolean {
   return !path.includes('#') && !path.includes('hero.jpg');
 }
 
-export default function GurukulasListPage() {
+export default async function GurukulasListPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('gurukulas');
   const gurukulas = getGurukulas();
 
   return (
@@ -30,14 +41,13 @@ export default function GurukulasListPage() {
       <div className="mx-auto max-w-6xl px-4 md:px-6 space-y-10">
         <div className="text-center space-y-4">
           <SectionHeading
-            title="Vedic Gurukulas"
+            title={t('title')}
             devanagari="वेदगुरुकुलानि"
-            subtitle="We work directly with Gurukulas in Karnataka, understanding their needs and providing sustained support."
+            subtitle={t('subtitle')}
             centered
           />
           <p className="mx-auto max-w-2xl text-charcoal-300 leading-relaxed">
-            Click on a Gurukula to learn more about their tradition, Ācāryas,
-            students, and how you can support them.
+            {t('introPara')}
           </p>
         </div>
 
@@ -73,11 +83,11 @@ export default function GurukulasListPage() {
                     {gk.location}
                   </div>
                   <p className="text-sm text-charcoal-300">
-                    Ācārya: {gk.acharya}
+                    {t('acharyaLabel')} {gk.acharya}
                   </p>
                   <div className="flex items-center gap-1.5 text-sm text-charcoal-200">
                     <Users size={14} />
-                    {gk.studentCount} students
+                    {t('studentsLabel', { count: gk.studentCount })}
                   </div>
                   {gk.shakha && !gk.shakha.includes('#') && (
                     <p className="text-xs text-indigo-300">{gk.shakha}</p>

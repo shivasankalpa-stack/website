@@ -7,16 +7,23 @@
  */
 
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { X, MapPin, Users, BookOpen, Phone, Mail } from 'lucide-react';
+import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 import { PlaceholderImage } from '@/components/ui/PlaceholderImage';
 import { Card } from '@/components/ui/Card';
 import { getGurukulaBySlug, getGurukulas } from '@/lib/data-access';
 import { notFound } from 'next/navigation';
 import { GurukulaTabs } from './tabs';
 
-type Params = Promise<{ slug: string }>;
+type Params = Promise<{ slug: string; locale: string }>;
+
+const SLUG_TO_KEY: Record<string, string> = {
+  'shruti-parampara': 'shrutiParampara',
+  'gowtama-veda-pathashala': 'gowtamaVedaPathashala',
+  'sacchidananda-advaitashrama': 'sacchidanandaAdvaitashrama',
+};
 
 export async function generateStaticParams() {
   return getGurukulas().map((g) => ({ slug: g.slug }));
@@ -24,11 +31,17 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params;
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: 'gurukulaDetail' });
   const gk = getGurukulaBySlug(slug);
   if (!gk) return {};
+  const key = SLUG_TO_KEY[slug];
+  const location = key
+    ? t(`${key}_location` as Parameters<typeof t>[0])
+    : gk.location;
   return {
     title: gk.name,
-    description: `${gk.name} in ${gk.location} — Ācārya ${gk.acharya}, ${gk.studentCount} students.`,
+    description: `${gk.name} — ${location}`,
   };
 }
 
@@ -36,22 +49,28 @@ function hasRealImage(path: string): boolean {
   return !path.includes('#') && !path.includes('hero.jpg');
 }
 
-function cleanPlaceholder(text: string): string {
-  return text.replace(/#GKL-TODO-\S+/g, '').trim();
-}
-
 export default async function GurukulaDetailPage({ params }: { params: Params }) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('gurukulaDetail');
   const gk = getGurukulaBySlug(slug);
   if (!gk) notFound();
 
+  const key = SLUG_TO_KEY[slug];
+
+  function localised(field: string, fallback: string): string {
+    if (!key) return fallback;
+    return t(`${key}_${field}` as Parameters<typeof t>[0]);
+  }
+
+  const location = localised('location', gk.location);
+
   return (
     <div className="relative">
-      {/* Close button — returns to Gurukulas list */}
       <Link
         href="/gurukulas"
         className="fixed top-20 right-4 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-ivory/90 border border-ivory-300 shadow-md text-charcoal-300 hover:text-indigo hover:border-indigo-100 transition-colors md:right-8"
-        aria-label="Close and return to Gurukulas list"
+        aria-label={t('closeLabel')}
       >
         <X size={20} />
       </Link>
@@ -61,7 +80,7 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
         {hasRealImage(gk.heroImage) ? (
           <Image
             src={gk.heroImage}
-            alt={`${gk.name}, ${gk.location}`}
+            alt={`${gk.name}, ${location}`}
             fill
             className="object-cover"
             priority
@@ -76,7 +95,6 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal-500/50 to-transparent" />
 
-        {/* Title overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
           <div className="mx-auto max-w-4xl">
             <h1 className="font-serif text-2xl font-bold text-ivory-50 md:text-3xl drop-shadow-md">
@@ -85,11 +103,11 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
             <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-ivory-100/90">
               <span className="flex items-center gap-1.5">
                 <MapPin size={14} />
-                {gk.location}
+                {location}
               </span>
               <span className="flex items-center gap-1.5">
                 <Users size={14} />
-                {gk.studentCount} students
+                {t('studentsLabel', { count: gk.studentCount })}
               </span>
               {gk.shakha && !gk.shakha.includes('#') && (
                 <span className="flex items-center gap-1.5">
@@ -105,19 +123,26 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
       {/* Content with tabs */}
       <div className="mx-auto max-w-4xl px-4 py-8 md:px-6 md:py-10">
         <GurukulaTabs
+          labels={{
+            overview: t('tabOverview'),
+            adhyapakas: t('tabAdhyapakas'),
+            vidyarthis: t('tabVidyarthis'),
+            events: t('tabEvents'),
+            contact: t('tabContact'),
+          }}
           overview={
             <div className="space-y-6">
               <div className="text-charcoal-300 leading-relaxed space-y-4">
-                <p>{cleanPlaceholder(gk.overview)}</p>
-                {gk.history && <p>{cleanPlaceholder(gk.history)}</p>}
+                <p>{localised('overview', gk.overview)}</p>
+                {gk.history && <p>{localised('history', gk.history)}</p>}
               </div>
               {gk.dailySchedule && (
                 <div>
                   <h3 className="font-serif text-lg font-semibold text-indigo mb-2">
-                    Daily Schedule
+                    {t('dailyScheduleTitle')}
                   </h3>
                   <p className="text-sm text-charcoal-300 leading-relaxed">
-                    {cleanPlaceholder(gk.dailySchedule)}
+                    {key ? localised('schedule', gk.dailySchedule) : gk.dailySchedule}
                   </p>
                 </div>
               )}
@@ -146,9 +171,9 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
           }
           vidyarthis={
             <div className="text-charcoal-300 leading-relaxed">
-              <p>{cleanPlaceholder(gk.studentsSummary)}</p>
+              <p>{localised('students', gk.studentsSummary)}</p>
               <p className="mt-2 text-xs text-charcoal-200 italic">
-                Individual student details are not published to protect privacy.
+                {t('privacyNote')}
               </p>
             </div>
           }
@@ -156,7 +181,7 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
             <div className="space-y-4">
               {gk.events.length === 0 ? (
                 <p className="text-charcoal-200 italic">
-                  No upcoming events listed for this Gurukula.
+                  {t('noEvents')}
                 </p>
               ) : (
                 gk.events.map((event, i) => (
@@ -177,16 +202,16 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
                   <span>{gk.contact.address}</span>
                 </div>
               )}
-              {gk.contact.phone && (
+              {gk.contact.phone && !gk.contact.phone.includes('#') && (
                 <div className="flex items-center gap-3 text-sm text-charcoal-300">
                   <Phone size={16} className="shrink-0 text-indigo" />
-                  <span>{cleanPlaceholder(gk.contact.phone)}</span>
+                  <span>{gk.contact.phone}</span>
                 </div>
               )}
-              {gk.contact.email && (
+              {gk.contact.email && !gk.contact.email.includes('#') && (
                 <div className="flex items-center gap-3 text-sm text-charcoal-300">
                   <Mail size={16} className="shrink-0 text-indigo" />
-                  <span>{cleanPlaceholder(gk.contact.email)}</span>
+                  <span>{gk.contact.email}</span>
                 </div>
               )}
             </div>

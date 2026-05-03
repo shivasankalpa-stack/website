@@ -10,8 +10,10 @@
 
 import { useState, useEffect } from 'react';
 import { ChevronUp } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export function ScrollToTop() {
+  const t = useTranslations('scrollToTop');
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -37,10 +39,10 @@ export function ScrollToTop() {
         hover:bg-indigo transition-all
         active:scale-95
       "
-      aria-label="Scroll to top"
+      aria-label={t('ariaLabel')}
     >
       <ChevronUp size={16} />
-      <span className="hidden sm:inline">Top</span>
+      <span className="hidden sm:inline">{t('label')}</span>
     </button>
   );
 }

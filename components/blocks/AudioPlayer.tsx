@@ -10,6 +10,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, Volume2 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface AudioPlayerProps {
   src: string;
@@ -17,11 +18,9 @@ interface AudioPlayerProps {
   autoPlay?: boolean;
 }
 
-export function AudioPlayer({
-  src,
-  label = 'Vedic chanting by Gurukula students',
-  autoPlay = true,
-}: AudioPlayerProps) {
+export function AudioPlayer({ src, label, autoPlay = true }: AudioPlayerProps) {
+  const t = useTranslations('audio');
+  const displayLabel = label ?? t('defaultLabel');
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -31,9 +30,12 @@ export function AudioPlayer({
     if (!audio) return;
 
     audio.volume = 0.4;
-    audio.play().then(() => setPlaying(true)).catch(() => {
-      setPlaying(false);
-    });
+    audio
+      .play()
+      .then(() => setPlaying(true))
+      .catch(() => {
+        setPlaying(false);
+      });
   }, [autoPlay]);
 
   function togglePlay() {
@@ -61,18 +63,16 @@ export function AudioPlayer({
       <button
         onClick={togglePlay}
         className="flex h-9 w-9 items-center justify-center rounded-full bg-kumkuma text-ivory-50 hover:bg-kumkuma-500 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kumkuma"
-        aria-label={playing ? 'Pause audio' : 'Play audio'}
+        aria-label={playing ? t('pauseAria') : t('playAria')}
       >
         {playing ? <Pause size={16} /> : <Play size={16} className="ml-0.5" />}
       </button>
 
       <div className="flex items-center gap-2">
         <Volume2 size={14} className="text-ivory-100/60 shrink-0" />
-        <span className="text-xs text-ivory-100/80 hidden sm:inline">
-          {label}
-        </span>
+        <span className="text-xs text-ivory-100/80 hidden sm:inline">{displayLabel}</span>
         <span className="text-xs text-ivory-100/80 sm:hidden">
-          {playing ? 'Playing' : 'Play'}
+          {playing ? t('playing') : t('play')}
         </span>
       </div>
     </div>

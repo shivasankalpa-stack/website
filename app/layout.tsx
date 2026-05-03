@@ -1,22 +1,20 @@
 /**
- * Root layout — wraps every page with fonts, metadata, Ticker, Header, and Footer.
+ * Root layout — minimal shell that handles fonts, CSS, and <html>/<body>.
+ *
+ * The locale-specific layout (app/[locale]/layout.tsx) adds:
+ *   - NextIntlClientProvider (i18n messages)
+ *   - Ticker, Header, Footer, ScrollToTop
+ *   - Manuscript frame (desktop kolam borders)
  *
  * Font loading:
  *   - EB Garamond:           English headings (font-serif)
  *   - Inter:                 Body / UI text (font-sans)
  *   - Noto Serif Devanagari: Sanskrit / Devanagari (font-devanagari)
- *
- * These CSS variables are consumed by the @theme block in globals.css
- * to make them available as Tailwind utilities.
  */
 
 import type { Metadata } from 'next';
 import { EB_Garamond, Inter, Noto_Serif_Devanagari } from 'next/font/google';
 import './globals.css';
-import { Ticker } from '@/components/layout/Ticker';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { ScrollToTop } from '@/components/layout/ScrollToTop';
 
 const ebGaramond = EB_Garamond({
   variable: '--font-eb-garamond',
@@ -63,7 +61,6 @@ export const metadata: Metadata = {
     title: 'Sri Shivasankalpa Trust',
     description:
       'Supporting Vedic education, Gurukulas, and the timeless Guru–Shishya Parampara.',
-    // TODO v0.15: Replace with custom OG image once logo is finalized
     images: [{ url: '/assets/og/og-image.png', width: 1200, height: 630 }],
   },
   metadataBase: new URL('https://srishivasankalpa.org'),
@@ -76,25 +73,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
       className={`${ebGaramond.variable} ${inter.variable} ${notoSerifDevanagari.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-ivory text-charcoal font-sans antialiased">
-        <Ticker />
-        <Header />
-        {/*
-          Manuscript frame (desktop only, see globals.css for full docs).
-          Two nested elements give us four pseudo-elements for four borders:
-            manuscript-outer  → ::before = top border, ::after = bottom border
-            manuscript-frame  → ::before = left border, ::after = right border
-          On mobile/tablet the Tailwind lg: prefixes are inactive, so these
-          divs are transparent pass-throughs with no visual effect.
-        */}
-        <div className="flex-1 lg:mx-auto lg:w-full lg:max-w-7xl lg:bg-ivory lg:shadow-sm manuscript-outer">
-          <main className="manuscript-frame">{children}</main>
-        </div>
-        <Footer />
-        <ScrollToTop />
+        {children}
       </body>
     </html>
   );

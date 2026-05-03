@@ -6,30 +6,33 @@
  * Current details are for interim collection via Jayasimha B N.
  */
 
+'use client';
+
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 interface DonationDetailsProps {
   purposeLabel?: string;
 }
 
 export function DonationDetails({ purposeLabel }: DonationDetailsProps) {
+  const t = useTranslations('donation');
+
   return (
     <div className="space-y-5">
-      {/* UPI */}
       <div className="space-y-1.5">
-        <h4 className="text-sm font-semibold text-charcoal">UPI ID</h4>
+        <h4 className="text-sm font-semibold text-charcoal">{t('upiId')}</h4>
         <div className="rounded-md bg-ivory-100 px-3 py-2 font-mono text-sm text-charcoal select-all">
           9916104901-2@ybl
         </div>
       </div>
 
-      {/* QR Code */}
       <div className="space-y-1.5">
-        <h4 className="text-sm font-semibold text-charcoal">Scan to Pay</h4>
+        <h4 className="text-sm font-semibold text-charcoal">{t('scanToPay')}</h4>
         <div className="flex justify-center rounded-md border border-ivory-300 bg-ivory-100 p-3">
           <Image
             src="/assets/artefacts/donation-qr.png"
-            alt="UPI QR Code for donations"
+            alt={t('qrAlt')}
             width={200}
             height={200}
             className="w-40 h-40 object-contain"
@@ -37,31 +40,32 @@ export function DonationDetails({ purposeLabel }: DonationDetailsProps) {
         </div>
       </div>
 
-      {/* Bank Details */}
       <div className="space-y-1.5">
-        <h4 className="text-sm font-semibold text-charcoal">Bank Transfer</h4>
+        <h4 className="text-sm font-semibold text-charcoal">{t('bankTransfer')}</h4>
         <div className="rounded-md bg-ivory-100 px-3 py-2.5 text-sm space-y-1.5">
           <p className="text-charcoal-300">
-            Beneficiary: <span className="font-medium text-charcoal">Jayasimha B N</span>
+            {t('beneficiary')} <span className="font-medium text-charcoal">Jayasimha B N</span>
           </p>
           <p className="text-charcoal-300">
-            A/c No: <span className="font-mono text-charcoal select-all">T101T0100T01659</span>
+            {t('accountNo')}{' '}
+            <span className="font-mono text-charcoal select-all">T101T0100T01659</span>
           </p>
           <p className="text-charcoal-300">
-            A/c Type: <span className="text-charcoal">Savings Bank</span>
+            {t('accountType')} <span className="text-charcoal">{t('savingsBank')}</span>
           </p>
           <p className="text-charcoal-300">
-            IFSC: <span className="font-mono text-charcoal select-all">SECB0000010</span>
+            {t('ifsc')} <span className="font-mono text-charcoal select-all">SECB0000010</span>
           </p>
           <p className="text-charcoal-300">
-            Bank: <span className="text-charcoal">Sree Charan Bank, Shankarapuram Branch</span>
+            {t('bank')} <span className="text-charcoal">{t('bankName')}</span>
           </p>
         </div>
       </div>
 
       <p className="text-xs text-charcoal-200 italic leading-relaxed">
-        Please mention {purposeLabel ? `"${purposeLabel}"` : 'the purpose'} and
-        your name in the UPI/bank transfer note so we can issue your receipt.
+        {purposeLabel
+          ? t('receiptNote', { purpose: purposeLabel })
+          : t('receiptNoteGeneric')}
       </p>
     </div>
   );

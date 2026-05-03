@@ -12,14 +12,12 @@ import { gurukulas } from '@/data/gurukulas';
 import { events } from '@/data/events';
 import { blogPosts } from '@/data/blog';
 import { trustees, managingCommittee } from '@/data/trustees';
-import { faqs } from '@/data/faqs';
 import { galleryItems } from '@/data/gallery';
 import type {
   Gurukula,
   SiteEvent,
   BlogPost,
   Trustee,
-  FAQ,
   GalleryItem,
 } from './types';
 
@@ -57,10 +55,6 @@ export function getTrustees(): Trustee[] {
 
 export function getManagingCommittee(): Trustee[] {
   return managingCommittee;
-}
-
-export function getFaqs(): FAQ[] {
-  return faqs;
 }
 
 export function getGalleryItems(): GalleryItem[] {
