@@ -62,6 +62,14 @@ export default async function AboutPage({ params }: Props) {
   const trustees = getTrustees();
   const managingCommittee = getManagingCommittee();
 
+  const roleMap: Record<string, string> = {
+    'Trustee': t('trusteeRole'),
+    'President': t('presidentRole'),
+    'Vice-President': t('vicePresidentRole'),
+    'Secretary': t('secretaryRole'),
+    'Treasurer': t('treasurerRole'),
+  };
+
   return (
     <div className="space-y-0">
       <section className="relative py-20 md:py-28 overflow-hidden">
@@ -100,9 +108,9 @@ export default async function AboutPage({ params }: Props) {
 
           <ShlokaBlock
             devanagari="तन्मे मनः शिवसङ्कल्पमस्तु"
-            iast="Tan me manaḥ śivasaṅkalpamastu"
+            iast={locale === 'en' ? "Tan me manaḥ śivasaṅkalpamastu" : undefined}
             translation={t('storyShlokaTranslation')}
-            source="Shiva Sankalpa Sukta, Shukla Yajurveda"
+            source={t('shlokaSource')}
             size="md"
           />
 
@@ -188,12 +196,12 @@ export default async function AboutPage({ params }: Props) {
             <h3 className="font-serif text-xl font-semibold text-indigo text-center">
               {t('managingCommittee')}
             </h3>
-            <TrusteeGrid trustees={managingCommittee} />
+            <TrusteeGrid trustees={managingCommittee} roleMap={roleMap} clickToRead={t('clickToRead')} />
           </div>
 
           <div className="space-y-6">
             <h3 className="font-serif text-xl font-semibold text-indigo text-center">{t('trustees')}</h3>
-            <TrusteeGrid trustees={trustees} />
+            <TrusteeGrid trustees={trustees} roleMap={roleMap} clickToRead={t('clickToRead')} />
           </div>
         </div>
       </section>

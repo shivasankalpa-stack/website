@@ -112,7 +112,7 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
               {gk.shakha && !gk.shakha.includes('#') && (
                 <span className="flex items-center gap-1.5">
                   <BookOpen size={14} />
-                  {gk.shakha}
+                  {key ? t(`${key}_shakha` as Parameters<typeof t>[0]) : gk.shakha}
                 </span>
               )}
             </div>
@@ -150,7 +150,7 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
           }
           adhyapakas={
             <div className="space-y-4">
-              {gk.adhyapakas.map((teacher) => (
+              {gk.adhyapakas.map((teacher, idx) => (
                 <Card key={teacher.name} className="flex items-center gap-4">
                   <div className="h-16 w-16 rounded-full overflow-hidden shrink-0">
                     <PlaceholderImage
@@ -160,9 +160,9 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
                     />
                   </div>
                   <div>
-                    <h4 className="font-serif font-semibold text-indigo">{teacher.name}</h4>
+                    <h4 className="font-serif font-semibold text-indigo">{key ? t(`${key}_adhyapaka${idx}` as Parameters<typeof t>[0]) : teacher.name}</h4>
                     {teacher.qualification && (
-                      <p className="text-sm text-charcoal-300">{teacher.qualification}</p>
+                      <p className="text-sm text-charcoal-300">{key ? t(`${key}_adhyapaka${idx}qual` as Parameters<typeof t>[0]) : teacher.qualification}</p>
                     )}
                   </div>
                 </Card>
@@ -186,9 +186,9 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
               ) : (
                 gk.events.map((event, i) => (
                   <Card key={i} className="space-y-1">
-                    <h4 className="font-serif font-semibold text-indigo">{event.title}</h4>
+                    <h4 className="font-serif font-semibold text-indigo">{key ? t(`${key}_event${i}title` as Parameters<typeof t>[0]) : event.title}</h4>
                     <p className="text-xs text-charcoal-200">{event.date}</p>
-                    <p className="text-sm text-charcoal-300">{event.description}</p>
+                    <p className="text-sm text-charcoal-300">{key ? t(`${key}_event${i}desc` as Parameters<typeof t>[0]) : event.description}</p>
                   </Card>
                 ))
               )}
@@ -199,7 +199,7 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
               {gk.contact.address && (
                 <div className="flex items-start gap-3 text-sm text-charcoal-300">
                   <MapPin size={16} className="mt-0.5 shrink-0 text-indigo" />
-                  <span>{gk.contact.address}</span>
+                  <span>{key ? t(`${key}_address` as Parameters<typeof t>[0]) : gk.contact.address}</span>
                 </div>
               )}
               {gk.contact.phone && !gk.contact.phone.includes('#') && (

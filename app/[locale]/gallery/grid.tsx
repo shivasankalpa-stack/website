@@ -10,12 +10,12 @@ import Image from 'next/image';
 import { Play } from 'lucide-react';
 import type { GalleryItem } from '@/lib/types';
 
-const categories = [
-  { id: 'all', label: 'All' },
-  { id: 'gurukulas', label: 'Gurukulas' },
-  { id: 'events', label: 'Events' },
-  { id: 'misc', label: 'Misc' },
-] as const;
+interface GalleryGridProps {
+  items: GalleryItem[];
+  captions: string[];
+  tabLabels: { all: string; gurukulas: string; events: string; misc: string };
+  noItemsText: string;
+}
 
 function VideoCard({ item }: { item: GalleryItem }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -61,13 +61,21 @@ function VideoCard({ item }: { item: GalleryItem }) {
   );
 }
 
-export function GalleryGrid({ items }: { items: GalleryItem[] }) {
+export function GalleryGrid({ items, captions, tabLabels, noItemsText }: GalleryGridProps) {
   const [activeCategory, setActiveCategory] = useState<string>('all');
 
+  const categories = [
+    { id: 'all', label: tabLabels.all },
+    { id: 'gurukulas', label: tabLabels.gurukulas },
+    { id: 'events', label: tabLabels.events },
+    { id: 'misc', label: tabLabels.misc },
+  ];
+
+  const indexedItems = items.map((item, i) => ({ item, originalIndex: i }));
   const filtered =
     activeCategory === 'all'
-      ? items
-      : items.filter((item) => item.category === activeCategory);
+      ? indexedItems
+      : indexedItems.filter(({ item }) => item.category === activeCategory);
 
   return (
     <div className="space-y-6">
@@ -94,11 +102,11 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
       {/* Grid */}
       {filtered.length === 0 ? (
         <p className="text-center text-charcoal-200 italic py-12">
-          No items in this category yet.
+          {noItemsText}
         </p>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((item) => (
+          {filtered.map(({ item, originalIndex }) => (
             <div
               key={item.id}
               className="overflow-hidden rounded-lg border border-ivory-300 bg-ivory-50"
@@ -116,10 +124,10 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
                 />
               )}
 
-              {item.caption && (
+              {captions[originalIndex] && (
                 <div className="px-3 py-2">
                   <p className="text-xs text-charcoal-300 leading-relaxed">
-                    {item.caption}
+                    {captions[originalIndex]}
                   </p>
                 </div>
               )}

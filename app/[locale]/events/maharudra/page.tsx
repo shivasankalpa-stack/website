@@ -83,7 +83,7 @@ export default async function MaharudraPage({ params }: Props) {
             </span>
             <span className="flex items-center gap-1.5">
               <MapPin size={16} />
-              {event.location || 'Bangalore'}
+              {locale === 'en' ? (event.location || 'Bangalore') : 'ಹೊಯ್ಸಳ ಟ್ರಸ್ಟ್, ದತ್ತಾತ್ರೇಯ ನಗರ, ಹೊಸಕೆರೆಹಳ್ಳಿ, ಬೆಂಗಳೂರು – 560085'}
             </span>
           </div>
 
@@ -117,7 +117,8 @@ export default async function MaharudraPage({ params }: Props) {
         {/* ── Introduction ── */}
         <div className="text-center space-y-6">
           <ShlokaBlock
-            devanagari="गण्यन्ते पांसवो भूमेः गण्यन्ते वृष्टिबन्दवः।\nविधात्राऽपि न गण्यन्ते वेदाध्ययनतः फलम्॥"
+            devanagari={`गण्यन्ते पांसवो भूमेः गण्यन्ते वृष्टिबन्दवः।
+विधात्राऽपि न गण्यन्ते वेदाध्ययनतः फलम्॥`}
             translation={t('shlokaVedaTranslation')}
             size="sm"
           />
@@ -138,7 +139,7 @@ export default async function MaharudraPage({ params }: Props) {
 
           <ShlokaBlock
             devanagari="रुदं द्रावयति इति रुद्रः"
-            iast="Rudam drāvayati iti Rudraḥ"
+            iast={locale === 'en' ? "Rudam drāvayati iti Rudraḥ" : undefined}
             translation={t('rudraTranslation')}
             size="md"
           />
@@ -149,7 +150,10 @@ export default async function MaharudraPage({ params }: Props) {
 
           <Card className="!bg-ivory-100 !border-gold/20 max-w-2xl mx-auto">
             <ShlokaBlock
-              devanagari={"पातकानि विनश्यन्ति यावन्ति रुद्रजपतः |\nभुवि तावन्ति पापानि जन्यन्ते न नरैर्मुने ||\nशिवनामनि तरे प्राप्ते संसाराब्धिं तरन्ति ते |\nसंसारमूलपापानि तानि नश्यन्त्यसंशयः ||"}
+              devanagari={`पातकानि विनश्यन्ति यावन्ति रुद्रजपतः |
+भुवि तावन्ति पापानि जन्यन्ते न नरैर्मुने ||
+शिवनामनि तरे प्राप्ते संसाराब्धिं तरन्ति ते |
+संसारमूलपापानि तानि नश्यन्त्यसंशयः ||`}
               translation={t('shivaPuranaTranslation')}
               source="Shiva Purana"
               size="sm"

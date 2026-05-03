@@ -24,6 +24,12 @@ import { DonationSection } from '@/components/blocks/DonationSection';
 import { getGurukulas, getFeaturedEvents } from '@/lib/data-access';
 import { Link } from '@/i18n/routing';
 
+const SLUG_TO_KEY: Record<string, string> = {
+  'shruti-parampara': 'shrutiParampara',
+  'gowtama-veda-pathashala': 'gowtamaVedaPathashala',
+  'sacchidananda-advaitashrama': 'sacchidanandaAdvaitashrama',
+};
+
 type Props = {
   params: Promise<{ locale: string }>;
 };
@@ -32,6 +38,9 @@ export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('home');
+
+  const tGk = await getTranslations('gurukulaDetail');
+  const tMr = await getTranslations('maharudra');
 
   const gurukulas = getGurukulas();
   const featuredEvents = getFeaturedEvents();
@@ -69,9 +78,11 @@ export default async function HomePage({ params }: Props) {
             <p className="shloka-devanagari text-2xl text-gold-100 md:text-3xl drop-shadow-md">
               तन्मे मनः शिवसङ्कल्पमस्तु
             </p>
-            <p className="shloka-iast text-base text-ivory-100/80 md:text-lg">
-              Tan me manaḥ śivasaṅkalpamastu
-            </p>
+            {t('heroIast') && (
+              <p className="shloka-iast text-base text-ivory-100/80 md:text-lg">
+                {t('heroIast')}
+              </p>
+            )}
             <p className="text-sm text-ivory-100/70 italic">{t('heroTaglineTranslation')}</p>
           </div>
 
@@ -118,7 +129,7 @@ export default async function HomePage({ params }: Props) {
 
           <ShlokaBlock
             devanagari={"ऋचो यजूंषि सामानि अथर्वाङ्गिरसां तथा।\nएष वेदचतुष्टस्य धर्मो मूलं सनातनम्॥"}
-            iast="Ṛco yajūṃṣi sāmāni atharvāṅgirasāṃ tathā | Eṣa vedacatuṣṭasya dharmo mūlaṃ sanātanam ||"
+            iast={locale === 'en' ? "Ṛco yajūṃṣi sāmāni atharvāṅgirasāṃ tathā | Eṣa vedacatuṣṭasya dharmo mūlaṃ sanātanam ||" : undefined}
             translation={t('vedaVidyaShlokaTranslation')}
             source="Viṣṇu Purāṇa"
             size="md"
@@ -140,7 +151,7 @@ export default async function HomePage({ params }: Props) {
         <div className="mx-auto max-w-4xl px-4 md:px-6 space-y-8">
           <SectionHeading
             title={t('whyGurukulasTitle')}
-            devanagari="नित्यं वेदमधीयताम्"
+            devanagari="वेदो नित्यमधीयताम्"
             subtitle={t('whyGurukulasSubtitle')}
             centered
           />
@@ -148,13 +159,13 @@ export default async function HomePage({ params }: Props) {
           <div className="space-y-5 text-charcoal-300 leading-relaxed">
             <p>
               {t('whyGurukulasPara1', {
-                shloka: 'nityaṁ vedam adhīyatām',
+                shloka: locale === 'en' ? 'vedō nityam adhīyatām' : 'ವೇದೋ ನಿತ್ಯಮಧೀಯತಾಮ್',
               })}
             </p>
             <p>{t('whyGurukulasPara2')}</p>
             <p>
               {t('whyGurukulasPara3', {
-                lokaKalyana: 'loka kalyāṇa',
+                lokaKalyana: locale === 'en' ? 'loka kalyāṇa' : 'ಲೋಕ ಕಲ್ಯಾಣ',
               })}
             </p>
           </div>
@@ -196,7 +207,7 @@ export default async function HomePage({ params }: Props) {
                     <h3 className="font-serif text-lg font-semibold text-indigo">{gk.name}</h3>
                     <div className="flex items-center gap-1.5 text-sm text-charcoal-200">
                       <MapPin size={14} />
-                      {gk.location}
+                      {tGk(`${SLUG_TO_KEY[gk.slug]}_location` as any) || gk.location}
                     </div>
                     <p className="text-sm text-charcoal-300">
                       {t('acharyaLabel')} {gk.acharya}
@@ -230,7 +241,7 @@ export default async function HomePage({ params }: Props) {
                 <div className="space-y-2">
                   <p className="shloka-devanagari text-sm text-kumkuma">महारुद्र पुरश्चरणा</p>
                   <h2 className="font-serif text-2xl font-bold text-indigo md:text-3xl">
-                    {maharudra.title}
+                    {tMr('cardTitle')}
                   </h2>
                   <p className="text-sm text-charcoal-200">
                     {t('maharudraDate')} · {maharudra.location || t('maharudraLocation')}
@@ -243,10 +254,10 @@ export default async function HomePage({ params }: Props) {
                   </Button>
                 </Link>
               </div>
-              <p className="text-charcoal-300 leading-relaxed">{maharudra.description}</p>
+              <p className="text-charcoal-300 leading-relaxed">{tMr('cardDescription')}</p>
               <ShlokaBlock
                 devanagari="रुदं द्रावयति इति रुद्रः"
-                iast="Rudam drāvayati iti Rudraḥ"
+                iast={locale === 'en' ? "Rudam drāvayati iti Rudraḥ" : undefined}
                 translation={t('maharudraShlokaTranslation')}
                 size="sm"
               />

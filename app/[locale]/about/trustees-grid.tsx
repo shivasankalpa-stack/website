@@ -22,7 +22,13 @@ function cleanBio(bio: string): string {
   return bio.replace(/#BIO-TODO-\S+/g, '').trim();
 }
 
-export function TrusteeGrid({ trustees }: { trustees: Trustee[] }) {
+interface TrusteeGridProps {
+  trustees: Trustee[];
+  roleMap?: Record<string, string>;
+  clickToRead?: string;
+}
+
+export function TrusteeGrid({ trustees, roleMap = {}, clickToRead = 'Click to read more' }: TrusteeGridProps) {
   const [selected, setSelected] = useState<Trustee | null>(null);
 
   return (
@@ -57,9 +63,9 @@ export function TrusteeGrid({ trustees }: { trustees: Trustee[] }) {
                 <h3 className="font-serif text-base font-semibold text-indigo">
                   {trustee.name}
                 </h3>
-                <p className="text-sm text-kumkuma font-medium">{trustee.role}</p>
+                <p className="text-sm text-kumkuma font-medium">{roleMap[trustee.role] || trustee.role}</p>
               </div>
-              <p className="text-xs text-charcoal-200 italic">Click to read more</p>
+              <p className="text-xs text-charcoal-200 italic">{clickToRead}</p>
             </Card>
           </button>
         ))}
@@ -95,7 +101,7 @@ export function TrusteeGrid({ trustees }: { trustees: Trustee[] }) {
                 <h3 className="font-serif text-xl font-semibold text-indigo">
                   {selected.name}
                 </h3>
-                <p className="text-kumkuma font-medium">{selected.role}</p>
+                <p className="text-kumkuma font-medium">{roleMap[selected.role] || selected.role}</p>
               </div>
             </div>
             <p className="text-charcoal-300 leading-relaxed">
