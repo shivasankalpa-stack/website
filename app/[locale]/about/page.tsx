@@ -11,6 +11,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ShlokaBlock } from '@/components/ui/ShlokaBlock';
 import { Card } from '@/components/ui/Card';
 import { PlaceholderImage } from '@/components/ui/PlaceholderImage';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { getTrustees, getManagingCommittee } from '@/lib/data-access';
 import { TrusteeGrid } from './trustees-grid';
 
@@ -95,6 +96,7 @@ export default async function AboutPage({ params }: Props) {
         </div>
       </section>
 
+      <ScrollReveal>
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-4 md:px-6 space-y-8">
           <SectionHeading title={t('storyTitle')} centered />
@@ -117,7 +119,9 @@ export default async function AboutPage({ params }: Props) {
           <p className="text-charcoal-300 leading-relaxed text-center max-w-2xl mx-auto">{t('storyClosing')}</p>
         </div>
       </section>
+      </ScrollReveal>
 
+      <ScrollReveal>
       <section className="py-16 md:py-20 bg-indigo border-y border-indigo-500">
         <div className="mx-auto max-w-5xl px-4 md:px-6">
           <div className="grid gap-8 md:grid-cols-2">
@@ -143,7 +147,9 @@ export default async function AboutPage({ params }: Props) {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
+      <ScrollReveal>
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-4 md:px-6 space-y-10">
           <SectionHeading
@@ -172,7 +178,9 @@ export default async function AboutPage({ params }: Props) {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
+      <ScrollReveal>
       <section className="py-16 md:py-20 bg-ivory-50 border-y border-ivory-300">
         <div className="mx-auto max-w-4xl px-4 md:px-6 space-y-6">
           <SectionHeading title={t('operateTitle')} centered />
@@ -182,7 +190,9 @@ export default async function AboutPage({ params }: Props) {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
+      <ScrollReveal>
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-4 md:px-6 space-y-14">
           <SectionHeading
@@ -205,7 +215,9 @@ export default async function AboutPage({ params }: Props) {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
+      <ScrollReveal>
       <section className="bg-ivory-50 border-y border-ivory-300 py-16">
         <div className="mx-auto max-w-4xl px-4 md:px-6 space-y-8">
           <SectionHeading
@@ -233,6 +245,7 @@ export default async function AboutPage({ params }: Props) {
           </div>
         </div>
       </section>
+      </ScrollReveal>
     </div>
   );
 }

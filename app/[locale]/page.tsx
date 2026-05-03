@@ -21,6 +21,7 @@ import { Button } from '@/components/ui/Button';
 import { PlaceholderImage } from '@/components/ui/PlaceholderImage';
 import { AudioPlayer } from '@/components/blocks/AudioPlayer';
 import { DonationSection } from '@/components/blocks/DonationSection';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { getGurukulas, getFeaturedEvents } from '@/lib/data-access';
 import { Link } from '@/i18n/routing';
 
@@ -118,6 +119,7 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
+      <ScrollReveal>
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-4 md:px-6 space-y-10">
           <SectionHeading
@@ -146,7 +148,9 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
+      <ScrollReveal>
       <section className="py-16 md:py-20 bg-ivory-50 border-y border-ivory-300">
         <div className="mx-auto max-w-4xl px-4 md:px-6 space-y-8">
           <SectionHeading
@@ -171,7 +175,9 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
+      <ScrollReveal>
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-4 md:px-6 space-y-10">
           <SectionHeading
@@ -232,8 +238,10 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {maharudra && (
+        <ScrollReveal>
         <section className="py-16 md:py-20 bg-indigo-50/50 border-y border-ivory-300">
           <div className="mx-auto max-w-4xl px-4 md:px-6">
             <Card className="!bg-ivory-50 !p-8 md:!p-10 space-y-6 border-indigo-100">
@@ -264,8 +272,10 @@ export default async function HomePage({ params }: Props) {
             </Card>
           </div>
         </section>
+        </ScrollReveal>
       )}
 
+      <ScrollReveal>
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-5xl px-4 md:px-6 space-y-8">
           <div className="relative rounded-xl border border-gold/30 bg-gold-50/40 overflow-hidden">
@@ -295,10 +305,13 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
+      <ScrollReveal>
       <div className="border-t border-ivory-300 bg-ivory-50">
         <DonationSection />
       </div>
+      </ScrollReveal>
     </>
   );
 }
