@@ -138,7 +138,36 @@ export function Header() {
           className="fixed inset-0 z-50 flex flex-col md:hidden mobile-menu-frame"
           aria-label={t('mobileNav')}
         >
-          <div className="relative z-10 flex justify-end px-12 pt-12">
+          <div className="relative z-10 flex items-center justify-between px-12 pt-12">
+            <div className="flex items-center gap-2 text-base text-charcoal-300">
+              <Link
+                href={pathname}
+                locale="en"
+                onClick={() => setMobileOpen(false)}
+                className={
+                  locale === 'en'
+                    ? 'font-semibold text-indigo'
+                    : 'text-kumkuma hover:text-indigo'
+                }
+              >
+                EN
+              </Link>
+              <span className="text-charcoal-200 select-none" aria-hidden>
+                |
+              </span>
+              <Link
+                href={pathname}
+                locale="kn"
+                onClick={() => setMobileOpen(false)}
+                className={
+                  locale === 'kn'
+                    ? 'font-semibold text-indigo'
+                    : 'text-kumkuma hover:text-indigo'
+                }
+              >
+                ಕನ್ನಡ
+              </Link>
+            </div>
             <button
               type="button"
               onClick={() => setMobileOpen(false)}
@@ -178,35 +207,7 @@ export function Header() {
             </li>
           </ul>
 
-          <div className="relative z-10 flex justify-center gap-2 pb-10 text-base text-charcoal-300">
-            <Link
-              href={pathname}
-              locale="en"
-              onClick={() => setMobileOpen(false)}
-              className={
-                locale === 'en'
-                  ? 'font-semibold text-indigo'
-                  : 'text-kumkuma hover:text-indigo'
-              }
-            >
-              EN
-            </Link>
-            <span className="text-charcoal-200 select-none" aria-hidden>
-              |
-            </span>
-            <Link
-              href={pathname}
-              locale="kn"
-              onClick={() => setMobileOpen(false)}
-              className={
-                locale === 'kn'
-                  ? 'font-semibold text-indigo'
-                  : 'text-kumkuma hover:text-indigo'
-              }
-            >
-              ಕನ್ನಡ
-            </Link>
-          </div>
+          <div className="pb-10" />
         </nav>
       )}
     </>
