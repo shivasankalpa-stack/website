@@ -53,7 +53,7 @@ export default async function HomePage({ params }: Props) {
         <img
           src="/assets/og/hero-banner-mobile.png"
           alt="Dakshinamurthy — the Adi Guru"
-          className="absolute inset-0 h-full w-full object-cover md:hidden"
+          className="absolute inset-0 h-full w-full object-cover object-[80%_center] md:hidden"
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
