@@ -148,6 +148,8 @@ overview: 'Shruti Parampara Gurukula, nestled in JP Nagar, has been a beacon of.
 
 > **Important:** Don't change the field names (like `overview:`, `name:`, etc.) — only change the text between the quotes.
 
+> **Kannada translation:** Gurukula content (overview, history, student summary, location, etc.) is stored in the message files, not the data files. After editing `data/gurukulas.ts`, also update the translated text in both `messages/en.json` and `messages/kn.json` under the `gurukulaDetail` namespace (see [section 2e](#2e-which-content-lives-where) for the full mapping). The data files only hold numeric/structural values like student counts, slugs, and image paths.
+
 ---
 
 ## 4. How to Add a New Gurukula
@@ -159,6 +161,8 @@ overview: 'Shruti Parampara Gurukula, nestled in JP Nagar, has been a beacon of.
 5. Choose a unique `slug` (URL-friendly name, e.g., `'new-gurukula-name'`)
 6. Save the file
 
+> **Kannada translation required:** After adding the data entry, you must also add translation keys for the new Gurukula in **both** `messages/en.json` and `messages/kn.json` under the `gurukulaDetail` namespace. Use the pattern `<camelCaseSlug>_<field>` for keys — e.g., `newGurukulaName_location`, `newGurukulaName_overview`, `newGurukulaName_students`, `newGurukulaName_shakha`, `newGurukulaName_adhyapaka0`, `newGurukulaName_adhyapaka0qual`, `newGurukulaName_address`. See [section 2c](#2c-adding-new-content-that-needs-both-languages) for the workflow and [section 2d](#2d-getting-kannada-translations-automatically) for help with Kannada text. You must also add the new slug to the `SLUG_TO_KEY` mapping in `app/[locale]/page.tsx` and `app/[locale]/gurukulas/[slug]/page.tsx`.
+
 ---
 
 ## 5. How to Add a New Event
@@ -168,6 +172,8 @@ overview: 'Shruti Parampara Gurukula, nestled in JP Nagar, has been a beacon of.
 3. Paste it after the existing event (before `];`)
 4. Update: `slug`, `title`, `date`, `description`, and other fields
 5. Set `featured: true` if it should appear prominently on the homepage
+
+> **Kannada translation required:** Event card text (title, subtitle, description) and any schedule/seva item names must be added to **both** message files. For the Maharudra event, these live in the `maharudra` namespace. For a new event, create a new namespace with the same pattern of keys (`cardTitle`, `cardSubtitle`, `cardDescription`, `day0Label`, `seva0`, etc.) and update the events listing page to load those translations. See [section 2c](#2c-adding-new-content-that-needs-both-languages) and [section 2g](#2g-adding-a-new-seva-item-to-maharudra-with-both-languages).
 
 ---
 
@@ -179,13 +185,20 @@ overview: 'Shruti Parampara Gurukula, nestled in JP Nagar, has been a beacon of.
 4. For the `content` field, use `\n\n` to separate paragraphs
 5. Add an image path if you have one (see section 9)
 
+> **Note on Kannada:** Blog posts currently read directly from `data/blog.ts` and are not yet wired into the translation system. If you need a Kannada version of a blog post, this will require additional development work. For now, blog content appears the same in both languages.
+
 ---
 
 ## 7. How to Add/Update a FAQ
 
-1. Open `data/faqs.ts`
-2. Add a new entry or edit an existing one
-3. Each FAQ needs: `id` (unique), `question`, and `answer`
+FAQs are stored entirely in the message files, not in a data file.
+
+1. Open `messages/en.json` and find the `faqs` namespace
+2. Add a new Q&A pair using the next sequential number — e.g., `"q8"` and `"a8"`
+3. Open `messages/kn.json` and add the **same keys** (`"q8"`, `"a8"`) with the Kannada translations
+4. Update the `FAQ_ITEMS` array in `app/[locale]/faqs/accordion.tsx` to include the new entry
+
+> **Kannada translation required:** Since FAQs live entirely in message files, you must add the Kannada text at the same time. See [section 2c](#2c-adding-new-content-that-needs-both-languages) for the workflow. To update an existing FAQ, simply edit the text in the appropriate message file — changing `en.json` only affects English, changing `kn.json` only affects Kannada (see [sections 2a and 2b](#2a-changing-english-text-only)).
 
 ---
 
@@ -205,6 +218,8 @@ The `data/trustees.ts` file has **two separate lists**:
 1. Copy an existing block within the appropriate list
 2. Update all fields (name, role, bio, image path)
 3. Upload their photo (see section 9)
+
+> **Kannada translation:** Trustee role labels (Trustee, President, Vice-President, Secretary, Treasurer) are translated via the `about` namespace in the message files — keys like `trusteeRole`, `presidentRole`, etc. If you add a **new role** (e.g., "Joint Secretary"), add a translation key to both `messages/en.json` and `messages/kn.json` under the `about` namespace (e.g., `"jointSecretaryRole": "Joint Secretary"` / `"jointSecretaryRole": "ಜಂಟಿ ಕಾರ್ಯದರ್ಶಿ"`), and update the `roleMap` in `app/[locale]/about/page.tsx`. The "Click to read more" label is also translated via the `about.clickToRead` key (see [section 2a/2b](#2a-changing-english-text-only) to edit either language independently).
 
 ### Current structure:
 
@@ -242,6 +257,8 @@ image: '/assets/gurukulas/shruti-parampara/students.jpg',
 2. Open `data/gallery.ts`
 3. Add a new entry with: `id`, `src`, `alt`, `category` (gurukulas/events/misc), `caption`, and `type` (image/video)
 
+> **Kannada translation required:** After adding the gallery entry, add a caption translation to **both** `messages/en.json` and `messages/kn.json` under the `gallery` namespace. Use the next sequential key (e.g., `"c30"`). See [section 2f](#2f-adding-a-new-gallery-item-with-both-languages) for the complete step-by-step.
+
 ---
 
 ## 10. How to Update the Seva List (Maharudra)
@@ -250,6 +267,8 @@ image: '/assets/gurukulas/shruti-parampara/students.jpg',
 2. Find the `sevaItems` array inside the Maharudra event
 3. Add, remove, or modify seva entries
 4. Each seva needs: `name` and `amount`
+
+> **Kannada translation required:** The seva `amount` is shared across both languages, but the seva `name` is translated via the `maharudra` namespace in the message files (keys `seva0`, `seva1`, etc.). When adding a new seva item, add the translated name to **both** `messages/en.json` and `messages/kn.json` using the next sequential key. See [section 2g](#2g-adding-a-new-seva-item-to-maharudra-with-both-languages) for the complete step-by-step.
 
 ---
 
@@ -261,6 +280,8 @@ image: '/assets/gurukulas/shruti-parampara/students.jpg',
 
 > **Note:** The current donation details are interim (personal account). Replace with the trust's own account details before public launch. See `PLACEHOLDERS.md` for the full checklist.
 
+> **Kannada translation:** Donation UI labels (headings like "UPI ID", "Bank Transfer", "Beneficiary", etc.) are translated via the `donation` namespace in the message files. The actual payment values (UPI handle, account number, IFSC) are hardcoded in the component and shared across both languages — you only need to edit them once. If you want to change a label (e.g., rename "Scan to Pay"), edit both `messages/en.json` and `messages/kn.json` under the `donation` namespace (see [sections 2a and 2b](#2a-changing-english-text-only)).
+
 ---
 
 ## 12. How to Update Contact Information
@@ -268,6 +289,8 @@ image: '/assets/gurukulas/shruti-parampara/students.jpg',
 - **Email:** Search for `info@shivasankalpa.org` across the codebase
 - **Address:** Update in `app/contact/page.tsx` (look for the MapPin section)
 - **Trust registration number:** Search for `#REG-TODO` and replace
+
+> **Kannada translation:** Contact page labels (title, subtitle, "Reach Us", "Response Time", etc.) are translated via the `contact` namespace in the message files. The email address and registration number are shared across both languages. The location value ("Bangalore, Karnataka, India") is translated separately — update `contact.locationValue` in both `messages/en.json` and `messages/kn.json` (see [sections 2a and 2b](#2a-changing-english-text-only)).
 
 ---
 
