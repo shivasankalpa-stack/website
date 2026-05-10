@@ -1,0 +1,545 @@
+scripts/generate-deck.py
+  415788c7-7433-4099-9198-bafcfb92d5c4 460
+app/[locale]/gurukulas/[slug]/page.tsx
+  415788c7-7433-4099-9198-bafcfb92d5c4 6-8,14-21,34-36,53,55-56,74,76,109,118,121-123,137,141-143,145-149,151,168,173-174,188,191-197,199-226,236-237,247-248,250-258,260-272,274-308,314-333,335-355,359,363-367,370,373-378,381,383-391,394-397
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 25,88-93,96,99-100,103,105,152-167,169-172,175-187,231-235,238-245,249,310-311
+  human 22,107,198,273
+components/blocks/EnlargeablePortrait.tsx
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 1-71
+lib/data-access.ts
+  415788c7-7433-4099-9198-bafcfb92d5c4 14,60-63
+app/[locale]/gurukulas/[slug]/tabs.tsx
+  415788c7-7433-4099-9198-bafcfb92d5c4 3-8,19,24,32,40
+components/layout/Ticker.tsx
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 4-8,15-20,22,27,49-59,62-70,75-121,132-133,135-143,145-192,194-202,204-215
+  human 21,60-61,71,193
+app/[locale]/gurukulas/page.tsx
+  415788c7-7433-4099-9198-bafcfb92d5c4 9,20-26,40,59-71,73-76,79-81,83,86-112,114-117
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 13,44,82,121-125
+  human 72
+flyer/maharudra-flyer.html
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 1-727
+components/layout/Header.tsx
+  415788c7-7433-4099-9198-bafcfb92d5c4 55,59
+components/layout/Footer.tsx
+  415788c7-7433-4099-9198-bafcfb92d5c4 30,34
+lib/types.ts
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 15-19,33-34,67-72
+  415788c7-7433-4099-9198-bafcfb92d5c4 20-25,28-32,42-43,51,54-59,62-63,118-125
+  human 26-27
+app/[locale]/page.tsx
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 23,244-250
+  415788c7-7433-4099-9198-bafcfb92d5c4 25,31-33,70-74,190-201,204-207,210-224,226-229
+components/ui/Modal.tsx
+  415788c7-7433-4099-9198-bafcfb92d5c4 10-11,40-47,68,70,105-106
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 19-20,23-37,86
+  human 38
+components/blocks/EnrolCallout.tsx
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 1-117
+flyer/README.md
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 1-62
+data/trustees.ts
+  415788c7-7433-4099-9198-bafcfb92d5c4 2,4-5,24,26-27,61,64,66-72,74-108
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 39,73
+app/[locale]/about/page.tsx
+  415788c7-7433-4099-9198-bafcfb92d5c4 3,15-16,66,70,75,89-93,211,216,218-221
+  human 217
+next.config.ts
+  415788c7-7433-4099-9198-bafcfb92d5c4 1-2,6-11,16-18
+  human 12
+app/[locale]/about/trustees-grid.tsx
+  415788c7-7433-4099-9198-bafcfb92d5c4 2-3,15-16,22-23,26-29,35,42,44-46,50-51,53,57,64,67-71,78,80-97,99-103
+  human 30
+messages/en.json
+  415788c7-7433-4099-9198-bafcfb92d5c4 148,173,176-177,316,319,321-334,336-425,473
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 34,38-45,120,301-312
+messages/kn.json
+  415788c7-7433-4099-9198-bafcfb92d5c4 148,173,176-177,316,319,321-334,336-425,473
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 34,38-45,120,301-312
+components/blocks/LogoEnlargeable.tsx
+  415788c7-7433-4099-9198-bafcfb92d5c4 1-64
+data/gurukulas.ts
+  415788c7-7433-4099-9198-bafcfb92d5c4 4-10,18,21-32,34-35,37-39,42,44-51,55-58,61,64-66,68-78,80-84,87-93,97-99,101,106,109-131,133-181,183-191,194-199,203-204,206,210-213
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 102-105,132,207-209
+---
+{
+  "attestations": [
+    {
+      "entries": [
+        {
+          "accepted_lines": 1,
+          "added_lines": 1,
+          "deleted_lines": 0,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "460",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "scripts/generate-deck.py"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 202,
+          "added_lines": 205,
+          "deleted_lines": 97,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "6-8,14-21,34-36,53,55-56,74,76,109,118,121-123,137,141-143,145-149,151,168,173-174,188,191-197,199-226,236-237,247-248,250-258,260-272,274-308,314-333,335-355,359,363-367,370,373-378,381,383-391,394-397",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 61,
+          "added_lines": 68,
+          "deleted_lines": 10,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "25,88-93,96,99-100,103,105,152-167,169-172,175-187,231-235,238-245,249,310-311",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 4,
+          "added_lines": 4,
+          "deleted_lines": 0,
+          "hash": "human",
+          "lines": "22,107,198,273",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "app/[locale]/gurukulas/[slug]/page.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 71,
+          "added_lines": 71,
+          "deleted_lines": 10,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "1-71",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "components/blocks/EnlargeablePortrait.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 5,
+          "added_lines": 5,
+          "deleted_lines": 2,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "14,60-63",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "lib/data-access.ts"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 10,
+          "added_lines": 10,
+          "deleted_lines": 4,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "3-8,19,24,32,40",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "app/[locale]/gurukulas/[slug]/tabs.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 160,
+          "added_lines": 163,
+          "deleted_lines": 25,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "4-8,15-20,22,27,49-59,62-70,75-121,132-133,135-143,145-192,194-202,204-215",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 5,
+          "added_lines": 5,
+          "deleted_lines": 0,
+          "hash": "human",
+          "lines": "21,60-61,71,193",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "components/layout/Ticker.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 61,
+          "added_lines": 62,
+          "deleted_lines": 29,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "9,20-26,40,59-71,73-76,79-81,83,86-112,114-117",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 8,
+          "added_lines": 8,
+          "deleted_lines": 1,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "13,44,82,121-125",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 1,
+          "added_lines": 1,
+          "deleted_lines": 0,
+          "hash": "human",
+          "lines": "72",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "app/[locale]/gurukulas/page.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 727,
+          "added_lines": 727,
+          "deleted_lines": 111,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "1-727",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "flyer/maharudra-flyer.html"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 2,
+          "added_lines": 2,
+          "deleted_lines": 0,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "55,59",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "components/layout/Header.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 2,
+          "added_lines": 2,
+          "deleted_lines": 0,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "30,34",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "components/layout/Footer.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 13,
+          "added_lines": 13,
+          "deleted_lines": 1,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "15-19,33-34,67-72",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 30,
+          "added_lines": 32,
+          "deleted_lines": 15,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "20-25,28-32,42-43,51,54-59,62-63,118-125",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 2,
+          "added_lines": 2,
+          "deleted_lines": 0,
+          "hash": "human",
+          "lines": "26-27",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "lib/types.ts"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 8,
+          "added_lines": 8,
+          "deleted_lines": 1,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "23,244-250",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 44,
+          "added_lines": 44,
+          "deleted_lines": 21,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "25,31-33,70-74,190-201,204-207,210-224,226-229",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "app/[locale]/page.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 14,
+          "added_lines": 14,
+          "deleted_lines": 6,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "10-11,40-47,68,70,105-106",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 18,
+          "added_lines": 18,
+          "deleted_lines": 2,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "19-20,23-37,86",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 1,
+          "added_lines": 1,
+          "deleted_lines": 0,
+          "hash": "human",
+          "lines": "38",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "components/ui/Modal.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 117,
+          "added_lines": 117,
+          "deleted_lines": 17,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "1-117",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "components/blocks/EnrolCallout.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 62,
+          "added_lines": 62,
+          "deleted_lines": 9,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "1-62",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "flyer/README.md"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 50,
+          "added_lines": 50,
+          "deleted_lines": 23,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "2,4-5,24,26-27,61,64,66-72,74-108",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 2,
+          "added_lines": 2,
+          "deleted_lines": 0,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "39,73",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "data/trustees.ts"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 17,
+          "added_lines": 18,
+          "deleted_lines": 8,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "3,15-16,66,70,75,89-93,211,216,218-221",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 1,
+          "added_lines": 1,
+          "deleted_lines": 0,
+          "hash": "human",
+          "lines": "217",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "app/[locale]/about/page.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 11,
+          "added_lines": 11,
+          "deleted_lines": 5,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "1-2,6-11,16-18",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 1,
+          "added_lines": 1,
+          "deleted_lines": 0,
+          "hash": "human",
+          "lines": "12",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "next.config.ts"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 49,
+          "added_lines": 49,
+          "deleted_lines": 23,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "2-3,15-16,22-23,26-29,35,42,44-46,50-51,53,57,64,67-71,78,80-97,99-103",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 1,
+          "added_lines": 1,
+          "deleted_lines": 0,
+          "hash": "human",
+          "lines": "30",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "app/[locale]/about/trustees-grid.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 111,
+          "added_lines": 111,
+          "deleted_lines": 53,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "148,173,176-177,316,319,321-334,336-425,473",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 22,
+          "added_lines": 22,
+          "deleted_lines": 3,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "34,38-45,120,301-312",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "messages/en.json"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 111,
+          "added_lines": 111,
+          "deleted_lines": 53,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "148,173,176-177,316,319,321-334,336-425,473",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 22,
+          "added_lines": 22,
+          "deleted_lines": 3,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "34,38-45,120,301-312",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "messages/kn.json"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 64,
+          "added_lines": 64,
+          "deleted_lines": 30,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "1-64",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "components/blocks/LogoEnlargeable.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 164,
+          "added_lines": 164,
+          "deleted_lines": 87,
+          "hash": "415788c7-7433-4099-9198-bafcfb92d5c4",
+          "lines": "4-10,18,21-32,34-35,37-39,42,44-51,55-58,61,64-66,68-78,80-84,87-93,97-99,101,106,109-131,133-181,183-191,194-199,203-204,206,210-213",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 8,
+          "added_lines": 8,
+          "deleted_lines": 8,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "102-105,132,207-209",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "data/gurukulas.ts"
+    }
+  ],
+  "base_commit_sha": "9493ed42bfe6fc7d3e6a349930f70fa5a7b4ecaf",
+  "branch": "main",
+  "commit_sha": "124d004cd7e128e7120fd7483309e4003943ee30",
+  "commit_time": "2026-05-10T13:30:05+05:30",
+  "commit_type": "direct_commit",
+  "git_ai_version": "1.4.3",
+  "prompts": {
+    "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2": {
+      "accepted_lines": 1299,
+      "agent_id": {
+        "id": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+        "model": "claude-opus-4-7-thinking-xhigh",
+        "tool": "cursor"
+      },
+      "human_author": "ksatchit <karthik.s@harness.io>",
+      "overriden_lines": 0,
+      "total_additions": 1309,
+      "total_deletions": 201
+    },
+    "415788c7-7433-4099-9198-bafcfb92d5c4": {
+      "accepted_lines": 948,
+      "agent_id": {
+        "id": "415788c7-7433-4099-9198-bafcfb92d5c4",
+        "model": "claude-opus-4-7-thinking-xhigh",
+        "tool": "cursor"
+      },
+      "human_author": "ksatchit <karthik.s@harness.io>",
+      "overriden_lines": 0,
+      "total_additions": 955,
+      "total_deletions": 456
+    },
+    "human": {
+      "accepted_lines": 16,
+      "agent_id": null,
+      "human_author": "ksatchit <karthik.s@harness.io>",
+      "overriden_lines": 0,
+      "total_additions": 16,
+      "total_deletions": 0
+    }
+  },
+  "repo": "git@github.com:shivasankalpa-stack/website.git",
+  "schema_version": "authorship/3.0.0"
+}
