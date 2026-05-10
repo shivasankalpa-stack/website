@@ -11,7 +11,7 @@
 import { gurukulas } from '@/data/gurukulas';
 import { events } from '@/data/events';
 import { blogPosts } from '@/data/blog';
-import { trustees, managingCommittee } from '@/data/trustees';
+import { trustees, managingCommittee, trustMembers } from '@/data/trustees';
 import { galleryItems } from '@/data/gallery';
 import type {
   Gurukula,
@@ -55,6 +55,10 @@ export function getTrustees(): Trustee[] {
 
 export function getManagingCommittee(): Trustee[] {
   return managingCommittee;
+}
+
+export function getTrustMembers(): Trustee[] {
+  return trustMembers;
 }
 
 export function getGalleryItems(): GalleryItem[] {

@@ -18,17 +18,19 @@ import { ShlokaBlock } from '@/components/ui/ShlokaBlock';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { PlaceholderImage } from '@/components/ui/PlaceholderImage';
 import { AudioPlayer } from '@/components/blocks/AudioPlayer';
 import { DonationSection } from '@/components/blocks/DonationSection';
+import { EnrolCallout } from '@/components/blocks/EnrolCallout';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { LogoEnlargeable } from '@/components/blocks/LogoEnlargeable';
 import { getGurukulas, getFeaturedEvents } from '@/lib/data-access';
 import { Link } from '@/i18n/routing';
 
 const SLUG_TO_KEY: Record<string, string> = {
   'shruti-parampara': 'shrutiParampara',
-  'gowtama-veda-pathashala': 'gowtamaVedaPathashala',
-  'sacchidananda-advaitashrama': 'sacchidanandaAdvaitashrama',
+  'namma-sampradaya': 'nammaSampradaya',
+  'shankara-gurukulam': 'shankaraGurukulam',
+  'sri-ramana-brahma-vidyashrama': 'sriRamanaBrahmaVidyashrama',
 };
 
 type Props = {
@@ -65,13 +67,11 @@ export default async function HomePage({ params }: Props) {
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal-500/70 via-charcoal-500/60 to-charcoal-500/80" />
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center space-y-8 py-[4.25rem] md:py-16">
-          <div className="mx-auto h-24 w-auto md:h-32 rounded-xl bg-ivory/90 backdrop-blur-sm p-3 hidden md:inline-block">
-            <Image
-              src="/assets/og/logo.png"
-              alt={t('heroTitle')}
-              width={120}
-              height={120}
-              className="h-full w-auto"
+          <div className="hidden md:flex justify-center">
+            <LogoEnlargeable
+              label={t('heroTitle')}
+              sizeClass="h-28 w-28 md:h-32 md:w-32"
+              ringClass="ring-2 ring-ivory-50/30 shadow-lg"
             />
           </div>
 
@@ -187,45 +187,46 @@ export default async function HomePage({ params }: Props) {
             centered
           />
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {gurukulas.map((gk) => (
-              <Link key={gk.slug} href={`/gurukulas/${gk.slug}`}>
-                <Card hover as="article" className="h-full space-y-4">
-                  <div className="overflow-hidden rounded-md">
-                    {gk.heroImage.includes('#') || gk.heroImage.endsWith('/hero.jpg') ? (
-                      <PlaceholderImage
-                        todoId={`IMG-TODO-${gk.slug}-hero`}
-                        caption={gk.name}
-                        aspectRatio="3/2"
-                      />
-                    ) : (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+            {gurukulas.slice(0, 4).map((gk) => {
+              const key = SLUG_TO_KEY[gk.slug];
+              const localised = (field: string, fallback: string) =>
+                key ? tGk(`${key}_${field}` as Parameters<typeof tGk>[0]) : fallback;
+              const name = localised('name', gk.name);
+              const location = localised('location', gk.location);
+              const acharya = localised('acharya', gk.acharya);
+              return (
+                <Link key={gk.slug} href={`/gurukulas/${gk.slug}`}>
+                  <Card hover as="article" className="h-full !p-0 overflow-hidden">
+                    <div className="relative aspect-[16/9] overflow-hidden">
                       <Image
                         src={gk.heroImage}
-                        alt={`${gk.name}, ${gk.location}`}
-                        width={400}
-                        height={267}
-                        className="w-full object-cover"
-                        style={{ aspectRatio: '3/2' }}
+                        alt={`${name}, ${location}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                       />
-                    )}
-                  </div>
-                  <div className="space-y-2">
-                    <h3 className="font-serif text-lg font-semibold text-indigo">{gk.name}</h3>
-                    <div className="flex items-center gap-1.5 text-sm text-charcoal-200">
-                      <MapPin size={14} />
-                      {tGk(`${SLUG_TO_KEY[gk.slug]}_location` as Parameters<typeof tGk>[0]) || gk.location}
                     </div>
-                    <p className="text-sm text-charcoal-300">
-                      {t('acharyaLabel')} {gk.acharya}
-                    </p>
-                    <div className="flex items-center gap-1.5 text-sm text-charcoal-200">
-                      <Users size={14} />
-                      {t('studentsLabel', { count: gk.studentCount })}
+                    <div className="p-5 md:p-6 space-y-2">
+                      <h3 className="font-serif text-lg font-semibold text-indigo leading-snug">
+                        {name}
+                      </h3>
+                      <div className="flex items-center gap-1.5 text-sm text-charcoal-200">
+                        <MapPin size={14} />
+                        {location}
+                      </div>
+                      <p className="text-sm text-charcoal-300">
+                        {t('acharyaLabel')} {acharya}
+                      </p>
+                      <div className="flex items-center gap-1.5 text-sm text-charcoal-200">
+                        <Users size={14} />
+                        {t('studentsLabel', { count: gk.studentCount })}
+                      </div>
                     </div>
-                  </div>
-                </Card>
-              </Link>
-            ))}
+                  </Card>
+                </Link>
+              );
+            })}
           </div>
 
           <div className="text-center">
@@ -238,6 +239,13 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </section>
+      </ScrollReveal>
+
+      {/* Emotional CTA inviting parents to enrol — placed right after the
+          Gurukulas grid so visitors who've just seen the options have a
+          clear, dharmic next step. */}
+      <ScrollReveal>
+        <EnrolCallout />
       </ScrollReveal>
 
       {maharudra && (

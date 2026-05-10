@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Sri Shivasankalpa Vṛnda — Maharudra Flyer</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<!--
+  Two-sided A4 flyer for the Maharudra Purascharana enquiry desk.
+  Front: English. Back: Kannada. Designed for browser print → PDF.
+
+  HOW TO PRINT
+  ────────────
+  1. Open this file in Chrome or Edge.
+  2. Press ⌘P / Ctrl+P.
+  3. Destination: "Save as PDF" (or your printer).
+     Paper size: A4 · Margins: None · Scale: Default · Background graphics: ON.
+  4. Print double-sided (flip on long edge) for the bilingual brochure.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  /* Defensive — make every box include border + padding in width/height
+     so our mm measurements add up predictably across browsers. */
+  *, *::before, *::after { box-sizing: border-box; }
+
+  /* ─── Brand tokens (mirroring the website palette) ─── */
+  :root {
+    --ivory-50:  #FDFBF5;
+    --ivory:     #F7F1E3;
+    --ivory-300: #EDE5D0;
+    --charcoal:  #2A2A2A;
+    --charcoal-300: #616161;
+    --indigo:    #2E2A5D;
+    --indigo-500:#201D42;
+    --indigo-300:#5D5799;
+    --kumkuma:   #A63232;
+    --kumkuma-500:#8B2828;
+    --gold:      #B8860B;
+    --gold-100:  #F3E4BC;
+    --gold-50:   #FBF5E6;
+
+    --serif:    'EB Garamond', Georgia, 'Times New Roman', serif;
+    --sans:     'Inter', system-ui, -apple-system, sans-serif;
+    --dev:      'Noto Serif Devanagari', serif;
+    --kn:       'Noto Sans Kannada', system-ui, sans-serif;
+  }
+
+  /* ─── A4 page setup ─── */
+  @page { size: A4 portrait; margin: 0; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #c8c8c8;            /* visible only on screen, between pages */
+    font-family: var(--sans);
+    color: var(--charcoal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media print {
+    html, body { background: #fff; }
+    *,*::before,*::after {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+  }
+
+  /* The "page" — exactly A4 */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 8mm auto;
+    background: var(--ivory-50);
+    color: var(--charcoal);
+    box-shadow: 0 2px 16px rgba(0,0,0,.18);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+    break-after: page;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  @media print { .page { margin: 0; box-shadow: none; } }
+
+  /* Subtle gold rule for the inner decorative frame */
+  .page::before,
+  .page::after {
+    content: '';
+    position: absolute;
+    left: 6mm; right: 6mm;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
+    opacity: .55;
+  }
+  .page::before { top: 6mm; }
+  .page::after  { bottom: 6mm; }
+
+  /* ─── Header (indigo → kumkuma band) ─── */
+  .hero {
+    background: linear-gradient(135deg, var(--indigo) 0%, var(--indigo-500) 50%, var(--kumkuma-500) 100%);
+    color: var(--ivory-50);
+    padding: 6mm 12mm 5.5mm;
+    display: grid;
+    grid-template-columns: 22mm 1fr;
+    gap: 6mm;
+    align-items: center;
+    border-bottom: 0.6mm solid var(--gold);
+  }
+  .hero .logo {
+    width: 22mm; height: 22mm;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 0.5mm solid var(--gold-100);
+    background: var(--ivory-50);
+  }
+  .hero .logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19pt;
+    letter-spacing: -0.01em;
+    margin: 0 0 1mm;
+    line-height: 1.1;
+  }
+  .hero .tagline {
+    font-size: 8pt;
+    color: var(--gold-100);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0 0 1.8mm;
+    font-weight: 500;
+  }
+  .hero .shloka-row {
+    display: flex;
+    gap: 4mm;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .hero .shloka-dev {
+    font-family: var(--dev);
+    font-size: 12pt;
+    color: var(--gold-100);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .hero .shloka-trans {
+    font-style: italic;
+    font-size: 8pt;
+    color: rgba(253,251,245,0.78);
+    margin: 0;
+  }
+
+  /* ─── Content sections ─── */
+  .body { padding: 5mm 12mm 0; flex: 1; display: flex; flex-direction: column; gap: 4mm; }
+
+  .section { display: flex; flex-direction: column; gap: 1.8mm; }
+  .section-eyebrow {
+    font-family: var(--dev);
+    color: var(--kumkuma);
+    font-size: 10pt;
+    margin: 0;
+    line-height: 1;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    color: var(--indigo);
+    font-size: 12.5pt;
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .section-rule {
+    width: 12mm; height: 0.5mm; background: var(--gold);
+    border: 0; margin: 0.3mm 0 0;
+  }
+
+  /* Mission paragraph */
+  .mission p {
+    font-size: 9pt;
+    line-height: 1.5;
+    color: var(--charcoal-300);
+    margin: 0;
+  }
+  .mission p strong { color: var(--indigo); font-weight: 600; }
+
+  /* Why bullets */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5mm;
+    margin-top: 0.5mm;
+  }
+  .why-card {
+    background: var(--ivory);
+    border: 0.2mm solid var(--ivory-300);
+    border-left: 1mm solid var(--gold);
+    border-radius: 1.2mm;
+    padding: 2mm 2.6mm;
+  }
+  .why-card h4 {
+    font-family: var(--serif);
+    font-weight: 600;
+    color: var(--indigo);
+    font-size: 9pt;
+    margin: 0 0 0.7mm;
+  }
+  .why-card p {
+    font-size: 7.5pt;
+    line-height: 1.35;
+    color: var(--charcoal-300);
+    margin: 0;
+  }
+
+  /* Gurukulas grid 2×2 */
+  .gk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5mm;
+    margin-top: 0.5mm;
+  }
+  .gk-card {
+    display: grid;
+    grid-template-columns: 24mm 1fr;
+    gap: 2.5mm;
+    background: #fff;
+    border: 0.2mm solid var(--ivory-300);
+    border-radius: 1.5mm;
+    overflow: hidden;
+    min-height: 24mm;
+  }
+  .gk-photo {
+    background-color: var(--ivory-300);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .gk-text {
+    padding: 1.8mm 2.2mm 1.8mm 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.6mm;
+  }
+  .gk-name {
+    font-family: var(--serif);
+    font-weight: 600;
+    color: var(--indigo);
+    font-size: 9pt;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .gk-meta { font-size: 7.2pt; color: var(--charcoal-300); margin: 0; line-height: 1.3; }
+  .gk-meta strong { color: var(--charcoal); font-weight: 600; }
+  .gk-shakhas {
+    font-size: 7pt;
+    color: var(--kumkuma);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0.4mm 0 0;
+  }
+
+  /* Three actions */
+  .action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr 1fr;
+    gap: 2.5mm;
+    margin-top: 0.5mm;
+    align-items: stretch;
+  }
+  .action {
+    border: 0.2mm solid var(--ivory-300);
+    border-radius: 1.5mm;
+    padding: 3mm 3mm;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2mm;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .action.donate { background: var(--ivory); border-color: var(--gold); }
+  .action.enrol  { background: linear-gradient(180deg, var(--ivory-50), var(--gold-50)); border-color: var(--gold); }
+  .action h3 {
+    font-family: var(--serif);
+    font-weight: 700;
+    color: var(--indigo);
+    font-size: 10.5pt;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+  .action .pip {
+    font-family: var(--dev);
+    font-size: 9pt;
+    color: var(--kumkuma);
+    line-height: 1;
+    margin: 0;
+  }
+  .action p { font-size: 8pt; color: var(--charcoal-300); margin: 0; line-height: 1.4; }
+  .action .url, .action .upi {
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 7.5pt;
+    color: var(--indigo);
+    background: var(--indigo-50, #EEEDF5);
+    padding: 1.2mm 2.2mm;
+    border-radius: 1mm;
+    word-break: break-all;
+  }
+  .action .qr {
+    width: 22mm; height: 22mm;
+    object-fit: contain;
+    background: #fff;
+    padding: 0.8mm;
+    border: 0.2mm solid var(--ivory-300);
+    border-radius: 1mm;
+  }
+  .action .badge {
+    background: var(--kumkuma);
+    color: var(--ivory-50);
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1mm 2.5mm;
+    border-radius: 999px;
+  }
+
+  /* ─── Footer ─── */
+  .footer {
+    margin-top: auto;
+    padding: 3.5mm 12mm 4mm;
+    background: var(--indigo);
+    color: var(--ivory-50);
+    border-top: 0.6mm solid var(--gold);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 5mm;
+  }
+  .footer .blessing {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 8.5pt;
+    line-height: 1.35;
+    color: rgba(253,251,245,0.92);
+    margin: 0;
+  }
+  .footer .blessing strong { color: var(--gold-100); font-weight: 600; font-style: normal; }
+  .footer .web {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 10.5pt;
+    color: var(--gold-100);
+    text-align: right;
+    margin: 0;
+    line-height: 1.3;
+  }
+  .footer .web small {
+    display: block;
+    font-family: var(--sans);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 7pt;
+    color: rgba(253,251,245,0.7);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 0.8mm;
+  }
+
+  /* ─── Kannada page tweaks (Kannada glyphs render slightly larger
+       than Latin, so we trim ~0.5pt off most sizes to keep parity). ─── */
+  .page-kn { font-family: var(--kn); }
+  .page-kn .hero h1 { font-family: var(--kn); font-size: 17pt; }
+  .page-kn .hero .tagline { font-family: var(--kn); letter-spacing: 0.06em; }
+  .page-kn .section-title { font-family: var(--kn); font-size: 12pt; }
+  .page-kn .why-card h4   { font-family: var(--kn); font-size: 8.5pt; }
+  .page-kn .why-card p    { font-family: var(--kn); font-size: 7.2pt; }
+  .page-kn .gk-name       { font-family: var(--kn); font-size: 8.5pt; }
+  .page-kn .gk-meta, .page-kn .gk-shakhas, .page-kn .mission p, .page-kn .action h3, .page-kn .action p {
+    font-family: var(--kn);
+  }
+  .page-kn .gk-meta       { font-size: 7pt; }
+  .page-kn .mission p     { font-size: 8.5pt; }
+  .page-kn .action h3     { font-size: 9.5pt; }
+  .page-kn .action p      { font-size: 7.5pt; }
+  .page-kn .footer .blessing, .page-kn .footer .web { font-family: var(--kn); font-style: normal; }
+  .page-kn .footer .blessing { font-size: 8pt; }
+  .page-kn .footer .web small { font-family: var(--kn); }
+
+  /* Eyebrow uses devanagari shloka text on EN page; Kannada eyebrow stays devanagari for the sacred terms */
+  .eyebrow-dev { font-family: var(--dev) !important; font-style: normal; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- ░░░░░░░░░░░░░░░░░░░░░  PAGE 1 — ENGLISH  ░░░░░░░░░░░░░░░░░░░░░ -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<article class="page page-en">
+
+  <header class="hero">
+    <div class="logo"><img src="../public/assets/og/logo.jpg" alt="Sri Shivasankalpa Vṛnda" /></div>
+    <div class="brand">
+      <h1>Sri Shivasankalpa Vṛnda</h1>
+      <p class="tagline">Seva · Śraddhā · Saṁskāra</p>
+      <div class="shloka-row">
+        <p class="shloka-dev">तन्मे मनः शिवसङ्कल्पमस्तु</p>
+        <p class="shloka-trans">May our minds be filled with auspicious resolve</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- Mission -->
+    <section class="section mission">
+      <p class="section-eyebrow eyebrow-dev">सङ्कल्पः</p>
+      <h2 class="section-title">A Resolve Born of the Sringeri Paramparā</h2>
+      <hr class="section-rule" />
+      <p>
+        With the boundless grace of the <strong>Jagadgurus of Dakshiṇāmnāya Śrī Śāradā Pīṭham, Sringeri</strong>,
+        Sri Shivasankalpa Vṛnda is a charitable trust devoted to supporting Veda Gurukulas across Karnataka and
+        sustaining the timeless Guru–Śiṣya Paramparā. We are not a Gurukulam — we exist so that Gurukulas may thrive.
+      </p>
+    </section>
+
+    <!-- What We Do -->
+    <section class="section">
+      <p class="section-eyebrow eyebrow-dev">कार्यक्षेत्राणि</p>
+      <h2 class="section-title">What We Do</h2>
+      <hr class="section-rule" />
+      <div class="why-grid">
+        <div class="why-card">
+          <h4>Vedic Education</h4>
+          <p>Sustaining Gurukulas where students learn Saṁhitā, Krama, Jaṭā and Ghana pāṭha in the oral tradition.</p>
+        </div>
+        <div class="why-card">
+          <h4>Gurukula Welfare</h4>
+          <p>Infrastructure, teaching materials, student nutrition, and the welfare of revered Adhyāpakas.</p>
+        </div>
+        <div class="why-card">
+          <h4>Honouring Scholars</h4>
+          <p>Recognising the silent sacrifice of Vedic Adhyāpakas who have given their lives to this tradition.</p>
+        </div>
+        <div class="why-card">
+          <h4>Vedic Research</h4>
+          <p>Supporting research and Vedic libraries — preserving manuscripts and śāstric scholarship.</p>
+        </div>
+        <div class="why-card">
+          <h4>Go-Saṁrakṣaṇam</h4>
+          <p>Supporting Gośālās and the sacred cause of cow protection, shelter, and welfare.</p>
+        </div>
+        <div class="why-card">
+          <h4>Loka-Kalyāṇa Events</h4>
+          <p>Mahā Rudra Puraścaraṇa, awareness programmes, and events for the welfare of all.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gurukulas We Are Privileged to Serve -->
+    <section class="section">
+      <p class="section-eyebrow eyebrow-dev">वेदगुरुकुलानि</p>
+      <h2 class="section-title">Gurukulas We Are Privileged to Serve</h2>
+      <hr class="section-rule" />
+      <div class="gk-grid">
+
+        <div class="gk-card">
+          <div class="gk-photo" style="background-image:url('../public/assets/gurukulas/shruti-parampara/hero.jpg');"></div>
+          <div class="gk-text">
+            <p class="gk-name">Sri Shruti Paramparā Gurukulam</p>
+            <p class="gk-meta">JP Nagar, Bangalore · <strong>23 students</strong></p>
+            <p class="gk-meta">Ācārya: Veda Brahma Sri Shyamasundara Sharma Ghanapāṭhī</p>
+            <p class="gk-shakhas">Rigveda · Krishna Yajurveda</p>
+          </div>
+        </div>
+
+        <div class="gk-card">
+          <div class="gk-photo" style="background-image:url('../public/assets/gurukulas/namma-sampradaya/hero.jpg');"></div>
+          <div class="gk-text">
+            <p class="gk-name">Namma Sampradāya Gurukulam</p>
+            <p class="gk-meta">Varthur, Bangalore · <strong>30 students · 120 alumni</strong></p>
+            <p class="gk-meta">Ācārya: Veda Brahma Sri Manjunath Bhat Ghanapāṭhī</p>
+            <p class="gk-shakhas">Krishna Yajurveda · Rigveda</p>
+          </div>
+        </div>
+
+        <div class="gk-card">
+          <div class="gk-photo" style="background-image:url('../public/assets/gurukulas/shankara-gurukulam/hero.avif');"></div>
+          <div class="gk-text">
+            <p class="gk-name">Shankara Gurukulam</p>
+            <p class="gk-meta">Ungra, Huliyurdurga · <strong>22 students</strong></p>
+            <p class="gk-meta">Founder: Dr. Chandrashekhar T. G.</p>
+            <p class="gk-shakhas">Rigveda · Krishna Yajurveda · Ṣaḍ-darśanas</p>
+          </div>
+        </div>
+
+        <div class="gk-card">
+          <div class="gk-photo" style="background-image:url('../public/assets/gurukulas/sri-ramana-brahma-vidyashrama/hero.png'); background-position: center top;"></div>
+          <div class="gk-text">
+            <p class="gk-name">Sri Ramaṇa Maharṣi Brahma Vidyāśrama</p>
+            <p class="gk-meta">Madagondapalli, Hosur · <strong>15 students · 10 alumni</strong></p>
+            <p class="gk-meta">Founded by Pūjya Sri Ramanacharanatirtha (Nochur) Swamiji</p>
+            <p class="gk-shakhas">Krishna Yajurveda · Upaniṣad Pāṭha</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Three ways to participate -->
+    <section class="section">
+      <p class="section-eyebrow eyebrow-dev">सहभागितायाः त्रयो मार्गाः</p>
+      <h2 class="section-title">Three Ways to Participate</h2>
+      <hr class="section-rule" />
+      <div class="action-grid">
+
+        <div class="action enrol">
+          <span class="badge">Admissions Open</span>
+          <h3>Enrol Your Child</h3>
+          <p class="pip">तमसो मा ज्योतिर्गमय</p>
+          <p>Let your child grow in the light of the Vedas — under the care of revered Adhyāpakas.</p>
+          <p class="url">srishivasankalpa.org/gurukulas</p>
+        </div>
+
+        <div class="action donate">
+          <h3>Donate</h3>
+          <img class="qr" src="../public/assets/artefacts/donation-qr.png" alt="UPI QR" />
+          <p class="upi">UPI · 9916104901-2@ybl</p>
+          <p>Mention purpose &amp; your name in the transfer note for a receipt.</p>
+        </div>
+
+        <div class="action">
+          <h3>Volunteer · Talk to Us</h3>
+          <p class="pip">तनु · मन · धन</p>
+          <p>Offer your time, devotion, or resources. We welcome volunteers for events, Gurukula visits, documentation, and outreach.</p>
+          <p class="url">info@shivasankalpa.org</p>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <p class="blessing">
+      <strong>Blessed by</strong> His Holiness Jagadguru Śrī Śrī Bhāratī Tīrtha Mahāsannidhānam
+      &amp; His Holiness Jagadguru Śrī Śrī Vidhuśekhara Bhāratī Sannidhānam of Sringeri Śāradā Pīṭham.
+    </p>
+    <p class="web">
+      srishivasankalpa.org
+      <small>Sri Shivasankalpa Vṛnda · Bangalore</small>
+    </p>
+  </footer>
+</article>
+
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- ░░░░░░░░░░░░░░░░░░░░░  PAGE 2 — KANNADA  ░░░░░░░░░░░░░░░░░░░░░ -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<article class="page page-kn">
+
+  <header class="hero">
+    <div class="logo"><img src="../public/assets/og/logo.jpg" alt="ಶ್ರೀ ಶಿವಸಂಕಲ್ಪ ವೃಂದ" /></div>
+    <div class="brand">
+      <h1>ಶ್ರೀ ಶಿವಸಂಕಲ್ಪ ವೃಂದ</h1>
+      <p class="tagline">ಸೇವೆ · ಶ್ರದ್ಧೆ · ಸಂಸ್ಕಾರ</p>
+      <div class="shloka-row">
+        <p class="shloka-dev">तन्मे मनः शिवसङ्कल्पमस्तु</p>
+        <p class="shloka-trans">ನಮ್ಮ ಮನಸ್ಸುಗಳು ಶುಭ ಸಂಕಲ್ಪಗಳಿಂದ ತುಂಬಿರಲಿ</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- Mission (KN) -->
+    <section class="section mission">
+      <p class="section-eyebrow eyebrow-dev">सङ्कल्पः</p>
+      <h2 class="section-title">ಶೃಂಗೇರಿ ಪರಂಪರೆಯ ಪವಿತ್ರ ಸಂಕಲ್ಪ</h2>
+      <hr class="section-rule" />
+      <p>
+        ದಕ್ಷಿಣಾಮ್ನಾಯ ಶ್ರೀ ಶಾರದಾ ಪೀಠಂ, ಶೃಂಗೇರಿಯ <strong>ಜಗದ್ಗುರುಗಳ ಅಪಾರ ಕೃಪೆಯಿಂದ</strong>
+        ಶ್ರೀ ಶಿವಸಂಕಲ್ಪ ವೃಂದ — ಕರ್ನಾಟಕದ ವೇದ ಗುರುಕುಲಗಳಿಗೆ ಬೆಂಬಲ ನೀಡಲು ಮತ್ತು ಶಾಶ್ವತ
+        ಗುರು–ಶಿಷ್ಯ ಪರಂಪರೆಯನ್ನು ಪೋಷಿಸಲು ಸಮರ್ಪಿತವಾಗಿರುವ ಧರ್ಮಾರ್ಥ ಟ್ರಸ್ಟ್. ನಾವು ಗುರುಕುಲವಲ್ಲ —
+        ಗುರುಕುಲಗಳು ಸಮೃದ್ಧವಾಗಲೆಂದು ನಾವು ಇದ್ದೇವೆ.
+      </p>
+    </section>
+
+    <!-- What We Do (KN) -->
+    <section class="section">
+      <p class="section-eyebrow eyebrow-dev">कार्यक्षेत्राणि</p>
+      <h2 class="section-title">ನಮ್ಮ ಕಾರ್ಯಕ್ಷೇತ್ರಗಳು</h2>
+      <hr class="section-rule" />
+      <div class="why-grid">
+        <div class="why-card">
+          <h4>ವೈದಿಕ ಶಿಕ್ಷಣ</h4>
+          <p>ಸಂಹಿತಾ, ಕ್ರಮ, ಜಟಾ, ಘನ ಪಾಠಗಳಲ್ಲಿ ಶ್ರುತಿ ಪರಂಪರೆಯ ಮೂಲಕ ವಿದ್ಯಾರ್ಥಿಗಳು ಕಲಿಯುವ ಗುರುಕುಲಗಳಿಗೆ ಬೆಂಬಲ.</p>
+        </div>
+        <div class="why-card">
+          <h4>ಗುರುಕುಲ ಕಲ್ಯಾಣ</h4>
+          <p>ಮೂಲಸೌಕರ್ಯ, ಬೋಧನಾ ಸಾಮಗ್ರಿ, ವಿದ್ಯಾರ್ಥಿ ಪೋಷಣೆ ಮತ್ತು ಪೂಜ್ಯ ಅಧ್ಯಾಪಕರ ಕಲ್ಯಾಣಕ್ಕೆ ಸಹಾಯ.</p>
+        </div>
+        <div class="why-card">
+          <h4>ವಿದ್ವಾಂಸರ ಗೌರವ</h4>
+          <p>ಈ ಪರಂಪರೆಗಾಗಿ ಜೀವನ ಮುಡಿಪಾಗಿಟ್ಟ ವೈದಿಕ ಅಧ್ಯಾಪಕರ ಮೌನ ತ್ಯಾಗವನ್ನು ಗುರುತಿಸಿ ಸಮ್ಮಾನಿಸುವುದು.</p>
+        </div>
+        <div class="why-card">
+          <h4>ವೈದಿಕ ಸಂಶೋಧನೆ</h4>
+          <p>ಸಂಶೋಧನೆ ಮತ್ತು ವೈದಿಕ ಗ್ರಂಥಾಲಯಗಳಿಗೆ ಬೆಂಬಲ — ಶಾಸ್ತ್ರ ಮತ್ತು ಪಾಂಡಿತ್ಯವನ್ನು ಸಂರಕ್ಷಿಸುವುದು.</p>
+        </div>
+        <div class="why-card">
+          <h4>ಗೋ-ಸಂರಕ್ಷಣಂ</h4>
+          <p>ಗೋಶಾಲೆಗಳಿಗೆ ಬೆಂಬಲ ಮತ್ತು ಗೋ ಸಂರಕ್ಷಣೆ, ಆಶ್ರಯ ಮತ್ತು ಕಲ್ಯಾಣದ ಪವಿತ್ರ ಕಾರಣ.</p>
+        </div>
+        <div class="why-card">
+          <h4>ಲೋಕ-ಕಲ್ಯಾಣ ಕಾರ್ಯಕ್ರಮಗಳು</h4>
+          <p>ಮಹಾ ರುದ್ರ ಪುರಶ್ಚರಣೆ, ಜಾಗೃತಿ ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ಎಲ್ಲರ ಕಲ್ಯಾಣಕ್ಕಾಗಿ ಕಾರ್ಯಕ್ರಮಗಳು.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gurukulas (KN) -->
+    <section class="section">
+      <p class="section-eyebrow eyebrow-dev">वेदगुरुकुलानि</p>
+      <h2 class="section-title">ಸೇವಿಸುವ ಸೌಭಾಗ್ಯವಿರುವ ಗುರುಕುಲಗಳು</h2>
+      <hr class="section-rule" />
+      <div class="gk-grid">
+
+        <div class="gk-card">
+          <div class="gk-photo" style="background-image:url('../public/assets/gurukulas/shruti-parampara/hero.jpg');"></div>
+          <div class="gk-text">
+            <p class="gk-name">ಶ್ರೀ ಶ್ರುತಿ ಪರಂಪರಾ ಗುರುಕುಲಂ</p>
+            <p class="gk-meta">ಜೆ.ಪಿ. ನಗರ, ಬೆಂಗಳೂರು · <strong>23 ವಿದ್ಯಾರ್ಥಿಗಳು</strong></p>
+            <p class="gk-meta">ಆಚಾರ್ಯ: ವೇದ ಬ್ರಹ್ಮ ಶ್ರೀ ಶ್ಯಾಮಸುಂದರ ಶರ್ಮಾ ಘನಪಾಠೀ</p>
+            <p class="gk-shakhas">ಋಗ್ವೇದ · ಕೃಷ್ಣ ಯಜುರ್ವೇದ</p>
+          </div>
+        </div>
+
+        <div class="gk-card">
+          <div class="gk-photo" style="background-image:url('../public/assets/gurukulas/namma-sampradaya/hero.jpg');"></div>
+          <div class="gk-text">
+            <p class="gk-name">ನಮ್ಮ ಸಂಪ್ರದಾಯ ಗುರುಕುಲಂ</p>
+            <p class="gk-meta">ವರ್ತೂರು, ಬೆಂಗಳೂರು · <strong>30 ವಿದ್ಯಾರ್ಥಿಗಳು · 120 ಹಳೆಯ ವಿದ್ಯಾರ್ಥಿಗಳು</strong></p>
+            <p class="gk-meta">ಆಚಾರ್ಯ: ವೇದ ಬ್ರಹ್ಮ ಶ್ರೀ ಮಂಜುನಾಥ ಭಟ್ ಘನಪಾಠೀ</p>
+            <p class="gk-shakhas">ಕೃಷ್ಣ ಯಜುರ್ವೇದ · ಋಗ್ವೇದ</p>
+          </div>
+        </div>
+
+        <div class="gk-card">
+          <div class="gk-photo" style="background-image:url('../public/assets/gurukulas/shankara-gurukulam/hero.avif');"></div>
+          <div class="gk-text">
+            <p class="gk-name">ಶಂಕರ ಗುರುಕುಲಂ</p>
+            <p class="gk-meta">ಉಂಗ್ರ, ಹುಲಿಯೂರ್‌ದುರ್ಗ · <strong>22 ವಿದ್ಯಾರ್ಥಿಗಳು</strong></p>
+            <p class="gk-meta">ಸ್ಥಾಪಕರು: ಡಾ. ಚಂದ್ರಶೇಖರ ಟಿ. ಜಿ.</p>
+            <p class="gk-shakhas">ಋಗ್ವೇದ · ಕೃಷ್ಣ ಯಜುರ್ವೇದ · ಷಡ್-ದರ್ಶನಗಳು</p>
+          </div>
+        </div>
+
+        <div class="gk-card">
+          <div class="gk-photo" style="background-image:url('../public/assets/gurukulas/sri-ramana-brahma-vidyashrama/hero.png'); background-position: center top;"></div>
+          <div class="gk-text">
+            <p class="gk-name">ಶ್ರೀ ರಮಣ ಮಹರ್ಷಿ ಬ್ರಹ್ಮ ವಿದ್ಯಾಶ್ರಮ</p>
+            <p class="gk-meta">ಮಡಗೊಂಡಪಲ್ಲಿ, ಹೊಸೂರು · <strong>15 ವಿದ್ಯಾರ್ಥಿಗಳು · 10 ಹಳೆಯ ವಿದ್ಯಾರ್ಥಿಗಳು</strong></p>
+            <p class="gk-meta">ಸ್ಥಾಪಕರು: ಪೂಜ್ಯ ಶ್ರೀ ರಮಣಚರಣತೀರ್ಥ (ನೋಚೂರ್) ಸ್ವಾಮಿಗಳು</p>
+            <p class="gk-shakhas">ಕೃಷ್ಣ ಯಜುರ್ವೇದ · ಉಪನಿಷತ್ ಪಾಠ</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Three ways (KN) -->
+    <section class="section">
+      <p class="section-eyebrow eyebrow-dev">सहभागितायाः त्रयो मार्गाः</p>
+      <h2 class="section-title">ಭಾಗವಹಿಸುವ ಮೂರು ಮಾರ್ಗಗಳು</h2>
+      <hr class="section-rule" />
+      <div class="action-grid">
+
+        <div class="action enrol">
+          <span class="badge">ಪ್ರವೇಶ ಆರಂಭ</span>
+          <h3>ನಿಮ್ಮ ಮಗುವನ್ನು ಸೇರಿಸಿ</h3>
+          <p class="pip">तमसो मा ज्योतिर्गमय</p>
+          <p>ನಿಮ್ಮ ಮಗು ಪೂಜ್ಯ ಅಧ್ಯಾಪಕರ ಮಾರ್ಗದರ್ಶನದಲ್ಲಿ ವೇದಗಳ ಬೆಳಕಿನಲ್ಲಿ ಬೆಳೆಯಲಿ.</p>
+          <p class="url">srishivasankalpa.org/gurukulas</p>
+        </div>
+
+        <div class="action donate">
+          <h3>ದಾನ ಮಾಡಿ</h3>
+          <img class="qr" src="../public/assets/artefacts/donation-qr.png" alt="UPI QR" />
+          <p class="upi">UPI · 9916104901-2@ybl</p>
+          <p>ರಸೀದಿಗಾಗಿ ವರ್ಗಾವಣೆ ಟಿಪ್ಪಣಿಯಲ್ಲಿ ಉದ್ದೇಶ ಮತ್ತು ಹೆಸರನ್ನು ನಮೂದಿಸಿ.</p>
+        </div>
+
+        <div class="action">
+          <h3>ಸ್ವಯಂಸೇವೆ · ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ</h3>
+          <p class="pip">तनु · मन · धन</p>
+          <p>ನಿಮ್ಮ ಸಮಯ, ಭಕ್ತಿ ಅಥವಾ ಸಂಪನ್ಮೂಲಗಳನ್ನು ಅರ್ಪಿಸಿ. ಕಾರ್ಯಕ್ರಮಗಳು, ಗುರುಕುಲ ಭೇಟಿ ಮತ್ತು ಪ್ರಚಾರಕ್ಕೆ ಸ್ವಯಂಸೇವಕರನ್ನು ಸ್ವಾಗತಿಸುತ್ತೇವೆ.</p>
+          <p class="url">info@shivasankalpa.org</p>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <p class="blessing">
+      ಶೃಂಗೇರಿ ಶ್ರೀ ಶಾರದಾ ಪೀಠಂನ ಪರಮಪೂಜ್ಯ ಜಗದ್ಗುರು ಶ್ರೀ ಶ್ರೀ ಭಾರತೀ ತೀರ್ಥ ಮಹಾಸನ್ನಿಧಾನಂ ಮತ್ತು ಜಗದ್ಗುರು ಶ್ರೀ ಶ್ರೀ ವಿಧುಶೇಖರ ಭಾರತೀ ಸನ್ನಿಧಾನಂ ಅವರ <strong>ಆಶೀರ್ವಾದ.</strong>
+    </p>
+    <p class="web">
+      srishivasankalpa.org
+      <small>ಶ್ರೀ ಶಿವಸಂಕಲ್ಪ ವೃಂದ · ಬೆಂಗಳೂರು</small>
+    </p>
+  </footer>
+</article>
+
+</body>
+</html>

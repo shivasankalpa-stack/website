@@ -52,11 +52,11 @@ export function Header() {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 md:px-6">
           <Link href="/" className="flex items-center gap-2.5 group shrink-0 min-w-0">
             <Image
-              src="/assets/og/logo.png"
+              src="/assets/og/logo.jpg"
               alt={t('logoAlt')}
               width={44}
               height={44}
-              className="h-10 w-auto md:h-11 mix-blend-multiply"
+              className="h-10 w-10 md:h-11 md:w-11 rounded-full object-cover"
               priority
             />
             <div className="leading-tight hidden sm:block min-w-0">

@@ -12,6 +12,26 @@ export interface Adhyapaka {
   qualification?: string;
   yearsOfService?: number;
   image?: string;
+  /**
+   * Optional CSS `object-position` value for the circular avatar crop
+   * (e.g. `'top'`, `'center 25%'`). Defaults to `'center top'`.
+   */
+  imagePosition?: string;
+  /** Veda shākhā — e.g. "Krishna Yajurveda". */
+  shakha?: string;
+  /** Adhyayana pāṭhaśāle — where the Adhyāpaka studied. */
+  studyLineage?: string;
+  /** Veda Guru under whom the Adhyāpaka learnt. */
+  vedaGuru?: string;
+}
+
+export interface Founder {
+  name: string;
+  /** Optional honorific shown alongside the name (e.g. "Mārga-darshi Swamiji"). */
+  honorific?: string;
+  image?: string;
+  /** Optional CSS `object-position` for the circular avatar crop. */
+  imagePosition?: string;
 }
 
 export interface ContactInfo {
@@ -19,12 +39,8 @@ export interface ContactInfo {
   email?: string;
   address?: string;
   mapUrl?: string;
-}
-
-export interface GurukulaEvent {
-  title: string;
-  date: string;
-  description: string;
+  /** Public website URL, if the Gurukula maintains one. */
+  website?: string;
 }
 
 export interface Gurukula {
@@ -32,18 +48,28 @@ export interface Gurukula {
   name: string;
   location: string;
   city: string;
+  /** Primary face used on list / featured cards (typically the senior Adhyāpaka). */
   acharya: string;
   studentCount: number;
-  shakha?: string;
+  /** All shākhās taught at the Gurukula. */
+  shakhas?: string[];
+  /** Curriculum beyond Veda pāṭha — Vedānga, śāstras, secular subjects, etc. */
+  otherShastras?: string[];
+  graduatedCount?: number;
+  ghanapaathisProduced?: number;
   established?: string;
   overview: string;
-  history: string;
-  dailySchedule?: string;
+  /** Founders / mārga-darshis (may differ from teaching Adhyāpakas). */
+  founders?: Founder[];
   adhyapakas: Adhyapaka[];
-  studentsSummary: string;
-  events: GurukulaEvent[];
   contact: ContactInfo;
   heroImage: string;
+  /**
+   * Optional CSS `object-position` for the wide hero crop
+   * (e.g. `'top'`, `'center 30%'`). Use when the subject sits above or
+   * below the centre and a default crop hides the focal point.
+   */
+  heroPosition?: string;
   images: string[];
 }
 
@@ -89,7 +115,14 @@ export interface Trustee {
   name: string;
   role: string;
   bio: string;
-  image: string;
+  /** Public URL under `/public`; omit when no photograph is available yet. */
+  image?: string;
+  /**
+   * Optional CSS `object-position` value (e.g. `'top'`, `'center 25%'`) used
+   * when the photo's subject sits higher than the centre of the frame.
+   * Defaults to `'center'`.
+   */
+  imagePosition?: string;
 }
 
 export interface FAQ {

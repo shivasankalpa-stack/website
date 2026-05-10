@@ -1,12 +1,8 @@
 /**
- * Trustees and Managing Committee data for v0.1.
+ * Trustees, Managing Committee, and trust members for v0.1.
  *
- * Two groups:
- *   1. Trustees — the trust's governing board
- *   2. Managing Committee — day-to-day operations
- *
- * Bio placeholders tagged #BIO-TODO-<name>.
- * Photo placeholders tagged #IMG-TODO-<name>.
+ * Bio placeholders tagged #BIO-TODO-<name> (bios are not shown on the site;
+ * retained for a future CMS migration).
  */
 
 import type { Trustee } from '@/lib/types';
@@ -25,10 +21,10 @@ export const trustees: Trustee[] = [
     image: '/assets/trustees/ravishankar-ks.jpg',
   },
   {
-    name: 'Giri Bhardwaj',
+    name: 'Girish Bharadwaj',
     role: 'Trustee',
-    bio: 'With a passion for cultural preservation, Giri Bhardwaj supports the Vṛnda\'s initiatives in Gurukula development and Vedic research. #BIO-TODO-giri-bhardwaj',
-    image: '/assets/trustees/giri-bhardwaj.jpg',
+    bio: 'With a passion for cultural preservation, Girish Bharadwaj supports the Vṛnda\'s initiatives in Gurukula development and Vedic research. #BIO-TODO-girish-bhardwaj',
+    image: '/assets/trustees/girish-bhardwaj.jpg',
   },
   {
     name: 'Harisha Harithasa',
@@ -40,7 +36,7 @@ export const trustees: Trustee[] = [
     name: 'Bodhayana Jayasimha',
     role: 'Trustee',
     bio: 'Bodhayana Jayasimha brings dedication and organisational strength to the Vṛnda\'s endeavours in service of Vedic education. #BIO-TODO-bodhayana-jayasimha',
-    image: '/assets/trustees/bodhayana-jayasimha.jpg',
+    image: '/assets/trustees/bodhayana-jayasimha.png',
   },
 ];
 
@@ -62,11 +58,53 @@ export const managingCommittee: Trustee[] = [
     role: 'Secretary',
     bio: 'As Secretary, Shreesha Harithasa manages the Vṛnda\'s coordination, documentation, and day-to-day outreach activities. #BIO-TODO-shreesha-harithasa',
     image: '/assets/trustees/shreesha-harithasa.jpg',
+    imagePosition: 'top',
+  },
+  {
+    name: 'Madhu Bharadwaj',
+    role: 'Treasurer',
+    bio: 'Madhu Bharadwaj oversees the Vṛnda\'s finances with diligence and accountability. #BIO-TODO-madhu-bharadwaj',
+    image: '/assets/trustees/madhu-bharadwaj.jpg',
   },
   {
     name: 'Gourishankara Sharma',
-    role: 'Treasurer',
-    bio: 'Gourishankara Sharma oversees the Vṛnda\'s finances with transparency and diligence, ensuring every contribution serves its intended purpose. #BIO-TODO-gourishankara-sharma',
-    image: '/assets/trustees/gourishankara-sharma.jpg',
+    role: 'Additional Treasurer',
+    bio: 'Gourishankara Sharma supports the Vṛnda\'s financial administration, ensuring every contribution serves its intended purpose. #BIO-TODO-gourishankara-sharma',
+    image: '/assets/trustees/gourishankara-sharma.png',
+  },
+];
+
+/** Additional registered trust members (not trustees or managing committee). */
+export const trustMembers: Trustee[] = [
+  {
+    name: 'Ahobila Narasimha Prasad',
+    role: 'Trust member',
+    bio: '',
+    image: '/assets/trustees/ahobila-narasimha-prasad.jpg',
+    imagePosition: 'top',
+  },
+  {
+    name: 'Bharat Harithasa',
+    role: 'Trust member',
+    bio: '',
+    image: '/assets/trustees/bharat-harithasa.jpg',
+  },
+  {
+    name: 'Karthik Satchitanand',
+    role: 'Trust member',
+    bio: '',
+    image: '/assets/trustees/karthik-satchitanand.jpg',
+  },
+  {
+    name: 'Phaneendra S. K.',
+    role: 'Trust member',
+    bio: '',
+    image: '/assets/trustees/phaneendra-sk.jpg',
+  },
+  {
+    name: 'Sankrutya Sharma',
+    role: 'Trust member',
+    bio: '',
+    image: '/assets/trustees/sankrutya-sharma.jpg',
   },
 ];

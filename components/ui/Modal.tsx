@@ -7,7 +7,8 @@
 
 'use client';
 
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 
 interface ModalProps {
@@ -15,10 +16,35 @@ interface ModalProps {
   onClose: () => void;
   title?: string;
   children: React.ReactNode;
+  /** Tailwind max-width of the dialog. Defaults to `'max-w-lg'`. */
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
 }
 
-export function Modal({ isOpen, onClose, title, children }: ModalProps) {
+const SIZE_TO_MAX_W: Record<NonNullable<ModalProps['size']>, string> = {
+  sm: 'max-w-sm',
+  md: 'max-w-lg',
+  lg: 'max-w-xl',
+  xl: 'max-w-2xl',
+  '2xl': 'max-w-3xl',
+  '3xl': 'max-w-4xl',
+};
+
+export function Modal({
+  isOpen,
+  onClose,
+  title,
+  children,
+  size = 'md',
+}: ModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  // Portal target is only available on the client. Defer rendering until mount
+  // so SSR output stays empty and we avoid ancestor `transform` containing
+  // blocks that would otherwise capture our `position: fixed` overlay.
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -39,29 +65,26 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
     };
   }, [isOpen, handleKeyDown]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
+  const overlay = (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
       role="dialog"
       aria-modal="true"
       aria-label={title}
     >
-      {/* Backdrop */}
       <div
         className="absolute inset-0 bg-charcoal-500/60 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Panel */}
       <div
         ref={dialogRef}
         tabIndex={-1}
-        className="relative z-10 w-full max-w-lg rounded-lg border border-ivory-300 bg-ivory-50 p-6 shadow-xl focus:outline-none"
+        className={`relative z-10 w-full ${SIZE_TO_MAX_W[size]} max-h-[90vh] overflow-y-auto rounded-lg border border-ivory-300 bg-ivory-50 p-6 shadow-xl focus:outline-none`}
       >
-        {/* Header */}
         <div className="mb-4 flex items-start justify-between">
           {title && (
             <h2 className="font-serif text-xl text-indigo">{title}</h2>
@@ -75,9 +98,10 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
           </button>
         </div>
 
-        {/* Content */}
         {children}
       </div>
     </div>
   );
+
+  return createPortal(overlay, document.body);
 }

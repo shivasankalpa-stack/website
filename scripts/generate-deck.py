@@ -457,7 +457,7 @@ add_para(tf, "How We Operate — reaching out to Gurukulas, building a database"
 add_para(tf, "", font_size=6)
 add_para(tf, "Team Shivasankalpa:", font_size=18, color=INDIGO, bold=True, space_before=10)
 add_para(tf, "    Managing Committee: Naveen (President), Sheshadri (VP), Shreesha (Secretary), Gourishankara (Treasurer)", font_size=15, color=CHARCOAL_LIGHT, space_before=4)
-add_para(tf, "    Trustees: Anantanarayana Sharma, Ravishankar, Giri Bhardwaj, Harisha, Bodhayana", font_size=15, color=CHARCOAL_LIGHT, space_before=4)
+add_para(tf, "    Trustees: Anantanarayana Sharma, Ravishankar, Girish Bharadwaj, Harisha, Bodhayana", font_size=15, color=CHARCOAL_LIGHT, space_before=4)
 add_para(tf, "    Click any card → expanded modal with larger photo and full bio", font_size=15, color=INDIGO_LIGHT, space_before=4)
 
 add_demo_hint(slide, "localhost:3001/about")

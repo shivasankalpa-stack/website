@@ -1,6 +1,6 @@
 /**
  * About Us — trust introduction, vision, mission, objectives,
- * trustees (expandable cards), and trust artefacts.
+ * team (managing committee, trustees, trust members), and trust artefacts.
  */
 
 import type { Metadata } from 'next';
@@ -12,7 +12,8 @@ import { ShlokaBlock } from '@/components/ui/ShlokaBlock';
 import { Card } from '@/components/ui/Card';
 import { PlaceholderImage } from '@/components/ui/PlaceholderImage';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { getTrustees, getManagingCommittee } from '@/lib/data-access';
+import { LogoEnlargeable } from '@/components/blocks/LogoEnlargeable';
+import { getTrustees, getManagingCommittee, getTrustMembers } from '@/lib/data-access';
 import { TrusteeGrid } from './trustees-grid';
 
 type Props = {
@@ -62,13 +63,16 @@ export default async function AboutPage({ params }: Props) {
 
   const trustees = getTrustees();
   const managingCommittee = getManagingCommittee();
+  const trustMembers = getTrustMembers();
 
   const roleMap: Record<string, string> = {
     'Trustee': t('trusteeRole'),
+    'Trust member': t('trustMemberRole'),
     'President': t('presidentRole'),
     'Vice-President': t('vicePresidentRole'),
     'Secretary': t('secretaryRole'),
     'Treasurer': t('treasurerRole'),
+    'Additional Treasurer': t('addlTreasurerRole'),
   };
 
   return (
@@ -82,13 +86,11 @@ export default async function AboutPage({ params }: Props) {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal-500/70 to-charcoal-500/80" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center space-y-4">
-          <div className="mx-auto rounded-xl bg-ivory/90 backdrop-blur-sm p-2 inline-block">
-            <Image
-              src="/assets/og/logo.png"
-              alt=""
-              width={80}
-              height={80}
-              className="h-16 w-auto md:h-20"
+          <div className="flex justify-center">
+            <LogoEnlargeable
+              label={tHeader('logoAlt')}
+              sizeClass="h-20 w-20 md:h-24 md:w-24"
+              ringClass="ring-2 ring-ivory-50/30 shadow-md"
             />
           </div>
           <h1 className="font-serif text-3xl font-bold text-ivory-50 md:text-4xl">{t('heroTitle')}</h1>
@@ -206,12 +208,17 @@ export default async function AboutPage({ params }: Props) {
             <h3 className="font-serif text-xl font-semibold text-indigo text-center">
               {t('managingCommittee')}
             </h3>
-            <TrusteeGrid trustees={managingCommittee} roleMap={roleMap} clickToRead={t('clickToRead')} />
+            <TrusteeGrid trustees={managingCommittee} roleMap={roleMap} />
           </div>
 
           <div className="space-y-6">
             <h3 className="font-serif text-xl font-semibold text-indigo text-center">{t('trustees')}</h3>
-            <TrusteeGrid trustees={trustees} roleMap={roleMap} clickToRead={t('clickToRead')} />
+            <TrusteeGrid trustees={trustees} roleMap={roleMap} showRole={false} />
+          </div>
+
+          <div className="space-y-6">
+            <h3 className="font-serif text-xl font-semibold text-indigo text-center">{t('trustMembers')}</h3>
+            <TrusteeGrid trustees={trustMembers} roleMap={roleMap} showRole={false} />
           </div>
         </div>
       </section>

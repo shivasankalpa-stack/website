@@ -27,11 +27,11 @@ export async function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <Image
-                src="/assets/og/logo.png"
+                src="/assets/og/logo.jpg"
                 alt={tHeader('logoAlt')}
                 width={48}
                 height={48}
-                className="h-12 w-auto mix-blend-multiply"
+                className="h-12 w-12 rounded-full object-cover"
               />
               <div>
                 <h3 className="font-serif text-lg font-semibold text-indigo">
