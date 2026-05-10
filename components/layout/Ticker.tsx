@@ -46,17 +46,28 @@ function getServerSnapshot() {
   return true;
 }
 
-/** Subscribe to `prefers-reduced-motion`. */
+/**
+ * Subscribe to `prefers-reduced-motion` via `useSyncExternalStore` so we
+ * never call setState synchronously inside an effect (which the
+ * `react-hooks/set-state-in-effect` lint rule forbids).
+ */
+function subscribeReducedMotion(callback: () => void) {
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  mq.addEventListener('change', callback);
+  return () => mq.removeEventListener('change', callback);
+}
+function getReducedMotionSnapshot() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+function getReducedMotionServerSnapshot() {
+  return false;
+}
 function usePrefersReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReduced(mq.matches);
-    const onChange = (e: MediaQueryListEvent) => setReduced(e.matches);
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
-  }, []);
-  return reduced;
+  return useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot
+  );
 }
 
 interface TickerItem {

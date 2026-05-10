@@ -7,9 +7,25 @@
 
 'use client';
 
-import { useEffect, useRef, useCallback, useState } from 'react';
+import { useEffect, useRef, useCallback, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
+
+/**
+ * Returns `true` once we've hydrated on the client. We can't render a
+ * portal on the server (no `document.body`), so we gate the overlay on
+ * this. Implemented with `useSyncExternalStore` (rather than a
+ * setState-in-effect dance) so it plays nicely with React 18+ strict
+ * lint rules that forbid synchronous setState inside `useEffect`.
+ */
+const noop = () => () => {};
+function useIsMounted(): boolean {
+  return useSyncExternalStore(
+    noop,
+    () => true,
+    () => false
+  );
+}
 
 interface ModalProps {
   isOpen: boolean;
@@ -37,14 +53,10 @@ export function Modal({
   size = 'md',
 }: ModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
-
   // Portal target is only available on the client. Defer rendering until mount
   // so SSR output stays empty and we avoid ancestor `transform` containing
   // blocks that would otherwise capture our `position: fixed` overlay.
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useIsMounted();
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
