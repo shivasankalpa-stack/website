@@ -1,0 +1,98 @@
+components/layout/Ticker.tsx
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 49-64,66-70
+components/ui/ScrollReveal.tsx
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 3-8,16-41,45,48,64-66,72
+  human 9
+components/ui/Modal.tsx
+  3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2 10,14-28,59
+  human 29
+---
+{
+  "attestations": [
+    {
+      "entries": [
+        {
+          "accepted_lines": 21,
+          "added_lines": 21,
+          "deleted_lines": 6,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "49-64,66-70",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "components/layout/Ticker.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 38,
+          "added_lines": 38,
+          "deleted_lines": 12,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "3-8,16-41,45,48,64-66,72",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 1,
+          "added_lines": 1,
+          "deleted_lines": 0,
+          "hash": "human",
+          "lines": "9",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "components/ui/ScrollReveal.tsx"
+    },
+    {
+      "entries": [
+        {
+          "accepted_lines": 17,
+          "added_lines": 17,
+          "deleted_lines": 7,
+          "hash": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+          "lines": "10,14-28,59",
+          "overridden_lines": 0
+        },
+        {
+          "accepted_lines": 1,
+          "added_lines": 1,
+          "deleted_lines": 5,
+          "hash": "human",
+          "lines": "29",
+          "overridden_lines": 0
+        }
+      ],
+      "file": "components/ui/Modal.tsx"
+    }
+  ],
+  "base_commit_sha": "124d004cd7e128e7120fd7483309e4003943ee30",
+  "branch": "main",
+  "commit_sha": "0d9206717344f27bc1174b21b46fa466cc6dcc60",
+  "commit_time": "2026-05-10T13:34:39+05:30",
+  "commit_type": "direct_commit",
+  "git_ai_version": "1.4.3",
+  "prompts": {
+    "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2": {
+      "accepted_lines": 76,
+      "agent_id": {
+        "id": "3ab91656-3a04-4d7d-8800-0cd7b4c7d7e2",
+        "model": "claude-opus-4-7-thinking-xhigh",
+        "tool": "cursor"
+      },
+      "human_author": "ksatchit <karthik.s@harness.io>",
+      "overriden_lines": 0,
+      "total_additions": 76,
+      "total_deletions": 25
+    },
+    "human": {
+      "accepted_lines": 2,
+      "agent_id": null,
+      "human_author": "ksatchit <karthik.s@harness.io>",
+      "overriden_lines": 0,
+      "total_additions": 2,
+      "total_deletions": 5
+    }
+  },
+  "repo": "git@github.com:shivasankalpa-stack/website.git",
+  "schema_version": "authorship/3.0.0"
+}
