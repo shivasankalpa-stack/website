@@ -10,7 +10,6 @@ import { MapPin, Users, BookOpen } from 'lucide-react';
 import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
-import { EnrolCallout } from '@/components/blocks/EnrolCallout';
 import { getGurukulas } from '@/lib/data-access';
 
 type Props = {
@@ -41,7 +40,6 @@ export default async function GurukulasListPage({ params }: Props) {
   const gurukulas = getGurukulas();
 
   return (
-    <>
     <div className="py-12 md:py-16">
       <div className="mx-auto max-w-6xl px-4 md:px-6 space-y-10">
         <div className="text-center space-y-4">
@@ -118,10 +116,5 @@ export default async function GurukulasListPage({ params }: Props) {
         </div>
       </div>
     </div>
-
-    {/* Emotional, dharmic invitation to enrol — sits below the cards so
-        parents who scrolled the gurukulas have a clear next step. */}
-    <EnrolCallout />
-    </>
   );
 }

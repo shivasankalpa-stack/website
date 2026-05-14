@@ -1,6 +1,7 @@
 /**
- * About Us — trust introduction, vision, mission, objectives,
- * team (managing committee, trustees, trust members), and trust artefacts.
+ * About Us — trust introduction, the naming Anugraha from Sringeri,
+ * vision, mission, objectives, and the team
+ * (managing committee, trustees, trust members).
  */
 
 import type { Metadata } from 'next';
@@ -10,7 +11,6 @@ import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ShlokaBlock } from '@/components/ui/ShlokaBlock';
 import { Card } from '@/components/ui/Card';
-import { PlaceholderImage } from '@/components/ui/PlaceholderImage';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { LogoEnlargeable } from '@/components/blocks/LogoEnlargeable';
 import { getTrustees, getManagingCommittee, getTrustMembers } from '@/lib/data-access';
@@ -100,25 +100,76 @@ export default async function AboutPage({ params }: Props) {
 
       <ScrollReveal>
       <section className="py-16 md:py-20">
-        <div className="mx-auto max-w-4xl px-4 md:px-6 space-y-8">
-          <SectionHeading title={t('storyTitle')} centered />
+        <div className="mx-auto max-w-3xl px-4 md:px-6">
+          <SectionHeading title={t('storyTitle')} devanagari="इतिवृत्तम्" centered />
 
-          <div className="text-charcoal-300 leading-relaxed space-y-5">
-            <p>{t('storyPara1')}</p>
-            <p>{t('storyPara2')}</p>
-            <p className="text-charcoal font-medium">{t('storyPara3')}</p>
-            <p>{t('storyPara4')}</p>
+          <div className="mt-10 md:mt-12 space-y-5 max-w-2xl mx-auto">
+            <p className="text-charcoal leading-relaxed">{t('storyPara1')}</p>
+            <p className="text-charcoal-300 leading-relaxed">{t('storyPara2')}</p>
           </div>
 
-          <ShlokaBlock
-            devanagari="तन्मे मनः शिवसङ्कल्पमस्तु"
-            iast={locale === 'en' ? "Tan me manaḥ śivasaṅkalpamastu" : undefined}
-            translation={t('storyShlokaTranslation')}
-            source={t('shlokaSource')}
-            size="md"
-          />
+          {/* Emotional pivot — lifted out of the prose flow */}
+          <div className="my-12 md:my-14 flex flex-col items-center gap-4">
+            <span aria-hidden className="h-px w-10 bg-gold/50" />
+            <p className="font-serif text-xl md:text-2xl text-indigo text-center leading-snug tracking-tight max-w-xl">
+              {t('storyPara3')}
+            </p>
+            <span aria-hidden className="h-px w-10 bg-gold/50" />
+          </div>
 
-          <p className="text-charcoal-300 leading-relaxed text-center max-w-2xl mx-auto">{t('storyClosing')}</p>
+          <p className="text-charcoal-300 leading-relaxed max-w-2xl mx-auto">{t('storyPara4')}</p>
+
+          <div className="mt-12">
+            <ShlokaBlock
+              devanagari="तन्मे मनः शिवसङ्कल्पमस्तु"
+              iast={locale === 'en' ? "Tan me manaḥ śivasaṅkalpamastu" : undefined}
+              translation={t('storyShlokaTranslation')}
+              source={t('shlokaSource')}
+              size="md"
+            />
+          </div>
+
+          <p className="mt-6 font-serif italic text-charcoal text-center max-w-xl mx-auto leading-relaxed">
+            {t('storyClosing')}
+          </p>
+        </div>
+      </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+      <section className="py-16 md:py-20 bg-ivory-50 border-y border-ivory-300">
+        <div className="mx-auto max-w-5xl px-4 md:px-6">
+          <div className="grid gap-10 md:grid-cols-5 md:items-center">
+            <figure className="md:col-span-2">
+              <div className="relative overflow-hidden rounded-xl border border-gold/30 bg-ivory shadow-md">
+                <Image
+                  src="/assets/artefacts/sri-vidhushekhara-bharati.jpg"
+                  alt={t('anugrahaImageAlt')}
+                  width={694}
+                  height={1080}
+                  className="w-full h-auto object-cover"
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                />
+              </div>
+              <figcaption className="mt-3 text-center text-xs text-charcoal-200 italic leading-snug">
+                {t('anugrahaCaption')}
+              </figcaption>
+            </figure>
+
+            <div className="md:col-span-3 space-y-5">
+              <div className="inline-flex items-center gap-2 rounded-full bg-ivory px-4 py-1 border border-gold/30">
+                <span className="shloka-devanagari text-sm text-gold">अनुग्रहः</span>
+                <span className="text-[10px] uppercase tracking-wider text-gold-400">
+                  {t('anugrahaLabel')}
+                </span>
+              </div>
+              <h2 className="font-serif text-2xl font-semibold text-indigo md:text-3xl">
+                {t('anugrahaTitle')}
+              </h2>
+              <p className="text-charcoal-300 leading-relaxed">{t('anugrahaPara1')}</p>
+              <p className="text-charcoal-300 leading-relaxed">{t('anugrahaPara2')}</p>
+            </div>
+          </div>
         </div>
       </section>
       </ScrollReveal>
@@ -224,35 +275,6 @@ export default async function AboutPage({ params }: Props) {
       </section>
       </ScrollReveal>
 
-      <ScrollReveal>
-      <section className="bg-ivory-50 border-y border-ivory-300 py-16">
-        <div className="mx-auto max-w-4xl px-4 md:px-6 space-y-8">
-          <SectionHeading
-            title={t('artefactsTitle')}
-            subtitle={t('artefactsSubtitle')}
-            centered
-          />
-          <div className="grid gap-6 sm:grid-cols-2">
-            <Card className="text-center space-y-3">
-              <PlaceholderImage
-                todoId="ARTEFACT-TODO-trust-certificate"
-                caption={t('regCertificate')}
-                aspectRatio="4/3"
-              />
-              <p className="text-sm font-medium text-charcoal-300">{t('regCertificate')}</p>
-            </Card>
-            <Card className="text-center space-y-3">
-              <PlaceholderImage
-                todoId="ARTEFACT-TODO-audit-report"
-                caption={t('auditReport')}
-                aspectRatio="4/3"
-              />
-              <p className="text-sm font-medium text-charcoal-300">{t('auditReport')}</p>
-            </Card>
-          </div>
-        </div>
-      </section>
-      </ScrollReveal>
     </div>
   );
 }

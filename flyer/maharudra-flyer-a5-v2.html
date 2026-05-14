@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Sri Shivasankalpa Vṛnda — Maharudra Flyer (A5, dual-portrait)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<!--
+  Two-sided A5 flyer for the Maharudra Purascharana enquiry desk.
+  Front: English. Back: Kannada. Same content as the A4 version,
+  tuned to fit cleanly on an A5 sheet.
+
+  HOW TO PRINT
+  ────────────
+  1. Open this file in Chrome or Edge.
+  2. Press ⌘P / Ctrl+P.
+  3. Destination: "Save as PDF" (or your printer).
+     Paper size: A5 · Margins: None · Scale: Default · Background graphics: ON.
+  4. Print double-sided (flip on long edge) for the bilingual brochure.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  figure { margin: 0; }
+
+  :root {
+    --ivory-50:  #FDFBF5;
+    --ivory:     #F7F1E3;
+    --ivory-300: #EDE5D0;
+    --charcoal:  #2A2A2A;
+    --charcoal-300: #616161;
+    --indigo:    #2E2A5D;
+    --indigo-500:#201D42;
+    --indigo-300:#5D5799;
+    --kumkuma:   #A63232;
+    --kumkuma-500:#8B2828;
+    --gold:      #B8860B;
+    --gold-100:  #F3E4BC;
+    --gold-50:   #FBF5E6;
+
+    --serif:    'EB Garamond', Georgia, 'Times New Roman', serif;
+    --sans:     'Inter', system-ui, -apple-system, sans-serif;
+    --dev:      'Noto Serif Devanagari', serif;
+    --kn:       'Noto Sans Kannada', system-ui, sans-serif;
+  }
+
+  @page { size: A5 portrait; margin: 0; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #c8c8c8;
+    font-family: var(--sans);
+    color: var(--charcoal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media print {
+    html, body { background: #fff; }
+    *,*::before,*::after {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+  }
+
+  .page {
+    width: 148mm;
+    height: 210mm;
+    margin: 8mm auto;
+    background: var(--ivory-50);
+    color: var(--charcoal);
+    box-shadow: 0 2px 16px rgba(0,0,0,.18);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+    break-after: page;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  @media print { .page { margin: 0; box-shadow: none; } }
+
+  .page::before,
+  .page::after {
+    content: '';
+    position: absolute;
+    left: 12mm; right: 12mm;
+    height: 0.25mm;
+    background: linear-gradient(90deg, transparent, var(--gold) 25%, var(--gold) 75%, transparent);
+    opacity: .6;
+  }
+  .page::before { top: 1.6mm; }
+  .page::after  { bottom: 1.6mm; }
+
+  /* ─── Header ─── */
+  .hero {
+    background: linear-gradient(135deg, var(--indigo) 0%, var(--indigo-500) 50%, var(--kumkuma-500) 100%);
+    color: var(--ivory-50);
+    padding: 4mm 6mm 3.6mm;
+    display: grid;
+    grid-template-columns: 16mm 1fr;
+    gap: 4.5mm;
+    align-items: center;
+    border-bottom: 0.5mm solid var(--gold);
+  }
+  .hero .logo {
+    width: 16mm; height: 16mm;
+  }
+  .hero .logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 14.5pt;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.6mm;
+    line-height: 1.1;
+  }
+  .hero .tagline {
+    font-size: 6.5pt;
+    color: var(--gold-100);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin: 0 0 1.2mm;
+    font-weight: 500;
+  }
+  .hero .shloka-row {
+    display: flex;
+    gap: 3mm;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .hero .shloka-dev {
+    font-family: var(--dev);
+    font-size: 10pt;
+    color: var(--gold-100);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .hero .shloka-trans {
+    font-style: italic;
+    font-size: 6.5pt;
+    color: rgba(253,251,245,0.8);
+    margin: 0;
+  }
+
+  /* ─── Body ─── */
+  .body { padding: 3.2mm 6mm 0; flex: 1; display: flex; flex-direction: column; gap: 2.6mm; }
+
+  .section { display: flex; flex-direction: column; gap: 1mm; }
+  .section-eyebrow {
+    font-family: var(--dev);
+    color: var(--kumkuma);
+    font-size: 8pt;
+    margin: 0;
+    line-height: 1;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    color: var(--indigo);
+    font-size: 10.5pt;
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .section-rule {
+    width: 9mm; height: 0.4mm; background: var(--gold);
+    border: 0; margin: 0.1mm 0 0;
+  }
+
+  /* Mission */
+  .mission p {
+    font-size: 7.8pt;
+    line-height: 1.45;
+    color: var(--charcoal-300);
+    margin: 0;
+  }
+  .mission p strong { color: var(--indigo); font-weight: 600; }
+
+  /* Mission row — portrait left + What We Do cards right */
+  .vidya-row {
+    display: grid;
+    grid-template-columns: 50mm 1fr;
+    gap: 3.5mm;
+    align-items: stretch;
+  }
+  .vidya-portrait {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    align-self: stretch;
+  }
+  .vidya-portrait img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 1.2mm;
+    border: 0.2mm solid var(--ivory-300);
+    box-shadow: 0 0.3mm 1.2mm rgba(46,42,93,0.10);
+  }
+  .vidya-row .section { gap: 0.8mm; }
+
+  /* What We Do — 2-column grid inside the mission row, stretched to picture height */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+    gap: 1.4mm;
+    margin-top: 0.2mm;
+    flex: 1;
+  }
+  .why-card {
+    position: relative;
+    background: var(--ivory);
+    border: 0.3mm solid var(--gold);
+    border-radius: 1.3mm;
+    padding: 2.2mm 2.4mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.8mm;
+  }
+  .why-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='3.2' fill='none' stroke='%23B8860B' stroke-width='.55'/><circle cx='8' cy='8' r='1.1' fill='%23B8860B'/><circle cx='3' cy='8' r='.55' fill='%23B8860B'/><circle cx='13' cy='8' r='.55' fill='%23B8860B'/><circle cx='8' cy='3' r='.55' fill='%23B8860B'/><circle cx='8' cy='13' r='.55' fill='%23B8860B'/></svg>"),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='3.2' fill='none' stroke='%23B8860B' stroke-width='.55'/><circle cx='8' cy='8' r='1.1' fill='%23B8860B'/><circle cx='3' cy='8' r='.55' fill='%23B8860B'/><circle cx='13' cy='8' r='.55' fill='%23B8860B'/><circle cx='8' cy='3' r='.55' fill='%23B8860B'/><circle cx='8' cy='13' r='.55' fill='%23B8860B'/></svg>"),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='3.2' fill='none' stroke='%23B8860B' stroke-width='.55'/><circle cx='8' cy='8' r='1.1' fill='%23B8860B'/><circle cx='3' cy='8' r='.55' fill='%23B8860B'/><circle cx='13' cy='8' r='.55' fill='%23B8860B'/><circle cx='8' cy='3' r='.55' fill='%23B8860B'/><circle cx='8' cy='13' r='.55' fill='%23B8860B'/></svg>"),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='3.2' fill='none' stroke='%23B8860B' stroke-width='.55'/><circle cx='8' cy='8' r='1.1' fill='%23B8860B'/><circle cx='3' cy='8' r='.55' fill='%23B8860B'/><circle cx='13' cy='8' r='.55' fill='%23B8860B'/><circle cx='8' cy='3' r='.55' fill='%23B8860B'/><circle cx='8' cy='13' r='.55' fill='%23B8860B'/></svg>");
+    background-position: 0.45mm 0.45mm, right 0.45mm top 0.45mm, left 0.45mm bottom 0.45mm, right 0.45mm bottom 0.45mm;
+    background-repeat: no-repeat;
+    background-size: 2.2mm 2.2mm;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  .why-card::after {
+    content: '';
+    position: absolute;
+    inset: 0.85mm;
+    border: 0.15mm solid var(--gold-100);
+    border-radius: 0.7mm;
+    pointer-events: none;
+  }
+  .why-card h4 {
+    font-family: var(--serif);
+    font-weight: 600;
+    color: var(--indigo);
+    font-size: 8.6pt;
+    margin: 0 0 0.6mm;
+    line-height: 1.2;
+  }
+  .why-card p {
+    font-size: 7.4pt;
+    line-height: 1.32;
+    color: var(--charcoal-300);
+    margin: 0;
+  }
+
+  /* Three actions */
+  .action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr 1fr;
+    gap: 1.6mm;
+    margin-top: 0.2mm;
+    align-items: stretch;
+  }
+  .action {
+    border: 0.2mm solid var(--ivory-300);
+    border-radius: 1mm;
+    padding: 1.8mm 2mm;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8mm;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .action.donate { background: var(--ivory); border-color: var(--gold); }
+  .action.enrol  { background: linear-gradient(180deg, var(--ivory-50), var(--gold-50)); border-color: var(--gold); }
+  .action h3 {
+    font-family: var(--serif);
+    font-weight: 700;
+    color: var(--indigo);
+    font-size: 8.6pt;
+    margin: 0;
+    letter-spacing: 0.005em;
+    line-height: 1.15;
+  }
+  .action .pip {
+    font-family: var(--dev);
+    font-size: 7pt;
+    color: var(--kumkuma);
+    line-height: 1;
+    margin: 0;
+  }
+  .action p { font-size: 6.5pt; color: var(--charcoal-300); margin: 0; line-height: 1.3; }
+  .action .url {
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 6pt;
+    color: var(--indigo);
+    background: #EEEDF5;
+    padding: 0.8mm 1.4mm;
+    border-radius: 0.7mm;
+    word-break: break-all;
+  }
+  .action .qr {
+    width: 18mm; height: 18mm;
+    object-fit: contain;
+    background: #fff;
+    padding: 0.5mm;
+    border: 0.2mm solid var(--ivory-300);
+    border-radius: 0.7mm;
+  }
+  .action .qr-hint {
+    font-size: 5.8pt;
+    color: var(--charcoal-300);
+    margin: 0;
+    letter-spacing: 0.03em;
+  }
+  .action .badge {
+    background: var(--kumkuma);
+    color: var(--ivory-50);
+    font-size: 5.8pt;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.7mm 1.6mm;
+    border-radius: 999px;
+  }
+
+  /* ─── Footer ─── */
+  .footer {
+    margin-top: auto;
+    padding: 2.6mm 6mm 3mm;
+    background: var(--indigo);
+    color: var(--ivory-50);
+    border-top: 0.5mm solid var(--gold);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 3.5mm;
+  }
+  .footer .blessing {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 6.8pt;
+    line-height: 1.3;
+    color: rgba(253,251,245,0.92);
+    margin: 0;
+  }
+  .footer .blessing strong { color: var(--gold-100); font-weight: 600; font-style: normal; }
+  .footer .web {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 9pt;
+    color: var(--gold-100);
+    text-align: right;
+    margin: 0;
+    line-height: 1.3;
+  }
+  .footer .web small {
+    display: block;
+    font-family: var(--sans);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 5.8pt;
+    color: rgba(253,251,245,0.7);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 0.6mm;
+  }
+
+  /* ─── Kannada page tweaks ─── */
+  .page-kn { font-family: var(--kn); }
+  .page-kn .hero h1 { font-family: var(--kn); font-size: 12.5pt; }
+  .page-kn .hero .tagline { font-family: var(--kn); letter-spacing: 0.05em; }
+  .page-kn .section-title { font-family: var(--kn); font-size: 10pt; }
+  .page-kn .why-card h4   { font-family: var(--kn); font-size: 8pt; }
+  .page-kn .why-card p    { font-family: var(--kn); font-size: 6.9pt; }
+  .page-kn .mission p, .page-kn .action h3, .page-kn .action p, .page-kn .action .qr-hint {
+    font-family: var(--kn);
+  }
+  .page-kn .mission p     { font-size: 7.4pt; line-height: 1.4; }
+  .page-kn .action h3     { font-size: 7.8pt; }
+  .page-kn .action p      { font-size: 6.2pt; }
+  .page-kn .footer .blessing, .page-kn .footer .web { font-family: var(--kn); font-style: normal; }
+  .page-kn .footer .blessing { font-size: 6.4pt; line-height: 1.32; }
+  .page-kn .footer .web small { font-family: var(--kn); }
+
+  .eyebrow-dev { font-family: var(--dev) !important; font-style: normal; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- ░░░░░░░░░░░░░░░░░░░░░  PAGE 1 — ENGLISH  ░░░░░░░░░░░░░░░░░░░░░ -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<article class="page page-en">
+
+  <header class="hero">
+    <div class="logo"><img src="./Shivasankalpa-New-Logo.jpeg" alt="Sri Shivasankalpa Vṛnda" /></div>
+    <div class="brand">
+      <h1>Sri Shivasankalpa Vṛnda</h1>
+      <p class="tagline">Uplifting Vedic Gurukulas through Seva, Śraddhā &amp; Saṁskāra</p>
+      <div class="shloka-row">
+        <p class="shloka-dev">तन्मे मनः शिवसङ्कल्पमस्तु</p>
+        <p class="shloka-trans">May our minds be filled with auspicious resolve</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <section class="section mission">
+      <p class="section-eyebrow eyebrow-dev">सङ्कल्पः</p>
+      <h2 class="section-title">A Resolve Born of the Sringeri Guru Paramparā</h2>
+      <hr class="section-rule" />
+      <p>
+        With the boundless grace of the <strong>Jagadgurus of Dakshiṇāmnāya Śrī Śāradā Pīṭham, Sringeri</strong>,
+        Sri Shivasankalpa Vṛnda is a charitable trust devoted to supporting Veda Gurukulas and sustaining the timeless Guru–Śiṣya Paramparā.
+      </p>
+    </section>
+
+    <div class="vidya-row">
+      <figure class="vidya-portrait">
+        <img src="./peeking-vidyarthis.jpg" alt="Young vidyārthis at the Gurukulam" />
+      </figure>
+
+      <section class="section">
+        <p class="section-eyebrow eyebrow-dev">कार्यक्षेत्राणि</p>
+        <h2 class="section-title">What We Do</h2>
+        <hr class="section-rule" />
+        <div class="why-grid">
+          <div class="why-card">
+            <h4>Vedic Education</h4>
+            <p>Sustaining Gurukulas where students learn the Vedas, Ṣaḍaṅgas and Śāstras through the oral guru-śiṣya tradition.</p>
+          </div>
+          <div class="why-card">
+            <h4>Gurukula Welfare</h4>
+            <p>Learning materials, student aids, infrastructure, and welfare of revered Adhyāpakas.</p>
+          </div>
+          <div class="why-card">
+            <h4>Honouring Scholars</h4>
+            <p>Recognising the silent sacrifice of Vedic Adhyāpakas who have dedicated their lives to this tradition.</p>
+          </div>
+          <div class="why-card">
+            <h4>Vedic Research</h4>
+            <p>Supporting research and Vedic libraries — preserving manuscripts and śāstric scholarship.</p>
+          </div>
+          <div class="why-card">
+            <h4>Go-Saṁrakṣaṇam</h4>
+            <p>Supporting Gośālās and the sacred cause of cow protection, shelter, and welfare.</p>
+          </div>
+          <div class="why-card">
+            <h4>Loka-Kalyāṇa Events</h4>
+            <p>Programmes for the welfare, support and promotion of the Vedic Gurukula tradition.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="section">
+      <p class="section-eyebrow eyebrow-dev">सहभागितायाः त्रयो मार्गाः</p>
+      <h2 class="section-title">Three Ways to Participate</h2>
+      <hr class="section-rule" />
+      <div class="action-grid">
+
+        <div class="action enrol">
+          <span class="badge">Admissions Open</span>
+          <h3>Enrol Your Child</h3>
+          <p class="pip">तमसो मा ज्योतिर्गमय</p>
+          <p>Let your child grow in the light of the Vedas — under the care of scholarly Adhyāpakas.</p>
+          <p class="url">shivasankalpa.org/gurukulas</p>
+        </div>
+
+        <div class="action donate">
+          <h3>Offer Your Support</h3>
+          <img class="qr" src="../public/assets/artefacts/donation-page-qr.png" alt="Scan to offer your support" />
+          <p class="qr-hint">Scan to make your donation</p>
+        </div>
+
+        <div class="action">
+          <h3>Volunteer · Talk to Us</h3>
+          <p class="pip">तनु · मन · धन</p>
+          <p>Participate in our programmes — volunteers are warmly welcomed for Gurukula seva, daana, and outreach.</p>
+          <p class="url">+91 70903 04901</p>
+          <p class="url">info@shivasankalpa.org</p>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <p class="blessing">
+      <strong>Blessed by</strong> His Holiness Jagadguru Śrī Śrī Bhāratī Tīrtha Mahāsannidhānam
+      &amp; His Holiness Jagadguru Śrī Śrī Vidhuśekhara Bhāratī Sannidhānam of Sringeri Śāradā Pīṭham.
+    </p>
+    <p class="web">
+      shivasankalpa.org
+      <small>Sri Shivasankalpa Vṛnda · Bangalore</small>
+    </p>
+  </footer>
+</article>
+
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- ░░░░░░░░░░░░░░░░░░░░░  PAGE 2 — KANNADA  ░░░░░░░░░░░░░░░░░░░░░ -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<article class="page page-kn">
+
+  <header class="hero">
+    <div class="logo"><img src="./Shivasankalpa-New-Logo.jpeg" alt="ಶ್ರೀ ಶಿವಸಂಕಲ್ಪ ವೃಂದ" /></div>
+    <div class="brand">
+      <h1>ಶ್ರೀ ಶಿವಸಂಕಲ್ಪ ವೃಂದ</h1>
+      <p class="tagline">ಸೇವೆ, ಶ್ರದ್ಧೆ ಮತ್ತು ಸಂಸ್ಕಾರಗಳ ಮೂಲಕ ವೈದಿಕ ಗುರುಕುಲಗಳ ಅಭ್ಯುದಯ</p>
+      <div class="shloka-row">
+        <p class="shloka-dev">तन्मे मनः शिवसङ्कल्पमस्तु</p>
+        <p class="shloka-trans">ನಮ್ಮ ಮನಸ್ಸುಗಳು ಶುಭ ಸಂಕಲ್ಪಗಳಿಂದ ತುಂಬಿರಲಿ</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <section class="section mission">
+      <p class="section-eyebrow eyebrow-dev">सङ्कल्पः</p>
+      <h2 class="section-title">ಶೃಂಗೇರಿ ಗುರು ಪರಂಪರೆಯ ಪವಿತ್ರ ಸಂಕಲ್ಪ</h2>
+      <hr class="section-rule" />
+      <p>
+        ದಕ್ಷಿಣಾಮ್ನಾಯ ಶ್ರೀ ಶಾರದಾ ಪೀಠಂ, ಶೃಂಗೇರಿಯ <strong>ಜಗದ್ಗುರುಗಳ ಅಪಾರ ಕೃಪೆಯಿಂದ</strong>
+        ಶ್ರೀ ಶಿವಸಂಕಲ್ಪ ವೃಂದ — ವೇದ ಗುರುಕುಲಗಳಿಗೆ ಬೆಂಬಲ ನೀಡಲು ಮತ್ತು
+        ಶಾಶ್ವತ ಗುರು–ಶಿಷ್ಯ ಪರಂಪರೆಯನ್ನು ಪೋಷಿಸಲು ಸಮರ್ಪಿತವಾಗಿರುವ ಧರ್ಮಾರ್ಥ ಟ್ರಸ್ಟ್.
+      </p>
+    </section>
+
+    <div class="vidya-row">
+      <figure class="vidya-portrait">
+        <img src="./peeking-vidyarthis.jpg" alt="ಗುರುಕುಲದ ಬಾಲವಿದ್ಯಾರ್ಥಿಗಳು" />
+      </figure>
+
+      <section class="section">
+        <p class="section-eyebrow eyebrow-dev">कार्यक्षेत्राणि</p>
+        <h2 class="section-title">ನಮ್ಮ ಕಾರ್ಯಕ್ಷೇತ್ರಗಳು</h2>
+        <hr class="section-rule" />
+        <div class="why-grid">
+          <div class="why-card">
+            <h4>ವೈದಿಕ ಶಿಕ್ಷಣ</h4>
+            <p>ವೇದ, ಷಡಂಗ ಮತ್ತು ಶಾಸ್ತ್ರಗಳನ್ನು ಗುರು-ಶಿಷ್ಯ ಪರಂಪರೆಯ ಮೂಲಕ ಬೋಧಿಸುವ ಗುರುಕುಲಗಳಿಗೆ ಬೆಂಬಲ.</p>
+          </div>
+          <div class="why-card">
+            <h4>ಗುರುಕುಲ ಅಭಿವೃದ್ಧಿ</h4>
+            <p>ಬೋಧನಾ ಸಾಮಗ್ರಿ, ವಿದ್ಯಾರ್ಥಿ ಸಹಾಯ, ಮೂಲಸೌಕರ್ಯ ಮತ್ತು ನಿಸ್ವಾರ್ಥ ಸೇವೆ ಸಲ್ಲಿಸುತ್ತಿರುವ ಅಧ್ಯಾಪಕರ ಪೋಷಣೆ.</p>
+          </div>
+          <div class="why-card">
+            <h4>ವಿದ್ವಾಂಸರ ಗೌರವ</h4>
+            <p>ಈ ಪರಂಪರೆಗಾಗಿ ಜೀವನ ಮುಡಿಪಾಗಿಟ್ಟ ವೈದಿಕ ಅಧ್ಯಾಪಕರ ಮೌನ ತ್ಯಾಗವನ್ನು ಗುರುತಿಸಿ ಸಮ್ಮಾನಿಸುವುದು.</p>
+          </div>
+          <div class="why-card">
+            <h4>ವೈದಿಕ ಸಂಶೋಧನೆ</h4>
+            <p>ಸಂಶೋಧನೆ ಮತ್ತು ವೈದಿಕ ಗ್ರಂಥಾಲಯಗಳಿಗೆ ಬೆಂಬಲ — ಶಾಸ್ತ್ರ ಮತ್ತು ಪಾಂಡಿತ್ಯವನ್ನು ಸಂರಕ್ಷಿಸುವುದು.</p>
+          </div>
+          <div class="why-card">
+            <h4>ಗೋ-ಸಂರಕ್ಷಣಂ</h4>
+            <p>ಗೋಶಾಲೆಗಳಿಗೆ ಬೆಂಬಲ ಮತ್ತು ಗೋ ಸಂರಕ್ಷಣೆ, ಆಶ್ರಯ ಮತ್ತು ಕಲ್ಯಾಣದ ಪವಿತ್ರ ಕಾರಣ.</p>
+          </div>
+          <div class="why-card">
+            <h4>ಲೋಕ-ಕಲ್ಯಾಣ ಕಾರ್ಯಕ್ರಮಗಳು</h4>
+            <p>ವೈದಿಕ ಗುರುಕುಲ ಪರಂಪರೆಯ ಕಲ್ಯಾಣ, ಬೆಂಬಲ ಮತ್ತು ಪ್ರಚಾರಕ್ಕಾಗಿ ಕಾರ್ಯಕ್ರಮಗಳು.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="section">
+      <p class="section-eyebrow eyebrow-dev">सहभागितायाः त्रयो मार्गाः</p>
+      <h2 class="section-title">ಭಾಗವಹಿಸುವ ಮೂರು ಮಾರ್ಗಗಳು</h2>
+      <hr class="section-rule" />
+      <div class="action-grid">
+
+        <div class="action enrol">
+          <span class="badge">ಪ್ರವೇಶ ಆರಂಭ</span>
+          <h3>ನಿಮ್ಮ ಮಗುವನ್ನು ಸೇರಿಸಿ</h3>
+          <p class="pip">तमसो मा ज्योतिर्गमय</p>
+          <p>ನಿಮ್ಮ ಮಗು ವಿದ್ವಾಂಸ ಅಧ್ಯಾಪಕರ ಮಾರ್ಗದರ್ಶನದಲ್ಲಿ ವೇದಗಳ ಬೆಳಕಿನಲ್ಲಿ ಬೆಳೆಯಲಿ.</p>
+          <p class="url">shivasankalpa.org/gurukulas</p>
+        </div>
+
+        <div class="action donate">
+          <h3>ನಿಮ್ಮ ಸಹಕಾರ ನೀಡಿ</h3>
+          <img class="qr" src="../public/assets/artefacts/donation-page-qr.png" alt="ದಾನ ಮಾಡುವುದಕ್ಕೆ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ" />
+          <p class="qr-hint">ದಾನ ಮಾಡುವುದಕ್ಕೆ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</p>
+        </div>
+
+        <div class="action">
+          <h3>ಸ್ವಯಂಸೇವೆ · ಸಂಪರ್ಕಿಸಿ</h3>
+          <p class="pip">तनु · मन · धन</p>
+          <p>ಕಾರ್ಯಕ್ರಮಗಳಲ್ಲಿ ಭಾಗವಹಿಸಿ, ಗುರುಕುಲ ಸೇವೆ, ದಾನ ಮತ್ತು ಪ್ರಚಾರಕ್ಕಾಗಿ ಸ್ವಯಂಸೇವಕರನ್ನು ಆತ್ಮೀಯವಾಗಿ ಸ್ವಾಗತಿಸುತ್ತೇವೆ.</p>
+          <p class="url">+91 70903 04901</p>
+          <p class="url">info@shivasankalpa.org</p>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <p class="blessing">
+      ಶೃಂಗೇರಿ ಶ್ರೀ ಶಾರದಾ ಪೀಠದ ಪರಮಪೂಜ್ಯ ಜಗದ್ಗುರು ಶ್ರೀ ಶ್ರೀ ಭಾರತೀ ತೀರ್ಥ ಮಹಾಸನ್ನಿಧಾನಂ ಮತ್ತು ಜಗದ್ಗುರು ಶ್ರೀ ಶ್ರೀ ವಿಧುಶೇಖರ ಭಾರತೀ ಸನ್ನಿಧಾನಂ ಅವರ <strong>ಆಶೀರ್ವಾದ.</strong>
+    </p>
+    <p class="web">
+      shivasankalpa.org
+      <small>ಶ್ರೀ ಶಿವಸಂಕಲ್ಪ ವೃಂದ · ಬೆಂಗಳೂರು</small>
+    </p>
+  </footer>
+</article>
+
+</body>
+</html>

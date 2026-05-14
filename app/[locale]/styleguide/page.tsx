@@ -107,7 +107,7 @@ export default function StyleguidePage() {
               वेदोऽखिलो धर्ममूलम्
             </p>
             <p className="shloka-devanagari text-lg text-charcoal">
-              गण्यन्ते पांसवो भूमेः गण्यन्ते वृष्टिबन्दवः।
+              गण्यन्ते पांसवो भूमेः गण्यन्ते वृष्टिबिन्दवः।
               विधात्राऽपि न गण्यन्ते वेदाध्ययनतः फलम्॥
             </p>
           </div>

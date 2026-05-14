@@ -6,6 +6,12 @@ import Image from 'next/image';
 import { Mail } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
+import { WhatsAppIcon, YouTubeIcon } from '@/components/ui/BrandIcons';
+
+const WHATSAPP_NUMBER_E164 = '917090304901';
+const WHATSAPP_NUMBER_DISPLAY = '+91 70903 04901';
+const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@shivasankalpa-vrunda';
+const YOUTUBE_HANDLE = '@shivasankalpa-vrunda';
 
 const footerNav = [
   { href: '/blog', key: 'navBlog' as const },
@@ -27,11 +33,11 @@ export async function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <Image
-                src="/assets/og/logo.jpg"
+                src="/assets/og/new-logo.jpeg"
                 alt={tHeader('logoAlt')}
                 width={48}
                 height={48}
-                className="h-12 w-12 rounded-full object-cover"
+                className="h-12 w-12 object-contain"
               />
               <div>
                 <h3 className="font-serif text-lg font-semibold text-indigo">
@@ -73,10 +79,30 @@ export async function Footer() {
             <div className="space-y-3">
               <a
                 href="mailto:info@shivasankalpa.org"
-                className="inline-flex items-center gap-2 text-sm text-charcoal-300 hover:text-indigo transition-colors"
+                className="flex items-center gap-2 text-sm text-charcoal-300 hover:text-indigo transition-colors"
               >
                 <Mail size={16} />
                 info@shivasankalpa.org
+              </a>
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER_E164}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-charcoal-300 hover:text-indigo transition-colors"
+                aria-label={t('whatsappAria', { number: WHATSAPP_NUMBER_DISPLAY })}
+              >
+                <WhatsAppIcon size={16} />
+                {WHATSAPP_NUMBER_DISPLAY}
+              </a>
+              <a
+                href={YOUTUBE_CHANNEL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-charcoal-300 hover:text-indigo transition-colors"
+                aria-label={t('youtubeAria')}
+              >
+                <YouTubeIcon size={16} />
+                {YOUTUBE_HANDLE}
               </a>
             </div>
           </div>
@@ -85,7 +111,7 @@ export async function Footer() {
         <div className="mt-10 border-t border-ivory-300 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-charcoal-200">
           <p>{t('copyright', { year: new Date().getFullYear() })}</p>
           <p>
-            {t('regNo')} <span className="font-mono">#REG-TODO</span>
+            {t('regNo')} <span className="font-mono">YPR-4-00062-2026-27</span>
           </p>
         </div>
       </div>

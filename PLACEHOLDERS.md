@@ -6,11 +6,7 @@ Every placeholder in the codebase is tagged with a unique `#TAG-TODO-<id>`. Repl
 
 ## Trust-Wide
 
-
-| Tag                          | File                           | What to Replace                |
-| ---------------------------- | ------------------------------ | ------------------------------ |
-| `#REG-TODO`                  | `components/layout/Footer.tsx` | Trust registration number      |
-| `#CONTACT-TODO-full-address` | `app/contact/page.tsx`         | Full office/registered address |
+_All trust-wide placeholders have been resolved._
 
 
 ### Donation Details — INTERIM (update before public launch)
@@ -141,11 +137,7 @@ The donation details currently in the site are **interim/personal** (Jayasimha B
 
 ## Artefacts
 
-
-| Tag                                | File                 | What to Replace                                               |
-| ---------------------------------- | -------------------- | ------------------------------------------------------------- |
-| `#ARTEFACT-TODO-trust-certificate` | `app/about/page.tsx` | Upload actual certificate image to `public/assets/artefacts/` |
-| `#ARTEFACT-TODO-audit-report`      | `app/about/page.tsx` | Upload audit report scan to `public/assets/artefacts/`        |
+_The Trust Artefacts section on the About page (certificate + audit report) has been temporarily removed. Re-add it — along with `#ARTEFACT-TODO-trust-certificate` and `#ARTEFACT-TODO-audit-report` placeholders — once the official scans are available._
 
 
 ---

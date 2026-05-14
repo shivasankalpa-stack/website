@@ -36,26 +36,26 @@ export function LogoEnlargeable({
         onClick={() => setOpen(true)}
         aria-label={`${label} — click to enlarge`}
         aria-haspopup="dialog"
-        className={`inline-block cursor-zoom-in rounded-full overflow-hidden transition-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ${sizeClass} ${ringClass}`}
+        className={`inline-block cursor-zoom-in overflow-hidden transition-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ${sizeClass} ${ringClass}`}
       >
         <Image
-          src="/assets/og/logo.jpg"
+          src="/assets/og/new-logo.jpeg"
           alt={label}
           width={256}
           height={256}
           priority
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain"
         />
       </button>
 
       <Modal isOpen={open} onClose={() => setOpen(false)} title={label}>
         <div className="flex justify-center">
           <Image
-            src="/assets/og/logo.jpg"
+            src="/assets/og/new-logo.jpeg"
             alt={label}
             width={1024}
             height={1024}
-            className="h-auto w-full max-w-[80vh] rounded-full"
+            className="h-auto w-full max-w-[80vh]"
           />
         </div>
       </Modal>

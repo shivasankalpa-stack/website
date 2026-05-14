@@ -10,7 +10,13 @@ import { Mail, MapPin } from 'lucide-react';
 import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
+import { WhatsAppIcon, YouTubeIcon } from '@/components/ui/BrandIcons';
 import { ContactForm } from './form';
+
+const WHATSAPP_NUMBER_E164 = '917090304901';
+const WHATSAPP_NUMBER_DISPLAY = '+91 70903 04901';
+const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@shivasankalpa-vrunda';
+const YOUTUBE_HANDLE = '@shivasankalpa-vrunda';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -54,14 +60,45 @@ export default async function ContactPage({ params }: Props) {
                   </div>
                 </a>
 
-                <div className="flex items-center gap-3 text-sm text-charcoal-300">
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER_E164}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm text-charcoal-300 hover:text-indigo transition-colors"
+                  aria-label={t('whatsappAria', { number: WHATSAPP_NUMBER_DISPLAY })}
+                >
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo shrink-0">
+                    <WhatsAppIcon size={16} />
+                  </div>
+                  <div>
+                    <p className="font-medium text-charcoal">{t('whatsapp')}</p>
+                    <p>{WHATSAPP_NUMBER_DISPLAY}</p>
+                  </div>
+                </a>
+
+                <a
+                  href={YOUTUBE_CHANNEL_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm text-charcoal-300 hover:text-indigo transition-colors"
+                  aria-label={t('youtubeAria')}
+                >
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo shrink-0">
+                    <YouTubeIcon size={16} />
+                  </div>
+                  <div>
+                    <p className="font-medium text-charcoal">{t('youtube')}</p>
+                    <p>{YOUTUBE_HANDLE}</p>
+                  </div>
+                </a>
+
+                <div className="flex items-start gap-3 text-sm text-charcoal-300">
                   <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo shrink-0">
                     <MapPin size={16} />
                   </div>
                   <div>
                     <p className="font-medium text-charcoal">{t('location')}</p>
-                    <p>{t('locationValue')}</p>
-                    <p className="text-xs text-charcoal-200 mt-0.5">#CONTACT-TODO-full-address</p>
+                    <p className="leading-snug">{t('locationValue')}</p>
                   </div>
                 </div>
               </div>

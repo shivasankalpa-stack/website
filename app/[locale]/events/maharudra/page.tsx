@@ -117,7 +117,7 @@ export default async function MaharudraPage({ params }: Props) {
         {/* ── Introduction ── */}
         <div className="text-center space-y-6">
           <ShlokaBlock
-            devanagari={`गण्यन्ते पांसवो भूमेः गण्यन्ते वृष्टिबन्दवः।
+            devanagari={`गण्यन्ते पांसवो भूमेः गण्यन्ते वृष्टिबिन्दवः।
 विधात्राऽपि न गण्यन्ते वेदाध्ययनतः फलम्॥`}
             translation={t('shlokaVedaTranslation')}
             size="sm"
