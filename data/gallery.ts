@@ -1,7 +1,11 @@
 /**
  * Gallery items for v0.1.
  *
- * All available photos and videos from Gurukula visits and events.
+ * Curated set of photos and videos from Gurukula visits and trust events.
+ *
+ * NOTE: Captions are translated via the `gallery.cN` keys in
+ * `messages/{en,kn}.json`, indexed positionally against the array below.
+ * Reordering or splicing this array MUST be reflected in both message files.
  */
 
 import type { GalleryItem } from '@/lib/types';
@@ -35,51 +39,11 @@ export const galleryItems: GalleryItem[] = [
 
   // ── Varthur Gurukula ──
   {
-    id: 'varthur-1',
-    src: '/assets/gallery/varthur-gurukula-1.jpg',
-    alt: 'Varthur Gurukula — students in a traditional learning setting',
-    category: 'gurukulas',
-    caption: 'Varthur Gurukula — traditional learning',
-    type: 'image',
-  },
-  {
-    id: 'varthur-2',
-    src: '/assets/gallery/varthur-gurukula-2.jpg',
-    alt: 'Students at Varthur Gurukula engaged in recitation',
-    category: 'gurukulas',
-    caption: 'Varthur Gurukula — recitation practice',
-    type: 'image',
-  },
-  {
-    id: 'varthur-3',
-    src: '/assets/gallery/varthur-gurukula-3.jpg',
-    alt: 'Varthur Gurukula daily routine',
-    category: 'gurukulas',
-    caption: 'Varthur Gurukula — daily routine',
-    type: 'image',
-  },
-  {
-    id: 'varthur-4',
-    src: '/assets/gallery/varthur-gurukula-4.jpg',
-    alt: 'Varthur Gurukula classroom setting',
-    category: 'gurukulas',
-    caption: 'Varthur Gurukula — classroom',
-    type: 'image',
-  },
-  {
     id: 'varthur-5',
     src: '/assets/gallery/varthur-gurukula-5.jpg',
-    alt: 'Students at Varthur Gurukula',
+    alt: 'Adhyāpaka reviewing a manuscript with a student at Varthur Gurukula',
     category: 'gurukulas',
-    caption: 'Varthur Gurukula — students',
-    type: 'image',
-  },
-  {
-    id: 'varthur-6',
-    src: '/assets/gallery/varthur-gurukula-6.jpg',
-    alt: 'Varthur Gurukula learning environment',
-    category: 'gurukulas',
-    caption: 'Varthur Gurukula — learning environment',
+    caption: 'Varthur Gurukula — Adhyāpaka reviewing a manuscript with a student',
     type: 'image',
   },
   {
@@ -101,33 +65,17 @@ export const galleryItems: GalleryItem[] = [
   {
     id: 'varthur-9',
     src: '/assets/gallery/varthur-gurukula-9.jpg',
-    alt: 'Varthur Gurukula campus',
+    alt: 'Conversation with the Adhyāpaka at Varthur Gurukula',
     category: 'gurukulas',
-    caption: 'Varthur Gurukula — campus',
-    type: 'image',
-  },
-  {
-    id: 'varthur-10',
-    src: '/assets/gallery/varthur-gurukula-10.jpg',
-    alt: 'Varthur Gurukula group activities',
-    category: 'gurukulas',
-    caption: 'Varthur Gurukula — group activities',
+    caption: 'Varthur Gurukula — conversation with the Adhyāpaka',
     type: 'image',
   },
   {
     id: 'varthur-11',
     src: '/assets/gallery/varthur-gurukula-11.jpg',
-    alt: 'Varthur Gurukula community',
+    alt: 'Sri Dattratreya Kshetra at Varthur Gurukula',
     category: 'gurukulas',
-    caption: 'Varthur Gurukula — community',
-    type: 'image',
-  },
-  {
-    id: 'varthur-12',
-    src: '/assets/gallery/varthur-gurukula-12.jpg',
-    alt: 'Varthur Gurukula student life',
-    category: 'gurukulas',
-    caption: 'Varthur Gurukula — student life',
+    caption: 'Varthur Gurukula — Sri Dattratreya Kshetra',
     type: 'image',
   },
   {
@@ -136,14 +84,6 @@ export const galleryItems: GalleryItem[] = [
     alt: 'Vedic recitation at Varthur Gurukula',
     category: 'gurukulas',
     caption: 'Varthur Gurukula — Vedic recitation',
-    type: 'video',
-  },
-  {
-    id: 'varthur-video-14',
-    src: '/assets/gallery/varthur-gurukula-14.mp4',
-    alt: 'Chanting session at Varthur Gurukula',
-    category: 'gurukulas',
-    caption: 'Varthur Gurukula — chanting session',
     type: 'video',
   },
   {
@@ -183,9 +123,9 @@ export const galleryItems: GalleryItem[] = [
   {
     id: 'brahmavidyashrama-3',
     src: '/assets/gallery/sri-ramanamaharshi-brahmavidyashrama-3.jpg',
-    alt: 'Learning session at Sri Ramana Maharshi Brahmavidyashrama',
+    alt: 'Pathway through the Sri Ramana Maharshi Brahmavidyashrama grounds',
     category: 'gurukulas',
-    caption: 'Sri Ramana Maharshi Brahmavidyashrama — learning session',
+    caption: 'Sri Ramana Maharshi Brahmavidyashrama — pathway through the āśrama',
     type: 'image',
   },
   {
@@ -215,27 +155,19 @@ export const galleryItems: GalleryItem[] = [
     type: 'image',
   },
   {
-    id: 'chidambarashrama-2',
-    src: '/assets/gallery/chidambarashrama-2.jpg',
-    alt: 'Students at Chidambarashrama',
-    category: 'gurukulas',
-    caption: 'Chidambarashrama — students',
-    type: 'image',
-  },
-  {
     id: 'chidambarashrama-3',
     src: '/assets/gallery/chidambarashrama-3.jpg',
-    alt: 'Learning environment at Chidambarashrama',
+    alt: 'Pathway through the Chidambarashrama grounds',
     category: 'gurukulas',
-    caption: 'Chidambarashrama — learning environment',
+    caption: 'Chidambarashrama — pathway through the āśrama',
     type: 'image',
   },
   {
     id: 'chidambarashrama-4',
     src: '/assets/gallery/chidambarashrama-4.jpg',
-    alt: 'Chidambarashrama activities',
+    alt: 'Approach to the Chidambarashrama',
     category: 'gurukulas',
-    caption: 'Chidambarashrama — activities',
+    caption: 'Chidambarashrama — approach to the āśrama',
     type: 'image',
   },
 
