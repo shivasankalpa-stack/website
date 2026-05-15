@@ -1,8 +1,15 @@
 /**
- * ContactForm — client component with validation and success state.
+ * ContactForm — client component for the public contact form.
  *
- * v0.1: No backend delivery. Shows success UI on submit.
- * TODO v0.15: Wire to Resend or Formspree → deliver to info@shivasankalpa.org
+ * Submits to `/api/contact`, which validates server-side, drops spam via a
+ * hidden honeypot field, applies a per-IP rate limit, and relays the message
+ * to `info@shivasankalpa.org` over Hostinger SMTP.
+ *
+ * UX states:
+ *   - idle      → form is editable
+ *   - sending   → button disabled, label changes to "Sending..."
+ *   - error     → inline banner above the form; input is preserved
+ *   - submitted → success screen replaces the form
  */
 
 'use client';
@@ -12,7 +19,7 @@ import { useTranslations } from 'next-intl';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Button } from '@/components/ui/Button';
-import { CheckCircle } from 'lucide-react';
+import { AlertCircle, CheckCircle } from 'lucide-react';
 
 interface FormData {
   name: string;
@@ -28,6 +35,8 @@ interface FormErrors {
   message?: string;
 }
 
+type SendState = 'idle' | 'sending' | 'submitted';
+
 const CONTACT_EMAIL = 'info@shivasankalpa.org';
 
 export function ContactForm() {
@@ -38,8 +47,11 @@ export function ContactForm() {
     subject: '',
     message: '',
   });
+  // Honeypot — must remain empty. Bots fill every field; humans never see it.
+  const [honeypot, setHoneypot] = useState('');
   const [errors, setErrors] = useState<FormErrors>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [state, setState] = useState<SendState>('idle');
+  const [sendError, setSendError] = useState<string | null>(null);
 
   function validate(): FormErrors {
     const e: FormErrors = {};
@@ -54,15 +66,41 @@ export function ContactForm() {
     return e;
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (state === 'sending') return;
+
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
     setErrors({});
-    setSubmitted(true);
+    setSendError(null);
+    setState('sending');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, company: honeypot }),
+      });
+
+      if (res.ok) {
+        setState('submitted');
+        return;
+      }
+
+      if (res.status === 429) {
+        setSendError(t('sendErrorRateLimit'));
+      } else {
+        setSendError(t('sendErrorGeneric', { email: CONTACT_EMAIL }));
+      }
+      setState('idle');
+    } catch {
+      setSendError(t('sendErrorGeneric', { email: CONTACT_EMAIL }));
+      setState('idle');
+    }
   }
 
   function handleChange(field: keyof FormData, value: string) {
@@ -72,7 +110,7 @@ export function ContactForm() {
     }
   }
 
-  if (submitted) {
+  if (state === 'submitted') {
     return (
       <div className="flex flex-col items-center gap-4 py-8 text-center">
         <div className="flex h-14 w-14 items-center justify-center rounded-full bg-indigo-50">
@@ -86,8 +124,10 @@ export function ContactForm() {
           variant="ghost"
           size="sm"
           onClick={() => {
-            setSubmitted(false);
+            setState('idle');
             setData({ name: '', email: '', subject: '', message: '' });
+            setHoneypot('');
+            setSendError(null);
           }}
         >
           {t('sendAnother')}
@@ -96,14 +136,46 @@ export function ContactForm() {
     );
   }
 
+  const sending = state === 'sending';
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+      {sendError && (
+        <div
+          role="alert"
+          className="flex items-start gap-2 rounded-md border border-kumkuma/30 bg-kumkuma/5 p-3 text-sm text-kumkuma-500"
+        >
+          <AlertCircle size={16} className="mt-0.5 shrink-0" aria-hidden />
+          <p className="leading-relaxed">{sendError}</p>
+        </div>
+      )}
+
+      {/* Honeypot field — hidden from real users, visible to naive bots.
+          aria-hidden + tabIndex=-1 keep it out of the accessibility tree. */}
+      <div
+        aria-hidden="true"
+        className="absolute h-0 w-0 overflow-hidden opacity-0"
+        style={{ position: 'absolute', left: '-9999px' }}
+      >
+        <label htmlFor="contact-company">Company</label>
+        <input
+          id="contact-company"
+          type="text"
+          name="company"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
+      </div>
+
       <Input
         label={t('nameLabel')}
         placeholder={t('namePlaceholder')}
         value={data.name}
         onChange={(e) => handleChange('name', e.target.value)}
         error={errors.name}
+        disabled={sending}
         required
       />
       <Input
@@ -113,6 +185,7 @@ export function ContactForm() {
         value={data.email}
         onChange={(e) => handleChange('email', e.target.value)}
         error={errors.email}
+        disabled={sending}
         required
       />
       <Input
@@ -121,6 +194,7 @@ export function ContactForm() {
         value={data.subject}
         onChange={(e) => handleChange('subject', e.target.value)}
         error={errors.subject}
+        disabled={sending}
         required
       />
       <Textarea
@@ -129,10 +203,11 @@ export function ContactForm() {
         value={data.message}
         onChange={(e) => handleChange('message', e.target.value)}
         error={errors.message}
+        disabled={sending}
         required
       />
-      <Button type="submit" className="w-full">
-        {t('sendMessage')}
+      <Button type="submit" className="w-full" disabled={sending}>
+        {sending ? t('sending') : t('sendMessage')}
       </Button>
     </form>
   );

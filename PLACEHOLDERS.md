@@ -9,6 +9,26 @@ Every placeholder in the codebase is tagged with a unique `#TAG-TODO-<id>`. Repl
 _All trust-wide placeholders have been resolved._
 
 
+### Contact Form — SMTP Setup (required before public launch)
+
+The `/contact` form posts to `app/api/contact/route.ts`, which relays messages to `info@shivasankalpa.org` over Hostinger SMTP. The route reads its credentials from environment variables — see `.env.example` for the full contract.
+
+Set the following in **Vercel → Project → Settings → Environment Variables** (Production + Preview):
+
+| Key         | Value                                                 |
+| ----------- | ----------------------------------------------------- |
+| `SMTP_HOST` | `smtp.hostinger.com`                                  |
+| `SMTP_PORT` | `465`                                                 |
+| `SMTP_USER` | `info@shivasankalpa.org`                              |
+| `SMTP_PASS` | (mailbox password from Hostinger control panel)       |
+
+Optional overrides: `CONTACT_TO`, `CONTACT_FROM`, `CONTACT_FROM_NAME`, `CONTACT_SUBJECT_PREFIX`.
+
+For local development, copy `.env.example` → `.env.local` and fill in `SMTP_PASS`. The file is gitignored.
+
+**DNS note when cutting over `shivasankalpa.org` to Vercel:** point the website A/CNAME records to Vercel via Cloudflare DNS, but **leave the MX records pointing to Hostinger** so the mailbox keeps receiving mail. Mixing website-hosting and mail-hosting on different providers is supported by DNS — only do the website records.
+
+
 ### Donation Details — INTERIM (update before public launch)
 
 The donation details currently in the site are **interim/personal** (Jayasimha B N, Sree Charan Bank). Once the trust's own bank account and UPI are set up, update:

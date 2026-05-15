@@ -104,7 +104,7 @@ export default async function AboutPage({ params }: Props) {
           <SectionHeading title={t('storyTitle')} devanagari="इतिवृत्तम्" centered />
 
           <div className="mt-10 md:mt-12 space-y-5 max-w-2xl mx-auto">
-            <p className="text-charcoal leading-relaxed">{t('storyPara1')}</p>
+            <p className="text-charcoal-300 leading-relaxed">{t('storyPara1')}</p>
             <p className="text-charcoal-300 leading-relaxed">{t('storyPara2')}</p>
           </div>
 

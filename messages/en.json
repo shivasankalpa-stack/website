@@ -98,6 +98,9 @@
     "messagePlaceholder": "Write your message here...",
     "messageError": "Please enter your message.",
     "sendMessage": "Send Message",
+    "sending": "Sending…",
+    "sendErrorGeneric": "Sorry, we couldn’t send your message. Please try again, or email us directly at {email}.",
+    "sendErrorRateLimit": "You’ve sent several messages in a short time. Please wait a few minutes and try again.",
     "thankYou": "Thank You",
     "thankYouMessage": "We have received your message. We will respond to you at {email} shortly.",
     "sendAnother": "Send another message"
