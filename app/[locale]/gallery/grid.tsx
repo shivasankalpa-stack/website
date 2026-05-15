@@ -1,6 +1,12 @@
 /**
  * GalleryGrid — client component with category tabs and image/video grid.
- * Videos play inline on click with native controls.
+ *
+ * - Photos and videos share the same `3:2` card aspect so cards line up
+ *   neatly in the grid (caption sits at the same height for both kinds).
+ * - Photos open in a `Modal` lightbox at full uncropped size on click.
+ * - Videos play inline on click with native controls (no lightbox — the
+ *   inline experience already lets users go fullscreen via the browser
+ *   chrome and avoids re-loading the file).
  */
 
 'use client';
@@ -9,6 +15,7 @@ import { useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import { Play } from 'lucide-react';
 import type { GalleryItem } from '@/lib/types';
+import { Modal } from '@/components/ui/Modal';
 
 interface GalleryGridProps {
   items: GalleryItem[];
@@ -16,6 +23,8 @@ interface GalleryGridProps {
   tabLabels: { all: string; gurukulas: string; events: string; misc: string };
   noItemsText: string;
 }
+
+const CARD_ASPECT_RATIO = '3 / 2';
 
 function VideoCard({ item }: { item: GalleryItem }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -33,11 +42,11 @@ function VideoCard({ item }: { item: GalleryItem }) {
   }, [playing]);
 
   return (
-    <div className="relative" style={{ aspectRatio: '16/9' }}>
+    <div className="relative" style={{ aspectRatio: CARD_ASPECT_RATIO }}>
       <video
         ref={videoRef}
         src={item.src}
-        className="w-full h-full object-cover rounded-t-lg"
+        className="w-full h-full object-cover rounded-t-lg bg-charcoal-500"
         preload="metadata"
         controls={playing}
         playsInline
@@ -58,6 +67,50 @@ function VideoCard({ item }: { item: GalleryItem }) {
         </button>
       )}
     </div>
+  );
+}
+
+function ImageCard({ item, caption }: { item: GalleryItem; caption?: string }) {
+  const [open, setOpen] = useState(false);
+  const lightboxTitle = caption ?? item.alt;
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        aria-haspopup="dialog"
+        aria-label={`${lightboxTitle} — click to enlarge`}
+        className="relative block w-full cursor-zoom-in overflow-hidden rounded-t-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+        style={{ aspectRatio: CARD_ASPECT_RATIO }}
+      >
+        <Image
+          src={item.src}
+          alt={item.alt}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-200 hover:scale-[1.03]"
+          style={{ objectPosition: item.imagePosition ?? 'center' }}
+        />
+      </button>
+
+      <Modal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        title={lightboxTitle}
+        size="3xl"
+      >
+        <div className="flex justify-center">
+          <Image
+            src={item.src}
+            alt={item.alt}
+            width={1600}
+            height={1200}
+            className="h-auto w-auto max-h-[75vh] max-w-full rounded-md object-contain"
+          />
+        </div>
+      </Modal>
+    </>
   );
 }
 
@@ -106,33 +159,29 @@ export function GalleryGrid({ items, captions, tabLabels, noItemsText }: Gallery
         </p>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map(({ item, originalIndex }) => (
-            <div
-              key={item.id}
-              className="overflow-hidden rounded-lg border border-ivory-300 bg-ivory-50"
-            >
-              {item.type === 'video' ? (
-                <VideoCard item={item} />
-              ) : (
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  width={400}
-                  height={267}
-                  className="w-full object-cover"
-                  style={{ aspectRatio: '3/2' }}
-                />
-              )}
+          {filtered.map(({ item, originalIndex }) => {
+            const caption = captions[originalIndex];
+            return (
+              <div
+                key={item.id}
+                className="overflow-hidden rounded-lg border border-ivory-300 bg-ivory-50"
+              >
+                {item.type === 'video' ? (
+                  <VideoCard item={item} />
+                ) : (
+                  <ImageCard item={item} caption={caption} />
+                )}
 
-              {captions[originalIndex] && (
-                <div className="px-3 py-2">
-                  <p className="text-xs text-charcoal-300 leading-relaxed">
-                    {captions[originalIndex]}
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
+                {caption && (
+                  <div className="px-3 py-2">
+                    <p className="text-xs text-charcoal-300 leading-relaxed">
+                      {caption}
+                    </p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

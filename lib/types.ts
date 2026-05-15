@@ -138,6 +138,12 @@ export interface GalleryItem {
   category: 'events' | 'gurukulas' | 'misc';
   caption?: string;
   type: 'image' | 'video';
+  /**
+   * Optional CSS `object-position` value (e.g. `'top'`, `'center 25%'`) used
+   * by the gallery card crop when a photo's subject sits above or below the
+   * frame's centre. Defaults to `'center'`. Has no effect on videos.
+   */
+  imagePosition?: string;
 }
 
 export interface DonationPurpose {

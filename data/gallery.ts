@@ -45,6 +45,11 @@ export const galleryItems: GalleryItem[] = [
     category: 'gurukulas',
     caption: 'Varthur Gurukula — Adhyāpaka reviewing a manuscript with a student',
     type: 'image',
+    // Source photo is portrait (576×1280) with the orange-tiled roof above
+    // the figures. Position the 3:2 grid crop ~25% from the top so the
+    // ceiling falls outside the frame and we land on heads + manuscript +
+    // torsos rather than mostly ceiling.
+    imagePosition: 'center 25%',
   },
   {
     id: 'varthur-7',
