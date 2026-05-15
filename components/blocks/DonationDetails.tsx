@@ -48,7 +48,7 @@ export function DonationDetails({ purposeLabel }: DonationDetailsProps) {
           </p>
           <p className="text-charcoal-300">
             {t('accountNo')}{' '}
-            <span className="font-mono text-charcoal select-all">T101T0100T01659</span>
+            <span className="font-mono text-charcoal select-all">0101001000001659</span>
           </p>
           <p className="text-charcoal-300">
             {t('accountType')} <span className="text-charcoal">{t('savingsBank')}</span>

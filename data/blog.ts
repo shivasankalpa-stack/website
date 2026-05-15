@@ -33,7 +33,7 @@ As we left, the students were beginning their mid-morning session. The sound of 
 *Śrī Śivasaṅkalpa Vṛnda is committed to supporting Gurukulas like Shruti Parampara. If you wish to contribute, visit our [Donations](/donations) page.*
 
 #BLOG-TODO-visit-shruti-parampara — Final review and trustee approval pending.`,
-    image: '/assets/gurukulas/shruti-parampara/students.jpg',
+    image: '/assets/gurukulas/shruti-parampara/hero.jpg',
     tags: ['Gurukula Visit', 'Shruti Parampara', 'Vedic Education', 'Bangalore'],
   },
   {

@@ -39,7 +39,7 @@ export const faqs: FAQ[] = [
     id: 'which-gurukulas',
     question: 'Which Gurukulas does the trust support?',
     answer:
-      'We are currently working with Gurukulas in the Bangalore area, including Shruti Parampara Gurukula (JP Nagar), Gowtama Veda Pathashala (Banashankari), and Sacchidananda Advaitashrama (Rajajinagar). We are actively expanding our network across Karnataka.',
+      'The Vṛnda is currently engaged with four Gurukulas: Sri Shruti Parampara Gurukulam (JP Nagar, Bangalore), Namma Sampradaya Gurukulam (Varthur, Bangalore), Shankara Gurukulam (Ungra, Huliyurdurga), and Sri Ramana Maharṣi Brahma Vidyāśrama (Madagondapalli, Hosur). We are actively expanding our network across Karnataka and beyond.',
   },
   {
     id: 'how-to-volunteer',
