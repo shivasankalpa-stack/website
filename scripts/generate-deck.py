@@ -476,13 +476,10 @@ add_text_box(slide, Inches(1), Inches(1.0), Inches(11), Inches(0.8),
 add_divider(slide, Inches(1.8))
 
 tf = add_text_box(slide, Inches(1), Inches(2.3), Inches(10), Inches(4),
-                  "Two seeded posts to demonstrate the layout:", font_size=18, color=CHARCOAL_LIGHT)
+                  "One seeded post to demonstrate the layout:", font_size=18, color=CHARCOAL_LIGHT)
 add_para(tf, "", font_size=8)
-add_para(tf, "  1.  \"A Visit to Shruti Parampara Gurukula, JP Nagar\"", font_size=17, color=INDIGO, bold=True, space_before=8)
+add_para(tf, "  •  \"A Visit to Shruti Parampara Gurukula, JP Nagar\"", font_size=17, color=INDIGO, bold=True, space_before=8)
 add_para(tf, "       A detailed visit report — meeting the ācārya, watching students chant, identifying needs.", font_size=15, color=CHARCOAL_LIGHT, space_before=2)
-add_para(tf, "", font_size=6)
-add_para(tf, "  2.  \"Why Vedic Gurukulas Matter in the 21st Century\"", font_size=17, color=INDIGO, bold=True, space_before=8)
-add_para(tf, "       A reflective essay on the Gurukula tradition — to be completed by the team.", font_size=15, color=CHARCOAL_LIGHT, space_before=2)
 add_para(tf, "", font_size=10)
 add_para(tf, "Each post has: date, author, tags, full-width image, rich text body.", font_size=16, color=CHARCOAL_LIGHT, space_before=8)
 add_para(tf, "The team can add new posts by editing a simple text file (data/blog.ts).", font_size=16, color=CHARCOAL_LIGHT, space_before=4)

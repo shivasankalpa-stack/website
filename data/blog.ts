@@ -1,9 +1,8 @@
 /**
- * Blog post stubs for v0.1.
+ * Blog posts for v0.1.
  *
- * Seeded with two posts: a reflective piece on Gurukulas and a
- * visit report to Shruti Parampara Gurukula. Trustees will replace
- * and expand these in subsequent releases.
+ * Currently seeded with a single visit report to Shruti Parampara Gurukula.
+ * Trustees will add further posts in subsequent releases.
  */
 
 import type { BlogPost } from '@/lib/types';
@@ -35,20 +34,5 @@ As we left, the students were beginning their mid-morning session. The sound of 
 #BLOG-TODO-visit-shruti-parampara — Final review and trustee approval pending.`,
     image: '/assets/gurukulas/shruti-parampara/hero.jpg',
     tags: ['Gurukula Visit', 'Shruti Parampara', 'Vedic Education', 'Bangalore'],
-  },
-  {
-    slug: 'why-vedic-gurukulas-matter',
-    title: 'Why Vedic Gurukulas Matter in the 21st Century',
-    date: '2026-04-15',
-    author: 'Sri Shivasankalpa Vrunda',
-    excerpt:
-      'In an age of rapid technological change, the Vedic Gurukula stands as a quiet testament to a different kind of education — one rooted in oral transmission, character formation, and the cultivation of a mind aligned with dharma.',
-    content: `In an age of rapid technological change, the Vedic Gurukula stands as a quiet testament to a different kind of education — one rooted in oral transmission, character formation, and the cultivation of a mind aligned with dharma.
-
-The Gurukula system is not merely a school; it is an ecosystem of learning where the Guru and Shishya share a sacred bond of knowledge transmission. The student lives with the teacher, absorbs not just mantras but values, discipline, and the art of leading a life in harmony with the cosmic order (ṛta). This is what the tradition calls saṁskāra — the shaping of character through sustained immersion in a sanctified environment.
-
-#BLOG-TODO-why-gurukulas-matter — Full article content to be provided by trust members.`,
-    image: '/assets/blog/gurukula-importance.jpg',
-    tags: ['Gurukula', 'Vedic Education', 'Parampara'],
   },
 ];

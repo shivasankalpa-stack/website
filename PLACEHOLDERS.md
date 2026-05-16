@@ -100,7 +100,6 @@ All 5 trustees, all 5 managing committee members, and all 5 trust members have p
 | Tag                                 | File           | Status                                                                                |
 | ----------------------------------- | -------------- | ------------------------------------------------------------------------------------- |
 | `#BLOG-TODO-visit-shruti-parampara` | `data/blog.ts` | Article body is written; awaiting final review and trustee approval.                  |
-| `#BLOG-TODO-why-gurukulas-matter`   | `data/blog.ts` | Only the intro is written; full article content still needs to be supplied by trust members. |
 
 > Also see "Bugs surfaced during audit" above — the visit post has a broken image reference.
 
@@ -135,7 +134,7 @@ The gallery, Gurukula detail pages, and blog currently use a mix of available ph
 | **Gallery videos**             | 9 MP4 clips from Gurukula visits                                                      | Review for quality and appropriateness; consider trimming long clips; replace with better recordings if available |
 | **Gurukula hero images**       | Hero images present for all four Gurukulas                                            | Quality review only — confirm each is suitable for the detail page header                                         |
 | **Trustee & committee photos** | All 15 photos present                                                                 | Quality review — consider re-shooting any that look casual / inconsistently lit                                   |
-| **Blog post images**           | Visit post: broken reference (see Bugs above). "Why Gurukulas Matter" post: placeholder shown via fallback | Fix the broken reference; pick a real photo for the second post                                                   |
+| **Blog post images**           | Visit post: broken reference (see Bugs above)                                         | Fix the broken reference                                                                                          |
 | **Homepage hero banner**       | Gurukula students photo (from stock/placeholder)                                      | Consider replacing with an original photo from a Vṛnda event or Gurukula visit                                    |
 | **Maharudra event hero**       | Sri Adi Shankaracharya painting                                                       | Confirm this is the right image; add event-specific photos after 15–17 May                                        |
 | **Donation page illustration** | AI-generated "Śraddhayā deyam" image                                                  | Confirm appropriateness or replace with original artwork                                                          |
@@ -163,7 +162,7 @@ The gallery, Gurukula detail pages, and blog currently use a mix of available ph
 | (SMTP password in Vercel, donation account cut-over to the trust's own bank/UPI) | |
 | Cosmetic / non-blocking                         | 11    |
 | (10 `#BIO-TODO-*` filler bios + `#FAQ-TODO-80g-status`) | |
-| Editorial / content                             | 2     |
-| (`#BLOG-TODO-visit-shruti-parampara` approval, `#BLOG-TODO-why-gurukulas-matter` body) | |
+| Editorial / content                             | 1     |
+| (`#BLOG-TODO-visit-shruti-parampara` approval) | |
 | Media review                                    | ongoing |
 | Artefacts section re-enable                     | optional |
