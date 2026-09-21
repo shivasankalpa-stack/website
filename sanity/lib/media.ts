@@ -75,43 +75,44 @@ function albumRowsToItems(rows: SanityAlbumRow[], locale: Locale): GalleryItem[]
 }
 
 function mediaRowsToItems(rows: SanityMediaRow[], locale: Locale): GalleryItem[] {
-  return rows.flatMap((row) => {
+  const items: GalleryItem[] = [];
+
+  for (const row of rows) {
     const tags = (row.tags ?? []).filter((t): t is string => Boolean(t));
     if (row.eventSlug && !tags.includes(row.eventSlug)) {
       tags.push(row.eventSlug);
     }
 
     if (row.mediaType === 'video') {
-      const isFile = row.videoUrl && /\.(mp4|webm)(\?|$)/i.test(row.videoUrl);
-      if (!isFile) return [];
-      return [
-        {
-          id: row._id,
-          src: row.videoUrl as string,
-          alt: pick(row.alt, locale, pick(row.caption, locale)),
-          caption: pick(row.caption, locale),
-          category: 'events' as const,
-          type: 'video' as const,
-          tags,
-        },
-      ];
+      const isFile = Boolean(row.videoUrl && /\.(mp4|webm)(\?|$)/i.test(row.videoUrl));
+      if (!isFile || !row.videoUrl) continue;
+      items.push({
+        id: row._id,
+        src: row.videoUrl,
+        alt: pick(row.alt, locale, pick(row.caption, locale)),
+        caption: pick(row.caption, locale),
+        category: 'events',
+        type: 'video',
+        tags,
+      });
+      continue;
     }
 
     const src = imageSrc(row.image, 1600);
-    if (!src) return [];
-    return [
-      {
-        id: row._id,
-        src,
-        alt: pick(row.alt, locale, pick(row.caption, locale)),
-        caption: pick(row.caption, locale),
-        category: 'events' as const,
-        type: 'image' as const,
-        imagePosition: hotspotPosition(row.image),
-        tags,
-      },
-    ];
-  });
+    if (!src) continue;
+    items.push({
+      id: row._id,
+      src,
+      alt: pick(row.alt, locale, pick(row.caption, locale)),
+      caption: pick(row.caption, locale),
+      category: 'events',
+      type: 'image',
+      imagePosition: hotspotPosition(row.image),
+      tags,
+    });
+  }
+
+  return items;
 }
 
 async function fetchSanityGallery(locale: Locale): Promise<GalleryItem[]> {
