@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { getGalleryItems } from '@/lib/data-access';
+import { getGalleryItems, getPublishedGalleryItems } from '@/lib/data-access';
 import { GalleryGrid } from './grid';
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
+
+export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -21,13 +23,23 @@ export default async function GalleryPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('gallery');
-  const items = getGalleryItems();
+  const localItems = getGalleryItems();
+  const items = await getPublishedGalleryItems(locale === 'kn' ? 'kn' : 'en');
 
-  const captions = items.map((_, i) => t(`c${i}` as Parameters<typeof t>[0]));
+  const withCaptions = items.map((item) => {
+    const localIndex = localItems.findIndex((local) => local.id === item.id);
+    if (localIndex === -1) return item;
+    return {
+      ...item,
+      caption: t(`c${localIndex}` as Parameters<typeof t>[0]),
+    };
+  });
+
   const tabLabels = {
     all: t('tabAll'),
     gurukulas: t('tabGurukulas'),
     events: t('tabEvents'),
+    maharudra: t('tabMaharudra'),
     misc: t('tabMisc'),
   };
 
@@ -40,7 +52,11 @@ export default async function GalleryPage({ params }: Props) {
           centered
         />
 
-        <GalleryGrid items={items} captions={captions} tabLabels={tabLabels} noItemsText={t('noItems')} />
+        <GalleryGrid
+          items={withCaptions}
+          tabLabels={tabLabels}
+          noItemsText={t('noItems')}
+        />
       </div>
     </div>
   );

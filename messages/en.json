@@ -261,7 +261,9 @@
     "donateButton": "Donate for Maharudra Seva",
     "donateModalTitle": "Donate — Maharudra Purascharana Seva",
     "donatePurposeLabel": "Maharudra Seva",
-    "volunteer": "Volunteer"
+    "volunteer": "Volunteer",
+    "albumTitle": "Photos from the Puraścaraṇa",
+    "albumSubtitle": "Moments from Mahā Rudra Puraścaraṇa, 15–17 May 2026."
   },
   "gallery": {
     "title": "Gallery",
@@ -269,6 +271,7 @@
     "tabAll": "All",
     "tabGurukulas": "Gurukulas",
     "tabEvents": "Events",
+    "tabMaharudra": "Maharudra",
     "tabMisc": "Misc",
     "noItems": "No items in this category yet.",
     "c0": "Shruti Parampara Gurukula, JP Nagar — Students during Veda pāṭha",
