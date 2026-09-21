@@ -144,6 +144,8 @@ export interface GalleryItem {
    * frame's centre. Defaults to `'center'`. Has no effect on videos.
    */
   imagePosition?: string;
+  /** Slugs such as `maharudra` — used for gallery tag tabs. */
+  tags?: string[];
 }
 
 export interface DonationPurpose {

@@ -15,13 +15,16 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ShlokaBlock } from '@/components/ui/ShlokaBlock';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { getEventBySlug } from '@/lib/data-access';
+import { getEventAlbum, getEventBySlug } from '@/lib/data-access';
 import { notFound } from 'next/navigation';
 import { MaharudraDonateButton } from './donate-button';
+import { GalleryGrid } from '../../gallery/grid';
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
+
+export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -39,6 +42,11 @@ export default async function MaharudraPage({ params }: Props) {
 
   const event = getEventBySlug('maharudra');
   if (!event) notFound();
+
+  const album = await getEventAlbum(
+    'maharudra',
+    locale === 'kn' ? 'kn' : 'en'
+  );
 
   const dateTag = locale === 'kn' ? 'kn-IN' : 'en-IN';
   const dateRange = event.endDate
@@ -113,6 +121,27 @@ export default async function MaharudraPage({ params }: Props) {
             priority
           />
         </div>
+
+        {album.length > 0 && (
+          <section className="space-y-8">
+            <SectionHeading
+              title={t('albumTitle')}
+              subtitle={t('albumSubtitle')}
+              centered
+            />
+            <GalleryGrid
+              items={album}
+              tabLabels={{
+                all: '',
+                gurukulas: '',
+                events: '',
+                misc: '',
+              }}
+              noItemsText=""
+              showFilters={false}
+            />
+          </section>
+        )}
 
         {/* ── Introduction ── */}
         <div className="text-center space-y-6">

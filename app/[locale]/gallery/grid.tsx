@@ -19,9 +19,16 @@ import { Modal } from '@/components/ui/Modal';
 
 interface GalleryGridProps {
   items: GalleryItem[];
-  captions: string[];
-  tabLabels: { all: string; gurukulas: string; events: string; misc: string };
+  captions?: string[];
+  tabLabels: {
+    all: string;
+    gurukulas: string;
+    events: string;
+    misc: string;
+    maharudra?: string;
+  };
   noItemsText: string;
+  showFilters?: boolean;
 }
 
 const CARD_ASPECT_RATIO = '3 / 2';
@@ -114,13 +121,24 @@ function ImageCard({ item, caption }: { item: GalleryItem; caption?: string }) {
   );
 }
 
-export function GalleryGrid({ items, captions, tabLabels, noItemsText }: GalleryGridProps) {
+export function GalleryGrid({
+  items,
+  captions,
+  tabLabels,
+  noItemsText,
+  showFilters = true,
+}: GalleryGridProps) {
   const [activeCategory, setActiveCategory] = useState<string>('all');
+
+  const hasMaharudra = items.some((item) => item.tags?.includes('maharudra'));
 
   const categories = [
     { id: 'all', label: tabLabels.all },
     { id: 'gurukulas', label: tabLabels.gurukulas },
     { id: 'events', label: tabLabels.events },
+    ...(hasMaharudra && tabLabels.maharudra
+      ? [{ id: 'maharudra', label: tabLabels.maharudra }]
+      : []),
     { id: 'misc', label: tabLabels.misc },
   ];
 
@@ -128,11 +146,14 @@ export function GalleryGrid({ items, captions, tabLabels, noItemsText }: Gallery
   const filtered =
     activeCategory === 'all'
       ? indexedItems
-      : indexedItems.filter(({ item }) => item.category === activeCategory);
+      : activeCategory === 'maharudra'
+        ? indexedItems.filter(({ item }) => item.tags?.includes('maharudra'))
+        : indexedItems.filter(({ item }) => item.category === activeCategory);
 
   return (
     <div className="space-y-6">
       {/* Category filter tabs */}
+      {showFilters && (
       <div className="flex gap-2 overflow-x-auto pb-2">
         {categories.map((cat) => (
           <button
@@ -151,6 +172,7 @@ export function GalleryGrid({ items, captions, tabLabels, noItemsText }: Gallery
           </button>
         ))}
       </div>
+      )}
 
       {/* Grid */}
       {filtered.length === 0 ? (
@@ -160,7 +182,7 @@ export function GalleryGrid({ items, captions, tabLabels, noItemsText }: Gallery
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map(({ item, originalIndex }) => {
-            const caption = captions[originalIndex];
+            const caption = item.caption ?? captions?.[originalIndex];
             return (
               <div
                 key={item.id}

@@ -16,6 +16,15 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: packageRoot,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        pathname: '/images/**',
+      },
+    ],
+  },
 };
 
 export default withNextIntl(nextConfig);

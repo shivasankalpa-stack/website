@@ -4,6 +4,7 @@
  *
  * The matcher excludes:
  *   - Static assets, Next.js internals, API routes
+ *   - Embedded Sanity Studio (`/studio`)
  *   - Public files (images, SVGs, audio, etc.)
  *
  * Blog and styleguide live under app/[locale]/ — they must match this
@@ -19,6 +20,6 @@ export const config = {
   matcher: [
     '/',
     '/(en|kn)/:path*',
-    '/((?!api|_next|assets|favicon\\.ico|.*\\..*).*)',
+    '/((?!api|_next|assets|studio|favicon\\.ico|.*\\..*).*)',
   ],
 };

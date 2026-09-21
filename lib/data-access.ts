@@ -70,3 +70,23 @@ export function getGalleryItemsByCategory(
 ): GalleryItem[] {
   return galleryItems.filter((item) => item.category === category);
 }
+
+/**
+ * Local Git gallery plus published Sanity albums / media items.
+ * Captions for Git items are filled by the gallery page from messages.
+ */
+export async function getPublishedGalleryItems(
+  locale: 'en' | 'kn'
+): Promise<GalleryItem[]> {
+  const { getSanityGalleryItems } = await import('@/sanity/lib/media');
+  const fromCms = await getSanityGalleryItems(locale);
+  return [...fromCms, ...galleryItems];
+}
+
+export async function getEventAlbum(
+  slug: string,
+  locale: 'en' | 'kn'
+): Promise<GalleryItem[]> {
+  const { getSanityAlbumByEventSlug } = await import('@/sanity/lib/media');
+  return getSanityAlbumByEventSlug(slug, locale);
+}
