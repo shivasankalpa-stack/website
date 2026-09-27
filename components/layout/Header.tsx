@@ -20,6 +20,7 @@ const navItems: Array<{
     | 'navGurukulas'
     | 'navEvents'
     | 'navActivities'
+    | 'navResources'
     | 'navGallery'
     | 'navDonations'
     | 'navAbout';
@@ -29,6 +30,7 @@ const navItems: Array<{
   { href: '/gurukulas', key: 'navGurukulas' },
   { href: '/events', key: 'navEvents' },
   { href: '/activities', key: 'navActivities', isNew: true },
+  { href: '/resources', key: 'navResources', isNew: true },
   { href: '/gallery', key: 'navGallery' },
   { href: '/donations', key: 'navDonations' },
   { href: '/about', key: 'navAbout' },

@@ -15,6 +15,7 @@ const YOUTUBE_HANDLE = '@shivasankalpa-vrunda';
 
 const footerNav = [
   { href: '/activities', key: 'navActivities' as const },
+  { href: '/resources', key: 'navResources' as const },
   { href: '/blog', key: 'navBlog' as const },
   { href: '/gallery', key: 'navGallery' as const },
   { href: '/faqs', key: 'navFaqs' as const },
