@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Sri Shivasankalpa Trust — Website walkthrough, July–September 2026</title>
+<style>
+  @page {
+    size: A4;
+    margin: 14mm 15mm 16mm 15mm;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #F7F1E3;
+    color: #2A2724;
+    font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+  .sa {
+    font-family: "Kohinoor Devanagari", "Devanagari Sangam MN", "Noto Serif Devanagari", serif;
+  }
+  a { color: #2E2A5D; text-decoration: none; border-bottom: 0.6pt solid #B8860B; }
+  a:hover { color: #201D42; }
+  .url {
+    font-family: "Avenir Next", "Segoe UI", sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.01em;
+    color: #5D5799;
+    word-break: break-all;
+  }
+  .url a { border-bottom: none; color: #5D5799; }
+
+  header.cover { break-after: page; }
+  header.cover .agenda-wrap { margin-top: 28px; }
+  .rule { height: 1.5pt; background: #B8860B; border: 0; margin: 0; }
+  .rule-thin { height: 0.4pt; background: #E0D5B8; border: 0; margin: 10px 0 14px; }
+  .eyebrow {
+    font-family: "Avenir Next", "Segoe UI", sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #946B09;
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-weight: 500;
+    font-size: 28pt;
+    line-height: 1.15;
+    color: #2E2A5D;
+    margin: 0 0 8px;
+  }
+  .shloka {
+    font-size: 14pt;
+    color: #2E2A5D;
+    margin: 18px 0 4px;
+  }
+  .meaning { font-style: italic; color: #5c564c; margin: 0 0 22px; }
+  .lede { font-size: 12.5pt; max-width: 42em; margin: 0 0 18px; }
+  .meta {
+    font-family: "Avenir Next", "Segoe UI", sans-serif;
+    font-size: 9.5pt;
+    color: #5c564c;
+    margin-top: 8px;
+  }
+
+  h2 {
+    font-weight: 500;
+    font-size: 16.5pt;
+    color: #2E2A5D;
+    margin: 0 0 6px;
+    line-height: 1.2;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 12pt;
+    color: #2E2A5D;
+    margin: 14px 0 4px;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  .head {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    break-after: avoid;
+    page-break-after: avoid;
+    margin: 0 0 8px;
+  }
+  p { margin: 0 0 8px; }
+  section { break-inside: auto; margin: 0 0 18px; }
+  .block { break-inside: avoid; margin: 0 0 12px; }
+  ol.agenda, ul.clean { margin: 6px 0 10px; padding-left: 1.15em; }
+  ol.agenda li, ul.clean li { margin: 0 0 5px; }
+  ol.agenda { font-size: 11pt; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0 12px;
+    break-inside: auto;
+  }
+  tr, .note, .scene-grid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 6px 8px 6px 0;
+    border-bottom: 0.4pt solid #E0D5B8;
+  }
+  th {
+    font-family: "Avenir Next", "Segoe UI", sans-serif;
+    font-size: 8pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #946B09;
+    font-weight: 600;
+  }
+  td.when {
+    font-family: "Avenir Next", "Segoe UI", sans-serif;
+    font-size: 9pt;
+    color: #5c564c;
+    white-space: nowrap;
+    width: 72px;
+  }
+
+  .note {
+    background: #FDFBF5;
+    border-left: 2.5pt solid #B8860B;
+    padding: 8px 12px;
+    margin: 8px 0 12px;
+    break-inside: avoid;
+  }
+  .note p:last-child { margin-bottom: 0; }
+
+  .scene-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px 22px;
+    margin: 4px 0 10px;
+  }
+  .scene-grid ol { margin: 0; padding-left: 1.7em; }
+  .scene-grid li { margin: 0 0 2px; }
+
+  footer.printfoot {
+    position: fixed;
+    bottom: -10mm;
+    left: 0;
+    right: 0;
+    font-family: "Avenir Next", "Segoe UI", sans-serif;
+    font-size: 8pt;
+    color: #8a8172;
+    display: flex;
+    justify-content: space-between;
+  }
+  .kicker {
+    font-family: "Avenir Next", "Segoe UI", sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #A63232;
+    margin: 0 0 4px;
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div>
+    <hr class="rule" />
+    <p class="eyebrow" style="margin-top:18px">For the trust group</p>
+    <h1>What has changed<br />on the website</h1>
+    <p class="shloka sa">तन्मे मनः शिवसङ्कल्पमस्तु</p>
+    <p class="meaning">May this mind of mine be filled with auspicious resolve.</p>
+    <p class="lede">A walkthrough of the public site, from July 2026 through 27 September 2026. Each item names the page a visitor sees, and the link opens that page on <strong>shivasankalpa.org</strong>.</p>
+    <p>The pages added in September tell one story: the Mahā Rudra Puraścaraṇa was completed in May, and the sevā it was offered for — the Veda Gurukulas — is now written down, Gurukula by Gurukula. Beside that record, the home page shows a vidyārthī’s life, and a Knowledge Map lets a reader walk a śākhā from saṃhitā to upaniṣad.</p>
+    <div class="meta">
+      Prepared 27 September 2026 · English links below · Kannada is the same path with <span class="url">/kn/</span> after the site name
+    </div>
+  </div>
+  <div class="agenda-wrap">
+    <hr class="rule" />
+    <p class="eyebrow" style="margin-top:14px">A path for the meeting · about 25 minutes</p>
+    <ol class="agenda">
+      <li><a href="https://shivasankalpa.org/#vd-title">Home — From Śiṣya to Guru</a>, the illustrated life of a vidyārthī</li>
+      <li><a href="https://shivasankalpa.org/events/maharudra">Mahā Rudra Puraścaraṇa</a> — completion, the nivedana, the photographs</li>
+      <li><a href="https://shivasankalpa.org/activities">Activities</a> — open the Sirsi journey, then the August note</li>
+      <li><a href="https://shivasankalpa.org/gurukulas">Gurukulas</a> — the eight pāṭhaśālas now on the site</li>
+      <li><a href="https://shivasankalpa.org/resources/taittiriya">Vedic Knowledge Map</a> — walk the Taittirīya path</li>
+      <li><a href="https://shivasankalpa.org/gallery">Gallery</a> and <a href="https://shivasankalpa.org/donations">Donations</a> — photographs, and the QR</li>
+      <li>The same page in Kannada, so the second language is seen once</li>
+    </ol>
+  </div>
+</header>
+
+<section>
+  <div class="head">
+  <p class="kicker">1 · Events</p>
+  <h2>The Mahā Rudra page now records what was completed</h2>
+  <p class="url"><a href="https://shivasankalpa.org/events/maharudra">https://shivasankalpa.org/events/maharudra</a></p>
+  </div>
+
+  <p>The page opens with the completion. By the anugraha of His Holiness Jagadguru Sri Sri Bharati Tirtha Mahasannidhanam and His Holiness Jagadguru Sri Sri Vidhushekhara Bharati Sannidhanam, the Mahārudra yāga of 16 and 17 May 2026 was completed at Hosakerehalli. Students from several Veda Gurukulas offered the japa; the ācāryas led the homa and the other vaidika rites. The three days had opened on the evening of 15 May.</p>
+  <p>The next paragraph is the bridge to the rest of the site: in the weeks that followed, the Vṛnda visited more than ten Gurukulas, sat with the ācāryas, and began offering groceries, financial support, and what the students need.</p>
+  <h3>What to pause on</h3>
+  <ul class="clean">
+    <li><strong>What was performed.</strong> Friday 15 May through Sunday 17 May, with the rites and the hours, kept as a record.</li>
+    <li><strong>Sevas offered.</strong> Pooja sankalpa, Rudrābhiṣeka, alaṅkāra, homa, kalaśa, and anna santarpaṇa, listed by name. This page no longer carries a donate button or a volunteer button. It points onward.</li>
+    <li><strong>Nivedana to the Jagadguru.</strong> The letter submitted after the Puraścaraṇa, set out on the page as a patra. The middle of the letter is worth reading aloud: the name Śivasankalpa Vṛnda, given during the vijaya yātrā in Tumakuru; the visits to more than ten Gurukulas; and the line that the Vṛnda serves as a small bridge between society and the Gurukulas.</li>
+    <li><strong>Photographs</strong> from 15–17 May, at the foot of the page.</li>
+    <li>Two links at the opening and the close: <a href="https://shivasankalpa.org/activities">Activities</a> and <a href="https://shivasankalpa.org/gurukulas">Gurukulas</a>.</li>
+  </ul>
+  <p>The Events list says the same thing in one sentence: the Puraścaraṇa of May 2026 is recorded here, it was held for loka kalyāṇa and the Veda Gurukulas, and that sevā continues.</p>
+  <p class="url"><a href="https://shivasankalpa.org/events">https://shivasankalpa.org/events</a></p>
+  <p class="url">Kannada · <a href="https://shivasankalpa.org/kn/events/maharudra">https://shivasankalpa.org/kn/events/maharudra</a></p>
+</section>
+
+<section>
+  <div class="head">
+  <p class="kicker">2 · Activities</p>
+  <h2>The sevā is written down, visit by visit</h2>
+  <p class="url"><a href="https://shivasankalpa.org/activities">https://shivasankalpa.org/activities</a></p>
+  </div>
+
+  <p>Activities is a new item in the menu. Major festivals stay under Events. Everything else the trust does — Gurukula visits, camps, cultural programmes, and trust notes — is recorded here. A reader can filter by Visits, Trust, Programmes, or Camps. A longer note has its own page: who represented the trust, what was done, what was offered, and a note of what was learned. A short note can remain a card.</p>
+  <p>Eight notes are on the site. Read oldest first and they tell the story after the Puraścaraṇa. If the meeting is short, open the Sirsi journey and the August note; the others are one click from the list.</p>
+
+  <table>
+    <thead>
+      <tr><th>When</th><th>Note</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="when">21 May</td>
+        <td>
+          <a href="https://shivasankalpa.org/activities/shruti-parampara-visit-may-2026">First sevā from the Mahā Rudra offerings — Shruti Parampara, JP Nagar</a>
+          <div>Offerings gathered at the Puraścaraṇa begin to reach the Gurukulas. Grains, groceries, clothes and mats for twenty-five children, sandhyāvandana vessels, vegetables, and financial support. The Vṛnda met founder and Ṛgveda upādhyāya Veda Brahma Sri Śyāmasundara Ghanapāṭhī.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="when">23 May</td>
+        <td>
+          <a href="https://shivasankalpa.org/activities/sacchidananda-advaitashrama-visit-may-2026">Sacchidananda Advaitāśrama, Basaveshwaranagar</a>
+          <div>After speaking with Paramapūjya Sri Advayānanda Sarasvatī Swamiji: grains and groceries, vastras and āsanas for eight children and three adhyāpakas, sandhyāvandana vessels, coconuts, and financial support.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="when">29 May</td>
+        <td>
+          <a href="https://shivasankalpa.org/activities/mallige-patashala-visit-may-2026">Mallige Pāṭhaśālā, Malleswaram</a>
+          <div>Sat with founder and Yajurveda adhyāpaka Veda Brahma Sri Srinivasan. Rice, lentils, daily groceries, coconuts, and financial support.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="when">30 May</td>
+        <td>
+          <a href="https://shivasankalpa.org/activities/mallikarjuna-patashala-visit-may-2026">Sri Mallikarjuna Veda and Sanskrit Pāṭhaśālā (Jyothi), Shankarapura</a>
+          <div>Guided by Veda Brahma Sri Harihara Bhatta: dīkṣā vastras, sandhyāvandana vessels and āsanas for fifteen students, food-grains, groceries, coconuts, and financial support.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="when">21 June</td>
+        <td>
+          <a href="https://shivasankalpa.org/activities/namma-sampradaya-visit-june-2026">Namma Sampradaya Gurukulam, Sarjapura</a>
+          <div>Met Yajurveda adhyāpakas Veda Brahma Sri Manjunatha Bhat and Veda Brahma Sri Venkatesha Bhat. Grains for forty children, daily groceries, coconuts, and financial support.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="when">24 June</td>
+        <td>
+          <a href="https://shivasankalpa.org/activities/ramana-maharshi-visit-june-2026">Sri Ramana Maharṣi Brahma Vidyāśrama, near Hosur</a>
+          <div>Met Yajurveda adhyāpaka Veda Brahma Sri Gaṇapati Bhat. A month’s food-grains for fifteen students, groceries, vegetables, and financial support.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="when">1 July</td>
+        <td>
+          <a href="https://shivasankalpa.org/activities/sirsi-gurukula-yatra-july-2026">“Let the lamps of the Veda not go out” — four Gurukulas around Sirsi</a>
+          <div>One note for Uma Madhukeshwara at Banavasi, Śrauta Vijñāna at Nadagodu, Sri Veda Prakāśa at Danandi, and Śrīdhara Sāṅga at Varadahalli, Sagara. It names who went — Anantanarayana Sharma, Bodhayana Jayasimha, Bharat Harithasa, Madhusudana K.N., and Phaneendra S.K. — what was offered, and why a monthly sevā matters from July. This is the page to open if there is time for only one visit report.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="when">August</td>
+        <td>
+          <a href="https://shivasankalpa.org/activities/august-support-to-eight-veda-gurukulas">Financial support to eight Veda Gurukulas</a>
+          <div>Koodali, Shivamogga; Śrauta Vijñāna, Nadagodu; Uma Madhukeshwara, Banavasi; Sri Mallikarjuna (Jyothi), Shankarapura; Shruti Parampara, Bengaluru; Mallige, Malleswaram; Sacchidananda, Basaveshwaranagar; and Namma Sampradaya, Sarjapura.</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="note">
+    <p>A new visit can be published in English and Kannada, with photographs, without waiting for a new release of the whole website. Programme and Camp filters are ready; nothing is filed under them yet. What a reader sees today is the visits, and the August note under Trust.</p>
+  </div>
+  <p class="url">Kannada · <a href="https://shivasankalpa.org/kn/activities">https://shivasankalpa.org/kn/activities</a></p>
+</section>
+
+<section>
+  <div class="head">
+  <p class="kicker">3 · Gurukulas</p>
+  <h2>Eight pāṭhaśālas now have a page</h2>
+  <p class="url"><a href="https://shivasankalpa.org/gurukulas">https://shivasankalpa.org/gurukulas</a></p>
+  </div>
+
+  <p>The list now reads: these are the Gurukulas and pāṭhaśālas the Vṛnda has visited or supports. Where the tradition, the ācāryas, and the students are known more fully, the portrait is longer. The others record the sevā offered so far.</p>
+  <p>Four fuller portraits were already on the site. They remain the ones with a photograph on the home page:</p>
+  <ul class="clean">
+    <li><a href="https://shivasankalpa.org/gurukulas/shruti-parampara">Sri Shruti Parampara Gurukulam, JP Nagar</a> — Ṛgveda and Kṛṣṇa Yajurveda; Veda Brahma Sri Shyamasundara Sharma Ghanapāṭhī</li>
+    <li><a href="https://shivasankalpa.org/gurukulas/namma-sampradaya">Namma Sampradaya Gurukulam, Sarjapura</a> — Veda Brahma Sri Manjunath Bhat Ghanapāṭhī</li>
+    <li><a href="https://shivasankalpa.org/gurukulas/shankara-gurukulam">Shankara Gurukulam, Ungra, Huliyurdurga</a></li>
+    <li><a href="https://shivasankalpa.org/gurukulas/sri-ramana-brahma-vidyashrama">Sri Ramana Maharṣi Brahma Vidyāśrama, Hosur</a></li>
+  </ul>
+  <p>The eight pages below are new. Each states the place, the ācārya where we have the name, and the sevā. A photograph, a śākhā list, or a phone number appears when we have it — the shorter page is a choice, so the site does not invent a portrait.</p>
+  <table>
+    <thead>
+      <tr><th>Pāṭhaśālā</th><th>What the page records</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://shivasankalpa.org/gurukulas/mallige-pathashala">Mallige Pāṭhaśālā</a><br />Malleswaram, Bengaluru</td>
+        <td>Visited 29 May 2026. Ācārya: Veda Brahma Sri Srinivasan. Among the eight that received support again in August.</td>
+      </tr>
+      <tr>
+        <td><a href="https://shivasankalpa.org/gurukulas/mallikarjuna-jyothi">Sri Mallikarjuna Veda Vidyā Gurukula</a><br />also Jyothi Pāṭhaśālā, Shankarapura</td>
+        <td>Fifteen students. Visited 30 May. Ācārya: Veda Brahma Sri Harihara Bhatta. August support.</td>
+      </tr>
+      <tr>
+        <td><a href="https://shivasankalpa.org/gurukulas/sacchidananda-advaitashrama">Sacchidananda Advaitāśrama</a><br />Basaveshwaranagar</td>
+        <td>Eight students. Visited 23 May, after speaking with Paramapūjya Sri Advayānanda Sarasvatī Swamiji. August support.</td>
+      </tr>
+      <tr>
+        <td><a href="https://shivasankalpa.org/gurukulas/uma-madhukeshwara">Uma Madhukeshwara Veda Vidyā Gurukula</a><br />Banavasi, Sirsi</td>
+        <td>Fifteen students, Kṛṣṇa Yajurveda to Kramānta, with Saṃskṛta, English, mathematics, and science. Ācārya: Veda Brahma Sri Madhusudana Bhat. Visited July. August support.</td>
+      </tr>
+      <tr>
+        <td><a href="https://shivasankalpa.org/gurukulas/shrauta-vijnana">Śrauta Vijñāna Gurukulam</a><br />Nadagodu, Sirsi</td>
+        <td>Thirty-five students, in the home of agnihotrin Veda Brahma Sri Āhitāgni Narasimha Bhat. Veda, śāstra, and śrauta. Visited July. August support.</td>
+      </tr>
+      <tr>
+        <td><a href="https://shivasankalpa.org/gurukulas/veda-prakasha">Sri Veda Prakāśa Gurukula</a><br />Danandi, Sirsi</td>
+        <td>Eight students on the roll; two were present at the July visit. Ācārya: Veda Brahma Sri Prakāśa Bhat. Rice, lentils, grains, vegetables, and financial support.</td>
+      </tr>
+      <tr>
+        <td><a href="https://shivasankalpa.org/gurukulas/sridhara-sanga">Śrīdhara Sāṅga Veda Vidyā Gurukula</a><br />Varadahalli, Sagara</td>
+        <td>Twelve students on Śrīdhara hill, a Gurukula of the Śrīdhara Āśrama Trust. Visited July.</td>
+      </tr>
+      <tr>
+        <td><a href="https://shivasankalpa.org/gurukulas/koodali-gurukula">Koodali Gurukula</a><br />Shivamogga</td>
+        <td>Financial support in August 2026, as one of the eight.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="url">Kannada list · <a href="https://shivasankalpa.org/kn/gurukulas">https://shivasankalpa.org/kn/gurukulas</a></p>
+</section>
+
+<section>
+  <div class="head">
+  <p class="kicker">4 · Home</p>
+  <h2>From Śiṣya to Guru</h2>
+  <p class="url"><a href="https://shivasankalpa.org/#vd-title">https://shivasankalpa.org/#vd-title</a></p>
+  </div>
+
+  <p>On the home page, after “Why Gurukulas”, an illustrated story follows a Veda vidyārthī. Two stories share one player. Press Play, or step with the arrows. The sky moves with the hour. The same pictures speak in Kannada when the site language is Kannada.</p>
+  <div class="scene-grid">
+    <div class="block">
+      <h3>The Journey</h3>
+      <ol>
+        <li>Arriving at the Gurukula</li>
+        <li>Upanayana — the second birth</li>
+        <li>Years of listening and repeating</li>
+        <li>Pada, Krama, Jaṭā, Ghana</li>
+        <li>Veda and the modern classroom</li>
+        <li>Festivals, competitions, love of the nation</li>
+        <li>Examined before the scholars</li>
+        <li>Samāvartana — the Guru’s parting words</li>
+        <li>Serving society as a vaidika</li>
+        <li>The śiṣya becomes the Guru</li>
+      </ol>
+    </div>
+    <div class="block">
+      <h3>A day at the Gurukula</h3>
+      <ol>
+        <li>Rising in Brāhma muhūrta</li>
+        <li>The sacred bath</li>
+        <li>Sandhyāvandanam at dawn</li>
+        <li>Learning the Veda from the Guru</li>
+        <li>Serving the Guru and the āśrama</li>
+        <li>The midday meal</li>
+        <li>Saṃskṛta, mathematics, and science</li>
+        <li>Play and exercise</li>
+        <li>Evening sandhyā and the lamp</li>
+        <li>Revision and rest</li>
+      </ol>
+    </div>
+  </div>
+  <p>Scenes carry a short narration and, where it belongs, a verse with its meaning. The Journey says the years are indicative: study varies with the Veda, the śākhā, and the level, such as Kramānta or Ghanānta. The Day says the hours vary from Gurukula to Gurukula.</p>
+  <p class="url">Kannada · <a href="https://shivasankalpa.org/kn/#vd-title">https://shivasankalpa.org/kn/#vd-title</a></p>
+</section>
+
+<section>
+  <div class="head">
+  <p class="kicker">5 · Knowledge Map</p>
+  <h2>The Veda, read one śākhā at a time</h2>
+  <p class="url"><a href="https://shivasankalpa.org/resources">https://shivasankalpa.org/resources</a></p>
+  </div>
+
+  <p>Knowledge Map is new in the menu. On the home page, under the Veda Vṛkṣa, a button reads “Explore the Vedic Knowledge Map”.</p>
+  <p class="url"><a href="https://shivasankalpa.org/">https://shivasankalpa.org/</a></p>
+  <p>The page’s own instruction is the walkthrough:</p>
+  <ol class="agenda">
+    <li><strong>Choose a Veda.</strong> Four doors. The Yajurveda opens into its Śukla and Kṛṣṇa halves.</li>
+    <li><strong>Choose a śākhā.</strong> Each śākhā is one living line of recitation, with its own books.</li>
+    <li><strong>Walk its books.</strong> Saṃhitā, then brāhmaṇa, āraṇyaka, and upaniṣad, then the limbs that belong to that śākhā. Open a book for what it is, and for where to hear it or read it.</li>
+  </ol>
+  <p>A commentary sits beside the book it explains. A book shared by two śākhās is written once; the other path links to it. Where an open text could not be checked, the page names the book and says why it is not linked, rather than offering an address that has not been opened.</p>
+
+  <h3>Open this one in the meeting</h3>
+  <p><a href="https://shivasankalpa.org/resources/taittiriya">Taittirīya — Kṛṣṇa Yajurveda</a>. The page describes it as the śākhā most widely recited in South India, and the one several of our Gurukulas teach. The path runs Saṃhitā, Brāhmaṇa, Āraṇyaka, Taittirīya Upaniṣad, Śvetāśvatara, then the Prātiśākhya and the Āpastamba and Baudhāyana sūtras that can be linked.</p>
+  <p>Inside a single book, the page offers hear, read, e-text, or commentary, each pointing outward:</p>
+  <p class="url"><a href="https://shivasankalpa.org/resources/taittiriya/taittiriya-samhita">https://shivasankalpa.org/resources/taittiriya/taittiriya-samhita</a></p>
+  <p>For the Ṛgveda pāṭha, the matching door is <a href="https://shivasankalpa.org/resources/shakala">Śākala</a>.</p>
+
+  <h3>The four doors</h3>
+  <ul class="clean">
+    <li><a href="https://shivasankalpa.org/resources#rig">Ṛgveda</a> — Śākala; Śāṅkhāyana (Kauṣītaki)</li>
+    <li><a href="https://shivasankalpa.org/resources#yajur">Yajurveda</a> — Śukla: Mādhyandina, Kāṇva. Kṛṣṇa: Taittirīya, Maitrāyaṇī, Kaṭha</li>
+    <li><a href="https://shivasankalpa.org/resources#sama">Sāmaveda</a> — Kauthuma, Rāṇāyanīya, Jaiminīya (Talavakāra)</li>
+    <li><a href="https://shivasankalpa.org/resources#atharva">Atharvaveda</a> — Śaunaka, Paippalāda</li>
+  </ul>
+  <p>Śikṣā and Kalpa live on each śākhā’s own path. Vyākaraṇa, Nirukta, Chandas, and Jyotiṣa serve every Veda and sit on a shared shelf: <a href="https://shivasankalpa.org/resources/vedanga">the six Vedāṅgas</a>.</p>
+  <div class="note">
+    <p>Every outward link was opened and checked before it was placed. The sources are the Vedic Heritage Portal of the IGNCA, GRETIL at the University of Göttingen, Sanskrit Documents, and the Internet Archive. The page points to a few good sources for each book. This edition covers the Veda and its Upaniṣads. Darśana, Itihāsa, and Purāṇa are the shelves still to come.</p>
+  </div>
+  <p class="url">Kannada · <a href="https://shivasankalpa.org/kn/resources">https://shivasankalpa.org/kn/resources</a></p>
+</section>
+
+<section>
+  <div class="head">
+  <p class="kicker">6 · Gallery and donations</p>
+  <h2>Photographs of the Puraścaraṇa, and a current QR</h2>
+  <p><a href="https://shivasankalpa.org/gallery">Gallery</a> · <a href="https://shivasankalpa.org/events/maharudra">the album on the Mahā Rudra page</a></p>
+  </div>
+
+  <p class="url"><a href="https://shivasankalpa.org/gallery">https://shivasankalpa.org/gallery</a></p>
+  <p>Photographs from 15–17 May are on the Mahā Rudra page and under the Maharudra filter in the Gallery. The older films and photographs — Shruti Parampara, Varthur, the Hosur āśrama, and the rest — remain.</p>
+  <p>For those who look after the site: photographs now live in a content library. A picture can be added, captioned in English and in Kannada, and it appears on the Gallery, on the Mahā Rudra page, or on a visit report, without a new release of the website. An activity’s album and the Gallery stay in step.</p>
+  <h3>Donations</h3>
+  <p class="url"><a href="https://shivasankalpa.org/donations">https://shivasankalpa.org/donations</a></p>
+  <p>The UPI QR code on the donations page has been replaced with the current one. Worth one scan in the meeting, so the code on the site is the code the trust expects to receive.</p>
+</section>
+
+<section>
+  <div class="head">
+  <p class="kicker">7 · Kannada</p>
+  <h2>The same pages, in Kannada</h2>
+  <p>The language control is on every page. Kannada addresses begin with <span class="url">/kn/</span>. A sentence filled in only one language falls back to the other, so a page does not go blank.</p>
+  </div>
+
+  <ul class="clean">
+    <li><a href="https://shivasankalpa.org/kn/events/maharudra">Mahā Rudra</a> — <span class="url">shivasankalpa.org/kn/events/maharudra</span></li>
+    <li><a href="https://shivasankalpa.org/kn/activities">Activities</a> — <span class="url">shivasankalpa.org/kn/activities</span></li>
+    <li><a href="https://shivasankalpa.org/kn/activities/sirsi-gurukula-yatra-july-2026">The Sirsi journey</a></li>
+    <li><a href="https://shivasankalpa.org/kn/gurukulas">Gurukulas</a> — <span class="url">shivasankalpa.org/kn/gurukulas</span></li>
+    <li><a href="https://shivasankalpa.org/kn/resources">Knowledge Map</a> — <span class="url">shivasankalpa.org/kn/resources</span></li>
+    <li><a href="https://shivasankalpa.org/kn/#vd-title">From Śiṣya to Guru</a> — <span class="url">shivasankalpa.org/kn/#vd-title</span></li>
+  </ul>
+</section>
+
+<section>
+  <div class="head">
+  <p class="kicker">If someone looks closely</p>
+  <h2>Four things worth knowing before the meeting</h2>
+  </div>
+  <ul class="clean">
+    <li>The eight newer Gurukula pages are short on purpose. They grow when a photograph, a śākhā, or a contact is in hand.</li>
+    <li>The home page still shows the four Gurukulas that have a full portrait and a photograph. The eight others are on the Gurukulas page.</li>
+    <li>The Knowledge Map links only what has been opened and read. A missing link is named, with the reason.</li>
+    <li>Storyboard hours and years are marked as indicative on the page itself.</li>
+  </ul>
+  <hr class="rule" style="margin-top:18px" />
+  <p class="meta" style="margin-top:10px">Sri Shivasankalpa Trust · shivasankalpa.org · walkthrough of updates from July 2026 to 27 September 2026.</p>
+</section>
+
+</body>
+</html>
