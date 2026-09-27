@@ -8,7 +8,9 @@
  * TODO v0.2: Replace local imports with Sanity client queries.
  */
 
-import { gurukulas } from '@/data/gurukulas';
+import { gurukulas, GURUKULA_MESSAGE_KEYS } from '@/data/gurukulas';
+
+export { GURUKULA_MESSAGE_KEYS };
 import { events } from '@/data/events';
 import { blogPosts } from '@/data/blog';
 import { trustees, managingCommittee, trustMembers } from '@/data/trustees';
@@ -19,6 +21,7 @@ import type {
   BlogPost,
   Trustee,
   GalleryItem,
+  ActivityItem,
 } from './types';
 
 export function getGurukulas(): Gurukula[] {
@@ -89,4 +92,19 @@ export async function getEventAlbum(
 ): Promise<GalleryItem[]> {
   const { getSanityAlbumByEventSlug } = await import('@/sanity/lib/media');
   return getSanityAlbumByEventSlug(slug, locale);
+}
+
+export async function getActivities(
+  locale: 'en' | 'kn'
+): Promise<ActivityItem[]> {
+  const { getSanityActivities } = await import('@/sanity/lib/activities');
+  return getSanityActivities(locale);
+}
+
+export async function getActivityBySlug(
+  slug: string,
+  locale: 'en' | 'kn'
+): Promise<ActivityItem | undefined> {
+  const { getSanityActivityBySlug } = await import('@/sanity/lib/activities');
+  return getSanityActivityBySlug(slug, locale);
 }

@@ -1,9 +1,8 @@
 /**
- * Maharudra Purascharana — detailed event page.
+ * Maharudra Purascharana — record of the completed Puraścaraṇa.
  *
- * Content sourced from the trust's official Maharudra invite letter.
- * Includes: spiritual significance, programme schedule, seva information,
- * and an inline donation modal (opens directly, not via /donations).
+ * Opens with the completion, then the significance, the rites as they
+ * were performed, the nivedana, and the photographs.
  */
 
 import type { Metadata } from 'next';
@@ -14,11 +13,10 @@ import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ShlokaBlock } from '@/components/ui/ShlokaBlock';
 import { Card } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
 import { getEventAlbum, getEventBySlug } from '@/lib/data-access';
 import { notFound } from 'next/navigation';
-import { MaharudraDonateButton } from './donate-button';
 import { GalleryGrid } from '../../gallery/grid';
+import { NivedanaOrnaments } from '@/components/blocks/NivedanaOrnaments';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -110,6 +108,18 @@ export default async function MaharudraPage({ params }: Props) {
           </div>
         </div>
 
+        {/* ── Completion ── */}
+        <div className="text-center space-y-6">
+          <div className="text-charcoal-300 leading-relaxed space-y-4 max-w-2xl mx-auto">
+            <p>{t('introPara1')}</p>
+            <p>{t('introPara2')}</p>
+          </div>
+          <OnwardLinks
+            activities={t('activitiesLink')}
+            gurukulas={t('gurukulasLink')}
+          />
+        </div>
+
         {/* ── Sri Adi Shankaracharya worshipping the Sphatika Linga ── */}
         <div className="flex justify-center">
           <Image
@@ -118,48 +128,16 @@ export default async function MaharudraPage({ params }: Props) {
             width={600}
             height={750}
             className="w-full max-w-lg rounded-xl shadow-lg"
-            priority
           />
         </div>
 
-        {album.length > 0 && (
-          <section className="space-y-8">
-            <SectionHeading
-              title={t('albumTitle')}
-              subtitle={t('albumSubtitle')}
-              centered
-            />
-            <GalleryGrid
-              items={album}
-              tabLabels={{
-                all: '',
-                gurukulas: '',
-                events: '',
-                misc: '',
-              }}
-              noItemsText=""
-              showFilters={false}
-            />
-          </section>
-        )}
-
-        {/* ── Introduction ── */}
-        <div className="text-center space-y-6">
+        <div className="text-center">
           <ShlokaBlock
             devanagari={`गण्यन्ते पांसवो भूमेः गण्यन्ते वृष्टिबिन्दवः।
 विधात्राऽपि न गण्यन्ते वेदाध्ययनतः फलम्॥`}
             translation={t('shlokaVedaTranslation')}
             size="sm"
           />
-
-          <div className="text-charcoal-300 leading-relaxed space-y-4 max-w-2xl mx-auto">
-            <p>{t('introPara1')}</p>
-            <p>
-              {t.rich('introPara2', {
-                em: (chunks) => <em className="shloka-iast">{chunks}</em>,
-              })}
-            </p>
-          </div>
         </div>
 
         {/* ── Spiritual Significance of the Rudrādhyāya ── */}
@@ -235,13 +213,10 @@ export default async function MaharudraPage({ params }: Props) {
             />
 
             <div className="grid gap-3 sm:grid-cols-2">
-              {event.sevaItems.map((seva, idx) => (
-                <Card key={idx} className="flex items-center justify-between gap-3 !py-4">
+              {event.sevaItems.map((_, idx) => (
+                <Card key={idx} className="!py-4">
                   <span className="text-sm text-charcoal-300">
                     {t(`seva${idx}` as Parameters<typeof t>[0])}
-                  </span>
-                  <span className="shrink-0 font-serif font-semibold text-indigo">
-                    ₹{seva.amount.toLocaleString('en-IN')}
                   </span>
                 </Card>
               ))}
@@ -249,7 +224,43 @@ export default async function MaharudraPage({ params }: Props) {
           </section>
         )}
 
-        {/* ── CTAs ── */}
+        {/* ── Nivedana submitted to the Jagadgurus ── */}
+        <section className="space-y-8">
+          <SectionHeading
+            title={t('nivedanaTitle')}
+            subtitle={t('nivedanaIntro')}
+            centered
+          />
+          <div className="nivedana-patra mx-auto max-w-2xl">
+            <NivedanaOrnaments />
+            <div className="nivedana-body whitespace-pre-line">
+              {t('nivedanaBody')}
+            </div>
+          </div>
+        </section>
+
+        {album.length > 0 && (
+          <section className="space-y-8">
+            <SectionHeading
+              title={t('albumTitle')}
+              subtitle={t('albumSubtitle')}
+              centered
+            />
+            <GalleryGrid
+              items={album}
+              tabLabels={{
+                all: '',
+                gurukulas: '',
+                events: '',
+                misc: '',
+              }}
+              noItemsText=""
+              showFilters={false}
+            />
+          </section>
+        )}
+
+        {/* ── Close, pointing onward to the Gurukulas ── */}
         <section className="text-center space-y-6 py-8 border-t border-ivory-300">
           <ShlokaBlock
             devanagari="॥ शिवसंकल्पमस्तु ॥"
@@ -261,17 +272,32 @@ export default async function MaharudraPage({ params }: Props) {
             {t('closingPara')}
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <MaharudraDonateButton />
-            <Link href="/contact">
-              <Button variant="secondary" size="lg">
-                {t('volunteer')}
-              </Button>
-            </Link>
-          </div>
+          <OnwardLinks
+            activities={t('activitiesLink')}
+            gurukulas={t('gurukulasLink')}
+          />
         </section>
       </div>
     </div>
+  );
+}
+
+function OnwardLinks({
+  activities,
+  gurukulas,
+}: {
+  activities: string;
+  gurukulas: string;
+}) {
+  return (
+    <p className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+      <Link href="/activities" className="font-medium text-indigo hover:underline">
+        {activities}
+      </Link>
+      <Link href="/gurukulas" className="font-medium text-indigo hover:underline">
+        {gurukulas}
+      </Link>
+    </p>
   );
 }
 

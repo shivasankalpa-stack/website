@@ -27,18 +27,18 @@ For local development, copy `.env.example` → `.env.local` and fill in `SMTP_PA
 
 **DNS note when cutting over `shivasankalpa.org` to Vercel:** point the website A/CNAME records to Vercel via Cloudflare DNS, but **leave the MX records pointing to Hostinger** so the mailbox keeps receiving mail.
 
-### Donation details — INTERIM (update before public launch)
+### Donation details — resolved 26 Sep 2026
 
-The donation details on the site are **interim/personal** (Jayasimha B N, Sree Charan Bank). Once the trust's own bank account and UPI are set up, update:
+The site shows the trust's own Canara Bank account (Basavanagudi), not the earlier interim personal account.
 
-| What          | Current (interim)                   | File to update                                            |
-| ------------- | ----------------------------------- | --------------------------------------------------------- |
-| UPI ID        | `9916104901-2@ybl`                  | `components/blocks/DonationDetails.tsx`                   |
-| QR Code       | `/assets/artefacts/donation-qr.png` | Replace image file + update path in `DonationDetails.tsx` |
-| Bank A/c Name | Jayasimha B N                       | `components/blocks/DonationDetails.tsx`                   |
-| Bank A/c No   | 0101001000001659                    | `components/blocks/DonationDetails.tsx`                   |
-| Bank IFSC     | SECB0000010                         | `components/blocks/DonationDetails.tsx`                   |
-| Bank/Branch   | Sree Charan Bank, Shankarapuram     | `components/blocks/DonationDetails.tsx`                   |
+| What          | Value                                      | Where                                                    |
+| ------------- | ------------------------------------------ | -------------------------------------------------------- |
+| UPI ID        | `342080543425744@cnrb`                     | `components/blocks/DonationDetails.tsx`                  |
+| QR Code       | `/assets/artefacts/donation-qr.png`        | `public/assets/artefacts/donation-qr.png`                |
+| Bank A/c Name | Shree Shivasankalpa Vrunda Trust           | `components/blocks/DonationDetails.tsx`                  |
+| Bank A/c No   | 110332425744                               | `components/blocks/DonationDetails.tsx`                  |
+| Bank IFSC     | CNRB0000403                                | `components/blocks/DonationDetails.tsx`                  |
+| Bank/Branch   | Canara Bank, Basavanagudi                  | `messages/en.json` and `messages/kn.json` (`donation.bankName`) |
 
 ---
 
@@ -158,8 +158,8 @@ The gallery, Gurukula detail pages, and blog currently use a mix of available ph
 
 | Bucket                                          | Count |
 | ----------------------------------------------- | ----- |
-| Blocking — must fix before public launch        | 2     |
-| (SMTP password in Vercel, donation account cut-over to the trust's own bank/UPI) | |
+| Blocking — must fix before public launch        | 1     |
+| (SMTP password in Vercel)                       | |
 | Cosmetic / non-blocking                         | 11    |
 | (10 `#BIO-TODO-*` filler bios + `#FAQ-TODO-80g-status`) | |
 | Editorial / content                             | 1     |

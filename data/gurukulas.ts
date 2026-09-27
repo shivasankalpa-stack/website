@@ -1,16 +1,31 @@
 /**
- * Gurukula seed data for v0.1.
+ * Gurukulas the Vṛnda has visited or supports.
  *
- * Four featured Vedic Gurukulas. The fields shown on the site are the ones
- * we have for ALL four — name, location, founder(s), Adhyāpaka(s), shākhās
- * taught, broader curriculum, contact details — so no Gurukula appears
- * underrepresented relative to another. English text lives here; Kannada
- * translations live under `gurukulaDetail.<key>_*` in `messages/kn.json`.
+ * `profile` omitted (full portrait): name, place, founders, Adhyāpakas,
+ * śākhās, curriculum, contact, and a hero image.
+ * `profile: 'brief'`: name, place, and the seva we can already describe.
+ * English text lives here; Kannada lives under `gurukulaDetail.<key>_*`.
  *
- * Image and asset paths under /public/assets/gurukulas/<slug>/.
+ * Image paths under /public/assets/gurukulas/<slug>/.
  */
 
 import type { Gurukula } from '@/lib/types';
+
+/** Message-key prefix in `gurukulaDetail` for each slug. */
+export const GURUKULA_MESSAGE_KEYS: Record<string, string> = {
+  'shruti-parampara': 'shrutiParampara',
+  'namma-sampradaya': 'nammaSampradaya',
+  'shankara-gurukulam': 'shankaraGurukulam',
+  'sri-ramana-brahma-vidyashrama': 'sriRamanaBrahmaVidyashrama',
+  'mallige-pathashala': 'malligePathashala',
+  'mallikarjuna-jyothi': 'mallikarjunaJyothi',
+  'sacchidananda-advaitashrama': 'sacchidananda',
+  'uma-madhukeshwara': 'umaMadhukeshwara',
+  'shrauta-vijnana': 'shrautaVijnana',
+  'veda-prakasha': 'vedaPrakasha',
+  'sridhara-sanga': 'sridharaSanga',
+  'koodali-gurukula': 'koodaliGurukula',
+};
 
 export const gurukulas: Gurukula[] = [
   {
@@ -63,7 +78,7 @@ export const gurukulas: Gurukula[] = [
   {
     slug: 'namma-sampradaya',
     name: 'Namma Sampradaya Gurukulam',
-    location: 'Varthur, Bangalore',
+    location: 'Sarjapura, Bangalore',
     city: 'Bangalore',
     acharya: 'Veda Brahma Sri Manjunath Bhat Ghanapāṭhī',
     studentCount: 30,
@@ -77,7 +92,7 @@ export const gurukulas: Gurukula[] = [
       'Public Speaking',
     ],
     overview:
-      'Namma Sampradaya Gurukulam at Varthur has been training students in Veda adhyayana for over a decade, with thirty residential students and one hundred and twenty alumni. Beyond Veda pāṭha, the Gurukulam emphasises Saṁskṛta, Purāṇa-Itihāsa and the practical art of public speaking — preparing Adhyāpakas who can carry the tradition forward.',
+      'Namma Sampradaya Gurukulam at Sarjapura has been training students in Veda adhyayana for over a decade, with thirty residential students and one hundred and twenty alumni. Beyond Veda pāṭha, the Gurukulam emphasises Saṁskṛta, Purāṇa-Itihāsa and the practical art of public speaking — preparing Adhyāpakas who can carry the tradition forward.',
     founders: [
       { name: 'Sri Mahesh Ramakrishnan Sharma', honorific: 'Co-Founder' },
       { name: 'Sri Ram Kumar Sharma', honorific: 'Co-Founder' },
@@ -95,7 +110,7 @@ export const gurukulas: Gurukula[] = [
     ],
     contact: {
       phone: '+91 78997 68717',
-      address: 'Varthur, Bangalore, Karnataka',
+      address: 'Sarjapura, Bangalore, Karnataka',
       website: 'https://nammasampradaya.weebly.com/contact-us.html',
     },
     heroImage: '/assets/gurukulas/namma-sampradaya/hero.jpg',
@@ -211,5 +226,106 @@ export const gurukulas: Gurukula[] = [
       '/assets/gurukulas/sri-ramana-brahma-vidyashrama/swamiji-arunachala.webp',
       '/assets/gurukulas/sri-ramana-brahma-vidyashrama/swamiji-portrait.jpg',
     ],
+  },
+  {
+    slug: 'mallige-pathashala',
+    profile: 'brief',
+    name: 'Mallige Pāṭhaśālā',
+    location: 'Malleswaram, Bengaluru',
+    city: 'Bengaluru',
+    acharya: 'Veda Brahma Sri Srinivasan',
+    engagement: 'Visited 29 May 2026; financial support in August 2026',
+    overview:
+      'On 29 May 2026 the Vṛnda visited Mallige Pāṭhaśālā in Malleswaram and sat with founder and Yajurveda adhyāpaka Veda Brahma Sri Srinivasan to understand the pāṭhaśālā’s needs. Rice, lentils, daily groceries, coconuts, and financial support were offered. The pāṭhaśālā was among the eight that received support again in August.',
+    contact: {},
+  },
+  {
+    slug: 'mallikarjuna-jyothi',
+    profile: 'brief',
+    name: 'Sri Mallikarjuna Veda Vidyā Gurukula',
+    alsoKnownAs: 'Jyothi Pāṭhaśālā',
+    location: 'Shankarapura, near Basavanagudi, Bengaluru',
+    city: 'Bengaluru',
+    acharya: 'Veda Brahma Sri Harihara Bhatta',
+    studentCount: 15,
+    engagement: 'Visited 30 May 2026; financial support in August 2026',
+    overview:
+      'On 30 May 2026 the Vṛnda visited this Yajurveda pāṭhaśālā in Shankarapura, near Basavanagudi, also called Jyothi Pāṭhaśālā. Guided by Veda Brahma Sri Harihara Bhatta, the Vṛnda offered dīkṣā vastras, sandhyāvandana vessels, and āsanas for fifteen students, along with food-grains, groceries, coconuts, and financial support. The pāṭhaśālā was among the eight that received support again in August.',
+    contact: {},
+  },
+  {
+    slug: 'sacchidananda-advaitashrama',
+    profile: 'brief',
+    name: 'Sacchidananda Advaitāśrama',
+    location: 'Basaveshwaranagar, Bengaluru',
+    city: 'Bengaluru',
+    acharya: 'Paramapūjya Sri Advayānanda Sarasvatī Swamiji',
+    studentCount: 8,
+    engagement: 'Visited 23 May 2026; financial support in August 2026',
+    overview:
+      'On 23 May 2026 the Vṛnda visited Sacchidananda Advaitāśrama Veda Gurukula in Basaveshwaranagar and, after speaking with Paramapūjya Sri Advayānanda Sarasvatī Swamiji, offered grains and groceries, vastras and āsanas for eight children and three adhyāpakas, sandhyāvandana vessels, coconuts, and financial support. The āśrama was among the eight that received support again in August.',
+    contact: {},
+  },
+  {
+    slug: 'uma-madhukeshwara',
+    profile: 'brief',
+    name: 'Uma Madhukeshwara Veda Vidyā Gurukula',
+    location: 'Banavasi, Sirsi, Karnataka',
+    city: 'Banavasi',
+    acharya: 'Veda Brahma Sri Madhusudana Bhat',
+    studentCount: 15,
+    shakhas: ['Krishna Yajurveda'],
+    engagement: 'Visited July 2026; financial support in August 2026',
+    overview:
+      'Fifteen students under Veda Brahma Sri Madhusudana Bhat study Kṛṣṇa Yajurveda to Kramānta, with Sanskrit, English, mathematics, and science. A young guru has offered his life to this pāṭha. The Vṛnda visited in July 2026 and included the Gurukula in the August support to eight Veda Gurukulas.',
+    contact: {},
+  },
+  {
+    slug: 'shrauta-vijnana',
+    profile: 'brief',
+    name: 'Śrauta Vijñāna Gurukulam',
+    location: 'Nadagodu, Sirsi, Karnataka',
+    city: 'Sirsi',
+    acharya: 'Veda Brahma Sri Āhitāgni Narasimha Bhat',
+    studentCount: 35,
+    engagement: 'Visited July 2026; financial support in August 2026',
+    overview:
+      'Thirty-five students learn Veda, śāstra, and śrauta in the home of an agnihotrin, Veda Brahma Sri Āhitāgni Narasimha Bhat, in the forest at Nadagodu, away from the crowd. The Vṛnda visited in July 2026 and included the Gurukulam in the August support to eight Veda Gurukulas.',
+    contact: {},
+  },
+  {
+    slug: 'veda-prakasha',
+    profile: 'brief',
+    name: 'Sri Veda Prakāśa Gurukula',
+    location: 'Danandi, Sirsi, Karnataka',
+    city: 'Sirsi',
+    acharya: 'Veda Brahma Sri Prakāśa Bhat',
+    engagement: 'Visited July 2026',
+    overview:
+      'Eight students are on the roll, and two were present when the Vṛnda visited in July 2026. Veda Brahma Sri Prakāśa Bhat teaches them in the Malnad forest. The hope is for more children, a fuller gośālā, and a proper campus. The Vṛnda offered rice, lentils, grains, vegetables, and financial support as needed.',
+    contact: {},
+  },
+  {
+    slug: 'sridhara-sanga',
+    profile: 'brief',
+    name: 'Śrīdhara Sāṅga Veda Vidyā Gurukula',
+    location: 'Varadahalli, Sagara, Karnataka',
+    city: 'Sagara',
+    studentCount: 12,
+    engagement: 'Visited July 2026',
+    overview:
+      'Twelve students live on Śrīdhara hill at Varadahalli, Sagara, in a Gurukula run by the Śrīdhara Āśrama Trust. Many have completed their adhyayana and taken up dharmic work. The Vṛnda visited in July 2026 and offered rice, lentils, grains, vegetables, and financial support as needed.',
+    contact: {},
+  },
+  {
+    slug: 'koodali-gurukula',
+    profile: 'brief',
+    name: 'Koodali Gurukula',
+    location: 'Shivamogga, Karnataka',
+    city: 'Shivamogga',
+    engagement: 'Financial support, August 2026',
+    overview:
+      'In August 2026 the Vṛnda extended financial support to Koodali Gurukula in Shivamogga, as one of eight Veda Gurukulas that received support that month.',
+    contact: {},
   },
 ];

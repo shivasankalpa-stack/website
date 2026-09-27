@@ -2,7 +2,7 @@
  * DonationSection — homepage CTA with three purpose cards + donation modal.
  *
  * Each card (Gurukula Abhivruddhi, Go-Samrakshanam, Event Seva) opens a
- * shared modal showing UPI/QR/bank placeholders.
+ * shared modal showing the trust's UPI, QR, and bank details.
  *
  * TODO v0.2: Razorpay integration + automated 80G receipts
  */

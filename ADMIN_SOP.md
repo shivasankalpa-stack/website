@@ -278,9 +278,7 @@ image: '/assets/gurukulas/shruti-parampara/students.jpg',
 2. Update the UPI ID, bank details, or QR code image path
 3. To replace the QR code: upload the new image to `public/assets/artefacts/` and update the `src` in the file
 
-> **Note:** The current donation details are interim (personal account). Replace with the trust's own account details before public launch. See `PLACEHOLDERS.md` for the full checklist.
-
-> **Kannada translation:** Donation UI labels (headings like "UPI ID", "Bank Transfer", "Beneficiary", etc.) are translated via the `donation` namespace in the message files. The actual payment values (UPI handle, account number, IFSC) are hardcoded in the component and shared across both languages — you only need to edit them once. If you want to change a label (e.g., rename "Scan to Pay"), edit both `messages/en.json` and `messages/kn.json` under the `donation` namespace (see [sections 2a and 2b](#2a-changing-english-text-only)).
+> **Kannada translation:** Donation UI labels (headings like "UPI ID", "Bank Transfer", "Beneficiary", etc.) are translated via the `donation` namespace in the message files. The bank-and-branch line is `donation.bankName` in both `messages/en.json` and `messages/kn.json`. The actual payment values (UPI handle, account number, IFSC, beneficiary) are hardcoded in the component and shared across both languages — you only need to edit them once. If you want to change a label (e.g., rename "Scan to Pay"), edit both `messages/en.json` and `messages/kn.json` under the `donation` namespace (see [sections 2a and 2b](#2a-changing-english-text-only)).
 
 ---
 

@@ -20,9 +20,9 @@ interface GurukulaTabsProps {
     contact: string;
   };
   overview: React.ReactNode;
-  adhyapakas: React.ReactNode;
-  curriculum: React.ReactNode;
-  contact: React.ReactNode;
+  adhyapakas?: React.ReactNode;
+  curriculum?: React.ReactNode;
+  contact?: React.ReactNode;
 }
 
 export function GurukulaTabs({
@@ -32,15 +32,18 @@ export function GurukulaTabs({
   curriculum,
   contact,
 }: GurukulaTabsProps) {
-  return (
-    <Tabs
-      tabs={[
-        { id: 'overview', label: labels.overview, content: overview },
-        { id: 'adhyapakas', label: labels.adhyapakas, content: adhyapakas },
-        { id: 'curriculum', label: labels.curriculum, content: curriculum },
-        { id: 'contact', label: labels.contact, content: contact },
-      ]}
-      defaultTab="overview"
-    />
+  const tabs = [
+    { id: 'overview', label: labels.overview, content: overview },
+    adhyapakas
+      ? { id: 'adhyapakas', label: labels.adhyapakas, content: adhyapakas }
+      : null,
+    curriculum
+      ? { id: 'curriculum', label: labels.curriculum, content: curriculum }
+      : null,
+    contact ? { id: 'contact', label: labels.contact, content: contact } : null,
+  ].filter((tab): tab is { id: string; label: string; content: React.ReactNode } =>
+    Boolean(tab)
   );
+
+  return <Tabs tabs={tabs} defaultTab="overview" />;
 }

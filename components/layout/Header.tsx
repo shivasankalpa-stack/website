@@ -13,14 +13,34 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Menu, X } from 'lucide-react';
 import { Link, usePathname } from '@/i18n/routing';
 
-const navItems = [
-  { href: '/', key: 'navHome' as const },
-  { href: '/gurukulas', key: 'navGurukulas' as const },
-  { href: '/events', key: 'navEvents' as const },
-  { href: '/gallery', key: 'navGallery' as const },
-  { href: '/donations', key: 'navDonations' as const },
-  { href: '/about', key: 'navAbout' as const },
+const navItems: Array<{
+  href: string;
+  key:
+    | 'navHome'
+    | 'navGurukulas'
+    | 'navEvents'
+    | 'navActivities'
+    | 'navGallery'
+    | 'navDonations'
+    | 'navAbout';
+  isNew?: boolean;
+}> = [
+  { href: '/', key: 'navHome' },
+  { href: '/gurukulas', key: 'navGurukulas' },
+  { href: '/events', key: 'navEvents' },
+  { href: '/activities', key: 'navActivities', isNew: true },
+  { href: '/gallery', key: 'navGallery' },
+  { href: '/donations', key: 'navDonations' },
+  { href: '/about', key: 'navAbout' },
 ];
+
+function NewBadge({ label }: { label: string }) {
+  return (
+    <span className="rounded-sm bg-kumkuma px-1 py-px text-[9px] font-sans font-semibold uppercase tracking-wider text-ivory-50 leading-none">
+      {label}
+    </span>
+  );
+}
 
 export function Header() {
   const t = useTranslations('header');
@@ -70,13 +90,13 @@ export function Header() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-4" aria-label={t('mainNav')}>
-            <ul className="flex items-center gap-1">
+            <ul className="flex items-center gap-0.5">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     className={`
-                      px-3 py-2 rounded-md text-sm font-medium transition-colors
+                      inline-flex items-center gap-1.5 px-2.5 py-2 rounded-md text-sm font-medium transition-colors
                       ${
                         isActive(item.href)
                           ? 'text-indigo bg-indigo-50'
@@ -86,6 +106,7 @@ export function Header() {
                     aria-current={isActive(item.href) ? 'page' : undefined}
                   >
                     {t(item.key)}
+                    {item.isNew && <NewBadge label={t('navNew')} />}
                   </Link>
                 </li>
               ))}
@@ -184,7 +205,7 @@ export function Header() {
                 <Link
                   href={item.href}
                   className={`
-                    block px-6 py-3 text-center font-serif text-xl transition-colors
+                    inline-flex items-center gap-2 px-6 py-3 text-center font-serif text-xl transition-colors
                     ${
                       isActive(item.href)
                         ? 'text-charcoal font-bold'
@@ -194,6 +215,7 @@ export function Header() {
                   aria-current={isActive(item.href) ? 'page' : undefined}
                 >
                   {t(item.key)}
+                  {item.isNew && <NewBadge label={t('navNew')} />}
                 </Link>
               </li>
             ))}

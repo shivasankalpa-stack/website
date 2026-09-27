@@ -219,6 +219,127 @@ body {
     36px 48px;
 }
 
+/* ── Nivedana patra ──
+   The letter submitted to the Jagadgurus. Set on a deep indigo panel
+   with a temple-gold double frame (no kolam), so it stands clearly
+   apart from the ivory page as a document of its own. */
+
+.nivedana-patra {
+  position: relative;
+  color: var(--color-ivory-100);
+  background-color: var(--color-indigo);
+  background-image:
+    radial-gradient(
+      ellipse at top,
+      color-mix(in srgb, var(--color-indigo-300) 45%, transparent) 0%,
+      transparent 65%
+    ),
+    linear-gradient(180deg, var(--color-indigo) 0%, var(--color-indigo-500) 100%);
+  border: 2px solid var(--color-gold);
+  border-radius: 6px;
+  margin-top: 2.75rem;                 /* room for the lotus medallion */
+  padding: 5.5rem 4.25rem 5rem;
+  box-shadow:
+    0 0 0 5px var(--color-ivory),
+    0 0 0 7px color-mix(in srgb, var(--color-gold) 70%, transparent),
+    0 18px 40px rgb(32 29 66 / 0.28);
+}
+
+/* Inner gold hairline */
+.nivedana-patra::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid color-mix(in srgb, var(--color-gold-100) 45%, transparent);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.nivedana-patra > * {
+  position: relative;
+}
+
+/* Lotus medallion seated on the top border */
+.nivedana-patra .nv-medallion {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  display: grid;
+  place-items: center;
+  border-radius: 9999px;
+  color: var(--color-gold);
+  background: radial-gradient(circle at 50% 35%, var(--color-indigo-300), var(--color-indigo) 70%);
+  border: 2px solid var(--color-gold);
+  box-shadow:
+    0 0 0 5px var(--color-ivory),
+    0 0 0 7px color-mix(in srgb, var(--color-gold) 70%, transparent);
+  z-index: 1;
+}
+
+.nivedana-patra .nv-medallion svg {
+  width: 54px;
+  height: 44px;
+}
+
+/* Floral corners — one design, mirrored into each corner */
+.nivedana-patra .nv-corner {
+  position: absolute;
+  width: 96px;
+  height: 96px;
+  color: var(--color-gold);
+  pointer-events: none;
+}
+
+.nivedana-patra .nv-corner-eye { fill: var(--color-indigo); }
+.nivedana-patra .nv-corner-tl { top: 16px; left: 16px; }
+.nivedana-patra .nv-corner-tr { top: 16px; right: 16px; transform: scaleX(-1); }
+.nivedana-patra .nv-corner-bl { bottom: 16px; left: 16px; transform: scaleY(-1); }
+.nivedana-patra .nv-corner-br { bottom: 16px; right: 16px; transform: scale(-1, -1); }
+
+.nivedana-patra .nivedana-body {
+  color: var(--color-ivory-100);
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 640px) {
+  .nivedana-patra {
+    padding: 4.25rem 1.75rem 3.75rem;
+  }
+
+  .nivedana-patra::before {
+    inset: 8px;
+  }
+
+  .nivedana-patra .nv-medallion {
+    width: 64px;
+    height: 64px;
+  }
+
+  .nivedana-patra .nv-medallion svg {
+    width: 42px;
+    height: 34px;
+  }
+
+  .nivedana-patra .nv-corner {
+    width: 64px;
+    height: 64px;
+  }
+
+  .nivedana-patra .nv-corner-tl { top: 11px; left: 11px; }
+  .nivedana-patra .nv-corner-tr { top: 11px; right: 11px; }
+  .nivedana-patra .nv-corner-bl { bottom: 11px; left: 11px; }
+  .nivedana-patra .nv-corner-br { bottom: 11px; right: 11px; }
+
+  .nivedana-patra .nivedana-body {
+    font-size: 1.0625rem;
+  }
+}
+
 /* Reduced motion: disable all animations and transitions */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

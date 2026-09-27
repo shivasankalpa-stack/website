@@ -23,18 +23,18 @@ import {
 import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 import { Card } from '@/components/ui/Card';
 import { EnlargeablePortrait } from '@/components/blocks/EnlargeablePortrait';
-import { getGurukulaBySlug, getGurukulas } from '@/lib/data-access';
+import {
+  getActivities,
+  getGurukulaBySlug,
+  getGurukulas,
+  GURUKULA_MESSAGE_KEYS,
+} from '@/lib/data-access';
 import { notFound } from 'next/navigation';
 import { GurukulaTabs } from './tabs';
 
 type Params = Promise<{ slug: string; locale: string }>;
 
-const SLUG_TO_KEY: Record<string, string> = {
-  'shruti-parampara': 'shrutiParampara',
-  'namma-sampradaya': 'nammaSampradaya',
-  'shankara-gurukulam': 'shankaraGurukulam',
-  'sri-ramana-brahma-vidyashrama': 'sriRamanaBrahmaVidyashrama',
-};
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   return getGurukulas().map((g) => ({ slug: g.slug }));
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const t = await getTranslations({ locale, namespace: 'gurukulaDetail' });
   const gk = getGurukulaBySlug(slug);
   if (!gk) return {};
-  const key = SLUG_TO_KEY[slug];
+  const key = GURUKULA_MESSAGE_KEYS[slug];
   const location = key
     ? t(`${key}_location` as Parameters<typeof t>[0])
     : gk.location;
@@ -64,7 +64,7 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
   const gk = getGurukulaBySlug(slug);
   if (!gk) notFound();
 
-  const key = SLUG_TO_KEY[slug];
+  const key = GURUKULA_MESSAGE_KEYS[slug];
 
   function localised(field: string, fallback: string): string {
     if (!key) return fallback;
@@ -74,6 +74,17 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
   const name = localised('name', gk.name);
   const location = localised('location', gk.location);
   const overview = localised('overview', gk.overview);
+  const alsoKnownAs = gk.alsoKnownAs
+    ? localised('alsoKnownAs', gk.alsoKnownAs)
+    : undefined;
+  const teachers = gk.adhyapakas ?? [];
+  const hasCurriculum = Boolean(gk.shakhas?.length || gk.otherShastras?.length);
+  const hasContact = Boolean(
+    gk.contact.address || gk.contact.phone || gk.contact.website || gk.contact.email
+  );
+  const relatedActivities = (
+    await getActivities(locale === 'kn' ? 'kn' : 'en')
+  ).filter((item) => item.gurukulaSlugs.includes(slug));
 
   return (
     <div className="relative">
@@ -88,8 +99,9 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
       {/* Hero image — kept at the same 16:9 aspect as the gurukula card so
           portrait/square hero photos crop the same way in both places.
           A max-width keeps the hero from becoming absurdly tall on wide
-          desktops while still feeling cinematic. */}
+          desktops while still feeling cinematic. Brief entries have no photo. */}
       <div className="mx-auto max-w-5xl">
+        {gk.heroImage ? (
         <div className="relative aspect-[16/9] bg-ivory-300 overflow-hidden md:rounded-b-lg">
           <Image
             src={gk.heroImage}
@@ -103,6 +115,11 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal-500/65 via-charcoal-500/25 to-transparent" />
 
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+            {alsoKnownAs && (
+              <p className="text-xs font-medium uppercase tracking-wider text-ivory-100/90">
+                {alsoKnownAs}
+              </p>
+            )}
             <h1 className="font-serif text-2xl font-bold text-ivory-50 md:text-3xl drop-shadow-md">
               {name}
             </h1>
@@ -111,10 +128,12 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
                 <MapPin size={14} />
                 {location}
               </span>
-              <span className="flex items-center gap-1.5">
-                <Users size={14} />
-                {t('studentsLabel', { count: gk.studentCount })}
-              </span>
+              {typeof gk.studentCount === 'number' && (
+                <span className="flex items-center gap-1.5">
+                  <Users size={14} />
+                  {t('studentsLabel', { count: gk.studentCount })}
+                </span>
+              )}
               {gk.shakhas && gk.shakhas.length > 0 && (
                 <span className="flex items-center gap-1.5">
                   <BookOpen size={14} />
@@ -126,6 +145,38 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
             </div>
           </div>
         </div>
+        ) : (
+          <div className="px-4 pt-12 pb-2 md:px-6 md:pt-16">
+            {alsoKnownAs && (
+              <p className="text-xs font-medium uppercase tracking-wider text-kumkuma">
+                {alsoKnownAs}
+              </p>
+            )}
+            <h1 className="font-serif text-3xl font-bold text-indigo md:text-4xl">
+              {name}
+            </h1>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 mt-3 text-sm text-charcoal-300">
+              <span className="flex items-center gap-1.5">
+                <MapPin size={14} className="text-indigo" />
+                {location}
+              </span>
+              {typeof gk.studentCount === 'number' && (
+                <span className="flex items-center gap-1.5">
+                  <Users size={14} className="text-indigo" />
+                  {t('studentsLabel', { count: gk.studentCount })}
+                </span>
+              )}
+              {gk.shakhas && gk.shakhas.length > 0 && (
+                <span className="flex items-center gap-1.5">
+                  <BookOpen size={14} className="text-indigo" />
+                  {key
+                    ? t(`${key}_shakhas` as Parameters<typeof t>[0])
+                    : gk.shakhas.join(' · ')}
+                </span>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Content with tabs */}
@@ -190,7 +241,11 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
               )}
 
               {/* Stats: students, alumni, ghanapaathis */}
+              {(typeof gk.studentCount === 'number' ||
+                typeof gk.graduatedCount === 'number' ||
+                typeof gk.ghanapaathisProduced === 'number') && (
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {typeof gk.studentCount === 'number' && (
                 <Card className="text-center !p-5">
                   <Users size={18} className="mx-auto text-indigo" />
                   <p className="font-serif text-2xl font-semibold text-indigo mt-1">
@@ -200,6 +255,7 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
                     {t('statCurrentStudents')}
                   </p>
                 </Card>
+                )}
                 {typeof gk.graduatedCount === 'number' && (
                   <Card className="text-center !p-5">
                     <GraduationCap size={18} className="mx-auto text-indigo" />
@@ -223,12 +279,14 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
                   </Card>
                 )}
               </div>
+              )}
 
             </div>
           }
           adhyapakas={
+            teachers.length > 0 ? (
             <div className="space-y-4">
-              {gk.adhyapakas.map((teacher, idx) => {
+              {teachers.map((teacher, idx) => {
                 const teacherName = key
                   ? t(`${key}_adhyapaka${idx}` as Parameters<typeof t>[0])
                   : teacher.name;
@@ -310,8 +368,10 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
                 );
               })}
             </div>
+            ) : undefined
           }
           curriculum={
+            hasCurriculum ? (
             <div className="space-y-6">
               {gk.shakhas && gk.shakhas.length > 0 && (
                 <div>
@@ -354,8 +414,10 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
                 {t('curriculumNote')}
               </p>
             </div>
+            ) : undefined
           }
           contact={
+            hasContact ? (
             <div className="space-y-4">
               {gk.contact.address && (
                 <div className="flex items-start gap-3 text-sm text-charcoal-300">
@@ -396,8 +458,50 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
                 {t('contactNote')}
               </p>
             </div>
+            ) : undefined
           }
         />
+
+        {relatedActivities.length > 0 && (
+          <section className="mt-12 space-y-4">
+            <h2 className="font-serif text-lg font-semibold text-indigo">
+              {t('sevaTitle')}
+            </h2>
+            <ul className="space-y-3">
+              {relatedActivities.map((item) => {
+                const date = new Date(item.date).toLocaleDateString(
+                  locale === 'kn' ? 'kn-IN' : 'en-IN',
+                  { day: 'numeric', month: 'long', year: 'numeric' }
+                );
+                const body = (
+                  <>
+                    <span className="font-serif font-semibold text-indigo">{item.title}</span>
+                    <span className="block text-sm text-charcoal-200 mt-0.5">{date}</span>
+                    <span className="block text-sm text-charcoal-300 mt-1 leading-relaxed">
+                      {item.publicSummary}
+                    </span>
+                  </>
+                );
+                return (
+                  <li key={item.slug}>
+                    {item.hasDetailPage ? (
+                      <Link
+                        href={`/activities/${item.slug}`}
+                        className="block rounded-lg border border-ivory-300 bg-ivory-50 p-4 hover:border-indigo-100 transition-colors"
+                      >
+                        {body}
+                      </Link>
+                    ) : (
+                      <div className="rounded-lg border border-ivory-300 bg-ivory-50 p-4">
+                        {body}
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
       </div>
     </div>
   );

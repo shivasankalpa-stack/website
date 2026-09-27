@@ -46,11 +46,20 @@ export interface ContactInfo {
 export interface Gurukula {
   slug: string;
   name: string;
+  /** Second name in local use, e.g. Jyothi Pāṭhaśālā. */
+  alsoKnownAs?: string;
   location: string;
   city: string;
+  /**
+   * `brief` entries record a visit or support when a full portrait
+   * (photos, curriculum, contact) is not yet documented.
+   */
+  profile?: 'full' | 'brief';
+  /** One line on the list card for a brief entry. */
+  engagement?: string;
   /** Primary face used on list / featured cards (typically the senior Adhyāpaka). */
-  acharya: string;
-  studentCount: number;
+  acharya?: string;
+  studentCount?: number;
   /** All shākhās taught at the Gurukula. */
   shakhas?: string[];
   /** Curriculum beyond Veda pāṭha — Vedānga, śāstras, secular subjects, etc. */
@@ -61,16 +70,16 @@ export interface Gurukula {
   overview: string;
   /** Founders / mārga-darshis (may differ from teaching Adhyāpakas). */
   founders?: Founder[];
-  adhyapakas: Adhyapaka[];
+  adhyapakas?: Adhyapaka[];
   contact: ContactInfo;
-  heroImage: string;
+  heroImage?: string;
   /**
    * Optional CSS `object-position` for the wide hero crop
    * (e.g. `'top'`, `'center 30%'`). Use when the subject sits above or
    * below the centre and a default crop hides the focal point.
    */
   heroPosition?: string;
-  images: string[];
+  images?: string[];
 }
 
 export interface SevaItem {
@@ -146,6 +155,38 @@ export interface GalleryItem {
   imagePosition?: string;
   /** Slugs such as `maharudra` — used for gallery tag tabs. */
   tags?: string[];
+}
+
+export type ActivityKind =
+  | 'gurukulaVisit'
+  | 'trustAffairs'
+  | 'culturalProgramme'
+  | 'healthCamp'
+  | 'other';
+
+export interface ActivityDonation {
+  purpose: string;
+  amount?: number;
+}
+
+export interface ActivityItem {
+  slug: string;
+  kind: ActivityKind;
+  title: string;
+  publicSummary: string;
+  date: string;
+  endDate?: string;
+  /** Every pāṭhaśāla this note is about. `other` is omitted. */
+  gurukulaSlugs: string[];
+  /** First linked Gurukula, when there is exactly one. */
+  gurukulaSlug?: string;
+  representatives: string[];
+  whatWeDid?: string;
+  donations?: ActivityDonation[];
+  learnings?: string;
+  /** False for one-line updates — listing should not link to a hollow page. */
+  hasDetailPage: boolean;
+  album: GalleryItem[];
 }
 
 export interface DonationPurpose {
