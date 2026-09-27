@@ -27,9 +27,7 @@ export const events: SiteEvent[] = [
       { name: 'Rudra Homa Seva', amount: 10001 },
       { name: 'Upakalasha Seva (1 Kalasha)', amount: 5001 },
       { name: 'Pradhana Kalasha Seva (1 Kala)', amount: 11001 },
-      { name: 'Anna Santarpana (10 people)', amount: 5001 },
-      { name: 'Anna Santarpana (20 people)', amount: 10001 },
-      { name: 'Anna Santarpana (30 people)', amount: 15001 },
+      { name: 'Annadana', amount: 5001 },
     ],
     schedule: [
       {
