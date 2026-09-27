@@ -141,6 +141,15 @@ export default async function HomePage({ params }: Props) {
               className="w-full max-w-xl rounded-lg"
             />
           </div>
+
+          <div className="flex justify-center">
+            <Link href="/resources">
+              <Button variant="secondary">
+                {t('exploreMap')}
+                <ArrowRight size={16} />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
       </ScrollReveal>
