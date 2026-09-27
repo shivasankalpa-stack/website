@@ -27,7 +27,7 @@ export const faqs: FAQ[] = [
     id: 'how-to-participate',
     question: 'How can I participate in trust activities?',
     answer:
-      'You can participate through tanu (physical service/volunteering), mana (devotion and spreading awareness), and dhana (financial contributions). Visit our Events page for upcoming programmes, or Contact us to learn about volunteer opportunities.',
+      'You can take part through tanu (physical service), mana (devotion and spreading awareness), and dhana (financial contributions). The Mahā Rudra Puraścaraṇa is complete; ongoing seva is with the Gurukulas. Write to us if you would like to help.',
   },
   {
     id: 'is-donation-tax-exempt',
@@ -39,7 +39,7 @@ export const faqs: FAQ[] = [
     id: 'which-gurukulas',
     question: 'Which Gurukulas does the trust support?',
     answer:
-      'The Vṛnda is currently engaged with four Gurukulas: Sri Shruti Parampara Gurukulam (JP Nagar, Bangalore), Namma Sampradaya Gurukulam (Varthur, Bangalore), Shankara Gurukulam (Ungra, Huliyurdurga), and Sri Ramana Maharṣi Brahma Vidyāśrama (Madagondapalli, Hosur). We are actively expanding our network across Karnataka and beyond.',
+      'The Vṛnda is engaged with twelve Gurukulas and pāṭhaśālas. In Bengaluru: Sri Shruti Parampara Gurukulam (JP Nagar), Namma Sampradaya Gurukulam (Sarjapura), Mallige Pāṭhaśālā (Malleswaram), Sri Mallikarjuna Veda Vidyā Gurukula — also called Jyothi Pāṭhaśālā — (Shankarapura, near Basavanagudi), and Sacchidananda Advaitāśrama (Basaveshwaranagar). Also Shankara Gurukulam (Ungra, Huliyurdurga) and Sri Ramana Maharṣi Brahma Vidyāśrama (Madagondapalli, Hosur). In the Sirsi region: Uma Madhukeshwara Veda Vidyā Gurukula (Banavasi), Śrauta Vijñāna Gurukulam (Nadagodu), and Sri Veda Prakāśa Gurukula (Danandi); Śrīdhara Sāṅga Veda Vidyā Gurukula (Varadahalli, Sagara); and Koodali Gurukula (Shivamogga). Each one is listed on the Gurukulas page.',
   },
   {
     id: 'how-to-volunteer',

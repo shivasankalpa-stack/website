@@ -1,9 +1,7 @@
 /**
  * DonationDetails — shared payment details panel used inside donation modals.
  *
- * Shows UPI ID, QR code, and bank transfer details.
- * TODO: Replace with actual trust account details once available.
- * Current details are for interim collection via Jayasimha B N.
+ * Shows the trust's UPI ID, QR code, and Canara Bank transfer details.
  */
 
 'use client';
@@ -22,8 +20,8 @@ export function DonationDetails({ purposeLabel }: DonationDetailsProps) {
     <div className="space-y-5">
       <div className="space-y-1.5">
         <h4 className="text-sm font-semibold text-charcoal">{t('upiId')}</h4>
-        <div className="rounded-md bg-ivory-100 px-3 py-2 font-mono text-sm text-charcoal select-all">
-          9916104901-2@ybl
+        <div className="break-all rounded-md bg-ivory-100 px-3 py-2 font-mono text-sm text-charcoal select-all">
+          342080543425744@cnrb
         </div>
       </div>
 
@@ -33,9 +31,9 @@ export function DonationDetails({ purposeLabel }: DonationDetailsProps) {
           <Image
             src="/assets/artefacts/donation-qr.png"
             alt={t('qrAlt')}
-            width={200}
-            height={200}
-            className="w-40 h-40 object-contain"
+            width={240}
+            height={240}
+            className="h-52 w-52 object-contain"
           />
         </div>
       </div>
@@ -44,17 +42,15 @@ export function DonationDetails({ purposeLabel }: DonationDetailsProps) {
         <h4 className="text-sm font-semibold text-charcoal">{t('bankTransfer')}</h4>
         <div className="rounded-md bg-ivory-100 px-3 py-2.5 text-sm space-y-1.5">
           <p className="text-charcoal-300">
-            {t('beneficiary')} <span className="font-medium text-charcoal">Jayasimha B N</span>
+            {t('beneficiary')}{' '}
+            <span className="font-medium text-charcoal">Shree Shivasankalpa Vrunda Trust</span>
           </p>
           <p className="text-charcoal-300">
             {t('accountNo')}{' '}
-            <span className="font-mono text-charcoal select-all">0101001000001659</span>
+            <span className="font-mono text-charcoal select-all">110332425744</span>
           </p>
           <p className="text-charcoal-300">
-            {t('accountType')} <span className="text-charcoal">{t('savingsBank')}</span>
-          </p>
-          <p className="text-charcoal-300">
-            {t('ifsc')} <span className="font-mono text-charcoal select-all">SECB0000010</span>
+            {t('ifsc')} <span className="font-mono text-charcoal select-all">CNRB0000403</span>
           </p>
           <p className="text-charcoal-300">
             {t('bank')} <span className="text-charcoal">{t('bankName')}</span>

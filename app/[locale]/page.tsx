@@ -5,6 +5,7 @@
  *   1. Hero with banner image, tagline shloka, audio player, CTAs
  *   2. Importance of Veda Vidya with Veda Vruksha image
  *   3. Why Vedic Gurukulas Matter Today
+ *   3a. From Śiṣya to Guru — animated storyboard (Journey + A Day)
  *   4. Featured Gurukulas (3 cards)
  *   5. Upcoming Events (Maharudra)
  *   6. Jagadguru's Anugraha callout
@@ -21,17 +22,11 @@ import { Button } from '@/components/ui/Button';
 import { AudioPlayer } from '@/components/blocks/AudioPlayer';
 import { DonationSection } from '@/components/blocks/DonationSection';
 import { EnrolCallout } from '@/components/blocks/EnrolCallout';
+import { VidyarthiStoryboard } from '@/components/blocks/VidyarthiStoryboard';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { LogoEnlargeable } from '@/components/blocks/LogoEnlargeable';
-import { getGurukulas, getFeaturedEvents } from '@/lib/data-access';
+import { getGurukulas, getFeaturedEvents, GURUKULA_MESSAGE_KEYS } from '@/lib/data-access';
 import { Link } from '@/i18n/routing';
-
-const SLUG_TO_KEY: Record<string, string> = {
-  'shruti-parampara': 'shrutiParampara',
-  'namma-sampradaya': 'nammaSampradaya',
-  'shankara-gurukulam': 'shankaraGurukulam',
-  'sri-ramana-brahma-vidyashrama': 'sriRamanaBrahmaVidyashrama',
-};
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -177,6 +172,11 @@ export default async function HomePage({ params }: Props) {
       </section>
       </ScrollReveal>
 
+      {/* Animated storyboard: the journey of a Veda Vidyārthī, and a day at the Gurukula */}
+      <ScrollReveal>
+        <VidyarthiStoryboard />
+      </ScrollReveal>
+
       <ScrollReveal>
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-4 md:px-6 space-y-10">
@@ -188,19 +188,19 @@ export default async function HomePage({ params }: Props) {
           />
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-            {gurukulas.slice(0, 4).map((gk) => {
-              const key = SLUG_TO_KEY[gk.slug];
+            {gurukulas.filter((gk) => gk.profile !== 'brief' && gk.heroImage).map((gk) => {
+              const key = GURUKULA_MESSAGE_KEYS[gk.slug];
               const localised = (field: string, fallback: string) =>
                 key ? tGk(`${key}_${field}` as Parameters<typeof tGk>[0]) : fallback;
               const name = localised('name', gk.name);
               const location = localised('location', gk.location);
-              const acharya = localised('acharya', gk.acharya);
+              const acharya = gk.acharya ? localised('acharya', gk.acharya) : undefined;
               return (
                 <Link key={gk.slug} href={`/gurukulas/${gk.slug}`}>
                   <Card hover as="article" className="h-full !p-0 overflow-hidden">
                     <div className="relative aspect-[16/9] overflow-hidden">
                       <Image
-                        src={gk.heroImage}
+                        src={gk.heroImage!}
                         alt={`${name}, ${location}`}
                         fill
                         className="object-cover"
@@ -215,13 +215,17 @@ export default async function HomePage({ params }: Props) {
                         <MapPin size={14} />
                         {location}
                       </div>
-                      <p className="text-sm text-charcoal-300">
-                        {t('acharyaLabel')} {acharya}
-                      </p>
-                      <div className="flex items-center gap-1.5 text-sm text-charcoal-200">
-                        <Users size={14} />
-                        {t('studentsLabel', { count: gk.studentCount })}
-                      </div>
+                      {acharya && (
+                        <p className="text-sm text-charcoal-300">
+                          {t('acharyaLabel')} {acharya}
+                        </p>
+                      )}
+                      {typeof gk.studentCount === 'number' && (
+                        <div className="flex items-center gap-1.5 text-sm text-charcoal-200">
+                          <Users size={14} />
+                          {t('studentsLabel', { count: gk.studentCount })}
+                        </div>
+                      )}
                     </div>
                   </Card>
                 </Link>

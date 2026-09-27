@@ -16,7 +16,7 @@ export const events: SiteEvent[] = [
     endDate: '2026-05-17',
     location: 'Hoysala Trust, 2nd Stage, Dattatreya Nagar, Hosakerehalli, Bengaluru – 560085',
     description:
-      'A three-day Mahā Rudra Puraścaraṇa organised under the auspices of Sri Shivasankalpa Vṛnda, with the divine blessings of His Holiness Jagadguru Sri Sri Bharati Tirtha Mahasannidhanam and His Holiness Jagadguru Sri Sri Vidhushekhara Bharati Sannidhanam of Dakshinamnaya Sri Sharada Peetham, Sringeri.',
+      'The Mahā Rudra Puraścaraṇa of 15–17 May 2026 was completed at Hosakerehalli, with the blessings of the Sringeri Jagadgurus. The Mahārudra yāga of 16 and 17 May was offered by students of several Veda Gurukulas.',
     featured: true,
     image: '/assets/events/maharudra-hero.jpg',
     sevaItems: [

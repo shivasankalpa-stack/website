@@ -9,8 +9,12 @@ type Locale = 'en' | 'kn';
 type LocalePair = { en?: string; kn?: string };
 
 type SanityAlbumRow = {
+  _type?: string;
   slug?: string;
   title?: LocalePair;
+  kind?: string;
+  gurukula?: string;
+  gurukulas?: string[];
   album?: {
     _key?: string;
     caption?: LocalePair;
@@ -59,15 +63,24 @@ function albumRowsToItems(rows: SanityAlbumRow[], locale: Locale): GalleryItem[]
     for (const photo of event.album ?? []) {
       const src = imageSrc(photo.image, 1600);
       if (!src) continue;
+      const category: GalleryItem['category'] =
+        event._type === 'activity' && event.kind === 'gurukulaVisit'
+          ? 'gurukulas'
+          : event._type === 'activity'
+            ? 'misc'
+            : 'events';
+      const tags = [slug, event.kind, event.gurukula, ...(event.gurukulas ?? [])].filter(
+        (value): value is string => Boolean(value) && value !== 'other'
+      );
       items.push({
         id: `album-${slug}-${photo._key}`,
         src,
-        alt: pick(photo.alt, locale, pick(photo.caption, locale, fallbackCaption)),
-        caption: pick(photo.caption, locale, fallbackCaption),
-        category: 'events',
+        alt: pick(photo.alt, locale) || pick(photo.caption, locale) || fallbackCaption,
+        caption: pick(photo.caption, locale) || undefined,
+        category,
         type: 'image',
         imagePosition: hotspotPosition(photo.image),
-        tags: [slug],
+        tags,
       });
     }
   }

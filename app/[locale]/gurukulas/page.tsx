@@ -10,17 +10,10 @@ import { MapPin, Users, BookOpen } from 'lucide-react';
 import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
-import { getGurukulas } from '@/lib/data-access';
+import { getGurukulas, GURUKULA_MESSAGE_KEYS } from '@/lib/data-access';
 
 type Props = {
   params: Promise<{ locale: string }>;
-};
-
-const SLUG_TO_KEY: Record<string, string> = {
-  'shruti-parampara': 'shrutiParampara',
-  'namma-sampradaya': 'nammaSampradaya',
-  'shankara-gurukulam': 'shankaraGurukulam',
-  'sri-ramana-brahma-vidyashrama': 'sriRamanaBrahmaVidyashrama',
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -56,33 +49,45 @@ export default async function GurukulasListPage({ params }: Props) {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
           {gurukulas.map((gk) => {
-            const key = SLUG_TO_KEY[gk.slug];
+            const key = GURUKULA_MESSAGE_KEYS[gk.slug];
             const localised = (field: string, fallback: string) =>
               key
                 ? tDetail(`${key}_${field}` as Parameters<typeof tDetail>[0])
                 : fallback;
             const name = localised('name', gk.name);
             const location = localised('location', gk.location);
-            const acharya = localised('acharya', gk.acharya);
-            const shakhas = key
-              ? tDetail(`${key}_shakhas` as Parameters<typeof tDetail>[0])
-              : (gk.shakhas ?? []).join(' · ');
+            const acharya = gk.acharya ? localised('acharya', gk.acharya) : undefined;
+            const alsoKnownAs = gk.alsoKnownAs
+              ? localised('alsoKnownAs', gk.alsoKnownAs)
+              : undefined;
+            const shakhas = gk.shakhas?.length
+              ? key
+                ? tDetail(`${key}_shakhas` as Parameters<typeof tDetail>[0])
+                : gk.shakhas.join(' · ')
+              : undefined;
 
             return (
               <Link key={gk.slug} href={`/gurukulas/${gk.slug}`}>
                 <Card hover as="article" className="h-full !p-0 overflow-hidden">
-                  <div className="relative aspect-[16/9] overflow-hidden">
-                    <Image
-                      src={gk.heroImage}
-                      alt={`${name}, ${location}`}
-                      fill
-                      className="object-cover"
-                      style={{ objectPosition: gk.heroPosition ?? 'center' }}
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                  </div>
+                  {gk.heroImage && (
+                    <div className="relative aspect-[16/9] overflow-hidden">
+                      <Image
+                        src={gk.heroImage}
+                        alt={`${name}, ${location}`}
+                        fill
+                        className="object-cover"
+                        style={{ objectPosition: gk.heroPosition ?? 'center' }}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  )}
 
                   <div className="p-5 md:p-6 space-y-3">
+                    {alsoKnownAs && (
+                      <p className="text-xs font-medium uppercase tracking-wider text-kumkuma">
+                        {alsoKnownAs}
+                      </p>
+                    )}
                     <h3 className="font-serif text-xl font-semibold text-indigo leading-snug">
                       {name}
                     </h3>
@@ -91,10 +96,12 @@ export default async function GurukulasListPage({ params }: Props) {
                         <MapPin size={14} className="text-indigo-300" />
                         {location}
                       </span>
-                      <span className="flex items-center gap-1.5">
-                        <Users size={14} className="text-indigo-300" />
-                        {t('studentsLabel', { count: gk.studentCount })}
-                      </span>
+                      {typeof gk.studentCount === 'number' && (
+                        <span className="flex items-center gap-1.5">
+                          <Users size={14} className="text-indigo-300" />
+                          {t('studentsLabel', { count: gk.studentCount })}
+                        </span>
+                      )}
                       {shakhas && (
                         <span className="flex items-center gap-1.5">
                           <BookOpen size={14} className="text-indigo-300" />
@@ -102,12 +109,14 @@ export default async function GurukulasListPage({ params }: Props) {
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-charcoal-300">
-                      <span className="font-medium text-charcoal">
-                        {t('acharyaLabel')}
-                      </span>{' '}
-                      {acharya}
-                    </p>
+                    {acharya && (
+                      <p className="text-sm text-charcoal-300">
+                        <span className="font-medium text-charcoal">
+                          {t('acharyaLabel')}
+                        </span>{' '}
+                        {acharya}
+                      </p>
+                    )}
                   </div>
                 </Card>
               </Link>
