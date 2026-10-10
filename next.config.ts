@@ -13,6 +13,12 @@ const packageRoot = path.dirname(fileURLToPath(import.meta.url));
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 const nextConfig: NextConfig = {
+  /**
+   * Next.js blocks dev resources (incl. the HMR websocket) for hosts other
+   * than `localhost`. Without this, opening the dev site at 127.0.0.1 leaves
+   * the page un-hydrated and every <ScrollReveal> section stays invisible.
+   */
+  allowedDevOrigins: ['127.0.0.1'],
   turbopack: {
     root: packageRoot,
   },

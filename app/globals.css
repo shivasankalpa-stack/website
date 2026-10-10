@@ -220,29 +220,30 @@ body {
 }
 
 /* ── Nivedana patra ──
-   The letter submitted to the Jagadgurus. Set on a deep indigo panel
-   with a temple-gold double frame (no kolam), so it stands clearly
-   apart from the ivory page as a document of its own. */
+   The letter submitted to the Jagadgurus. Set as a warm parchment sheet
+   with indigo ink, a temple-gold double frame and floral corners, so it
+   reads as a document of its own without a heavy colour field. The indigo
+   lotus medallion on the top border acts as the seal. */
 
 .nivedana-patra {
   position: relative;
-  color: var(--color-ivory-100);
-  background-color: var(--color-indigo);
+  color: var(--color-indigo);
+  background-color: var(--color-ivory-50);
   background-image:
     radial-gradient(
-      ellipse at top,
-      color-mix(in srgb, var(--color-indigo-300) 45%, transparent) 0%,
-      transparent 65%
+      ellipse at center,
+      transparent 55%,
+      color-mix(in srgb, var(--color-gold-100) 55%, transparent) 100%
     ),
-    linear-gradient(180deg, var(--color-indigo) 0%, var(--color-indigo-500) 100%);
+    linear-gradient(180deg, var(--color-ivory-50) 0%, var(--color-gold-50) 100%);
   border: 2px solid var(--color-gold);
   border-radius: 6px;
   margin-top: 2.75rem;                 /* room for the lotus medallion */
   padding: 5.5rem 4.25rem 5rem;
   box-shadow:
     0 0 0 5px var(--color-ivory),
-    0 0 0 7px color-mix(in srgb, var(--color-gold) 70%, transparent),
-    0 18px 40px rgb(32 29 66 / 0.28);
+    0 0 0 7px color-mix(in srgb, var(--color-gold) 55%, transparent),
+    0 14px 32px rgb(46 42 93 / 0.10);
 }
 
 /* Inner gold hairline */
@@ -250,7 +251,7 @@ body {
   content: '';
   position: absolute;
   inset: 12px;
-  border: 1px solid color-mix(in srgb, var(--color-gold-100) 45%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent);
   border-radius: 3px;
   pointer-events: none;
 }
@@ -259,7 +260,7 @@ body {
   position: relative;
 }
 
-/* Lotus medallion seated on the top border */
+/* Lotus medallion seated on the top border — the indigo "seal" */
 .nivedana-patra .nv-medallion {
   position: absolute;
   top: 0;
@@ -270,12 +271,12 @@ body {
   display: grid;
   place-items: center;
   border-radius: 9999px;
-  color: var(--color-gold);
+  color: var(--color-gold-100);
   background: radial-gradient(circle at 50% 35%, var(--color-indigo-300), var(--color-indigo) 70%);
   border: 2px solid var(--color-gold);
   box-shadow:
     0 0 0 5px var(--color-ivory),
-    0 0 0 7px color-mix(in srgb, var(--color-gold) 70%, transparent);
+    0 0 0 7px color-mix(in srgb, var(--color-gold) 55%, transparent);
   z-index: 1;
 }
 
@@ -293,14 +294,14 @@ body {
   pointer-events: none;
 }
 
-.nivedana-patra .nv-corner-eye { fill: var(--color-indigo); }
+.nivedana-patra .nv-corner-eye { fill: var(--color-ivory-50); }
 .nivedana-patra .nv-corner-tl { top: 16px; left: 16px; }
 .nivedana-patra .nv-corner-tr { top: 16px; right: 16px; transform: scaleX(-1); }
 .nivedana-patra .nv-corner-bl { bottom: 16px; left: 16px; transform: scaleY(-1); }
 .nivedana-patra .nv-corner-br { bottom: 16px; right: 16px; transform: scale(-1, -1); }
 
 .nivedana-patra .nivedana-body {
-  color: var(--color-ivory-100);
+  color: var(--color-indigo);
   font-family: var(--font-serif);
   font-size: 1.125rem;
   line-height: 1.8;

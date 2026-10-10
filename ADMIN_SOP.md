@@ -207,7 +207,7 @@ FAQs are stored entirely in the message files, not in a data file.
 The `data/trustees.ts` file has **two separate lists**:
 
 - `trustees` — the trust's governing board (Trustees)
-- `managingCommittee` — the operational team (President, VP, Secretary, Treasurer)
+- `managingCommittee` — the operational team (President, VP, Secretary, Treasurer, Internal Auditor)
 
 ### To update an existing member:
 1. Open `data/trustees.ts`
@@ -219,13 +219,15 @@ The `data/trustees.ts` file has **two separate lists**:
 2. Update all fields (name, role, bio, image path)
 3. Upload their photo (see section 9)
 
-> **Kannada translation:** Trustee role labels (Trustee, President, Vice-President, Secretary, Treasurer) are translated via the `about` namespace in the message files — keys like `trusteeRole`, `presidentRole`, etc. If you add a **new role** (e.g., "Joint Secretary"), add a translation key to both `messages/en.json` and `messages/kn.json` under the `about` namespace (e.g., `"jointSecretaryRole": "Joint Secretary"` / `"jointSecretaryRole": "ಜಂಟಿ ಕಾರ್ಯದರ್ಶಿ"`), and update the `roleMap` in `app/[locale]/about/page.tsx`. The "Click to read more" label is also translated via the `about.clickToRead` key (see [section 2a/2b](#2a-changing-english-text-only) to edit either language independently).
+> **Kannada translation:** Trustee role labels (Trustee, President, Vice-President, Secretary, Treasurer, Internal Auditor) are translated via the `about` namespace in the message files — keys like `trusteeRole`, `presidentRole`, etc. If you add a **new role** (e.g., "Joint Secretary"), add a translation key to both `messages/en.json` and `messages/kn.json` under the `about` namespace (e.g., `"jointSecretaryRole": "Joint Secretary"` / `"jointSecretaryRole": "ಜಂಟಿ ಕಾರ್ಯದರ್ಶಿ"`), and update the `roleMap` in `app/[locale]/about/page.tsx`. The "Click to read more" label is also translated via the `about.clickToRead` key (see [section 2a/2b](#2a-changing-english-text-only) to edit either language independently).
 
 ### Current structure:
 
 **Trustees:** Veda Brahma Shri Anantanarayana Sharma, Ravishankar K.S., Giri Bhardwaj, Harisha Harithasa, Bodhayana Jayasimha
 
-**Managing Committee:** Naveen Subrahmanya (President), Sheshadri G (Vice-President), Shreesha Harithasa (Secretary), Gourishankara Sharma (Treasurer)
+**Managing Committee:** Naveen Subrahmanya (President), Sheshadri G (Vice-President), Shreesha Harithasa (Secretary), Phaneendra S. K. (Treasurer), Madhu Bharadwaj (Internal Auditor)
+
+**Trust members:** Ahobila Narasimha Prasad, Bharat Harithasa, Gourishankara Sharma, Karthik Satchitanand, Sankrutya Sharma
 
 ---
 

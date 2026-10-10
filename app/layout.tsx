@@ -37,7 +37,7 @@ const notoSerifDevanagari = Noto_Serif_Devanagari({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Sri Shivasankalpa Trust — तन्मे मनः शिवसङ्कल्पमस्तु',
+    default: 'Sri Shivasankalpa Trust — For the Upliftment of Veda Gurukulas',
     template: '%s | Sri Shivasankalpa Trust',
   },
   description:
@@ -58,9 +58,9 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: 'https://srishivasankalpa.org',
     siteName: 'Sri Shivasankalpa Trust',
-    title: 'Sri Shivasankalpa Trust',
+    title: 'Sri Shivasankalpa Trust — For the Upliftment of Veda Gurukulas',
     description:
-      'Supporting Vedic education, Gurukulas, and the timeless Guru–Shishya Parampara.',
+      'Upliftment of Veda Gurukulas, and support for the timeless Guru–Shishya Parampara.',
     images: [{ url: '/assets/og/og-image.png', width: 1200, height: 630 }],
   },
   metadataBase: new URL('https://srishivasankalpa.org'),

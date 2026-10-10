@@ -61,16 +61,16 @@ export const managingCommittee: Trustee[] = [
     imagePosition: 'top',
   },
   {
-    name: 'Madhu Bharadwaj',
+    name: 'Phaneendra S. K.',
     role: 'Treasurer',
-    bio: 'Madhu Bharadwaj oversees the Vṛnda\'s finances with diligence and accountability. #BIO-TODO-madhu-bharadwaj',
-    image: '/assets/trustees/madhu-bharadwaj.jpg',
+    bio: 'As Treasurer, Phaneendra S. K. oversees the Vṛnda\'s finances, ensuring every contribution serves its intended purpose. #BIO-TODO-phaneendra-sk',
+    image: '/assets/trustees/phaneendra-sk.jpg',
   },
   {
-    name: 'Gourishankara Sharma',
-    role: 'Additional Treasurer',
-    bio: 'Gourishankara Sharma supports the Vṛnda\'s financial administration, ensuring every contribution serves its intended purpose. #BIO-TODO-gourishankara-sharma',
-    image: '/assets/trustees/gourishankara-sharma.png',
+    name: 'Madhu Bharadwaj',
+    role: 'Internal Auditor',
+    bio: 'Madhu Bharadwaj serves as Internal Auditor, reviewing the Vṛnda\'s accounts with diligence and accountability. #BIO-TODO-madhu-bharadwaj',
+    image: '/assets/trustees/madhu-bharadwaj.jpg',
   },
 ];
 
@@ -90,16 +90,16 @@ export const trustMembers: Trustee[] = [
     image: '/assets/trustees/bharat-harithasa.jpg',
   },
   {
+    name: 'Gourishankara Sharma',
+    role: 'Trust member',
+    bio: '',
+    image: '/assets/trustees/gourishankara-sharma.png',
+  },
+  {
     name: 'Karthik Satchitanand',
     role: 'Trust member',
     bio: '',
     image: '/assets/trustees/karthik-satchitanand.jpg',
-  },
-  {
-    name: 'Phaneendra S. K.',
-    role: 'Trust member',
-    bio: '',
-    image: '/assets/trustees/phaneendra-sk.jpg',
   },
   {
     name: 'Sankrutya Sharma',

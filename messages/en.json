@@ -20,7 +20,7 @@
   },
   "footer": {
     "brandName": "Sri Shivasankalpa Vṛnda",
-    "tagline": "Uplifting Vedic Gurukulas through Seva, Śraddhā & Saṁskāra",
+    "tagline": "For the Upliftment of Veda Gurukulas",
     "description": "Supporting Vedic education, Gurukulas, and the timeless Guru–Shishya Parampara with the blessings of the Jagadgurus of Sringeri Sharada Peetham.",
     "quickLinks": "Quick Links",
     "getInTouch": "Get in Touch",
@@ -109,13 +109,11 @@
     "sendAnother": "Send another message"
   },
   "home": {
-    "heroTaglineTranslation": "May my mind be filled with auspicious resolve",
-    "heroIast": "Tan me manaḥ śivasaṅkalpamastu",
     "heroTitle": "Sri Shivasankalpa Vṛnda",
-    "heroSubtitle": "Uplifting Vedic Gurukulas through Seva, Śraddhā & Saṁskāra",
-    "heroDescription": "With the boundless grace of the Jagadgurus of Dakshinamnaya Sri Sharada Peetham, Sringeri, we are devoted to supporting Veda Gurukulas and sustaining the timeless Guru–Shishya Parampara.",
+    "heroMotto": "For the Upliftment of Veda Gurukulas",
+    "heroDescription": "With the boundless grace of the Jagadgurus of Dakshinamnaya Sri Sharada Peetham, Sringeri, we are devoted to supporting Veda Gurukulas through seva, śraddhā and saṁskāra, and to sustaining the timeless Guru–Shishya Parampara.",
+    "gurukulasWeServe": "Gurukulas we serve",
     "supportGurukula": "Support a Gurukula",
-    "maharudraPurascharana": "Maharudra Purascharana",
     "vedaVidyaTitle": "The Importance of Veda Vidya",
     "vedaVidyaSubtitle": "The Vedas are the foundation of Sanātana Dharma — an unbroken oral tradition spanning millennia, preserved through the sacred bond of Guru and Shishya.",
     "vedaVidyaShlokaTranslation": "Rooted in the four Vedas, Dharma stands eternal — nourishing life, order, and truth.",
@@ -142,7 +140,7 @@
   },
   "about": {
     "heroTitle": "About Sri Shivasankalpa Vṛnda",
-    "heroSubtitle": "Uplifting Vedic Gurukulas through Seva, Śraddhā & Saṁskāra",
+    "heroSubtitle": "For the Upliftment of Veda Gurukulas",
     "storyTitle": "Our Story",
     "storyPara1": "Across India, Vedic Gurukulas quietly sustain one of humanity's oldest living traditions. Within their modest walls, young students rise before dawn to learn the Vedas through an unbroken oral lineage — guided by Adhyāpakas who have given their lives to mastering it.",
     "storyPara2": "Yet most of these Gurukulas operate with limited funding, aging infrastructure, and little public visibility — and the very teachers who sustain the tradition are often the least recognised.",
@@ -154,7 +152,7 @@
     "vicePresidentRole": "Vice-President",
     "secretaryRole": "Secretary",
     "treasurerRole": "Treasurer",
-    "addlTreasurerRole": "Addl. Treasurer",
+    "internalAuditorRole": "Internal Auditor",
     "storyShlokaTranslation": "May our minds be filled with auspicious resolve.",
     "storyClosing": "This resolve is our foundation: to serve the Gurukulas that preserve the Vedas, and to invite others to join us in this sacred responsibility.",
     "visionTitle": "Our Vision",

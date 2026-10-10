@@ -62,48 +62,42 @@ export default async function HomePage({ params }: Props) {
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal-500/70 via-charcoal-500/60 to-charcoal-500/80" />
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center space-y-8 py-[4.25rem] md:py-16">
-          <div className="hidden md:flex justify-center">
-            <LogoEnlargeable
-              label={t('heroTitle')}
-              sizeClass="h-28 w-28 md:h-32 md:w-32"
-              ringClass="ring-2 ring-ivory-50/30 shadow-lg"
-            />
-          </div>
-
-          <div className="space-y-3">
-            <p className="shloka-devanagari text-2xl text-gold-100 md:text-3xl drop-shadow-md">
+          {/* Logo + shloka sit together as one unit; the motto follows closely */}
+          <div>
+            <div className="hidden md:flex flex-col items-center">
+              <LogoEnlargeable
+                label={t('heroTitle')}
+                sizeClass="h-28 w-28 md:h-32 md:w-32"
+                ringClass="ring-2 ring-ivory-50/30 shadow-lg"
+              />
+            </div>
+            <p className="shloka-devanagari text-sm text-gold-100/80 md:mt-2 md:text-base drop-shadow-md">
               तन्मे मनः शिवसङ्कल्पमस्तु
             </p>
-            {t('heroIast') && (
-              <p className="shloka-iast text-base text-ivory-100/80 md:text-lg">
-                {t('heroIast')}
-              </p>
-            )}
-            <p className="text-sm text-ivory-100/70 italic">{t('heroTaglineTranslation')}</p>
+            <p className="mt-2 font-serif text-2xl font-semibold text-gold-100 md:mt-3 md:text-4xl tracking-tight drop-shadow-md">
+              {t('heroMotto')}
+            </p>
           </div>
 
           <div className="space-y-3">
             <h1 className="font-serif text-3xl font-bold text-ivory-50 md:text-5xl tracking-tight drop-shadow-md">
               {t('heroTitle')}
             </h1>
-            <p className="text-sm text-gold-100/90 tracking-wider uppercase font-medium">
-              {t('heroSubtitle')}
-            </p>
             <p className="mx-auto max-w-xl text-base text-ivory-100/80 leading-relaxed">
               {t('heroDescription')}
             </p>
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 pt-2">
+            <Link href="/gurukulas">
+              <Button variant="secondary" size="lg" className="!border-ivory-100/40 !text-ivory-50 hover:!bg-ivory-50/10">
+                {t('gurukulasWeServe')}
+                <ArrowRight size={18} />
+              </Button>
+            </Link>
             <Link href="/donations">
               <Button variant="primary" size="lg" className="!bg-kumkuma hover:!bg-kumkuma-500 !border-kumkuma">
                 {t('supportGurukula')}
-              </Button>
-            </Link>
-            <Link href="/events/maharudra">
-              <Button variant="secondary" size="lg" className="!border-ivory-100/40 !text-ivory-50 hover:!bg-ivory-50/10">
-                {t('maharudraPurascharana')}
-                <ArrowRight size={18} />
               </Button>
             </Link>
           </div>

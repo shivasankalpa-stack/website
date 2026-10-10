@@ -72,7 +72,7 @@ export default async function AboutPage({ params }: Props) {
     'Vice-President': t('vicePresidentRole'),
     'Secretary': t('secretaryRole'),
     'Treasurer': t('treasurerRole'),
-    'Additional Treasurer': t('addlTreasurerRole'),
+    'Internal Auditor': t('internalAuditorRole'),
   };
 
   return (

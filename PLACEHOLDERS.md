@@ -86,8 +86,8 @@ The bio strings in `data/trustees.ts` are interim filler text retained for a fut
 | `#BIO-TODO-naveen-subrahmanya`     | Naveen Subrahmanya (President)      |
 | `#BIO-TODO-sheshadri-g`            | Sheshadri G (Vice-President)        |
 | `#BIO-TODO-shreesha-harithasa`     | Shreesha Harithasa (Secretary)      |
-| `#BIO-TODO-madhu-bharadwaj`        | Madhu Bharadwaj (Treasurer)         |
-| `#BIO-TODO-gourishankara-sharma`   | Gourishankara Sharma (Additional Treasurer) |
+| `#BIO-TODO-phaneendra-sk`          | Phaneendra S. K. (Treasurer)        |
+| `#BIO-TODO-madhu-bharadwaj`        | Madhu Bharadwaj (Internal Auditor)  |
 
 ### Trustee photos — DONE
 
