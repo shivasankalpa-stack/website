@@ -18,6 +18,7 @@ import {
   BookOpen,
   Phone,
   Globe,
+  Navigation,
   GraduationCap,
 } from 'lucide-react';
 import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
@@ -80,7 +81,11 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
   const teachers = gk.adhyapakas ?? [];
   const hasCurriculum = Boolean(gk.shakhas?.length || gk.otherShastras?.length);
   const hasContact = Boolean(
-    gk.contact.address || gk.contact.phone || gk.contact.website || gk.contact.email
+    gk.contact.address ||
+      gk.contact.phone ||
+      gk.contact.website ||
+      gk.contact.email ||
+      gk.contact.mapUrl
   );
   const relatedActivities = (
     await getActivities(locale === 'kn' ? 'kn' : 'en')
@@ -427,6 +432,19 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
                       ? t(`${key}_address` as Parameters<typeof t>[0])
                       : gk.contact.address}
                   </span>
+                </div>
+              )}
+              {gk.contact.mapUrl && (
+                <div className="flex items-center gap-3 text-sm text-charcoal-300">
+                  <Navigation size={16} className="shrink-0 text-indigo" />
+                  <a
+                    href={gk.contact.mapUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="hover:text-indigo transition-colors"
+                  >
+                    {t('mapLabel')}
+                  </a>
                 </div>
               )}
               {gk.contact.phone && (

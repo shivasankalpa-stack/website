@@ -24,15 +24,13 @@ import { useLocale } from 'next-intl';
 import { ArrowRight, ChevronLeft, ChevronRight, Moon, Pause, Play, Sun, Sunrise, Sunset } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { DAY_SCENES, JOURNEY_SCENES, STORY_UI, type StoryLocale, type StoryScene } from '@/data/vidyarthi-storyboard';
-import { DAY_VIGNETTES } from './day-scenes';
-import { JOURNEY_VIGNETTES } from './journey-scenes';
 import { Stage } from './Stage';
 
 type StoryKey = 'journey' | 'day';
 
 const STORIES = {
-  journey: { scenes: JOURNEY_SCENES, vignettes: JOURNEY_VIGNETTES },
-  day: { scenes: DAY_SCENES, vignettes: DAY_VIGNETTES },
+  journey: { scenes: JOURNEY_SCENES },
+  day: { scenes: DAY_SCENES },
 } as const;
 
 /* ── prefers-reduced-motion (same pattern as ScrollReveal) ── */
@@ -47,7 +45,7 @@ const getReducedServer = () => false;
 /** Reading time per scene, based on the English copy. */
 function durationFor(s: StoryScene) {
   const chars = s.text.en.length + (s.verse?.meaning.en.length ?? 0);
-  const extra = s.id === 'd-adhyayana' ? 4000 : 0;
+  const extra = s.id === 'd-adhyayana' || s.id === 'j-ghana' ? 4000 : 0;
   return Math.min(19000, Math.max(9000, 5000 + chars * 38 + extra));
 }
 
@@ -73,10 +71,9 @@ export function VidyarthiStoryboard() {
   const [userNavigated, setUserNavigated] = useState(false);
 
   const rootRef = useRef<HTMLDivElement>(null);
-  const svgRef = useRef<SVGSVGElement>(null);
   const touchX = useRef<number | null>(null);
 
-  const { scenes, vignettes } = STORIES[story];
+  const { scenes } = STORIES[story];
   const total = scenes.length;
   const scene = scenes[index];
   const playing = playChoice ?? !reducedMotion;
@@ -90,13 +87,16 @@ export function VidyarthiStoryboard() {
     return () => io.disconnect();
   }, []);
 
-  /* Freeze the SVG's looping animations while off screen */
+  /* Freeze the drawings' looping animations while off screen */
   useEffect(() => {
-    const svg = svgRef.current;
-    if (!svg || typeof svg.pauseAnimations !== 'function') return;
-    if (inView) svg.unpauseAnimations();
-    else svg.pauseAnimations();
-  }, [inView, story]);
+    const root = rootRef.current;
+    if (!root) return;
+    root.querySelectorAll('svg').forEach((svg) => {
+      if (typeof svg.pauseAnimations !== 'function') return;
+      if (inView) svg.unpauseAnimations();
+      else svg.pauseAnimations();
+    });
+  }, [inView, story, index]);
 
   const go = useCallback(
     (i: number, manual = true) => {
@@ -183,7 +183,7 @@ export function VidyarthiStoryboard() {
         >
           {/* ── Stage ── */}
           <div
-            className="relative aspect-[16/10] sm:aspect-[16/9] overflow-hidden rounded-xl border border-gold/30 bg-indigo-500 shadow-sm"
+            className="relative aspect-[16/9] overflow-hidden rounded-xl border border-gold/30 bg-ivory-100 shadow-sm"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             onTouchStart={(e) => {
@@ -196,7 +196,7 @@ export function VidyarthiStoryboard() {
               if (Math.abs(dx) > 45) go(index + (dx < 0 ? 1 : -1));
             }}
           >
-            <Stage key={story} scenes={scenes} vignettes={vignettes} index={index} motion={!reducedMotion} svgRef={svgRef} />
+            <Stage key={story} scenes={scenes} index={index} motion={!reducedMotion} running={running} durationFor={durationFor} />
 
             <div className="pointer-events-none absolute left-3 top-3 md:left-4 md:top-4 flex max-w-[75%] items-center gap-2 rounded-full bg-charcoal-500/55 px-3 py-1.5 text-ivory-50 backdrop-blur-sm">
               <TimeIcon sun={scene.sun} night={scene.night} />

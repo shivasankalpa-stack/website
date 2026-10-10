@@ -21,7 +21,12 @@ const GURUKULAS = [
   { title: 'Śrauta Vijñāna Gurukulam', value: 'shrauta-vijnana' },
   { title: 'Sri Veda Prakāśa Gurukula', value: 'veda-prakasha' },
   { title: 'Śrīdhara Sāṅga Veda Vidyā Gurukula', value: 'sridhara-sanga' },
-  { title: 'Koodali Gurukula', value: 'koodali-gurukula' },
+  { title: 'Koodali Shankara Mutt', value: 'koodali-gurukula' },
+  { title: 'Gowtama Veda Pāṭhaśālā', value: 'gowtama-veda-pathashala' },
+  { title: 'Bharati Tīrtha Veda Pāṭhaśālā', value: 'bharati-theertha-sringeri' },
+  { title: 'Vedanāda Gurukula', value: 'vedanada-gurukula' },
+  { title: 'Seva Niketana', value: 'seva-niketana' },
+  { title: 'Sri Chidambarāśrama', value: 'chidambarashrama' },
   { title: 'Other (name the Gurukula in the title)', value: 'other' },
 ];
 
