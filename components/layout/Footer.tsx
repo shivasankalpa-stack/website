@@ -45,14 +45,11 @@ export async function Footer() {
                 <h3 className="font-serif text-lg font-semibold text-indigo">
                   {t('brandName')}
                 </h3>
-                <p className="text-[10px] text-charcoal-200 tracking-wide uppercase">
+                <p className="text-[10px] text-indigo-300 tracking-wide uppercase">
                   {t('tagline')}
                 </p>
               </div>
             </div>
-            <p className="shloka-devanagari text-sm text-indigo-300">
-              तन्मे मनः शिवसङ्कल्पमस्तु
-            </p>
             <p className="text-sm text-charcoal-300 leading-relaxed">{t('description')}</p>
           </div>
 
