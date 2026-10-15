@@ -3,7 +3,7 @@
  *
  * Sections (top to bottom):
  *   1. Hero with banner image, tagline shloka, audio player, CTAs
- *   2. Importance of Veda Vidya with Veda Vruksha image
+ *   2. Importance of Veda Vidya with the Veda Vruksha painting + reading notes
  *   3. Why Vedic Gurukulas Matter Today
  *   3a. From Śiṣya to Guru — animated storyboard (Journey + A Day)
  *   4. Featured Gurukulas (3 cards)
@@ -20,6 +20,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { AudioPlayer } from '@/components/blocks/AudioPlayer';
+import { VedaVruksha } from '@/components/blocks/VedaVruksha';
 import { DonationSection } from '@/components/blocks/DonationSection';
 import { EnrolCallout } from '@/components/blocks/EnrolCallout';
 import { VidyarthiStoryboard } from '@/components/blocks/VidyarthiStoryboard';
@@ -126,14 +127,8 @@ export default async function HomePage({ params }: Props) {
             size="md"
           />
 
-          <div className="flex justify-center py-4">
-            <Image
-              src="/assets/artefacts/veda-vruksha.png"
-              alt={t('vedaVrukshaAlt')}
-              width={600}
-              height={850}
-              className="w-full max-w-xl rounded-lg"
-            />
+          <div className="py-4">
+            <VedaVruksha />
           </div>
 
           <div className="flex justify-center">

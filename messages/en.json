@@ -117,7 +117,6 @@
     "vedaVidyaTitle": "The Importance of Veda Vidya",
     "vedaVidyaSubtitle": "The Vedas are the foundation of Sanātana Dharma — an unbroken oral tradition spanning millennia, preserved through the sacred bond of Guru and Shishya.",
     "vedaVidyaShlokaTranslation": "Rooted in the four Vedas, Dharma stands eternal — nourishing life, order, and truth.",
-    "vedaVrukshaAlt": "Veda Vriksha — The Tree of Vedic Knowledge showing the four Vedas (Rigveda, Yajurveda, Samaveda, Atharvaveda), their shakhas, and the six Vedangas",
     "whyGurukulasTitle": "Why Vedic Gurukulas Matter Today",
     "whyGurukulasSubtitle": "Adi Shankaracharya's timeless injunction: 'Let the Veda be studied daily.'",
     "whyGurukulasPara1": "Inspired by the timeless injunction of Adi Shankaracharya — {shloka} ('let the Veda be studied daily') — Veda Gurukulas stand as sacred institutions that preserve the very heartbeat of Sanātana Dharma. Rooted in the venerable Guru–Śiṣya Paramparā, they are not merely centres of learning, but sanctuaries where knowledge is lived, discipline is cultivated, and saṁskāra is imbibed through constant guidance and practice.",
@@ -137,6 +136,72 @@
     "sringeriPara": "The name 'Sri Shivasankalpa' was bestowed as a blessing by His Holiness Jagadguru Sri Sri Vidhushekhara Bharati Sannidhanam of the Dakshinamnaya Sri Sharada Peetham, Sringeri. Sri Shivasankalpa Vṛnda operates with the boundless grace and divine blessings of His Holiness Jagadguru Sri Sri Bharati Tirtha Mahasannidhanam and His Holiness Jagadguru Sri Sri Vidhushekhara Bharati Sannidhanam.",
     "sringeriNote": "The Vṛnda considers the blessings and approval of the Sringeri Jagadgurus as paramount in all its endeavours.",
     "exploreMap": "Explore the Vedic Knowledge Map"
+  },
+  "vedaVruksha": {
+    "alt": "Veda Vṛkṣa — the Veda as a banyan tree. Brahman (Īśvara) is its root; śraddhā and dharma water and nourish it, and a guru teaches his students at its foot. One trunk divides into the Ṛgveda, Yajurveda, Sāmaveda and Atharvaveda, with some of their śākhās as twigs and a small twig showing the Saṃhitā, Brāhmaṇa, Āraṇyaka and Upaniṣad of one śākhā. The six Vedāṅgas hang as aerial roots that support the tree, and Jñāna and Mokṣa are its fruit.",
+    "enlarge": "Open the tree full size",
+    "readTitle": "How to read the tree",
+    "read": {
+      "source": {
+        "term": "Root — Brahman / Īśvara",
+        "text": "The Veda is apauruṣeya: no human author composed it. The Upaniṣad calls the four Vedas the very breath of the Supreme (Bṛhadāraṇyaka Upaniṣad 2.4.10)."
+      },
+      "nourish": {
+        "term": "Water and nourishment — Śraddhā and Dharma",
+        "text": "Faith, and a life lived by the Veda, keep the tree alive. They pass from generation to generation through the guru–śiṣya paramparā, shown by the teacher and students at its foot."
+      },
+      "trunk": {
+        "term": "Trunk and four limbs — the Vedas",
+        "text": "One Veda, divided by Vedavyāsa into the Ṛg, Yajur, Sāma and Atharva Vedas: four equal limbs of a single trunk."
+      },
+      "shakhas": {
+        "term": "Twigs — the śākhās",
+        "text": "Each Veda survives in recensions (śākhās), each preserved by its own lineage of reciters. The picture shows only some of them; more are listed below."
+      },
+      "vedangas": {
+        "term": "Aerial roots — the six Vedāṅgas",
+        "text": "Like a banyan's prop roots, they grow from the tree and then hold it up. Śikṣā, Kalpa, Vyākaraṇa, Nirukta, Chandas and Jyotiṣa are the disciplines for reciting, performing and understanding the Veda. They serve all four Vedas, not only the limbs they hang beside."
+      },
+      "fruit": {
+        "term": "Fruit — Jñāna and Mokṣa",
+        "text": "The Veda guides a life of dharma in this world (abhyudaya) and, through knowledge of Brahman, leads to liberation (niḥśreyasa)."
+      }
+    },
+    "anatomy": {
+      "title": "Inside one śākhā",
+      "subtitle": "Each śākhā is a complete body of texts, not just a Saṃhitā. The small twig at the centre of the tree shows the Taittirīya śākhā, growing from leaf to fruit:",
+      "samhita": {
+        "name": "संहिता",
+        "text": "Taittirīya Saṃhitā",
+        "role": "the mantras — leaves"
+      },
+      "brahmana": {
+        "name": "ब्राह्मणम्",
+        "text": "Taittirīya Brāhmaṇa",
+        "role": "explains the rites — bud"
+      },
+      "aranyaka": {
+        "name": "आरण्यकम्",
+        "text": "Taittirīya Āraṇyaka",
+        "role": "meditations (upāsanā) — flower"
+      },
+      "upanishad": {
+        "name": "उपनिषत्",
+        "text": "Taittirīya & Mahānārāyaṇa Upaniṣads",
+        "role": "knowledge of Brahman — fruit"
+      },
+      "karma": "Karma-kāṇḍa",
+      "jnana": "Jñāna-kāṇḍa (Vedānta)",
+      "note": "In the Kṛṣṇa Yajurveda, mantra and brāhmaṇa passages are interwoven even within the Saṃhitā, and the Upaniṣads sit inside the Āraṇyaka (prapāṭhakas 7–10). Other śākhās divide their texts differently."
+    },
+    "others": {
+      "title": "Śākhās not shown in the picture",
+      "text": "Tradition remembers far more śākhās than survive today. Patañjali's Mahābhāṣya speaks of 21 for the Ṛgveda, 101 for the Yajurveda, 1,000 paths of the Sāmaveda and 9 for the Atharvaveda. Besides those in the picture, living traditions include:",
+      "kanva": "Śukla Yajurveda — Kāṇva, widely followed in Karnataka and Maharashtra",
+      "ranayaniya": "Sāmaveda — Rāṇāyanīya, found mainly in Karnataka",
+      "krishna": "Kṛṣṇa Yajurveda — Maitrāyaṇī and Kaṭha, now rare"
+    },
+    "cta": "In the Knowledge Map you can choose any Veda and śākhā and walk its books — from saṃhitā to upaniṣad, with its limbs and commentaries."
   },
   "about": {
     "heroTitle": "About Sri Shivasankalpa Vṛnda",
