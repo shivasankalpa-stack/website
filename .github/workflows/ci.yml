@@ -15,6 +15,11 @@ jobs:
     name: Lint · Typecheck · Build
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      # Public Sanity identifiers (also in .env.example and shipped to the
+      # browser) — needed so pages that read from Sanity can prerender.
+      NEXT_PUBLIC_SANITY_PROJECT_ID: qpr0e4qa
+      NEXT_PUBLIC_SANITY_DATASET: production
     steps:
       - uses: actions/checkout@v4
 
