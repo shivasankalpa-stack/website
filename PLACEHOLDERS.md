@@ -113,14 +113,20 @@ All 5 trustees, all 5 managing committee members, and all 5 trust members have p
 
 ---
 
-## Artefacts
+## Legal & Registration
 
-The Trust Artefacts section on the About page (registration certificate + audit report) was previously removed and has not been re-added.
+The **Registration & Governance** section on the About page (`/about#registration`) lists the trust's registration facts and links to the redacted Trust Deed at `public/assets/documents/sri-shivasankalpa-vrunda-trust-deed.pdf`. The deed is registered as `YPR-4-00062-2026-27` (28 Apr 2026, Sub-Registrar Yeshwanthpur).
 
-- `public/assets/artefacts/trust-certificate.png` already exists on disk but is not referenced anywhere on the site.
-- An audit-report scan is not yet on disk.
+The rows live in `REGISTRATION_FACTS` in `app/[locale]/about/page.tsx`, and their text is under the `about.reg*` keys in `messages/en.json` and `messages/kn.json`. Those strings are shown on the site as-is, so this checklist tracks them; don't put tags in the strings themselves.
 
-To re-enable, restore the artefacts section in `app/[locale]/about/page.tsx` (use `ExpandableCard` for the certificate + audit report) and add `#ARTEFACT-TODO-audit-report` once the audit-report scan is missing.
+| Item | Status | When obtained, update |
+| ---- | ------ | --------------------- |
+| **Trust PAN** | Pending | Add a `regPan` label/value pair to `REGISTRATION_FACTS` and both message files. The trust's PAN is fine to publish; trustees' personal PANs are not. |
+| **12A registration** (Income Tax Act) | Applying — confirm the application has been filed | Change `about.regTaxValue` to show the 12A registration number. Add the certificate (with personal details redacted) to `public/assets/documents/` and link it next to the deed. |
+| **80G approval** | Applying | Update `about.regTaxValue`, FAQ `a4` (`#FAQ-TODO-80g-status` in `data/faqs.ts`, plus `faqs.a4` in both message files), and the donation pages, which still have a `TODO` for 80G receipts. Link the certificate as above. |
+| **Annual audited accounts** | First audit due after FY 2026–27 (by 30 Jun 2027 under the deed) | Publish the CA-audited statement under `public/assets/documents/` and link it from the section. |
+
+**Before publishing any document:** black out personal details (Aadhaar, personal PAN, home addresses, photos, fingerprints) and flatten the pages so the hidden text can't be recovered. Then have a trustee review it.
 
 ---
 
@@ -165,4 +171,4 @@ The gallery, Gurukula detail pages, and blog currently use a mix of available ph
 | Editorial / content                             | 1     |
 | (`#BLOG-TODO-visit-shruti-parampara` approval) | |
 | Media review                                    | ongoing |
-| Artefacts section re-enable                     | optional |
+| Legal & registration (trust PAN, 12A, 80G, audited accounts) | 4 pending |

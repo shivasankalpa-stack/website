@@ -1,12 +1,13 @@
 /**
  * About Us — trust introduction, the naming Anugraha from Sringeri,
  * vision, mission, objectives, and the team
- * (managing committee, trustees, trust members).
+ * (managing committee, trustees, trust members), and the trust's
+ * registration details with a link to the redacted trust deed.
  */
 
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { BookOpen, Users, Search, HandHeart, Award, Heart } from 'lucide-react';
+import { BookOpen, Users, Search, HandHeart, Award, Heart, FileText } from 'lucide-react';
 import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ShlokaBlock } from '@/components/ui/ShlokaBlock';
@@ -54,6 +55,20 @@ const objectives = [
   { icon: Award, index: 4 },
   { icon: Heart, index: 5 },
 ] as const;
+
+const REGISTRATION_FACTS = [
+  ['regNameLabel', 'regNameValue'],
+  ['regTypeLabel', 'regTypeValue'],
+  ['regDocLabel', 'regDocValue'],
+  ['regDateLabel', 'regDateValue'],
+  ['regOfficeLabel', 'regOfficeValue'],
+  ['regLawLabel', 'regLawValue'],
+  ['regTaxLabel', 'regTaxValue'],
+] as const;
+
+const GOVERNANCE_KEYS = ['govPoint0', 'govPoint1', 'govPoint2', 'govPoint3'] as const;
+
+const TRUST_DEED_PDF = '/assets/documents/sri-shivasankalpa-vrunda-trust-deed.pdf';
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
@@ -270,6 +285,52 @@ export default async function AboutPage({ params }: Props) {
           <div className="space-y-6">
             <h3 className="font-serif text-xl font-semibold text-indigo text-center">{t('trustMembers')}</h3>
             <TrusteeGrid trustees={trustMembers} roleMap={roleMap} showRole={false} />
+          </div>
+        </div>
+      </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+      <section id="registration" className="py-16 md:py-20 bg-ivory-50 border-y border-ivory-300">
+        <div className="mx-auto max-w-4xl px-4 md:px-6 space-y-10">
+          <SectionHeading
+            title={t('regTitle')}
+            devanagari="न्यासपत्रम्"
+            subtitle={t('regSubtitle')}
+            centered
+          />
+
+          <dl className="grid gap-x-8 gap-y-5 rounded-xl border border-gold/30 bg-ivory p-6 md:p-8 sm:grid-cols-2">
+            {REGISTRATION_FACTS.map(([labelKey, valueKey]) => (
+              <div key={labelKey} className="space-y-1">
+                <dt className="text-[11px] uppercase tracking-wider text-gold-400 font-medium">
+                  {t(labelKey)}
+                </dt>
+                <dd className="text-charcoal leading-snug">{t(valueKey)}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <div className="space-y-4">
+            <h3 className="font-serif text-xl font-semibold text-indigo">{t('govTitle')}</h3>
+            <ul className="space-y-3 text-charcoal-300 leading-relaxed list-disc pl-5 marker:text-gold">
+              {GOVERNANCE_KEYS.map((key) => (
+                <li key={key}>{t(key)}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex flex-col items-center gap-3 text-center">
+            <a
+              href={TRUST_DEED_PDF}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 rounded-md bg-indigo px-5 py-2.5 font-medium text-ivory-50 transition-colors hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo"
+            >
+              <FileText size={18} />
+              {t('regDeedCta')}
+            </a>
+            <p className="max-w-xl text-xs text-charcoal-200 italic leading-snug">{t('regDeedNote')}</p>
           </div>
         </div>
       </section>
