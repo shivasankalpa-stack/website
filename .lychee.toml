@@ -8,6 +8,10 @@ exclude = [
   # Template-literal URLs in code (e.g. `https://…/${id}`) are not real links
   "\\$%7B",
   "\\$\\{",
+  # Google Maps blocks automated checkers (HTTP/2 errors / 429s); links are valid
+  "maps\\.app\\.goo\\.gl",
+  "maps\\.google\\.com",
+  "google\\.com/maps",
 ]
 
 accept = [200, 204, 301, 302, 403, 429]

@@ -45,5 +45,5 @@ jobs:
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --verbose --no-progress "**/*.tsx" "**/*.ts" "**/*.md"
+          args: --config .lychee.toml --verbose --no-progress "**/*.tsx" "**/*.ts" "**/*.md"
           fail: true
