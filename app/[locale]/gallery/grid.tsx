@@ -4,6 +4,7 @@
  * - Photos and videos share the same `3:2` card aspect so cards line up
  *   neatly in the grid (caption sits at the same height for both kinds).
  * - Photos open in a `Modal` lightbox at full uncropped size on click.
+ * - YouTube videos show a thumbnail and load the player only on click.
  * - Videos play inline on click with native controls (no lightbox — the
  *   inline experience already lets users go fullscreen via the browser
  *   chrome and avoids re-loading the file).
@@ -16,6 +17,7 @@ import Image from 'next/image';
 import { Play } from 'lucide-react';
 import type { GalleryItem } from '@/lib/types';
 import { Modal } from '@/components/ui/Modal';
+import { YouTubeEmbed } from '@/components/ui/YouTubeEmbed';
 
 interface GalleryGridProps {
   items: GalleryItem[];
@@ -188,7 +190,14 @@ export function GalleryGrid({
                 key={item.id}
                 className="overflow-hidden rounded-lg border border-ivory-300 bg-ivory-50"
               >
-                {item.type === 'video' ? (
+                {item.type === 'video' && item.youtubeId ? (
+                  <YouTubeEmbed
+                    videoId={item.youtubeId}
+                    title={caption ?? item.alt}
+                    aspectRatio={CARD_ASPECT_RATIO}
+                    className="rounded-t-lg"
+                  />
+                ) : item.type === 'video' ? (
                   <VideoCard item={item} />
                 ) : (
                   <ImageCard item={item} caption={caption} />

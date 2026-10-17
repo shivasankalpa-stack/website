@@ -2,6 +2,7 @@ import type { GalleryItem } from '@/lib/types';
 import type { SanityImageSource } from '@sanity/image-url';
 import { client } from './client';
 import { urlFor } from './image';
+import { getYouTubeId } from '@/lib/youtube';
 import { eventAlbumsQuery, mediaItemsQuery } from './queries';
 
 type Locale = 'en' | 'kn';
@@ -97,11 +98,15 @@ function mediaRowsToItems(rows: SanityMediaRow[], locale: Locale): GalleryItem[]
     }
 
     if (row.mediaType === 'video') {
-      const isFile = Boolean(row.videoUrl && /\.(mp4|webm)(\?|$)/i.test(row.videoUrl));
-      if (!isFile || !row.videoUrl) continue;
+      if (!row.videoUrl) continue;
+      // Studio asks editors for a YouTube link; direct .mp4/.webm files still work.
+      const youtubeId = getYouTubeId(row.videoUrl);
+      const isFile = /\.(mp4|webm)(\?|$)/i.test(row.videoUrl);
+      if (!youtubeId && !isFile) continue;
       items.push({
         id: row._id,
         src: row.videoUrl,
+        youtubeId: youtubeId ?? undefined,
         alt: pick(row.alt, locale, pick(row.caption, locale)),
         caption: pick(row.caption, locale),
         category: 'events',
