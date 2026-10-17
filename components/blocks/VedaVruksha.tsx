@@ -34,7 +34,7 @@ export function VedaVruksha({ className = '' }: { className?: string }) {
     <div className={`mx-auto w-full max-w-4xl space-y-8 ${className}`}>
       {/* The painting — tap / click opens it full size */}
       <figure className="flex flex-col items-center">
-        <a href={IMAGE_SRC} target="_blank" rel="noopener" className="block w-full max-w-2xl">
+        <a href={IMAGE_SRC} target="_blank" rel="noopener" title={t('enlarge')} className="block w-full max-w-2xl cursor-zoom-in">
           <Image
             src={IMAGE_SRC}
             alt={t('alt')}
@@ -44,16 +44,6 @@ export function VedaVruksha({ className = '' }: { className?: string }) {
             className="h-auto w-full rounded-lg shadow-sm"
           />
         </a>
-        <figcaption className="mt-2">
-          <a
-            href={IMAGE_SRC}
-            target="_blank"
-            rel="noopener"
-            className="text-sm text-indigo-300 underline decoration-gold/50 underline-offset-4 hover:text-indigo"
-          >
-            {t('enlarge')}
-          </a>
-        </figcaption>
       </figure>
 
       {/* 1 · How to read the tree */}
