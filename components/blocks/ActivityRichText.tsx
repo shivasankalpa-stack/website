@@ -3,8 +3,11 @@
  *   # Heading
  *   ## Sub-heading
  *   - bullet (also * or •)
+ *   [link text](https://example.org) or [link text](/donations); bare URLs link too
  *   blank line between paragraphs
  */
+
+import { InlineText } from './InlineLinks';
 
 type Block =
   | { type: 'h3' | 'h4'; text: string }
@@ -74,7 +77,7 @@ export function ActivityRichText({ text }: { text: string }) {
               key={index}
               className="font-serif text-xl font-semibold text-indigo tracking-tight pt-2 first:pt-0"
             >
-              {block.text}
+              <InlineText text={block.text} />
             </h3>
           );
         }
@@ -84,7 +87,7 @@ export function ActivityRichText({ text }: { text: string }) {
               key={index}
               className="font-serif text-lg font-semibold text-indigo-300 tracking-tight"
             >
-              {block.text}
+              <InlineText text={block.text} />
             </h4>
           );
         }
@@ -95,14 +98,16 @@ export function ActivityRichText({ text }: { text: string }) {
               className="list-disc space-y-1.5 pl-6 text-charcoal-300 leading-relaxed marker:text-kumkuma"
             >
               {block.items.map((item, itemIndex) => (
-                <li key={itemIndex}>{item}</li>
+                <li key={itemIndex}>
+                  <InlineText text={item} />
+                </li>
               ))}
             </ul>
           );
         }
         return (
           <p key={index} className="text-charcoal-300 leading-relaxed">
-            {block.text}
+            <InlineText text={block.text} />
           </p>
         );
       })}

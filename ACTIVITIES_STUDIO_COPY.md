@@ -4,7 +4,7 @@ Paste each block into **Studio → Activities → Create**.
 Dates use the **visit day** where the WhatsApp post date differed.  
 Kannada is cleaned from the PDF (encoding was broken). You can still edit after paste.
 
-**Markup in “What we did” / learnings:** `# Heading` and `## Sub-heading` on their own lines. Bullets: `- item` (also `*` or `•`). Blank line between paragraphs. Text without marks still publishes as plain paragraphs.
+**Markup in “What we did” / learnings:** `# Heading` and `## Sub-heading` on their own lines. Bullets: `- item` (also `*` or `•`). Blank line between paragraphs. Links: `[text](https://example.org)` or `[text](/donations)` for a page on our site; a plain `https://` address also becomes a link. (On the Activities list card only the link text shows; the link works on the activity’s own page.) Text without marks still publishes as plain paragraphs.
 
 **Photo album:** add files only where you have them (leave empty otherwise).  
 **Private notes:** skip unless you want a WhatsApp source reminder.
@@ -220,3 +220,131 @@ Kannada for **What we did** (if you fill it):
 Oldest first (so the list reads as a story after Maharudra): **8 → 7 → 6 → 5 → 4 → 3 → 2 → 1**.
 
 After two publishes, open `/activities`: the short August item (if you stripped extra fields) should be a card only; Sirsi and the named Gurukula visits should show **Read more**.
+
+---
+
+# Additions — October 2026
+
+Paste these two after the eight above. Newest first on the site is automatic (by date).
+
+## 9. October 2026 — monthly support (in progress; update when the last four visits are done)
+
+| Field | Paste |
+|---|---|
+| **Type** | Gurukula visit |
+| **Gurukula** | Leave empty |
+| **Gurukulas** | Uma Madhukeshwara · Śrauta Vijñāna · Koodali Shankara Mutt · Mallige · Sacchidananda · Shruti Parampara · Gowtama · Namma Sampradaya |
+| **Title (English)** | October seva: monthly support to the Gurukulas |
+| **Title (Kannada)** | ಅಕ್ಟೋಬರ್ ಸೇವೆ: ಗುರುಕುಲಗಳಿಗೆ ಮಾಸಿಕ ನೆರವು |
+| **Slug** | `october-2026-monthly-support` |
+| **Date** | 2026-10-09 |
+| **End date** | 2026-10-12 *(move to the last visit day when you update)* |
+| **Public summary (English)** | In October the Vṛnda’s support settled into a steady monthly rhythm: a monthly offering and a month’s kitchen provisions for each Gurukula. Eight Gurukulas have been reached so far — three in the Malnad and Shivamogga by direct transfer, and five in and around Bengaluru, most of them in person — with four more visits planned in the coming days. |
+| **Public summary (Kannada)** | ಅಕ್ಟೋಬರ್‌ನಲ್ಲಿ ವೃಂದದ ಸೇವೆಗೆ ಒಂದು ನಿಯಮಿತ ಮಾಸಿಕ ಲಯ ಬಂದಿದೆ: ಪ್ರತಿ ಗುರುಕುಲಕ್ಕೂ ಮಾಸಿಕ ಕಾಣಿಕೆ ಹಾಗೂ ಅಡುಗೆಮನೆಗೆ ಒಂದು ತಿಂಗಳಿಗೆ ಬೇಕಾಗುವ ಧಾನ್ಯ-ದಿನಸಿ. ಇದುವರೆಗೆ ಎಂಟು ಗುರುಕುಲಗಳಿಗೆ ನೆರವು ತಲುಪಿದೆ — ಮಲೆನಾಡು ಮತ್ತು ಶಿವಮೊಗ್ಗದ ಮೂರು ಗುರುಕುಲಗಳಿಗೆ ನೇರ ವರ್ಗಾವಣೆಯ ಮೂಲಕ, ಬೆಂಗಳೂರು ಸುತ್ತಮುತ್ತಲಿನ ಐದು ಗುರುಕುಲಗಳಿಗೆ ಹೆಚ್ಚಾಗಿ ಖುದ್ದಾಗಿ ಭೇಟಿ ನೀಡಿ. ಇನ್ನೂ ನಾಲ್ಕು ಭೇಟಿಗಳು ಮುಂದಿನ ದಿನಗಳಲ್ಲಿ ನಡೆಯಲಿವೆ. |
+| **Who represented** | Harisha Harithasa · Jayasimha · Naveen Subrahmanya · Phaneendra · Madhusudana Bharadwaj |
+| **Donations** | Monthly offering (kāṇike) to each Gurukula / A month’s provisions for the Gurukula kitchen |
+| **Show learnings** | On |
+| **Photos** | Add when the visiting teams share them |
+
+**What we did (English)** — paste as is:
+
+```
+From October, the Vṛnda’s seva has a steady rhythm: every Gurukula we stand with receives a monthly offering and a month’s provisions for its kitchen — delivered in person wherever we can reach them.
+
+# Reaching the Gurukulas beyond Bengaluru
+For the Gurukulas of the Malnad and Shivamogga, where a monthly visit is not practical, the offering was sent directly in the first week of the month:
+- Uma Madhukeshwara Veda Vidyā Gurukula, Banavasi
+- Śrauta Vijñāna Gurukulam, Nadagodu
+- Koodali Shankara Mutt, Shivamogga — to the account indicated by the Koodali Gurugaḷu
+
+# In person, with the kitchen in mind
+Closer home, members of the Core Committee carried the provisions themselves on 11 and 12 October:
+- Mallige Pāṭhaśālā, Malleswaram, and Sri Sacchidananda Advaitāśrama, Basaveshwaranagar
+- Sri Shruti Parampara Gurukulam, JP Nagar, and Gowtama Veda Pāṭhaśālā, Sapthagiri Layout
+
+Namma Sampradaya Gurukulam has received this month’s offering; its provisions will follow with the next visit.
+
+So that every pāṭhaśālā is supported equally, the month’s provisions were agreed in advance as one standard kit: staple grains and dal, flour, cooking oil and ghee, sugar and jaggery, and the everyday essentials of a Gurukula kitchen.
+
+Four young volunteers from our families joined the visits — for the next generation, seeing a Gurukula from the inside is part of this seva too.
+
+# Still to come this month
+Sri Mallikarjuna Veda Vidyā Gurukula (Jyothi Pāṭhaśālā), the Bharati Tīrtha Veda Pāṭhaśālā at the Sringeri Shankara Mutt in Shankarapura, Namma Sampradaya Gurukulam and Sri Ramana Maharṣi Brahma Vidyāśrama will be visited in the coming days. This note will be updated once those visits are complete.
+```
+
+**What we did (Kannada):**
+
+```
+ಅಕ್ಟೋಬರ್‌ನಿಂದ ವೃಂದದ ಸೇವೆಗೆ ಒಂದು ನಿಯಮಿತ ಲಯ ಬಂದಿದೆ: ನಾವು ಜೊತೆ ನಿಂತಿರುವ ಪ್ರತಿ ಗುರುಕುಲಕ್ಕೂ ಪ್ರತಿ ತಿಂಗಳು ಮಾಸಿಕ ಕಾಣಿಕೆ ಹಾಗೂ ಅಡುಗೆಮನೆಗೆ ಒಂದು ತಿಂಗಳಿಗೆ ಬೇಕಾಗುವ ಧಾನ್ಯ-ದಿನಸಿ — ಸಾಧ್ಯವಾದಲ್ಲೆಲ್ಲಾ ಖುದ್ದಾಗಿ ತಲುಪಿಸಿ.
+
+# ಬೆಂಗಳೂರಿನಿಂದ ದೂರದ ಗುರುಕುಲಗಳಿಗೆ
+ಪ್ರತಿ ತಿಂಗಳು ಭೇಟಿ ನೀಡಲು ಕಷ್ಟವಾಗುವ ಮಲೆನಾಡು ಮತ್ತು ಶಿವಮೊಗ್ಗದ ಗುರುಕುಲಗಳಿಗೆ ತಿಂಗಳ ಮೊದಲ ವಾರದಲ್ಲೇ ಕಾಣಿಕೆಯನ್ನು ನೇರವಾಗಿ ಕಳುಹಿಸಲಾಯಿತು:
+- ಉಮಾ ಮಧುಕೇಶ್ವರ ವೇದ ವಿದ್ಯಾ ಗುರುಕುಲ, ಬನವಾಸಿ
+- ಶ್ರೌತ ವಿಜ್ಞಾನ ಗುರುಕುಲಂ, ನಡಗೋಡು
+- ಕೂಡಲಿ ಶಂಕರ ಮಠ, ಶಿವಮೊಗ್ಗ — ಕೂಡಲಿ ಗುರುಗಳು ಸೂಚಿಸಿದ ಖಾತೆಗೆ
+
+# ಖುದ್ದಾಗಿ, ಅಡುಗೆಮನೆಯ ಅಗತ್ಯವನ್ನು ಮನಸ್ಸಿನಲ್ಲಿಟ್ಟು
+ಬೆಂಗಳೂರಿನಲ್ಲಿ ಅಕ್ಟೋಬರ್ 11 ಮತ್ತು 12ರಂದು ಕೇಂದ್ರ ಸಮಿತಿಯ ಸದಸ್ಯರು ಸ್ವತಃ ಧಾನ್ಯ-ದಿನಸಿಯನ್ನು ತಲುಪಿಸಿದರು:
+- ಮಲ್ಲಿಗೆ ಪಾಠಶಾಲೆ, ಮಲ್ಲೇಶ್ವರಂ ಹಾಗೂ ಶ್ರೀ ಸಚ್ಚಿದಾನಂದ ಅದ್ವೈತಾಶ್ರಮ, ಬಸವೇಶ್ವರನಗರ
+- ಶ್ರೀ ಶ್ರುತಿ ಪರಂಪರಾ ಗುರುಕುಲಂ, ಜೆ.ಪಿ. ನಗರ ಹಾಗೂ ಗೌತಮ ವೇದ ಪಾಠಶಾಲೆ, ಸಪ್ತಗಿರಿ ಲೇಔಟ್
+
+ನಮ್ಮ ಸಂಪ್ರದಾಯ ಗುರುಕುಲಕ್ಕೆ ಈ ತಿಂಗಳ ಕಾಣಿಕೆ ಸಲ್ಲಿಸಲಾಗಿದೆ; ಧಾನ್ಯ-ದಿನಸಿಯನ್ನು ಮುಂದಿನ ಭೇಟಿಯಲ್ಲಿ ತಲುಪಿಸಲಾಗುವುದು.
+
+ಎಲ್ಲ ಪಾಠಶಾಲೆಗಳಿಗೂ ಸಮಾನವಾಗಿ ನೆರವು ತಲುಪಲೆಂದು, ಒಂದು ತಿಂಗಳ ಸಾಮಗ್ರಿಯನ್ನು ಮೊದಲೇ ನಿಗದಿಪಡಿಸಿದ ಒಂದೇ ಕಿಟ್ ಆಗಿ ನೀಡಲಾಯಿತು — ಅಕ್ಕಿ-ಬೇಳೆ, ಹಿಟ್ಟು, ಎಣ್ಣೆ-ತುಪ್ಪ, ಸಕ್ಕರೆ-ಬೆಲ್ಲ ಹಾಗೂ ಗುರುಕುಲದ ಅಡುಗೆಮನೆಯ ದಿನನಿತ್ಯದ ಅಗತ್ಯ ವಸ್ತುಗಳು.
+
+ನಮ್ಮ ಕುಟುಂಬಗಳ ನಾಲ್ವರು ಯುವ ಸ್ವಯಂಸೇವಕರೂ ಈ ಭೇಟಿಗಳಲ್ಲಿ ಜೊತೆಯಾದರು — ಮುಂದಿನ ಪೀಳಿಗೆ ಗುರುಕುಲವನ್ನು ಒಳಗಿನಿಂದ ಕಾಣುವುದೂ ಈ ಸೇವೆಯ ಭಾಗವೇ.
+
+# ಈ ತಿಂಗಳು ಇನ್ನೂ ಬಾಕಿ
+ಶ್ರೀ ಮಲ್ಲಿಕಾರ್ಜುನ ವೇದ ವಿದ್ಯಾ ಗುರುಕುಲ (ಜ್ಯೋತಿ ಪಾಠಶಾಲೆ), ಶಂಕರಪುರದ ಶೃಂಗೇರಿ ಶಂಕರ ಮಠದ ಭಾರತೀ ತೀರ್ಥ ವೇದ ಪಾಠಶಾಲೆ, ನಮ್ಮ ಸಂಪ್ರದಾಯ ಗುರುಕುಲ ಹಾಗೂ ಶ್ರೀ ರಮಣ ಮಹರ್ಷಿ ಬ್ರಹ್ಮವಿದ್ಯಾಶ್ರಮಕ್ಕೆ ಮುಂದಿನ ಕೆಲವು ದಿನಗಳಲ್ಲಿ ಭೇಟಿ ನೀಡಲಾಗುವುದು. ಭೇಟಿಗಳು ಪೂರ್ಣಗೊಂಡ ನಂತರ ಈ ವರದಿಯನ್ನು ನವೀಕರಿಸಲಾಗುವುದು.
+```
+
+**Notes / learnings (English):**
+
+```
+From this month, every offering — by transfer or by hand — is acknowledged by the Gurukula with a receipt, and kept on the Trust’s records.
+```
+
+**Notes / learnings (Kannada):**
+
+```
+ಈ ತಿಂಗಳಿಂದ, ವರ್ಗಾವಣೆಯ ಮೂಲಕವಾಗಲಿ ಖುದ್ದಾಗಿಯಾಗಲಿ ನೀಡುವ ಪ್ರತಿಯೊಂದು ಕಾಣಿಕೆಗೂ ಗುರುಕುಲದಿಂದ ರಸೀತಿ ಪಡೆದು, ಟ್ರಸ್ಟ್‌ನ ದಾಖಲೆಗಳಲ್ಲಿ ಇಡಲಾಗುತ್ತದೆ.
+```
+
+**When the last four visits are done:** add Mallikarjuna (Jyothi), Bharati Tīrtha Veda Pāṭhaśālā and Sri Ramana Maharṣi to **Gurukulas**; move **End date**; change “Eight Gurukulas … with four more visits planned” in both summaries to the final count; replace the *Still to come* section (and the Namma Sampradaya line) with what happened; add the visiting members to **Who represented**; attach photos.
+
+---
+
+## 10. 17 September 2026 — the Trust’s own bank account
+
+| Field | Paste |
+|---|---|
+| **Type** | Trust / socio-legal |
+| **Title (English)** | The Trust’s own bank account — giving directly to the Gurukula seva |
+| **Title (Kannada)** | ಟ್ರಸ್ಟ್‌ನ ಸ್ವಂತ ಬ್ಯಾಂಕ್ ಖಾತೆ — ಗುರುಕುಲ ಸೇವೆಗೆ ನೇರ ದೇಣಿಗೆ |
+| **Slug** | `trust-bank-account-september-2026` |
+| **Date** | 2026-09-17 |
+| **End date** | 2026-09-24 |
+| **Public summary (English)** | Shree Shivasankalpa Vrunda Trust now has its own bank account with Canara Bank, Basavanagudi. Since late September, patrons can give directly to the Trust by bank transfer or UPI. |
+| **Public summary (Kannada)** | ಶ್ರೀ ಶಿವಸಂಕಲ್ಪ ವೃಂದ ಟ್ರಸ್ಟ್‌ಗೆ ಈಗ ಕೆನರಾ ಬ್ಯಾಂಕ್ ಬಸವನಗುಡಿ ಶಾಖೆಯಲ್ಲಿ ತನ್ನದೇ ಆದ ಖಾತೆ ಇದೆ. ಸೆಪ್ಟೆಂಬರ್ ಅಂತ್ಯದಿಂದ ಪೋಷಕರು ಬ್ಯಾಂಕ್ ವರ್ಗಾವಣೆ ಅಥವಾ UPI ಮೂಲಕ ನೇರವಾಗಿ ಟ್ರಸ್ಟ್‌ಗೆ ದೇಣಿಗೆ ನೀಡಬಹುದು. |
+
+**What we did (English):**
+
+```
+After months of patient follow-up, the Trust’s account with Canara Bank, Basavanagudi, was opened on 17 September 2026. By 21 September a UPI QR code was in place, and on 24 September patrons were informed that they can now give directly to the Trust.
+
+It is a quiet but important step. Offerings that members earlier received on the Trust’s behalf now come straight into the Trust’s own account, where every rupee is recorded — and from where the monthly support to the Gurukulas is sent.
+
+The account details and QR code are on our [Donations page](/donations). After giving, please share the payment screenshot or UTR number so that we can acknowledge your offering.
+```
+
+**What we did (Kannada):**
+
+```
+ನಿರಂತರ ಪ್ರಯತ್ನ ಮತ್ತು ಸಾಕಷ್ಟು ದಿನಗಳ ಕಾಯುವಿಕೆಯ ನಂತರ, ಕೆನರಾ ಬ್ಯಾಂಕ್ ಬಸವನಗುಡಿ ಶಾಖೆಯಲ್ಲಿ ಟ್ರಸ್ಟ್‌ನ ಖಾತೆಯನ್ನು ಸೆಪ್ಟೆಂಬರ್ 17, 2026ರಂದು ತೆರೆಯಲಾಯಿತು. ಸೆಪ್ಟೆಂಬರ್ 21ರ ವೇಳೆಗೆ UPI QR ಕೋಡ್ ಸಿದ್ಧವಾಯಿತು; ಸೆಪ್ಟೆಂಬರ್ 24ರಂದು ಇನ್ನು ಮುಂದೆ ನೇರವಾಗಿ ಟ್ರಸ್ಟ್‌ಗೆ ದೇಣಿಗೆ ನೀಡಬಹುದೆಂದು ಪೋಷಕರಿಗೆ ತಿಳಿಸಲಾಯಿತು.
+
+ಇದು ಸದ್ದಿಲ್ಲದ, ಆದರೆ ಮಹತ್ವದ ಹೆಜ್ಜೆ. ಇದುವರೆಗೆ ಟ್ರಸ್ಟ್‌ನ ಪರವಾಗಿ ಸದಸ್ಯರು ಸ್ವೀಕರಿಸುತ್ತಿದ್ದ ದೇಣಿಗೆಗಳು ಈಗ ನೇರವಾಗಿ ಟ್ರಸ್ಟ್‌ನ ಖಾತೆಗೇ ಬರುತ್ತವೆ — ಅಲ್ಲಿ ಪ್ರತಿ ರೂಪಾಯಿಯೂ ದಾಖಲಾಗುತ್ತದೆ, ಮತ್ತು ಅಲ್ಲಿಂದಲೇ ಗುರುಕುಲಗಳಿಗೆ ಮಾಸಿಕ ನೆರವು ಸಲ್ಲುತ್ತದೆ.
+
+ಖಾತೆಯ ವಿವರಗಳು ಮತ್ತು QR ಕೋಡ್ ನಮ್ಮ [ದೇಣಿಗೆ ಪುಟ](/donations)ದಲ್ಲಿವೆ. ದೇಣಿಗೆ ನೀಡಿದ ನಂತರ, ನಿಮ್ಮ ಕಾಣಿಕೆಯನ್ನು ಸ್ವೀಕರಿಸಿರುವುದನ್ನು ತಿಳಿಸಲು ಅನುಕೂಲವಾಗುವಂತೆ ದಯವಿಟ್ಟು ಪಾವತಿಯ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಅಥವಾ UTR ಸಂಖ್ಯೆಯನ್ನು ಹಂಚಿಕೊಳ್ಳಿ.
+```
+
+*Deliberately left out:* any tax-exemption claim (the About page and FAQ say 12A/80G are still in progress; a donor’s deduction would come under 80G once approved), the second (Kotak) account until it is open, and all donor names and amounts.
