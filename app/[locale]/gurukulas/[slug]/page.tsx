@@ -32,6 +32,7 @@ import {
 } from '@/lib/data-access';
 import { notFound } from 'next/navigation';
 import { GurukulaTabs } from './tabs';
+import { stripInlineLinks } from '@/components/blocks/InlineLinks';
 
 type Params = Promise<{ slug: string; locale: string }>;
 
@@ -496,7 +497,7 @@ export default async function GurukulaDetailPage({ params }: { params: Params })
                     <span className="font-serif font-semibold text-indigo">{item.title}</span>
                     <span className="block text-sm text-charcoal-200 mt-0.5">{date}</span>
                     <span className="block text-sm text-charcoal-300 mt-1 leading-relaxed">
-                      {item.publicSummary}
+                      {stripInlineLinks(item.publicSummary)}
                     </span>
                   </>
                 );

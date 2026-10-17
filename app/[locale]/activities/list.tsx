@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { ArrowRight, Calendar, MapPin } from 'lucide-react';
 import type { ActivityItem, ActivityKind } from '@/lib/types';
+import { stripInlineLinks } from '@/components/blocks/InlineLinks';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Link } from '@/i18n/routing';
@@ -119,7 +120,9 @@ export function ActivitiesList({
                     </Button>
                   )}
                 </div>
-                <p className="text-charcoal-300 leading-relaxed">{item.publicSummary}</p>
+                <p className="text-charcoal-300 leading-relaxed">
+                  {stripInlineLinks(item.publicSummary)}
+                </p>
               </Card>
             );
 

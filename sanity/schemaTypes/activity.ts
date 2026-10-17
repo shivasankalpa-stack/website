@@ -107,7 +107,7 @@ export const activity = defineType({
       name: 'publicSummary',
       title: 'Public summary',
       description:
-        'The one line (or short paragraph) that always appears on the Activities list. Enough on its own for a brief update.',
+        'The one line (or short paragraph) that always appears on the Activities list. Enough on its own for a brief update. Links written as [text](link) work on the activity’s own page; on the list card only the text shows.',
       type: 'object',
       fields: [
         defineField({
@@ -162,7 +162,7 @@ export const activity = defineType({
       name: 'whatWeDid',
       title: 'What we did / donations in narrative',
       description:
-        'Headings: a line starting with #  (example: # Uma Madhukeshwara Gurukula). Sub-heading: ##. Bullets: a line starting with - and a space. Blank line between paragraphs.',
+        'Headings: a line starting with #  (example: # Uma Madhukeshwara Gurukula). Sub-heading: ##. Bullets: a line starting with - and a space. Blank line between paragraphs. Links: [text](https://example.org) or [text](/donations); a plain https:// address also becomes a link.',
       type: 'object',
       fieldset: 'more',
       fields: [
@@ -210,7 +210,7 @@ export const activity = defineType({
       name: 'learnings',
       title: 'Notes / learnings we brought back',
       description:
-        'Same marks as above: # heading, ## sub-heading, - bullet, blank line between paragraphs.',
+        'Same marks as above: # heading, ## sub-heading, - bullet, blank line between paragraphs, [text](link).',
       type: 'object',
       fieldset: 'more',
       fields: [

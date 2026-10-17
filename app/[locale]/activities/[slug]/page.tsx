@@ -6,6 +6,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
 import { GalleryGrid } from '../../gallery/grid';
 import { ActivityRichText } from '@/components/blocks/ActivityRichText';
+import { InlineText, stripInlineLinks } from '@/components/blocks/InlineLinks';
 import {
   getActivityBySlug,
   getGurukulaBySlug,
@@ -27,7 +28,7 @@ export async function generateMetadata({
   if (!item) return {};
   return {
     title: item.title,
-    description: item.publicSummary,
+    description: stripInlineLinks(item.publicSummary),
   };
 }
 
@@ -105,7 +106,7 @@ export default async function ActivityDetailPage({ params }: { params: Params })
             ))}
           </div>
           <p className="max-w-2xl mx-auto text-charcoal-300 leading-relaxed">
-            {item.publicSummary}
+            <InlineText text={item.publicSummary} />
           </p>
         </header>
 
