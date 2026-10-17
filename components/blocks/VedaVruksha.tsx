@@ -1,7 +1,7 @@
 /**
  * VedaVruksha — the Veda as a banyan tree, with a short reading guide.
  *
- * The painting (public/assets/artefacts/veda-vruksha-banyan.jpg) carries
+ * The painting (public/assets/artefacts/veda-vruksha-banyan-v2.jpg) carries
  * English + Kannada labels. A picture cannot hold every śākhā or explain
  * itself, so the notes below it:
  *   1. explain how to read the tree (root, nourishment, trunk, twigs,
@@ -17,7 +17,7 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-const IMAGE_SRC = '/assets/artefacts/veda-vruksha-banyan.jpg';
+const IMAGE_SRC = '/assets/artefacts/veda-vruksha-banyan-v2.jpg';
 
 const LEAF = '#5F7D45';
 const LEAF_LIGHT = '#9AAF73';
@@ -38,8 +38,8 @@ export function VedaVruksha({ className = '' }: { className?: string }) {
           <Image
             src={IMAGE_SRC}
             alt={t('alt')}
-            width={1792}
-            height={2400}
+            width={2052}
+            height={2550}
             sizes="(max-width: 768px) 100vw, 672px"
             className="h-auto w-full rounded-lg shadow-sm"
           />
