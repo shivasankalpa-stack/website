@@ -5,9 +5,11 @@ exclude = [
   # Dev / local
   "localhost",
   "127\\.0\\.0\\.1",
+  # Template-literal URLs in code (e.g. `https://…/${id}`) are not real links
+  "\\$%7B",
+  "\\$\\{",
 ]
 
-exclude_mail = true
 accept = [200, 204, 301, 302, 403, 429]
 timeout = 15
 max_retries = 2
