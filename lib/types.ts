@@ -101,6 +101,8 @@ export interface SiteEvent {
   featured: boolean;
   sevaItems?: SevaItem[];
   schedule?: EventScheduleDay[];
+  /** YouTube ID of a featured recording shown on the event page. */
+  featuredVideoId?: string;
 }
 
 export interface EventScheduleDay {
@@ -155,6 +157,11 @@ export interface GalleryItem {
   imagePosition?: string;
   /** Slugs such as `maharudra` — used for gallery tag tabs. */
   tags?: string[];
+  /**
+   * For `type: 'video'` items hosted on YouTube: the video ID. When set, the
+   * card embeds the YouTube player and `src` holds the watch URL.
+   */
+  youtubeId?: string;
 }
 
 export type ActivityKind =

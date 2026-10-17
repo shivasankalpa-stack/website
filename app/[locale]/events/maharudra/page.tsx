@@ -17,6 +17,8 @@ import { getEventAlbum, getEventBySlug } from '@/lib/data-access';
 import { notFound } from 'next/navigation';
 import { GalleryGrid } from '../../gallery/grid';
 import { NivedanaOrnaments } from '@/components/blocks/NivedanaOrnaments';
+import { YouTubeEmbed } from '@/components/ui/YouTubeEmbed';
+import { youTubeWatchUrl } from '@/lib/youtube';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -238,6 +240,36 @@ export default async function MaharudraPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        {/* ── Sabhā Kāryakrama: felicitation of Vaidika scholars ── */}
+        {event.featuredVideoId && (
+          <section className="space-y-8">
+            <SectionHeading
+              title={t('sabhaTitle')}
+              subtitle={t('sabhaSubtitle')}
+              centered
+            />
+            <p className="text-charcoal-300 leading-relaxed max-w-2xl mx-auto text-center">
+              {t('sabhaDesc')}
+            </p>
+            <div className="overflow-hidden rounded-xl border border-ivory-300 shadow-lg">
+              <YouTubeEmbed
+                videoId={event.featuredVideoId}
+                title={t('sabhaTitle')}
+              />
+            </div>
+            <p className="text-center text-sm">
+              <a
+                href={youTubeWatchUrl(event.featuredVideoId)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-indigo hover:underline"
+              >
+                {t('sabhaWatchOnYouTube')}
+              </a>
+            </p>
+          </section>
+        )}
 
         {album.length > 0 && (
           <section className="space-y-8">

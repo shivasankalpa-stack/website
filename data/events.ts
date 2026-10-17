@@ -19,6 +19,8 @@ export const events: SiteEvent[] = [
       'The Mahā Rudra Puraścaraṇa of 15–17 May 2026 was completed at Hosakerehalli, with the blessings of the Sringeri Jagadgurus. The Mahārudra yāga of 16 and 17 May was offered by students of several Veda Gurukulas.',
     featured: true,
     image: '/assets/events/maharudra-hero.jpg',
+    /** Sabhā kāryakrama — felicitation of Vaidika scholars. */
+    featuredVideoId: 'qbonvFbPMDk',
     sevaItems: [
       { name: 'Pooja Sankalpa', amount: 501 },
       { name: 'Ekadasha Rudrabhisheka', amount: 2001 },
