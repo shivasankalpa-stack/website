@@ -60,6 +60,8 @@ export interface VedicText {
   id: string;
   home: string;
   layer: Layer;
+  /** Kalpa-sūtras only: the school (sūtra-caraṇa) whose Kalpa this belongs to — a key of SCHOOLS. */
+  school?: string;
   name: L;
   sa: string;
   about: L;
@@ -316,6 +318,7 @@ export const TEXTS: VedicText[] = [
     id: 'ashvalayana-shrauta',
     home: 'shakala',
     layer: 'shrauta',
+    school: 'ashvalayana',
     name: { en: 'Āśvalāyana Śrautasūtra', kn: 'ಆಶ್ವಲಾಯನ ಶ್ರೌತಸೂತ್ರ' },
     sa: 'आश्वलायनश्रौतसूत्रम्',
     about: {
@@ -328,6 +331,7 @@ export const TEXTS: VedicText[] = [
     id: 'ashvalayana-grhya',
     home: 'shakala',
     layer: 'grhya',
+    school: 'ashvalayana',
     name: { en: 'Āśvalāyana Gṛhyasūtra', kn: 'ಆಶ್ವಲಾಯನ ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'आश्वलायनगृह्यसूत्रम्',
     about: {
@@ -340,6 +344,7 @@ export const TEXTS: VedicText[] = [
     id: 'vasishtha-dharma',
     home: 'shakala',
     layer: 'dharma',
+    school: 'vasishtha',
     name: { en: 'Vāsiṣṭha Dharmasūtra', kn: 'ವಾಸಿಷ್ಠ ಧರ್ಮಸೂತ್ರ' },
     sa: 'वासिष्ठधर्मसूत्रम्',
     about: {
@@ -384,6 +389,7 @@ export const TEXTS: VedicText[] = [
     id: 'shankhayana-shrauta',
     home: 'shankhayana',
     layer: 'shrauta',
+    school: 'shankhayana',
     name: { en: 'Śāṅkhāyana Śrautasūtra', kn: 'ಶಾಂಖಾಯನ ಶ್ರೌತಸೂತ್ರ' },
     sa: 'शाङ्खायनश्रौतसूत्रम्',
     about: {
@@ -396,6 +402,7 @@ export const TEXTS: VedicText[] = [
     id: 'shankhayana-grhya',
     home: 'shankhayana',
     layer: 'grhya',
+    school: 'shankhayana',
     name: { en: 'Śāṅkhāyana Gṛhyasūtra', kn: 'ಶಾಂಖಾಯನ ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'शाङ्खायनगृह्यसूत्रम्',
     about: {
@@ -468,6 +475,7 @@ export const TEXTS: VedicText[] = [
     id: 'katyayana-shrauta',
     home: 'madhyandina',
     layer: 'shrauta',
+    school: 'katiya',
     name: { en: 'Kātyāyana Śrautasūtra', kn: 'ಕಾತ್ಯಾಯನ ಶ್ರೌತಸೂತ್ರ' },
     sa: 'कात्यायनश्रौतसूत्रम्',
     about: {
@@ -487,6 +495,7 @@ export const TEXTS: VedicText[] = [
     id: 'paraskara-grhya',
     home: 'madhyandina',
     layer: 'grhya',
+    school: 'katiya',
     name: { en: 'Pāraskara Gṛhyasūtra', kn: 'ಪಾರಸ್ಕರ ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'पारस्करगृह्यसूत्रम्',
     about: {
@@ -506,6 +515,7 @@ export const TEXTS: VedicText[] = [
     id: 'katyayana-shulba',
     home: 'madhyandina',
     layer: 'shulba',
+    school: 'katiya',
     name: { en: 'Kātyāyana Śulbasūtra', kn: 'ಕಾತ್ಯಾಯನ ಶುಲ್ಬಸೂತ್ರ' },
     sa: 'कात्यायनशुल्बसूत्रम्',
     about: {
@@ -707,6 +717,7 @@ export const TEXTS: VedicText[] = [
     id: 'apastamba-grhya',
     home: 'taittiriya',
     layer: 'grhya',
+    school: 'apastamba',
     name: { en: 'Āpastamba Gṛhyasūtra', kn: 'ಆಪಸ್ತಂಬ ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'आपस्तम्बगृह्यसूत्रम्',
     about: {
@@ -729,6 +740,7 @@ export const TEXTS: VedicText[] = [
     id: 'apastamba-dharma',
     home: 'taittiriya',
     layer: 'dharma',
+    school: 'apastamba',
     name: { en: 'Āpastamba Dharmasūtra', kn: 'ಆಪಸ್ತಂಬ ಧರ್ಮಸೂತ್ರ' },
     sa: 'आपस्तम्बधर्मसूत्रम्',
     about: {
@@ -741,6 +753,7 @@ export const TEXTS: VedicText[] = [
     id: 'apastamba-shulba',
     home: 'taittiriya',
     layer: 'shulba',
+    school: 'apastamba',
     name: { en: 'Āpastamba Śulbasūtra', kn: 'ಆಪಸ್ತಂಬ ಶುಲ್ಬಸೂತ್ರ' },
     sa: 'आपस्तम्बशुल्बसूत्रम्',
     about: {
@@ -763,6 +776,7 @@ export const TEXTS: VedicText[] = [
     id: 'baudhayana-dharma',
     home: 'taittiriya',
     layer: 'dharma',
+    school: 'baudhayana',
     name: { en: 'Baudhāyana Dharmasūtra', kn: 'ಬೌಧಾಯನ ಧರ್ಮಸೂತ್ರ' },
     sa: 'बौधायनधर्मसूत्रम्',
     about: {
@@ -776,6 +790,7 @@ export const TEXTS: VedicText[] = [
     id: 'apastamba-shrauta',
     home: 'taittiriya',
     layer: 'shrauta',
+    school: 'apastamba',
     name: { en: 'Āpastamba Śrautasūtra', kn: 'ಆಪಸ್ತಂಬ ಶ್ರೌತಸೂತ್ರ' },
     sa: 'आपस्तम्बश्रौतसूत्रम्',
     about: {
@@ -795,6 +810,7 @@ export const TEXTS: VedicText[] = [
     id: 'baudhayana-shrauta',
     home: 'taittiriya',
     layer: 'shrauta',
+    school: 'baudhayana',
     name: { en: 'Baudhāyana Śrautasūtra', kn: 'ಬೌಧಾಯನ ಶ್ರೌತಸೂತ್ರ' },
     sa: 'बौधायनश्रौतसूत्रम्',
     about: {
@@ -814,6 +830,7 @@ export const TEXTS: VedicText[] = [
     id: 'baudhayana-grhya',
     home: 'taittiriya',
     layer: 'grhya',
+    school: 'baudhayana',
     name: { en: 'Baudhāyana Gṛhyasūtra', kn: 'ಬೌಧಾಯನ ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'बौधायनगृह्यसूत्रम्',
     about: {
@@ -833,6 +850,7 @@ export const TEXTS: VedicText[] = [
     id: 'baudhayana-shulba',
     home: 'taittiriya',
     layer: 'shulba',
+    school: 'baudhayana',
     name: { en: 'Baudhāyana Śulbasūtra', kn: 'ಬೌಧಾಯನ ಶುಲ್ಬಸೂತ್ರ' },
     sa: 'बौधायनशुल्बसूत्रम्',
     about: {
@@ -852,6 +870,7 @@ export const TEXTS: VedicText[] = [
     id: 'hiranyakeshi-shrauta',
     home: 'taittiriya',
     layer: 'shrauta',
+    school: 'hiranyakeshi',
     name: { en: 'Hiraṇyakeśi (Satyāṣāḍha) Śrautasūtra', kn: 'ಹಿರಣ್ಯಕೇಶಿ (ಸತ್ಯಾಷಾಢ) ಶ್ರೌತಸೂತ್ರ' },
     sa: 'सत्याषाढश्रौतसूत्रम्',
     about: {
@@ -871,6 +890,7 @@ export const TEXTS: VedicText[] = [
     id: 'hiranyakeshi-grhya',
     home: 'taittiriya',
     layer: 'grhya',
+    school: 'hiranyakeshi',
     name: { en: 'Hiraṇyakeśi (Satyāṣāḍha) Gṛhyasūtra', kn: 'ಹಿರಣ್ಯಕೇಶಿ (ಸತ್ಯಾಷಾಢ) ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'हिरण्यकेशिगृह्यसूत्रम्',
     about: {
@@ -890,6 +910,7 @@ export const TEXTS: VedicText[] = [
     id: 'bharadvaja-grhya',
     home: 'taittiriya',
     layer: 'grhya',
+    school: 'bharadvaja',
     name: { en: 'Bhāradvāja Gṛhyasūtra', kn: 'ಭಾರದ್ವಾಜ ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'भारद्वाजगृह्यसूत्रम्',
     about: {
@@ -909,6 +930,7 @@ export const TEXTS: VedicText[] = [
     id: 'vaikhanasa-grhya',
     home: 'taittiriya',
     layer: 'grhya',
+    school: 'vaikhanasa',
     name: { en: 'Vaikhānasa Gṛhyasūtra', kn: 'ವೈಖಾನಸ ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'वैखानसगृह्यसूत्रम्',
     about: {
@@ -928,6 +950,7 @@ export const TEXTS: VedicText[] = [
     id: 'vaikhanasa-dharma',
     home: 'taittiriya',
     layer: 'dharma',
+    school: 'vaikhanasa',
     name: { en: 'Vaikhānasa Dharmasūtra', kn: 'ವೈಖಾನಸ ಧರ್ಮಸೂತ್ರ' },
     sa: 'वैखानसधर्मसूत्रम्',
     about: {
@@ -947,6 +970,7 @@ export const TEXTS: VedicText[] = [
     id: 'agniveshya-grhya',
     home: 'taittiriya',
     layer: 'grhya',
+    school: 'agniveshya',
     name: { en: 'Āgniveśya Gṛhyasūtra', kn: 'ಆಗ್ನಿವೇಶ್ಯ ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'आग्निवेश्यगृह्यसूत्रम्',
     about: {
@@ -992,6 +1016,7 @@ export const TEXTS: VedicText[] = [
     id: 'manava-grhya',
     home: 'maitrayani',
     layer: 'grhya',
+    school: 'manava',
     name: { en: 'Mānava Gṛhyasūtra', kn: 'ಮಾನವ ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'मानवगृह्यसूत्रम्',
     about: {
@@ -1004,6 +1029,7 @@ export const TEXTS: VedicText[] = [
     id: 'varaha-grhya',
     home: 'maitrayani',
     layer: 'grhya',
+    school: 'varaha',
     name: { en: 'Vārāha Gṛhyasūtra', kn: 'ವಾರಾಹ ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'वाराहगृह्यसूत्रम्',
     about: {
@@ -1017,6 +1043,7 @@ export const TEXTS: VedicText[] = [
     id: 'manava-shrauta',
     home: 'maitrayani',
     layer: 'shrauta',
+    school: 'manava',
     name: { en: 'Mānava Śrautasūtra', kn: 'ಮಾನವ ಶ್ರೌತಸೂತ್ರ' },
     sa: 'मानवश्रौतसूत्रम्',
     about: {
@@ -1036,6 +1063,7 @@ export const TEXTS: VedicText[] = [
     id: 'manava-shulba',
     home: 'maitrayani',
     layer: 'shulba',
+    school: 'manava',
     name: { en: 'Mānava Śulbasūtra', kn: 'ಮಾನವ ಶುಲ್ಬಸೂತ್ರ' },
     sa: 'मानवशुल्बसूत्रम्',
     about: {
@@ -1073,6 +1101,7 @@ export const TEXTS: VedicText[] = [
     id: 'kathaka-grhya',
     home: 'katha',
     layer: 'grhya',
+    school: 'kathaka',
     name: { en: 'Kāṭhaka (Laugākṣi) Gṛhyasūtra', kn: 'ಕಾಠಕ (ಲೌಗಾಕ್ಷಿ) ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'काठकगृह्यसूत्रम्',
     about: {
@@ -1179,6 +1208,7 @@ export const TEXTS: VedicText[] = [
     id: 'kauthuma-grhya',
     home: 'kauthuma',
     layer: 'grhya',
+    school: 'kauthuma',
     name: { en: 'Kauthuma Gṛhyasūtra', kn: 'ಕೌಥುಮ ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'कौथुमगृह्यसूत्रम्',
     about: {
@@ -1191,6 +1221,7 @@ export const TEXTS: VedicText[] = [
     id: 'gautama-dharma',
     home: 'kauthuma',
     layer: 'dharma',
+    school: 'gautama',
     name: { en: 'Gautama Dharmasūtra', kn: 'ಗೌತಮ ಧರ್ಮಸೂತ್ರ' },
     sa: 'गौतमधर्मसूत्रम्',
     about: {
@@ -1204,6 +1235,7 @@ export const TEXTS: VedicText[] = [
     id: 'gobhila-grhya',
     home: 'kauthuma',
     layer: 'grhya',
+    school: 'gobhila',
     name: { en: 'Gobhila Gṛhyasūtra', kn: 'ಗೋಭಿಲ ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'गोभिलगृह्यसूत्रम्',
     about: {
@@ -1238,6 +1270,7 @@ export const TEXTS: VedicText[] = [
     id: 'khadira-grhya',
     home: 'ranayaniya',
     layer: 'grhya',
+    school: 'khadira',
     name: { en: 'Khādira (Drāhyāyaṇa) Gṛhyasūtra', kn: 'ಖಾದಿರ (ದ್ರಾಹ್ಯಾಯಣ) ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'खादिरगृह्यसूत्रम्',
     about: {
@@ -1309,6 +1342,7 @@ export const TEXTS: VedicText[] = [
     id: 'jaiminiya-grhya',
     home: 'jaiminiya',
     layer: 'grhya',
+    school: 'jaiminiya',
     name: { en: 'Jaiminīya Gṛhyasūtra', kn: 'ಜೈಮಿನೀಯ ಗೃಹ್ಯಸೂತ್ರ' },
     sa: 'जैमिनीयगृह्यसूत्रम्',
     about: {
@@ -1406,6 +1440,7 @@ export const TEXTS: VedicText[] = [
     id: 'kaushika-sutra',
     home: 'shaunaka',
     layer: 'grhya',
+    school: 'kaushika',
     name: { en: 'Kauśika Sūtra', kn: 'ಕೌಶಿಕ ಸೂತ್ರ' },
     sa: 'कौशिकसूत्रम्',
     about: {
@@ -1418,6 +1453,7 @@ export const TEXTS: VedicText[] = [
     id: 'vaitana-shrauta',
     home: 'shaunaka',
     layer: 'shrauta',
+    school: 'vaitana',
     name: { en: 'Vaitāna Śrautasūtra', kn: 'ವೈತಾನ ಶ್ರೌತಸೂತ್ರ' },
     sa: 'वैतानश्रौतसूत्रम्',
     about: {
@@ -1863,6 +1899,34 @@ export const COLLECTIONS: Collection[] = [
     ],
   },
 ];
+
+/**
+ * The schools (sūtra-caraṇa) whose Kalpa-sūtras appear on the paths. A family
+ * follows the sūtras of its own school. On a path with several schools, the
+ * Kalpa section is grouped by school and shows the note.
+ */
+export const SCHOOLS: Record<string, { name: L; note?: L }> = {
+  ashvalayana: { name: { en: 'Āśvalāyana', kn: 'ಆಶ್ವಲಾಯನ' }, note: { en: 'The Kalpa of the Śākala Ṛgvedins: its Śrauta and Gṛhya sūtras.', kn: 'ಶಾಕಲ ಋಗ್ವೇದಿಗಳ ಕಲ್ಪ: ಇದರ ಶ್ರೌತ ಮತ್ತು ಗೃಹ್ಯ ಸೂತ್ರಗಳು.' } },
+  vasishtha: { name: { en: 'Vāsiṣṭha', kn: 'ವಾಸಿಷ್ಠ' }, note: { en: 'A dharmasūtra traditionally linked with the Ṛgveda. It stands on its own, outside the Āśvalāyana Kalpa.', kn: 'ಸಂಪ್ರದಾಯದಲ್ಲಿ ಋಗ್ವೇದಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಧರ್ಮಸೂತ್ರ. ಆಶ್ವಲಾಯನ ಕಲ್ಪದ ಹೊರಗೆ, ಸ್ವತಂತ್ರವಾಗಿದೆ.' } },
+  shankhayana: { name: { en: 'Śāṅkhāyana', kn: 'ಶಾಂಖಾಯನ' } },
+  katiya: { name: { en: 'Kātyāyana (Kātīya)', kn: 'ಕಾತ್ಯಾಯನ (ಕಾತೀಯ)' } },
+  apastamba: { name: { en: 'Āpastamba', kn: 'ಆಪಸ್ತಂಬ' }, note: { en: 'The most widely followed Taittirīya school, especially in South India. Its Kalpa survives in all four parts.', kn: 'ವಿಶೇಷವಾಗಿ ದಕ್ಷಿಣ ಭಾರತದಲ್ಲಿ ಅತಿ ಹೆಚ್ಚು ಅನುಸರಿಸಲ್ಪಡುವ ತೈತ್ತಿರೀಯ ಪರಂಪರೆ. ಇದರ ಕಲ್ಪ ನಾಲ್ಕೂ ಭಾಗಗಳಲ್ಲಿ ಉಳಿದಿದೆ.' } },
+  baudhayana: { name: { en: 'Baudhāyana', kn: 'ಬೌಧಾಯನ' }, note: { en: 'Usually counted the oldest Taittirīya school. Its Kalpa, too, survives in all four parts.', kn: 'ಸಾಮಾನ್ಯವಾಗಿ ಅತ್ಯಂತ ಪ್ರಾಚೀನ ತೈತ್ತಿರೀಯ ಪರಂಪರೆ ಎಂದು ಪರಿಗಣಿತ. ಇದರ ಕಲ್ಪವೂ ನಾಲ್ಕೂ ಭಾಗಗಳಲ್ಲಿ ಉಳಿದಿದೆ.' } },
+  hiranyakeshi: { name: { en: 'Hiraṇyakeśi (Satyāṣāḍha)', kn: 'ಹಿರಣ್ಯಕೇಶಿ (ಸತ್ಯಾಷಾಢ)' }, note: { en: 'Close to Āpastamba, and followed especially in Maharashtra.', kn: 'ಆಪಸ್ತಂಬಕ್ಕೆ ಹತ್ತಿರ; ವಿಶೇಷವಾಗಿ ಮಹಾರಾಷ್ಟ್ರದಲ್ಲಿ ಅನುಸರಿಸಲ್ಪಡುತ್ತದೆ.' } },
+  bharadvaja: { name: { en: 'Bhāradvāja', kn: 'ಭಾರದ್ವಾಜ' }, note: { en: 'A smaller Taittirīya school.', kn: 'ಸಣ್ಣ ತೈತ್ತಿರೀಯ ಪರಂಪರೆ.' } },
+  vaikhanasa: { name: { en: 'Vaikhānasa', kn: 'ವೈಖಾನಸ' }, note: { en: 'The school of the Vaikhānasa archakas of many Viṣṇu temples. Its Smārtasūtra holds both the gṛhya and the dharma parts.', kn: 'ಅನೇಕ ವಿಷ್ಣು ದೇವಾಲಯಗಳ ವೈಖಾನಸ ಅರ್ಚಕರ ಪರಂಪರೆ. ಇದರ ಸ್ಮಾರ್ತಸೂತ್ರದಲ್ಲಿ ಗೃಹ್ಯ ಮತ್ತು ಧರ್ಮ ಎರಡೂ ಭಾಗಗಳಿವೆ.' } },
+  agniveshya: { name: { en: 'Āgniveśya', kn: 'ಆಗ್ನಿವೇಶ್ಯ' }, note: { en: 'A Taittirīya school preserved in Kerala.', kn: 'ಕೇರಳದಲ್ಲಿ ಉಳಿದುಬಂದ ತೈತ್ತಿರೀಯ ಪರಂಪರೆ.' } },
+  manava: { name: { en: 'Mānava', kn: 'ಮಾನವ' }, note: { en: 'The main Maitrāyaṇīya school. Its Śrauta, Gṛhya and Śulba sūtras survive.', kn: 'ಮೈತ್ರಾಯಣೀಯರ ಪ್ರಮುಖ ಪರಂಪರೆ. ಇದರ ಶ್ರೌತ, ಗೃಹ್ಯ ಮತ್ತು ಶುಲ್ಬ ಸೂತ್ರಗಳು ಉಳಿದಿವೆ.' } },
+  varaha: { name: { en: 'Vārāha', kn: 'ವಾರಾಹ' }, note: { en: 'A sister school of the Mānava.', kn: 'ಮಾನವದ ಸಹೋದರ ಪರಂಪರೆ.' } },
+  kathaka: { name: { en: 'Kāṭhaka (Laugākṣi)', kn: 'ಕಾಠಕ (ಲೌಗಾಕ್ಷಿ)' } },
+  gobhila: { name: { en: 'Gobhila', kn: 'ಗೋಭಿಲ' } },
+  kauthuma: { name: { en: 'Kauthuma', kn: 'ಕೌಥುಮ' } },
+  gautama: { name: { en: 'Gautama', kn: 'ಗೌತಮ' } },
+  khadira: { name: { en: 'Khādira (Drāhyāyaṇa)', kn: 'ಖಾದಿರ (ದ್ರಾಹ್ಯಾಯಣ)' } },
+  jaiminiya: { name: { en: 'Jaiminīya', kn: 'ಜೈಮಿನೀಯ' } },
+  kaushika: { name: { en: 'Kauśika', kn: 'ಕೌಶಿಕ' } },
+  vaitana: { name: { en: 'Vaitāna', kn: 'ವೈತಾನ' } },
+};
 
 /** Pāṇinīya Śikṣā 41–42: the Vedāṅgas as the limbs of the Veda-puruṣa. */
 export const LIMBS: Array<{ textId: string; limb: L }> = [

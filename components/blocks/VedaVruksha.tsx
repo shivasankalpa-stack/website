@@ -149,6 +149,30 @@ function ShakhaAnatomy() {
       </div>
 
       <p className="mt-4 text-xs leading-relaxed text-charcoal-300">{t('note')}</p>
+
+      {/* The two aids every śākhā keeps — same colours as the Knowledge Map */}
+      <div className="mt-6 border-t border-gold/30 pt-5">
+        <h4 className="font-serif text-lg font-semibold text-indigo">{t('aidsTitle')}</h4>
+        <p className="mt-1 text-sm leading-relaxed text-charcoal-300">{t('aidsIntro')}</p>
+        <ul className="mt-4 grid gap-5 md:grid-cols-2">
+          {(['shiksha', 'kalpa'] as const).map((key) => (
+            <li key={key} className="flex gap-3">
+              <span
+                aria-hidden="true"
+                className={`mt-1.5 h-3 w-3 shrink-0 rounded-full border-2 bg-ivory-50 ${
+                  key === 'shiksha' ? 'border-kumkuma' : 'border-leaf'
+                }`}
+              />
+              <span>
+                <span className={`block font-semibold ${key === 'shiksha' ? 'text-kumkuma' : 'text-leaf'}`}>
+                  {t(`aids.${key}.name`)}
+                </span>
+                <span className="mt-0.5 block text-sm leading-relaxed text-charcoal-300">{t(`aids.${key}.text`)}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

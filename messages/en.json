@@ -192,7 +192,19 @@
       },
       "karma": "Karma-kāṇḍa",
       "jnana": "Jñāna-kāṇḍa (Vedānta)",
-      "note": "In the Kṛṣṇa Yajurveda, mantra and brāhmaṇa passages are interwoven even within the Saṃhitā, and the Upaniṣads sit inside the Āraṇyaka (prapāṭhakas 7–10). Other śākhās divide their texts differently."
+      "note": "In the Kṛṣṇa Yajurveda, mantra and brāhmaṇa passages are interwoven even within the Saṃhitā, and the Upaniṣads sit inside the Āraṇyaka (prapāṭhakas 7–10). Other śākhās divide their texts differently.",
+      "aidsTitle": "And the aids each śākhā keeps",
+      "aidsIntro": "Alongside these four books, every śākhā keeps two aids of its own. They are Vedāṅgas: limbs that serve the Veda, not part of it. The Knowledge Map shows them in these same colours.",
+      "aids": {
+        "shiksha": {
+          "name": "Śikṣā: the Prātiśākhya",
+          "text": "Keeps the recitation exact. It sets out how this śākhā’s saṃhitā is sounded (its letters, accents and sandhi, and how the word-by-word padapāṭha joins into continuous text), so the Veda passes from teacher to student unchanged. For the Taittirīyas: the Taittirīya Prātiśākhya."
+        },
+        "kalpa": {
+          "name": "Kalpa: the Kalpa-sūtras",
+          "text": "Turns the Veda into practice. Each school’s sūtras gather what the Brāhmaṇas teach into step-by-step procedure: Śrauta for the great sacrifices, Gṛhya for the household rites and saṃskāras, Dharma for conduct, and Śulba for building the altars. For the Taittirīyas: the sūtras of Āpastamba, Baudhāyana and other schools."
+        }
+      }
     },
     "others": {
       "title": "Śākhās not shown in the picture",
@@ -770,6 +782,11 @@
     "kind_etext": "Sanskrit e-text",
     "kind_bhashya": "With commentary",
     "kind_scan": "Scanned edition",
-    "opensInNewTab": "opens in a new tab"
+    "opensInNewTab": "opens in a new tab",
+    "groupShiksha": "Śikṣā · how this śākhā is recited",
+    "groupShikshaNote": "A Vedāṅga. The Prātiśākhya fixes this śākhā’s letters, accents and sandhi, and how the word-by-word padapāṭha joins into continuous text, so the recitation is passed on unchanged.",
+    "groupKalpa": "Kalpa · how its rites are performed",
+    "groupKalpaNote": "A Vedāṅga. Each school’s Kalpa-sūtras turn what the Brāhmaṇas teach into step-by-step procedure: Śrauta for the great sacrifices, Gṛhya for the household rites and saṃskāras, Dharma for conduct, and Śulba for building the altars.",
+    "groupKalpaSchools": "Grouped below by school. Each family follows the sūtras of its own school, the one named in its abhivādana (for example, Āpastamba-sūtra)."
   }
 }

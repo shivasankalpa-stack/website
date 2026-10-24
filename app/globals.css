@@ -45,6 +45,9 @@
   --color-gold-100: #F3E4BC;
   --color-gold: #B8860B;
   --color-gold-400: #946B09;
+
+  /* Kalpa on the Knowledge Map — the leaf green of the Veda Vṛkṣa painting */
+  --color-leaf: #5F7D45;
 }
 
 @theme inline {
