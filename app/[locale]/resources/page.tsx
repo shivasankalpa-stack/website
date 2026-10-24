@@ -249,7 +249,7 @@ export default async function ResourcesPage({ params }: Props) {
             </h2>
             <p className="mx-auto max-w-2xl text-sm leading-relaxed text-charcoal-300">{t('librariesSubtitle')}</p>
           </div>
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {REPOS.map((repo) => (
               <li key={repo.id}>
                 <a

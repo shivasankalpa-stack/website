@@ -47,7 +47,7 @@ export const SHRUTI_LAYERS: Layer[] = ['samhita', 'padapatha', 'brahmana', 'aran
  * scan       — scanned printed edition
  */
 export type SourceKind = 'listen' | 'read' | 'readListen' | 'guide' | 'etext' | 'bhashya' | 'scan';
-export type Repo = 'vhp' | 'gretil' | 'sd' | 'archive';
+export type Repo = 'vhp' | 'gretil' | 'titus' | 'sd' | 'archive';
 
 export interface Source {
   kind: SourceKind;
@@ -99,6 +99,7 @@ const gretil = (file: string) =>
   `https://gretil.sub.uni-goettingen.de/gretil/corpustei/transformations/html/${file}.htm`;
 const gretilVeda = (path: string) => `https://gretil.sub.uni-goettingen.de/gretil/1_sanskr/1_veda/${path}`;
 const SD_VEDA = 'https://sanskritdocuments.org/doc_veda/';
+const titus = (path: string) => `https://titus.uni-frankfurt.de/texte/etcs/ind/aind/ved/${path}`;
 
 const SHIKSHA_PAGE: Source = { kind: 'guide', repo: 'vhp', url: vhp('vedangas/shiksha/') };
 const SHANKARA: L = { en: 'with the bhāṣya ascribed to Śaṅkara', kn: 'ಶಂಕರರದೆಂದು ಪರಿಗಣಿತ ಭಾಷ್ಯದೊಂದಿಗೆ' };
@@ -120,6 +121,15 @@ export const REPOS: RepoInfo[] = [
     about: {
       en: 'Göttingen Register of Electronic Texts in Indian Languages. Scholarly Sanskrit e-texts, several with their bhāṣyas.',
       kn: 'ಗೊಟ್ಟಿಂಗೆನ್ ವಿಶ್ವವಿದ್ಯಾಲಯದ ಭಾರತೀಯ ಭಾಷಾ ಇ-ಪಠ್ಯ ಸಂಗ್ರಹ. ವಿದ್ವತ್ಪೂರ್ಣ ಸಂಸ್ಕೃತ ಪಠ್ಯಗಳು, ಹಲವು ಭಾಷ್ಯಸಹಿತ.',
+    },
+  },
+  {
+    id: 'titus',
+    name: 'TITUS',
+    url: 'https://titus.uni-frankfurt.de/indexe.htm',
+    about: {
+      en: 'Digitised and hosted at Goethe University Frankfurt, but most of the Kalpa-sūtras linked here are typed from editions published in India: by the Oriental Research Institute, Mysore; the Indian National Science Academy, New Delhi; the Ānandāśrama, Pune; the Asiatic Society, Kolkata; and the University of Travancore. Each link names its edition. Texts are in Roman transliteration.',
+      kn: 'ಫ್ರಾಂಕ್‌ಫರ್ಟ್‌ನ ಗ್ಯೋಟೆ ವಿಶ್ವವಿದ್ಯಾಲಯದಲ್ಲಿ ಡಿಜಿಟಲೀಕರಿಸಿ ಇರಿಸಲಾಗಿದೆ; ಆದರೆ ಇಲ್ಲಿ ಲಿಂಕ್ ನೀಡಿರುವ ಹೆಚ್ಚಿನ ಕಲ್ಪಸೂತ್ರಗಳು ಭಾರತದಲ್ಲಿ ಪ್ರಕಟವಾದ ಆವೃತ್ತಿಗಳಿಂದ ಸಿದ್ಧವಾದವು: ಮೈಸೂರಿನ ಪ್ರಾಚ್ಯವಿದ್ಯಾ ಸಂಶೋಧನಾಲಯ, ನವದೆಹಲಿಯ ಭಾರತೀಯ ರಾಷ್ಟ್ರೀಯ ವಿಜ್ಞಾನ ಅಕಾಡೆಮಿ, ಪುಣೆಯ ಆನಂದಾಶ್ರಮ, ಕೋಲ್ಕತ್ತಾದ ಏಷಿಯಾಟಿಕ್ ಸೊಸೈಟಿ ಮತ್ತು ತಿರುವಾಂಕೂರು ವಿಶ್ವವಿದ್ಯಾಲಯ. ಪ್ರತಿ ಲಿಂಕ್ ತನ್ನ ಆವೃತ್ತಿಯನ್ನು ಹೆಸರಿಸುತ್ತದೆ. ಪಠ್ಯಗಳು ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿವೆ.',
     },
   },
   {
@@ -454,6 +464,64 @@ export const TEXTS: VedicText[] = [
     sources: [SHIKSHA_PAGE],
   },
 
+  {
+    id: 'katyayana-shrauta',
+    home: 'madhyandina',
+    layer: 'shrauta',
+    name: { en: 'Kātyāyana Śrautasūtra', kn: 'ಕಾತ್ಯಾಯನ ಶ್ರೌತಸೂತ್ರ' },
+    sa: 'कात्यायनश्रौतसूत्रम्',
+    about: {
+      en: 'The adhvaryu’s manual for the śrauta sacrifices in the Śukla Yajurveda, followed by Mādhyandinas and Kāṇvas alike.',
+      kn: 'ಶುಕ್ಲ ಯಜುರ್ವೇದದಲ್ಲಿ ಶ್ರೌತಯಾಗಗಳಿಗೆ ಅಧ್ವರ್ಯುವಿನ ಕೈಪಿಡಿ — ಮಾಧ್ಯಂದಿನರು ಮತ್ತು ಕಾಣ್ವರು ಇಬ್ಬರೂ ಅನುಸರಿಸುವುದು.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvw/katyss/katys.htm'),
+        note: { en: 'Weber’s edition (Chowkhamba, Varanasi), in Roman transliteration', kn: 'ವೆಬರ್ ಆವೃತ್ತಿ (ಚೌಖಂಬಾ, ವಾರಾಣಸಿ), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+  {
+    id: 'paraskara-grhya',
+    home: 'madhyandina',
+    layer: 'grhya',
+    name: { en: 'Pāraskara Gṛhyasūtra', kn: 'ಪಾರಸ್ಕರ ಗೃಹ್ಯಸೂತ್ರ' },
+    sa: 'पारस्करगृह्यसूत्रम्',
+    about: {
+      en: 'The gṛhyasūtra of the Śukla Yajurveda, also called the Kātīya or Vājasaneya Gṛhyasūtra: vivāha, upanayana and the other saṃskāras, and the household offerings.',
+      kn: 'ಶುಕ್ಲ ಯಜುರ್ವೇದದ ಗೃಹ್ಯಸೂತ್ರ — ಕಾತೀಯ ಅಥವಾ ವಾಜಸನೇಯ ಗೃಹ್ಯಸೂತ್ರ ಎಂದೂ ಕರೆಯುತ್ತಾರೆ: ವಿವಾಹ, ಉಪನಯನ ಮೊದಲಾದ ಸಂಸ್ಕಾರಗಳು ಮತ್ತು ಗೃಹ್ಯ ಹೋಮಗಳು.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvw/pargs/pargs.htm'),
+        note: { en: 'Bākre’s edition (Bombay), in Roman transliteration', kn: 'ಬಾಕ್ರೆ ಆವೃತ್ತಿ (ಮುಂಬಯಿ), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+  {
+    id: 'katyayana-shulba',
+    home: 'madhyandina',
+    layer: 'shulba',
+    name: { en: 'Kātyāyana Śulbasūtra', kn: 'ಕಾತ್ಯಾಯನ ಶುಲ್ಬಸೂತ್ರ' },
+    sa: 'कात्यायनशुल्बसूत्रम्',
+    about: {
+      en: 'The Śukla Yajurveda’s rules for measuring and building the fire altars with cord and peg.',
+      kn: 'ಹಗ್ಗ ಮತ್ತು ಗೂಟಗಳಿಂದ ಅಗ್ನಿವೇದಿಗಳನ್ನು ಅಳೆದು ನಿರ್ಮಿಸುವ ಶುಕ್ಲ ಯಜುರ್ವೇದದ ನಿಯಮಗಳು.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvw/katysbs/katys.htm'),
+        note: { en: 'Sen and Bag’s edition (Indian National Science Academy, New Delhi), in Roman transliteration', kn: 'ಸೇನ್ ಮತ್ತು ಬಾಗ್ ಆವೃತ್ತಿ (ಭಾರತೀಯ ರಾಷ್ಟ್ರೀಯ ವಿಜ್ಞಾನ ಅಕಾಡೆಮಿ, ನವದೆಹಲಿ), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+
   // ── Śukla Yajurveda · Kāṇva ──
   {
     id: 'vajasaneyi-kanva',
@@ -704,6 +772,197 @@ export const TEXTS: VedicText[] = [
     sources: [{ kind: 'etext', repo: 'gretil', url: gretil('sa_baudhAyanadharmasUtra') }],
   },
 
+  {
+    id: 'apastamba-shrauta',
+    home: 'taittiriya',
+    layer: 'shrauta',
+    name: { en: 'Āpastamba Śrautasūtra', kn: 'ಆಪಸ್ತಂಬ ಶ್ರೌತಸೂತ್ರ' },
+    sa: 'आपस्तम्बश्रौतसूत्रम्',
+    about: {
+      en: 'The adhvaryu’s manual for the śrauta sacrifices in the Āpastamba Kalpa, from the new- and full-moon offerings to the soma rites.',
+      kn: 'ಆಪಸ್ತಂಬ ಕಲ್ಪದಲ್ಲಿ ಶ್ರೌತಯಾಗಗಳಿಗೆ ಅಧ್ವರ್ಯುವಿನ ಕೈಪಿಡಿ — ದರ್ಶಪೂರ್ಣಮಾಸದಿಂದ ಸೋಮಯಾಗಗಳವರೆಗೆ.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvs/apss/apss.htm'),
+        note: { en: 'Garbe’s edition (Asiatic Society, Calcutta), in Roman transliteration', kn: 'ಗಾರ್ಬೆ ಆವೃತ್ತಿ (ಏಷಿಯಾಟಿಕ್ ಸೊಸೈಟಿ, ಕೋಲ್ಕತ್ತಾ), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+  {
+    id: 'baudhayana-shrauta',
+    home: 'taittiriya',
+    layer: 'shrauta',
+    name: { en: 'Baudhāyana Śrautasūtra', kn: 'ಬೌಧಾಯನ ಶ್ರೌತಸೂತ್ರ' },
+    sa: 'बौधायनश्रौतसूत्रम्',
+    about: {
+      en: 'Usually counted the oldest of the śrautasūtras; the śrauta part of the Baudhāyana Kalpa.',
+      kn: 'ಸಾಮಾನ್ಯವಾಗಿ ಅತ್ಯಂತ ಪ್ರಾಚೀನ ಶ್ರೌತಸೂತ್ರವೆಂದು ಪರಿಗಣಿತ; ಬೌಧಾಯನ ಕಲ್ಪದ ಶ್ರೌತಭಾಗ.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvs/baudhss/baudh.htm'),
+        note: { en: 'Caland’s edition (Asiatic Society, Calcutta), in Roman transliteration', kn: 'ಕಾಲಂಡ್ ಆವೃತ್ತಿ (ಏಷಿಯಾಟಿಕ್ ಸೊಸೈಟಿ, ಕೋಲ್ಕತ್ತಾ), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+  {
+    id: 'baudhayana-grhya',
+    home: 'taittiriya',
+    layer: 'grhya',
+    name: { en: 'Baudhāyana Gṛhyasūtra', kn: 'ಬೌಧಾಯನ ಗೃಹ್ಯಸೂತ್ರ' },
+    sa: 'बौधायनगृह्यसूत्रम्',
+    about: {
+      en: 'The domestic rites of the Baudhāyana school, with its supplementary Paribhāṣā and Śeṣa sūtras.',
+      kn: 'ಬೌಧಾಯನ ಪರಂಪರೆಯ ಗೃಹ್ಯಕರ್ಮಗಳು — ಪೂರಕ ಪರಿಭಾಷಾ ಮತ್ತು ಶೇಷ ಸೂತ್ರಗಳ ಸಹಿತ.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvs/baudhgs/baudh.htm'),
+        note: { en: 'Oriental Research Institute, Mysore edition, in Roman transliteration', kn: 'ಪ್ರಾಚ್ಯವಿದ್ಯಾ ಸಂಶೋಧನಾಲಯ, ಮೈಸೂರು ಆವೃತ್ತಿ, ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+  {
+    id: 'baudhayana-shulba',
+    home: 'taittiriya',
+    layer: 'shulba',
+    name: { en: 'Baudhāyana Śulbasūtra', kn: 'ಬೌಧಾಯನ ಶುಲ್ಬಸೂತ್ರ' },
+    sa: 'बौधायनशुल्बसूत्रम्',
+    about: {
+      en: 'The oldest śulbasūtra: the geometry of the fire altars, including its well-known statement of the rule now called Pythagoras’ theorem.',
+      kn: 'ಅತ್ಯಂತ ಪ್ರಾಚೀನ ಶುಲ್ಬಸೂತ್ರ: ಅಗ್ನಿವೇದಿಗಳ ರೇಖಾಗಣಿತ — ಇಂದು ಪೈಥಾಗರಸ್ ಪ್ರಮೇಯ ಎಂದು ಕರೆಯುವ ನಿಯಮದ ಪ್ರಸಿದ್ಧ ನಿರೂಪಣೆ ಸಹಿತ.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvs/baudhsbs/baudh.htm'),
+        note: { en: 'Sen and Bag’s edition (Indian National Science Academy, New Delhi), in Roman transliteration', kn: 'ಸೇನ್ ಮತ್ತು ಬಾಗ್ ಆವೃತ್ತಿ (ಭಾರತೀಯ ರಾಷ್ಟ್ರೀಯ ವಿಜ್ಞಾನ ಅಕಾಡೆಮಿ, ನವದೆಹಲಿ), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+  {
+    id: 'hiranyakeshi-shrauta',
+    home: 'taittiriya',
+    layer: 'shrauta',
+    name: { en: 'Hiraṇyakeśi (Satyāṣāḍha) Śrautasūtra', kn: 'ಹಿರಣ್ಯಕೇಶಿ (ಸತ್ಯಾಷಾಢ) ಶ್ರೌತಸೂತ್ರ' },
+    sa: 'सत्याषाढश्रौतसूत्रम्',
+    about: {
+      en: 'The śrautasūtra of Satyāṣāḍha Hiraṇyakeśin, a Taittirīya school close to Āpastamba’s.',
+      kn: 'ಸತ್ಯಾಷಾಢ ಹಿರಣ್ಯಕೇಶಿಯ ಶ್ರೌತಸೂತ್ರ — ಆಪಸ್ತಂಬಕ್ಕೆ ಹತ್ತಿರವಾದ ತೈತ್ತಿರೀಯ ಪರಂಪರೆ.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvs/hirss/hirss.htm'),
+        note: { en: 'Ānandāśrama edition (Pune), in Roman transliteration', kn: 'ಆನಂದಾಶ್ರಮ ಆವೃತ್ತಿ (ಪುಣೆ), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+  {
+    id: 'hiranyakeshi-grhya',
+    home: 'taittiriya',
+    layer: 'grhya',
+    name: { en: 'Hiraṇyakeśi (Satyāṣāḍha) Gṛhyasūtra', kn: 'ಹಿರಣ್ಯಕೇಶಿ (ಸತ್ಯಾಷಾಢ) ಗೃಹ್ಯಸೂತ್ರ' },
+    sa: 'हिरण्यकेशिगृह्यसूत्रम्',
+    about: {
+      en: 'The domestic rites of the Hiraṇyakeśins (Satyāṣāḍhas), opening with upanayana.',
+      kn: 'ಹಿರಣ್ಯಕೇಶಿಗಳ (ಸತ್ಯಾಷಾಢರ) ಗೃಹ್ಯಕರ್ಮಗಳು — ಉಪನಯನದಿಂದ ಆರಂಭ.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvs/hirgs/hirgs.htm'),
+        note: { en: 'Kirste’s edition (Vienna), in Roman transliteration', kn: 'ಕಿರ್ಸ್ಟೆ ಆವೃತ್ತಿ (ವಿಯೆನ್ನಾ), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+  {
+    id: 'bharadvaja-grhya',
+    home: 'taittiriya',
+    layer: 'grhya',
+    name: { en: 'Bhāradvāja Gṛhyasūtra', kn: 'ಭಾರದ್ವಾಜ ಗೃಹ್ಯಸೂತ್ರ' },
+    sa: 'भारद्वाजगृह्यसूत्रम्',
+    about: {
+      en: 'The domestic rites of the Bhāradvāja school of the Taittirīyas.',
+      kn: 'ತೈತ್ತಿರೀಯರ ಭಾರದ್ವಾಜ ಪರಂಪರೆಯ ಗೃಹ್ಯಕರ್ಮಗಳು.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvs/bhargs/bharg.htm'),
+        note: { en: 'Salomons’ edition (Leiden), in Roman transliteration', kn: 'ಸಾಲೊಮನ್ಸ್ ಆವೃತ್ತಿ (ಲೈಡನ್), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+  {
+    id: 'vaikhanasa-grhya',
+    home: 'taittiriya',
+    layer: 'grhya',
+    name: { en: 'Vaikhānasa Gṛhyasūtra', kn: 'ವೈಖಾನಸ ಗೃಹ್ಯಸೂತ್ರ' },
+    sa: 'वैखानसगृह्यसूत्रम्',
+    about: {
+      en: 'The domestic part of the Vaikhānasa Smārtasūtra: the saṃskāras of the Vaikhānasa community, who serve as archakas in many Viṣṇu temples.',
+      kn: 'ವೈಖಾನಸ ಸ್ಮಾರ್ತಸೂತ್ರದ ಗೃಹ್ಯಭಾಗ — ಅನೇಕ ವಿಷ್ಣು ದೇವಾಲಯಗಳಲ್ಲಿ ಅರ್ಚಕರಾಗಿರುವ ವೈಖಾನಸ ಸಮುದಾಯದ ಸಂಸ್ಕಾರಗಳು.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvs/vaikhgs/vaikh.htm'),
+        note: { en: 'Caland’s edition (Asiatic Society, Calcutta), in Roman transliteration', kn: 'ಕಾಲಂಡ್ ಆವೃತ್ತಿ (ಏಷಿಯಾಟಿಕ್ ಸೊಸೈಟಿ, ಕೋಲ್ಕತ್ತಾ), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+  {
+    id: 'vaikhanasa-dharma',
+    home: 'taittiriya',
+    layer: 'dharma',
+    name: { en: 'Vaikhānasa Dharmasūtra', kn: 'ವೈಖಾನಸ ಧರ್ಮಸೂತ್ರ' },
+    sa: 'वैखानसधर्मसूत्रम्',
+    about: {
+      en: 'The dharma part of the Vaikhānasa Smārtasūtra: the duties of the varṇas and āśramas, with special attention to the forest-dweller.',
+      kn: 'ವೈಖಾನಸ ಸ್ಮಾರ್ತಸೂತ್ರದ ಧರ್ಮಭಾಗ: ವರ್ಣಾಶ್ರಮ ಧರ್ಮಗಳು, ವಿಶೇಷವಾಗಿ ವಾನಪ್ರಸ್ಥನ ಜೀವನ.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvs/dhs/vaikhdhs/vaikh.htm'),
+        note: { en: 'Caland’s edition (Asiatic Society, Calcutta), in Roman transliteration', kn: 'ಕಾಲಂಡ್ ಆವೃತ್ತಿ (ಏಷಿಯಾಟಿಕ್ ಸೊಸೈಟಿ, ಕೋಲ್ಕತ್ತಾ), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+  {
+    id: 'agniveshya-grhya',
+    home: 'taittiriya',
+    layer: 'grhya',
+    name: { en: 'Āgniveśya Gṛhyasūtra', kn: 'ಆಗ್ನಿವೇಶ್ಯ ಗೃಹ್ಯಸೂತ್ರ' },
+    sa: 'आग्निवेश्यगृह्यसूत्रम्',
+    about: {
+      en: 'The domestic rites of the Āgniveśya school, preserved in Kerala.',
+      kn: 'ಕೇರಳದಲ್ಲಿ ಉಳಿದುಬಂದ ಆಗ್ನಿವೇಶ್ಯ ಪರಂಪರೆಯ ಗೃಹ್ಯಕರ್ಮಗಳು.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvs/agngs/agngs.htm'),
+        note: { en: 'Varma’s edition (University of Travancore, Trivandrum), in Roman transliteration', kn: 'ವರ್ಮಾ ಆವೃತ್ತಿ (ತಿರುವಾಂಕೂರು ವಿಶ್ವವಿದ್ಯಾಲಯ, ತಿರುವನಂತಪುರ), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+
   // ── Kṛṣṇa Yajurveda · Maitrāyaṇī ──
   {
     id: 'maitrayani-samhita',
@@ -754,6 +1013,45 @@ export const TEXTS: VedicText[] = [
     sources: [{ kind: 'etext', repo: 'gretil', url: gretil('sa_vArAhagRhyasUtra') }],
   },
 
+  {
+    id: 'manava-shrauta',
+    home: 'maitrayani',
+    layer: 'shrauta',
+    name: { en: 'Mānava Śrautasūtra', kn: 'ಮಾನವ ಶ್ರೌತಸೂತ್ರ' },
+    sa: 'मानवश्रौतसूत्रम्',
+    about: {
+      en: 'The śrautasūtra of the Mānava school of the Maitrāyaṇīyas.',
+      kn: 'ಮೈತ್ರಾಯಣೀಯರ ಮಾನವ ಪರಂಪರೆಯ ಶ್ರೌತಸೂತ್ರ.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvs/manss/manss.htm'),
+        note: { en: 'van Gelder’s edition (New Delhi), in Roman transliteration', kn: 'ವ್ಯಾನ್ ಗೆಲ್ಡರ್ ಆವೃತ್ತಿ (ನವದೆಹಲಿ), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+  {
+    id: 'manava-shulba',
+    home: 'maitrayani',
+    layer: 'shulba',
+    name: { en: 'Mānava Śulbasūtra', kn: 'ಮಾನವ ಶುಲ್ಬಸೂತ್ರ' },
+    sa: 'मानवशुल्बसूत्रम्',
+    about: {
+      en: 'The Mānava school’s rules for measuring and building the fire altars.',
+      kn: 'ಅಗ್ನಿವೇದಿಗಳನ್ನು ಅಳೆದು ನಿರ್ಮಿಸುವ ಮಾನವ ಪರಂಪರೆಯ ನಿಯಮಗಳು.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvs/mansbs/mansb.htm'),
+        note: { en: 'Sen and Bag’s edition (Indian National Science Academy, New Delhi), in Roman transliteration', kn: 'ಸೇನ್ ಮತ್ತು ಬಾಗ್ ಆವೃತ್ತಿ (ಭಾರತೀಯ ರಾಷ್ಟ್ರೀಯ ವಿಜ್ಞಾನ ಅಕಾಡೆಮಿ, ನವದೆಹಲಿ), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+
   // ── Kṛṣṇa Yajurveda · Kaṭha ──
   {
     id: 'katha-upanishad',
@@ -768,6 +1066,26 @@ export const TEXTS: VedicText[] = [
     sources: [
       { kind: 'readListen', repo: 'vhp', url: vhp('upanishads/kathopanishad/') },
       { kind: 'etext', repo: 'gretil', url: gretil('sa_kathopaniSad') },
+    ],
+  },
+
+  {
+    id: 'kathaka-grhya',
+    home: 'katha',
+    layer: 'grhya',
+    name: { en: 'Kāṭhaka (Laugākṣi) Gṛhyasūtra', kn: 'ಕಾಠಕ (ಲೌಗಾಕ್ಷಿ) ಗೃಹ್ಯಸೂತ್ರ' },
+    sa: 'काठकगृह्यसूत्रम्',
+    about: {
+      en: 'The domestic rites of the Kaṭhas, ascribed to Laugākṣi; it opens with the student’s vows from upanayana onward.',
+      kn: 'ಲೌಗಾಕ್ಷಿಗೆ ಆರೋಪಿತವಾದ ಕಠರ ಗೃಹ್ಯಸೂತ್ರ; ಉಪನಯನದಿಂದ ಆರಂಭವಾಗುವ ಬ್ರಹ್ಮಚಾರಿಯ ವ್ರತಗಳೊಂದಿಗೆ ತೆರೆಯುತ್ತದೆ.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('yvs/kathgs/kathg.htm'),
+        note: { en: 'Caland’s edition (Lahore), in Roman transliteration', kn: 'ಕಾಲಂಡ್ ಆವೃತ್ತಿ (ಲಾಹೋರ್), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
     ],
   },
 
@@ -882,6 +1200,26 @@ export const TEXTS: VedicText[] = [
     sources: [{ kind: 'etext', repo: 'gretil', url: gretil('sa_gautama-dharmasUtra') }],
   },
 
+  {
+    id: 'gobhila-grhya',
+    home: 'kauthuma',
+    layer: 'grhya',
+    name: { en: 'Gobhila Gṛhyasūtra', kn: 'ಗೋಭಿಲ ಗೃಹ್ಯಸೂತ್ರ' },
+    sa: 'गोभिलगृह्यसूत्रम्',
+    about: {
+      en: 'The principal gṛhyasūtra of the Kauthumas, used together with the Mantra-brāhmaṇa that supplies its mantras.',
+      kn: 'ಕೌಥುಮರ ಪ್ರಮುಖ ಗೃಹ್ಯಸೂತ್ರ — ಇದರ ಮಂತ್ರಗಳನ್ನು ಒದಗಿಸುವ ಮಂತ್ರಬ್ರಾಹ್ಮಣದೊಂದಿಗೆ ಬಳಸಲಾಗುತ್ತದೆ.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('sv/gobhgs/gobhg.htm'),
+        note: { en: 'Knauer’s edition (Dorpat), in Roman transliteration', kn: 'ಕ್ನೌರ್ ಆವೃತ್ತಿ (ಡೋರ್ಪಾಟ್), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
+  },
+
   // ── Sāmaveda · Rāṇāyanīya ──
   {
     id: 'ranayaniya-samhita',
@@ -894,6 +1232,26 @@ export const TEXTS: VedicText[] = [
       kn: 'ಕೌಥುಮ ಪಠ್ಯಕ್ಕೆ ಬಹಳ ಹತ್ತಿರ; ಕೆಲವು ಪಾಠಗಳಲ್ಲಿ ಮತ್ತು ಗಾನದಲ್ಲಿ ಕೆಲ ಅಕ್ಷರಗಳ ಉಚ್ಚಾರದಲ್ಲಿ ಮಾತ್ರ ಭಿನ್ನ.',
     },
     sources: [{ kind: 'guide', repo: 'vhp', url: vhp('samhitas/samaveda-samhitas/ranayaniya-samhita/') }],
+  },
+
+  {
+    id: 'khadira-grhya',
+    home: 'ranayaniya',
+    layer: 'grhya',
+    name: { en: 'Khādira (Drāhyāyaṇa) Gṛhyasūtra', kn: 'ಖಾದಿರ (ದ್ರಾಹ್ಯಾಯಣ) ಗೃಹ್ಯಸೂತ್ರ' },
+    sa: 'खादिरगृह्यसूत्रम्',
+    about: {
+      en: 'The gṛhyasūtra of the Rāṇāyanīyas, also known as the Drāhyāyaṇa Gṛhyasūtra.',
+      kn: 'ರಾಣಾಯನೀಯರ ಗೃಹ್ಯಸೂತ್ರ — ದ್ರಾಹ್ಯಾಯಣ ಗೃಹ್ಯಸೂತ್ರ ಎಂದೂ ಕರೆಯುತ್ತಾರೆ.',
+    },
+    sources: [
+      {
+        kind: 'etext',
+        repo: 'titus',
+        url: titus('sv/khadgs/khadg.htm'),
+        note: { en: 'Singh’s edition (Chaukhamba, Delhi), in Roman transliteration', kn: 'ಸಿಂಗ್ ಆವೃತ್ತಿ (ಚೌಖಂಬಾ, ದೆಹಲಿ), ರೋಮನ್ ಲಿಪ್ಯಂತರದಲ್ಲಿ' },
+      },
+    ],
   },
 
   // ── Sāmaveda · Jaiminīya ──
@@ -1251,12 +1609,11 @@ export const COLLECTIONS: Collection[] = [
       'brhadaranyaka-upanishad',
       'ishavasya-upanishad',
       'vajasaneyi-pratishakhya',
+      'katyayana-shrauta',
+      'paraskara-grhya',
+      'katyayana-shulba',
     ],
     notOnPath: [
-      {
-        en: 'Kātyāyana Śrautasūtra and Pāraskara Gṛhyasūtra belong here. We have not yet found open e-texts we can vouch for, so they are not linked.',
-        kn: 'ಕಾತ್ಯಾಯನ ಶ್ರೌತಸೂತ್ರ ಮತ್ತು ಪಾರಸ್ಕರ ಗೃಹ್ಯಸೂತ್ರ ಇಲ್ಲಿಗೆ ಸೇರಿವೆ. ವಿಶ್ವಾಸಾರ್ಹ ಮುಕ್ತ ಇ-ಪಠ್ಯಗಳು ಇನ್ನೂ ದೊರೆತಿಲ್ಲವಾದ್ದರಿಂದ ಲಿಂಕ್ ನೀಡಿಲ್ಲ.',
-      },
       {
         en: 'The Īśa and Bṛhadāraṇyaka differ slightly between the two recensions. Śaṅkara commented on the Kāṇva text, so their pages live on the Kāṇva path.',
         kn: 'ಈಶ ಮತ್ತು ಬೃಹದಾರಣ್ಯಕಗಳು ಎರಡು ಪಾಠಗಳಲ್ಲಿ ಸ್ವಲ್ಪ ಭಿನ್ನ. ಶಂಕರರು ಕಾಣ್ವ ಪಾಠಕ್ಕೆ ಭಾಷ್ಯ ಬರೆದುದರಿಂದ ಅವುಗಳ ಪುಟಗಳು ಕಾಣ್ವ ಮಾರ್ಗದಲ್ಲಿವೆ.',
@@ -1279,11 +1636,14 @@ export const COLLECTIONS: Collection[] = [
       'brhadaranyaka-upanishad',
       'ishavasya-upanishad',
       'vajasaneyi-pratishakhya',
+      'katyayana-shrauta',
+      'paraskara-grhya',
+      'katyayana-shulba',
     ],
     notOnPath: [
       {
-        en: 'The Kāṇvas follow the Kātyāyana Śrauta and Pāraskara Gṛhya sūtras too; see the note on the Mādhyandina path.',
-        kn: 'ಕಾಣ್ವರೂ ಕಾತ್ಯಾಯನ ಶ್ರೌತ ಮತ್ತು ಪಾರಸ್ಕರ ಗೃಹ್ಯ ಸೂತ್ರಗಳನ್ನೇ ಅನುಸರಿಸುತ್ತಾರೆ; ಮಾಧ್ಯಂದಿನ ಮಾರ್ಗದ ಟಿಪ್ಪಣಿ ನೋಡಿ.',
+        en: 'The Kalpa-sūtras on this path are shared with the Mādhyandinas. Which gṛhyasūtra a Kāṇva family follows can vary by region; ask your adhyāpaka.',
+        kn: 'ಈ ಮಾರ್ಗದ ಕಲ್ಪಸೂತ್ರಗಳು ಮಾಧ್ಯಂದಿನರೊಂದಿಗೆ ಸಾಮಾನ್ಯ. ಕಾಣ್ವ ಕುಟುಂಬವೊಂದು ಯಾವ ಗೃಹ್ಯಸೂತ್ರವನ್ನು ಅನುಸರಿಸುತ್ತದೆ ಎಂಬುದು ಪ್ರದೇಶದಿಂದ ಪ್ರದೇಶಕ್ಕೆ ಬದಲಾಗಬಹುದು; ನಿಮ್ಮ ಅಧ್ಯಾಪಕರನ್ನು ಕೇಳಿ.',
       },
     ],
   },
@@ -1294,8 +1654,8 @@ export const COLLECTIONS: Collection[] = [
     name: { en: 'Taittirīya', kn: 'ತೈತ್ತಿರೀಯ' },
     sa: 'तैत्तिरीय',
     intro: {
-      en: 'The śākhā most widely recited in South India, and the fullest surviving Kṛṣṇa Yajurveda: saṃhitā, brāhmaṇa, āraṇyaka and upaniṣad, with the Āpastamba and Baudhāyana Kalpas.',
-      kn: 'ದಕ್ಷಿಣ ಭಾರತದಲ್ಲಿ ಅತಿ ಹೆಚ್ಚು ಪಠಿತ ಶಾಖೆ, ಮತ್ತು ಸಂಪೂರ್ಣವಾಗಿ ಉಳಿದಿರುವ ಕೃಷ್ಣ ಯಜುರ್ವೇದ: ಸಂಹಿತಾ, ಬ್ರಾಹ್ಮಣ, ಆರಣ್ಯಕ, ಉಪನಿಷತ್ — ಆಪಸ್ತಂಬ ಮತ್ತು ಬೌಧಾಯನ ಕಲ್ಪಗಳೊಂದಿಗೆ.',
+      en: 'The śākhā most widely recited in South India, and the fullest surviving Kṛṣṇa Yajurveda: saṃhitā, brāhmaṇa, āraṇyaka and upaniṣad, with the Kalpas of Āpastamba, Baudhāyana and the other Taittirīya schools.',
+      kn: 'ದಕ್ಷಿಣ ಭಾರತದಲ್ಲಿ ಅತಿ ಹೆಚ್ಚು ಪಠಿತ ಶಾಖೆ, ಮತ್ತು ಸಂಪೂರ್ಣವಾಗಿ ಉಳಿದಿರುವ ಕೃಷ್ಣ ಯಜುರ್ವೇದ: ಸಂಹಿತಾ, ಬ್ರಾಹ್ಮಣ, ಆರಣ್ಯಕ, ಉಪನಿಷತ್ — ಆಪಸ್ತಂಬ, ಬೌಧಾಯನ ಮತ್ತು ಇತರ ತೈತ್ತಿರೀಯ ಪರಂಪರೆಗಳ ಕಲ್ಪಗಳೊಂದಿಗೆ.',
     },
     path: [
       'taittiriya-samhita',
@@ -1304,15 +1664,25 @@ export const COLLECTIONS: Collection[] = [
       'taittiriya-upanishad',
       'shvetashvatara-upanishad',
       'taittiriya-pratishakhya',
+      'apastamba-shrauta',
       'apastamba-grhya',
       'apastamba-dharma',
       'apastamba-shulba',
+      'baudhayana-shrauta',
+      'baudhayana-grhya',
       'baudhayana-dharma',
+      'baudhayana-shulba',
+      'hiranyakeshi-shrauta',
+      'hiranyakeshi-grhya',
+      'bharadvaja-grhya',
+      'vaikhanasa-grhya',
+      'vaikhanasa-dharma',
+      'agniveshya-grhya',
     ],
     notOnPath: [
       {
-        en: 'Āpastamba and Baudhāyana Śrautasūtras: open e-texts are available only under restricted access, so we do not link them yet.',
-        kn: 'ಆಪಸ್ತಂಬ ಮತ್ತು ಬೌಧಾಯನ ಶ್ರೌತಸೂತ್ರಗಳು: ಮುಕ್ತ ಇ-ಪಠ್ಯಗಳು ನಿರ್ಬಂಧಿತ ಪ್ರವೇಶದಲ್ಲಿ ಮಾತ್ರ ಲಭ್ಯ; ಆದ್ದರಿಂದ ಸದ್ಯಕ್ಕೆ ಲಿಂಕ್ ನೀಡಿಲ್ಲ.',
+        en: 'Not yet linked: the Bhāradvāja and Vaikhānasa Śrautasūtras, the Hiraṇyakeśi Dharmasūtra and the Vādhūla sūtras. We have not found complete open e-texts we can vouch for.',
+        kn: 'ಇನ್ನೂ ಲಿಂಕ್ ನೀಡಿಲ್ಲ: ಭಾರದ್ವಾಜ ಮತ್ತು ವೈಖಾನಸ ಶ್ರೌತಸೂತ್ರಗಳು, ಹಿರಣ್ಯಕೇಶಿ ಧರ್ಮಸೂತ್ರ ಮತ್ತು ವಾಧೂಲ ಸೂತ್ರಗಳು. ವಿಶ್ವಾಸಾರ್ಹ ಸಂಪೂರ್ಣ ಮುಕ್ತ ಇ-ಪಠ್ಯಗಳು ದೊರೆತಿಲ್ಲ.',
       },
       {
         en: 'The Mahānārāyaṇa Upaniṣad is the tenth prapāṭhaka of the Taittirīya Āraṇyaka; open the Āraṇyaka to read it.',
@@ -1327,18 +1697,18 @@ export const COLLECTIONS: Collection[] = [
     name: { en: 'Maitrāyaṇī', kn: 'ಮೈತ್ರಾಯಣೀ' },
     sa: 'मैत्रायणी',
     intro: {
-      en: 'A Kṛṣṇa Yajurveda śākhā still recited by a small community, with its own saṃhitā, upaniṣad and the Mānava and Vārāha gṛhyasūtras.',
-      kn: 'ಇಂದಿಗೂ ಸಣ್ಣ ಸಮುದಾಯವೊಂದು ಪಠಿಸುವ ಕೃಷ್ಣ ಯಜುರ್ವೇದ ಶಾಖೆ — ತನ್ನದೇ ಸಂಹಿತೆ, ಉಪನಿಷತ್, ಮತ್ತು ಮಾನವ, ವಾರಾಹ ಗೃಹ್ಯಸೂತ್ರಗಳೊಂದಿಗೆ.',
+      en: 'A Kṛṣṇa Yajurveda śākhā still recited by a small community, with its own saṃhitā, upaniṣad the Mānava Kalpa and the Vārāha Gṛhyasūtra.',
+      kn: 'ಇಂದಿಗೂ ಸಣ್ಣ ಸಮುದಾಯವೊಂದು ಪಠಿಸುವ ಕೃಷ್ಣ ಯಜುರ್ವೇದ ಶಾಖೆ — ತನ್ನದೇ ಸಂಹಿತೆ, ಉಪನಿಷತ್, ಮಾನವ ಕಲ್ಪ ಮತ್ತು ವಾರಾಹ ಗೃಹ್ಯಸೂತ್ರದೊಂದಿಗೆ.',
     },
-    path: ['maitrayani-samhita', 'maitrayani-upanishad', 'manava-grhya', 'varaha-grhya'],
+    path: ['maitrayani-samhita', 'maitrayani-upanishad', 'manava-shrauta', 'manava-grhya', 'manava-shulba', 'varaha-grhya'],
     notOnPath: [
       {
         en: 'There is no separate Maitrāyaṇī Brāhmaṇa: the explanatory prose sits inside the saṃhitā, as in all Kṛṣṇa Yajurveda texts.',
         kn: 'ಪ್ರತ್ಯೇಕ ಮೈತ್ರಾಯಣೀ ಬ್ರಾಹ್ಮಣವಿಲ್ಲ: ಎಲ್ಲ ಕೃಷ್ಣ ಯಜುರ್ವೇದ ಪಠ್ಯಗಳಂತೆ ವಿವರಣಾತ್ಮಕ ಗದ್ಯ ಸಂಹಿತೆಯೊಳಗೇ ಇದೆ.',
       },
       {
-        en: 'Mānava Śrautasūtra: no open e-text we can vouch for yet.',
-        kn: 'ಮಾನವ ಶ್ರೌತಸೂತ್ರ: ವಿಶ್ವಾಸಾರ್ಹ ಮುಕ್ತ ಇ-ಪಠ್ಯ ಇನ್ನೂ ದೊರೆತಿಲ್ಲ.',
+        en: 'Vārāha Śrautasūtra: no open e-text we can vouch for yet.',
+        kn: 'ವಾರಾಹ ಶ್ರೌತಸೂತ್ರ: ವಿಶ್ವಾಸಾರ್ಹ ಮುಕ್ತ ಇ-ಪಠ್ಯ ಇನ್ನೂ ದೊರೆತಿಲ್ಲ.',
       },
     ],
   },
@@ -1352,7 +1722,7 @@ export const COLLECTIONS: Collection[] = [
       en: 'Once a major Kṛṣṇa Yajurveda śākhā. Its best-known book today is the Kaṭha Upaniṣad.',
       kn: 'ಒಮ್ಮೆ ಪ್ರಮುಖವಾಗಿದ್ದ ಕೃಷ್ಣ ಯಜುರ್ವೇದ ಶಾಖೆ. ಇಂದು ಇದರ ಅತಿ ಪರಿಚಿತ ಗ್ರಂಥ ಕಠೋಪನಿಷತ್.',
     },
-    path: ['katha-upanishad'],
+    path: ['katha-upanishad', 'kathaka-grhya'],
     notOnPath: [
       {
         en: 'The Kāṭhaka Saṃhitā and the Kaṭha-Kapiṣṭhala Saṃhitā survive, but their e-texts are under restricted access and the Vedic Heritage Portal has no page for them yet.',
@@ -1379,13 +1749,14 @@ export const COLLECTIONS: Collection[] = [
       'shadvimsha-brahmana',
       'chandogya-brahmana',
       'chandogya-upanishad',
+      'gobhila-grhya',
       'kauthuma-grhya',
       'gautama-dharma',
     ],
     notOnPath: [
       {
-        en: 'Gobhila and Khādira Gṛhyasūtras and the Lāṭyāyana Śrautasūtra belong to this Veda; we have not found open e-texts we can vouch for.',
-        kn: 'ಗೋಭಿಲ, ಖಾದಿರ ಗೃಹ್ಯಸೂತ್ರಗಳು ಮತ್ತು ಲಾಟ್ಯಾಯನ ಶ್ರೌತಸೂತ್ರ ಈ ವೇದಕ್ಕೆ ಸೇರಿವೆ; ವಿಶ್ವಾಸಾರ್ಹ ಮುಕ್ತ ಇ-ಪಠ್ಯಗಳು ದೊರೆತಿಲ್ಲ.',
+        en: 'Lāṭyāyana Śrautasūtra: no open e-text we can vouch for yet.',
+        kn: 'ಲಾಟ್ಯಾಯನ ಶ್ರೌತಸೂತ್ರ: ವಿಶ್ವಾಸಾರ್ಹ ಮುಕ್ತ ಇ-ಪಠ್ಯ ಇನ್ನೂ ದೊರೆತಿಲ್ಲ.',
       },
       {
         en: 'No prātiśākhya of the Sāmaveda is listed on the Vedic Heritage Portal, so none is placed here.',
@@ -1402,8 +1773,13 @@ export const COLLECTIONS: Collection[] = [
       en: 'A sister śākhā of the Kauthuma. It has its own saṃhitā recitation and shares the Kauthuma brāhmaṇas and upaniṣad.',
       kn: 'ಕೌಥುಮದ ಸಹೋದರ ಶಾಖೆ. ತನ್ನದೇ ಸಂಹಿತಾ ಪಠಣವಿದೆ; ಬ್ರಾಹ್ಮಣಗಳು ಮತ್ತು ಉಪನಿಷತ್ತು ಕೌಥುಮದೊಂದಿಗೆ ಸಾಮಾನ್ಯ.',
     },
-    path: ['ranayaniya-samhita', 'tandya-brahmana', 'chandogya-brahmana', 'chandogya-upanishad'],
-    notOnPath: [],
+    path: ['ranayaniya-samhita', 'tandya-brahmana', 'chandogya-brahmana', 'chandogya-upanishad', 'khadira-grhya'],
+    notOnPath: [
+      {
+        en: 'Drāhyāyaṇa Śrautasūtra: no open e-text we can vouch for yet.',
+        kn: 'ದ್ರಾಹ್ಯಾಯಣ ಶ್ರೌತಸೂತ್ರ: ವಿಶ್ವಾಸಾರ್ಹ ಮುಕ್ತ ಇ-ಪಠ್ಯ ಇನ್ನೂ ದೊರೆತಿಲ್ಲ.',
+      },
+    ],
   },
   {
     slug: 'jaiminiya',
